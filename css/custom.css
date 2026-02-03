@@ -1,30 +1,99 @@
-/* 全局背景：粉蓝梦幻渐变 */
+/* 情侣博客自定义样式 */
+:root {
+    --love-pink: #FF9EAC;
+    --love-blue: #89C3EB;
+    --sweet-purple: #C6A6E8;
+    --soft-white: #FFF5F7;
+}
+
+/* 粉色爱心背景特效 */
 body {
-    background: linear-gradient(to right, #ffd1d8 0%, #d8f2ff 100%);
-    background-attachment: fixed; /* 让背景固定，不随滚动条滚动 */
+    background: linear-gradient(135deg, var(--soft-white) 0%, #f8f4ff 100%);
 }
 
-/* 顶部导航栏透明化，透出背景 */
-#page-header.nav-fixed #nav {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
+/* 导航栏样式 */
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
 }
 
-/* 侧边栏卡片圆角化 + 少女心阴影 */
+/* 首页大图样式 */
+#page-header {
+    position: relative;
+}
+
+#page-header:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 158, 172, 0.3), rgba(137, 195, 235, 0.3));
+}
+
+/* 卡片样式优化 */
 .card-widget {
-    border-radius: 15px !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3) !important; /* 粉色阴影 */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(255, 158, 172, 0.1);
+    border: 1px solid rgba(255, 158, 172, 0.1);
 }
 
-/* 选中文字的颜色：变成粉底白字 */
-::selection {
-    background: #FF9EAC;
-    color: #fff;
+/* 按钮样式 */
+.button--animated {
+    background: linear-gradient(45deg, var(--love-pink), var(--sweet-purple));
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
-/* 滚动条也是糯糯的蓝色 */
+.button--animated:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 158, 172, 0.3);
+}
+
+/* 文章标题爱心装饰 */
+.post-title:before {
+    content: '❤ ';
+    color: var(--love-pink);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .card-widget {
+        margin: 10px;
+        border-radius: 15px;
+    }
+    
+    #love_timer {
+        font-size: 20px !important;
+    }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--soft-white);
+}
+
 ::-webkit-scrollbar-thumb {
-    background-color: #A0CFFF;
-    border-radius: 10px;
+    background: var(--love-pink);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--sweet-purple);
+}
+
+/* 爱心漂浮特效 */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating-hearts {
+    animation: float 3s ease-in-out infinite;
 }
