@@ -1,101 +1,138 @@
 /* ========================
-   全局美化与字体
+   1. 全局变量定义
    ======================== */
 :root {
-  --love-pink: #FF9EAC;
-  --love-blue: #89C3EB;
+    --love-primary: #FF9EAC;       /* 主题粉色 */
+    --love-secondary: #89C3EB;     /* 搭配蓝色 */
+    --love-glass-bg: rgba(255, 255, 255, 0.75); /* 毛玻璃背景 */
+    --love-glass-border: 1px solid rgba(255, 255, 255, 0.5);
+    --love-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
+/* ========================
+   2. 基础背景与布局 (毛玻璃UI)
+   ======================== */
 body {
-  background-attachment: fixed; 
+    /* 梦幻渐变背景 */
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    background-attachment: fixed;
+    font-family: 'Nunito', 'ZCOOL KuaiLe', sans-serif;
 }
 
-/* 导航栏透明毛玻璃效果 */
-#nav {
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+/* 顶部导航栏 - 毛玻璃透视 */
+#page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-/* ========================
-   恋爱计时器专属样式
-   ======================== */
-.love-card {
-    text-align: center;
-    padding: 10px;
-    width: 100%; /* 适配侧边栏宽度 */
-    box-sizing: border-box; /* 防止溢出 */
-}
-
-.love-text {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 5px;
-    display: block; /* 确保单行显示 */
-}
-
-#love_timer {
-    font-family: 'ZCOOL KuaiLe', 'Nunito', cursive;
-    font-size: 1.2rem;
-    color: var(--love-blue);
-    background: rgba(255, 255, 255, 0.5);
-    padding: 10px;
-    border-radius: 15px;
-    margin: 5px 0;
-    box-shadow: 0 4px 10px rgba(137, 195, 235, 0.2);
-    display: block; /* 确保元素渲染 */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.timer-unit {
-    color: var(--love-pink);
-    font-weight: bold;
-    font-size: 1.4rem;
-}
-
-/* 心跳动画 */
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.3); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.3); }
-    70% { transform: scale(1); }
-}
-
-.beat-icon {
-    animation: heartbeat 1.5s infinite;
-    font-size: 1.5rem;
-    display: inline-block; /* 确保动画生效 */
-}
-
-/* ========================
-   侧边栏卡片优化
-   ======================== */
+/* 侧边栏卡片 - 悬浮与质感 */
 .card-widget {
-    border-radius: 15px !important;
-    border: 1px solid rgba(255, 158, 172, 0.2);
-    box-shadow: 0 8px 16px -4px rgba(255, 158, 172, 0.1) !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    backdrop-filter: blur(5px);
-    padding: 15px !important; /* 增加内边距，防止计时器溢出 */
+    border-radius: 16px !important;
+    background: var(--love-glass-bg) !important;
+    backdrop-filter: blur(4px);
+    border: var(--love-glass-border);
+    box-shadow: var(--love-shadow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 头像旋转特效 (鼠标悬停时) */
-.author-info__avatar img:hover {
-    transform: rotate(360deg);
-    transition: all 1s ease-in-out;
+.card-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 158, 172, 0.3) !important;
 }
 
-/* 首页文章卡片圆角 */
-#recent-posts > .recent-post-item {
-    border-radius: 20px;
-    border: 1px solid rgba(137, 195, 235, 0.2);
+/* ========================
+   3. 恋爱计时器专用样式 (精修版)
+   ======================== */
+.love-card-container {
+    padding: 15px 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
 }
 
-/* 强制显示计时器，防止被主题样式覆盖 */
-#love_timer.love-timer {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+/* 时间数字通用样式 */
+.timer-num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-feature-settings: "tnum";      /* 关键：开启等宽数字 */
+    font-variant-numeric: tabular-nums; /* 关键：防止数字跳动 */
+    color: var(--love-primary);
+}
+
+/* "天数"的大数字 */
+.timer-num.big {
+    font-size: 2.2em;
+    line-height: 1;
+    background: linear-gradient(45deg, #FF9EAC, #89C3EB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 天数单位 */
+.timer-text {
+    font-size: 0.9em;
+    color: #888;
+    margin-left: 2px;
+}
+
+/* 时分秒区域 */
+.timer-unit-group.small {
+    margin-top: 8px;
+    font-size: 1.1em;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+/* 分隔符 (冒号) 呼吸动画 */
+.timer-split {
+    margin: 0 2px;
+    padding-bottom: 2px;
+    color: #ccc;
+    animation: blink 1s infinite;
+}
+
+/* 秒数特写：心跳颜色 */
+.second-beat {
+    color: #FF7E93;
+    display: inline-block;
+    min-width: 24px; /* 强制占位确保不抖动 */
+    text-align: center;
+}
+
+/* ========================
+   4. 动画与细节
+   ======================== */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--love-primary);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* 选中文字颜色 */
+::selection {
+    background: var(--love-primary);
+    color: white;
 }

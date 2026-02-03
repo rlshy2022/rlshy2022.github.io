@@ -1,71 +1,66 @@
 /**
- * 恋爱计时器 (遵循Butterfly Pjax规范)
- * 适配Hexo Butterfly主题，兼容页面切换/异步渲染
+ * 恋爱计时器 (精确版)
+ * 优化：立即执行、防抖动、Pjax适配、等宽数字
  */
-(function(window, document) {
+(function() {
   "use strict";
 
-  // 配置项 (独立抽离，方便修改)
+  //在此修改你们的纪念日
   const CONFIG = {
-    startDate: new Date(2022, 7, 18, 0, 0, 0), // 月份从0开始，7=8月 (兼容所有浏览器)
-    interval: 1000, // 1秒刷新一次
-    delay: 300 // 延迟执行，适配异步渲染
+    startDate: new Date("2022-08-18T00:00:00"), 
+    refreshInterval: 1000
   };
 
-  // 核心计时逻辑
-  const loveTimerFn = () => {
-    const timerElement = document.getElementById("love_timer");
-    if (!timerElement) return; // 无元素则退出
+  // 补零函数 (例如 8 -> 08)
+  const pad = (n) => n < 10 ? `0${n}` : n;
+
+  const updateTimer = () => {
+    const timerBox = document.getElementById("love_timer");
+    if (!timerBox) return; // 页面未找到元素则停止
 
     const now = new Date();
-    const timeDiff = now.getTime() - CONFIG.startDate.getTime();
-    if (timeDiff < 0) { // 防止开始时间晚于当前时间
-      timerElement.innerHTML = '<span class="timer-unit">0</span> 天 <span class="timer-unit">0</span> 时 <span class="timer-unit">0</span> 分 <span class="timer-unit">0</span> 秒';
+    const diff = now - CONFIG.startDate;
+
+    // 如果时间还没到
+    if (diff < 0) {
+      timerBox.innerHTML = "我们在未来相遇";
       return;
     }
 
-    // 计算天/时/分/秒
-    const days = Math.floor(timeDiff / (24 * 60 * 60 * 1000));
-    const hours = Math.floor((timeDiff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-    const minutes = Math.floor((timeDiff % (60 * 60 * 1000)) / (60 * 1000));
-    const seconds = Math.floor((timeDiff % (60 * 1000)) / 1000);
+    // 精确计算时间
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-    // 渲染到页面 (保留样式类，兼容CSS)
-    timerElement.innerHTML = `
-      <span class="timer-unit">${days}</span> 天 
-      <span class="timer-unit">${hours}</span> 时 
-      <span class="timer-unit">${minutes}</span> 分 
-      <span class="timer-unit">${seconds}</span> 秒
+    // 渲染HTML (区分秒数，便于添加动画)
+    timerBox.innerHTML = `
+      <div class="timer-unit-group">
+        <span class="timer-num big">${days}</span>
+        <span class="timer-text">天</span>
+      </div>
+      <div class="timer-unit-group small">
+        <span class="timer-num">${pad(hours)}</span><span class="timer-split">:</span>
+        <span class="timer-num">${pad(minutes)}</span><span class="timer-split">:</span>
+        <span class="timer-num second-beat">${pad(seconds)}</span>
+      </div>
     `;
   };
 
-  // 启动计时器 (封装为可复用函数)
-  const startLoveTimer = () => {
-    // 清除旧定时器，防止叠加 (主题Pjax切换时关键)
-    if (window.loveInterval) {
-      clearInterval(window.loveInterval);
-      window.loveInterval = null;
+  const startTimer = () => {
+    // 1. 清除可能存在的旧定时器 (防止Pjax切换后累积)
+    if (window.loveTimerInterval) {
+      clearInterval(window.loveTimerInterval);
     }
-
-    // 延迟执行，确保侧边栏元素已渲染 (兼容主题异步加载)
-    setTimeout(() => {
-      loveTimerFn(); // 立即执行一次，避免空白
-      window.loveInterval = setInterval(loveTimerFn, CONFIG.interval);
-    }, CONFIG.delay);
+    
+    // 2. 立即执行一次 (避免页面加载后的1秒空白)
+    updateTimer();
+    
+    // 3. 启动定时器
+    window.loveTimerInterval = setInterval(updateTimer, CONFIG.refreshInterval);
   };
 
-  // 监听主题核心事件 (严格遵循Butterfly规范)
-  // 1. 页面初次加载完成
-  document.addEventListener("DOMContentLoaded", startLoveTimer);
-  // 2. Pjax页面切换完成 (主题核心事件)
-  document.addEventListener("pjax:complete", startLoveTimer);
-  // 3. 兼容部分主题的pjax:success事件
-  document.addEventListener("pjax:success", startLoveTimer);
-  // 4. 窗口加载完成 (兜底方案)
-  window.addEventListener("load", startLoveTimer);
-
-  // 暴露到全局，方便调试
-  window.startLoveTimer = startLoveTimer;
-  window.loveTimerFn = loveTimerFn;
-
-})(window, document);
+  // 监听各类加载事件 (兼容Hexo Butterfly的Pjax机制)
+  document.addEventListener("DOMContentLoaded", startTimer);
+  document.addEventListener("pjax:complete", startTimer);
+})();
