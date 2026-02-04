@@ -265,3 +265,26 @@ input[type="checkbox"] {
     transform: scale(1.2);
     margin-right: 8px;
 }
+
+/* 相册图片悬浮效果 */
+.gallery-items img {
+    border-radius: 12px !important; /* 圆角增加软糯感 */
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-items img:hover {
+    box-shadow: 0 5px 15px rgba(255, 158, 172, 0.4) !important; /* 粉色发光阴影 */
+    transform: scale(1.02); /* 轻微放大 */
+}
+
+/* 文章顶部图（Banner）圆角化与阴影 */
+#page-header.not-home-page {
+    height: 400px; /* 固定高度，看起来更精致 */
+    background-color: var(--love-primary); /* 加载时的底色 */
+}
+
+/* 给顶部文字加一点粉色发光，防止看不清标题 */
+#page-site-info #site-title, #page-site-info #site-subtitle {
+    text-shadow: 2px 2px 4px rgba(255, 158, 172, 0.8) !important;
+}
