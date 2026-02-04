@@ -1,66 +1,96 @@
 /**
- * 恋爱计时器 (精确版)
- * 优化：立即执行、防抖动、Pjax适配、等宽数字
+ * 恋爱计时器 (双时间版)
+ * 1. 侧边栏：显示"爱的开始" (从相识/相爱那一天算起)
+ * 2. 页脚：显示"小窝守护" (从建站那一天算起)
  */
 (function() {
   "use strict";
 
-  //在此修改你们的纪念日
   const CONFIG = {
-    startDate: new Date("2022-08-18T00:00:00"), 
+    // A. 恋爱纪念日 (侧边栏使用：2022年)
+    loveDate: new Date("2022-08-18T00:00:00"), 
+    
+    // B. 建站时间 (底部使用：2026年2月3日 20:00)
+    siteDate: new Date("2026-02-03T20:00:00"),
+    
     refreshInterval: 1000
   };
 
-  // 补零函数 (例如 8 -> 08)
   const pad = (n) => n < 10 ? `0${n}` : n;
 
+  // 1. 修改侧边栏标题和图标
+  const updateTitle = () => {
+    const titleElem = document.querySelector('.card-announcement .item-headline span');
+    const iconElem = document.querySelector('.card-announcement .item-headline i');
+    
+    if (titleElem) titleElem.innerText = '爱的开始';
+    
+    if (iconElem) {
+      iconElem.classList.remove('fa-bullhorn');
+      iconElem.classList.add('fa-heart');
+      iconElem.style.color = '#FF9EAC';
+      iconElem.style.animation = 'beat 1.3s infinite';
+    }
+  };
+
+  // 2. 核心计时逻辑
   const updateTimer = () => {
-    const timerBox = document.getElementById("love_timer");
-    if (!timerBox) return; // 页面未找到元素则停止
-
+    const timerBox = document.getElementById("love_timer");     // 侧边栏容器
+    const footerTimer = document.getElementById("footer-timer"); // 底部容器
     const now = new Date();
-    const diff = now - CONFIG.startDate;
 
-    // 如果时间还没到
-    if (diff < 0) {
-      timerBox.innerHTML = "我们在未来相遇";
-      return;
+    // --- A. 计算恋爱时长 (侧边栏) ---
+    if (timerBox) {
+      const loveDiff = now - CONFIG.loveDate;
+      
+      if (loveDiff < 0) {
+        timerBox.innerHTML = "我们在未来相遇";
+      } else {
+        const loveDays = Math.floor(loveDiff / (1000 * 60 * 60 * 24));
+        const loveHours = Math.floor((loveDiff / (1000 * 60 * 60)) % 24);
+        const loveMinutes = Math.floor((loveDiff / (1000 * 60)) % 60);
+        const loveSeconds = Math.floor((loveDiff / 1000) % 60);
+
+        timerBox.innerHTML = `
+          <div class="timer-unit-group big-group">
+            <span class="timer-num big">${loveDays}</span>
+            <span class="timer-text">Days</span>
+          </div>
+          <div class="timer-unit-group small">
+            <span class="timer-num">${pad(loveHours)}</span><span class="timer-split">:</span>
+            <span class="timer-num">${pad(loveMinutes)}</span><span class="timer-split">:</span>
+            <span class="timer-num second-beat">${pad(loveSeconds)}</span>
+          </div>
+        `;
+      }
     }
 
-    // 精确计算时间
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    // 渲染HTML (区分秒数，便于添加动画)
-    timerBox.innerHTML = `
-      <div class="timer-unit-group">
-        <span class="timer-num big">${days}</span>
-        <span class="timer-text">天</span>
-      </div>
-      <div class="timer-unit-group small">
-        <span class="timer-num">${pad(hours)}</span><span class="timer-split">:</span>
-        <span class="timer-num">${pad(minutes)}</span><span class="timer-split">:</span>
-        <span class="timer-num second-beat">${pad(seconds)}</span>
-      </div>
-    `;
+    // --- B. 计算建站时长 (底部) ---
+    if (footerTimer) {
+      const siteDiff = now - CONFIG.siteDate;
+      
+      // 为了避免刚建站时显示负数或0天，做个简单判断
+      let siteText = "";
+      if (siteDiff < 0) {
+        siteText = "即将开启守护...";
+      } else {
+        const siteDays = Math.floor(siteDiff / (1000 * 60 * 60 * 24));
+        const siteHours = Math.floor((siteDiff / (1000 * 60 * 60)) % 24);
+        // 如果需要更精确，也可以加上分钟，这里只保留天和小时保持简洁
+        siteText = `我们的小窝已守护彼此 ${siteDays} 天 ${siteHours} 小时`;
+      }
+      
+      footerTimer.innerHTML = siteText;
+    }
   };
 
   const startTimer = () => {
-    // 1. 清除可能存在的旧定时器 (防止Pjax切换后累积)
-    if (window.loveTimerInterval) {
-      clearInterval(window.loveTimerInterval);
-    }
-    
-    // 2. 立即执行一次 (避免页面加载后的1秒空白)
+    if (window.loveTimerInterval) clearInterval(window.loveTimerInterval);
+    updateTitle();
     updateTimer();
-    
-    // 3. 启动定时器
     window.loveTimerInterval = setInterval(updateTimer, CONFIG.refreshInterval);
   };
 
-  // 监听各类加载事件 (兼容Hexo Butterfly的Pjax机制)
   document.addEventListener("DOMContentLoaded", startTimer);
   document.addEventListener("pjax:complete", startTimer);
 })();
