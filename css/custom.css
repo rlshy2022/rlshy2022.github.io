@@ -198,3 +198,45 @@ input[type="checkbox"] {
     transform: scale(1.2); /* 稍微放大一点 */
     margin-right: 8px;
 }
+
+
+/* --- 惊喜情话特效样式 --- */
+.love-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #FF9EAC;
+    color: #FF7E93;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(255, 158, 172, 0.3);
+    pointer-events: none; /* 防止遮挡点击 */
+    z-index: 9999;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    white-space: nowrap;
+    animation: floatUp 2.5s ease-out forwards;
+}
+
+/* 飘字动画 */
+@keyframes floatUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -80%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -120%) scale(0.9);
+    }
+}
