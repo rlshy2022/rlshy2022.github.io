@@ -240,3 +240,105 @@ input[type="checkbox"] {
         transform: translate(-50%, -120%) scale(0.9);
     }
 }
+
+/* ========================
+   5. 少女心旋转音乐盘样式
+   ======================== */
+.love-music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+/* 唱片容器 */
+.music-disc-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--love-primary); /* 粉色边框 */
+    box-shadow: 0 0 15px rgba(255, 158, 172, 0.4);
+    position: relative;
+    margin-bottom: 15px;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* 实际转动的唱片 */
+.music-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    /* 默认暂停旋转 */
+    animation: rotateDisc 10s linear infinite;
+    animation-play-state: paused; 
+}
+
+/* 唱片封面图 */
+.music-disc img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 唱片中间的小圆孔 */
+.music-disc-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid var(--love-secondary); /* 蓝色边框 */
+    z-index: 2;
+}
+
+/* 歌名文字 */
+.music-title {
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+/* 播放按钮 */
+.music-btn {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #FF9EAC 0%, #FF7E93 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 126, 147, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+.music-btn i {
+    font-size: 1.2rem;
+    margin-left: 2px; /* 微调播放图标位置 */
+}
+
+/* 旋转动画关键帧 */
+@keyframes rotateDisc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 播放状态下的样式 (由JS控制添加) */
+.music-playing .music-disc {
+    animation-play-state: running; /* 开始旋转 */
+}
