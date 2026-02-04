@@ -4,13 +4,13 @@
 :root {
     --love-primary: #FF9EAC;       /* 主题粉色 */
     --love-secondary: #89C3EB;     /* 搭配蓝色 */
-    --love-glass-bg: rgba(255, 255, 255, 0.85); /* 增加不透明度，提升文字清晰度 */
+    --love-glass-bg: rgba(255, 255, 255, 0.85);
     --love-glass-border: 1px solid rgba(255, 255, 255, 0.6);
     --love-shadow: 0 8px 32px 0 rgba(255, 158, 172, 0.15);
 }
 
 /* ========================
-   2. 基础背景与布局 (毛玻璃UI)
+   2. 基础背景与布局
    ======================== */
 body {
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
@@ -26,13 +26,13 @@ body {
 }
 
 .card-widget {
-    border-radius: 20px !important; /* 更圆润 */
+    border-radius: 20px !important;
     background: var(--love-glass-bg) !important;
     backdrop-filter: blur(4px);
     border: var(--love-glass-border);
     box-shadow: var(--love-shadow) !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 25px 20px !important; /* 增加内边距 */
+    padding: 25px 20px !important;
 }
 
 .card-widget:hover {
@@ -41,7 +41,7 @@ body {
 }
 
 /* ========================
-   3. 恋爱计时器专用样式 (放大居中版)
+   3. 恋爱计时器专用样式
    ======================== */
 .love-timer-wrapper {
     display: flex;
@@ -63,50 +63,45 @@ body {
     text-align: center;
 }
 
-/* 时间数字通用样式 */
 .timer-num {
     font-family: 'Nunito', sans-serif;
-    font-weight: 800; /* 更粗 */
+    font-weight: 800;
     font-feature-settings: "tnum";
     font-variant-numeric: tabular-nums;
     color: var(--love-primary);
     text-shadow: 2px 2px 4px rgba(255, 158, 172, 0.2);
 }
 
-/* "天数"的超大数字 - 核心修改点 */
 .timer-num.big {
-    font-size: 3.6em; /* 放大！ */
+    font-size: 3.6em;
     line-height: 1.1;
-    display: block; /* 独占一行 */
+    display: block;
     margin: 5px 0;
     background: linear-gradient(135deg, #FF9EAC 0%, #FF7E93 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* 天数单位 */
 .timer-text {
     font-size: 1rem;
     color: #888;
     vertical-align: middle;
     margin-top: -10px;
     display: block;
-    margin-bottom: 15px; /* 与下方时分秒拉开距离 */
+    margin-bottom: 15px;
 }
 
-/* 时分秒区域 */
 .timer-unit-group.small {
-    font-size: 1.3em; /* 放大 */
+    font-size: 1.3em;
     color: #777;
     background: rgba(255,255,255,0.6);
     padding: 5px 15px;
-    border-radius: 50px; /* 胶囊形状 */
+    border-radius: 50px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
 }
 
-/* 分隔符 (冒号) */
 .timer-split {
     margin: 0 4px;
     color: #FF9EAC;
@@ -114,7 +109,6 @@ body {
     animation: blink 1s infinite;
 }
 
-/* 秒数跳动 */
 .second-beat {
     color: #FF7E93;
     display: inline-block;
@@ -122,127 +116,7 @@ body {
 }
 
 /* ========================
-   4. 动画与滚动条
-   ======================== */
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-}
-
-@keyframes beat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: var(--love-primary);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-::selection {
-    background: var(--love-primary);
-    color: white;
-}
-
-
-/* 文章内图片拍立得风格 */
-#article-container img {
-    border: 5px solid #fff; /* 白色边框 */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* 阴影 */
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-/* 鼠标悬停时摆正并放大 */
-#article-container img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 15px rgba(255, 158, 172, 0.3);
-}
-
-
-/* 移动端适配：专门针对手机屏幕调整 */
-@media screen and (max-width: 768px) {
-    /* 缩小侧边栏卡片的内边距，给内容腾空间 */
-    .card-widget {
-        padding: 15px !important;
-    }
-
-    /* 缩小计时器数字，防止换行 */
-    .timer-num.big {
-        font-size: 2.5em; /* 电脑是3.6em，手机改小一点 */
-    }
-    
-    .timer-unit-group.small {
-        font-size: 1em; /* 缩小底下的时分秒 */
-        padding: 3px 10px;
-    }
-
-    /* 调整首页大标题的字号，防止太长 */
-    #site-title {
-        font-size: 1.8em !important;
-    }
-}
-
-
-/* 优化任务列表样式 */
-input[type="checkbox"] {
-    accent-color: var(--love-primary); /* 将勾选框变成主题粉色 */
-    transform: scale(1.2); /* 稍微放大一点 */
-    margin-right: 8px;
-}
-
-
-/* --- 惊喜情话特效样式 --- */
-.love-toast {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    border: 2px solid #FF9EAC;
-    color: #FF7E93;
-    padding: 15px 25px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 8px 20px rgba(255, 158, 172, 0.3);
-    pointer-events: none; /* 防止遮挡点击 */
-    z-index: 9999;
-    font-family: 'ZCOOL KuaiLe', sans-serif;
-    white-space: nowrap;
-    animation: floatUp 2.5s ease-out forwards;
-}
-
-/* 飘字动画 */
-@keyframes floatUp {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -30%) scale(0.8);
-    }
-    20% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    80% {
-        opacity: 1;
-        transform: translate(-50%, -80%) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -120%) scale(0.9);
-    }
-}
-
-/* ========================
-   5. 少女心旋转音乐盘样式
+   4. 音乐播放器样式 (修复版)
    ======================== */
 .love-music-player {
     display: flex;
@@ -252,12 +126,11 @@ input[type="checkbox"] {
     padding: 10px 0;
 }
 
-/* 唱片容器 */
 .music-disc-container {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 4px solid var(--love-primary); /* 粉色边框 */
+    border: 4px solid var(--love-primary);
     box-shadow: 0 0 15px rgba(255, 158, 172, 0.4);
     position: relative;
     margin-bottom: 15px;
@@ -265,27 +138,26 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* 实际转动的唱片 */
 .music-disc {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    /* 默认暂停旋转 */
     animation: rotateDisc 10s linear infinite;
     animation-play-state: paused; 
 }
 
-/* 唱片封面图 */
+/* 关键修复：强制封面填充且不变形 */
 .music-disc img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
+    border-radius: 50%;
 }
 
-/* 唱片中间的小圆孔 */
 .music-disc-center {
     position: absolute;
     top: 50%;
@@ -295,11 +167,10 @@ input[type="checkbox"] {
     height: 20px;
     background: #fff;
     border-radius: 50%;
-    border: 2px solid var(--love-secondary); /* 蓝色边框 */
+    border: 2px solid var(--love-secondary);
     z-index: 2;
 }
 
-/* 歌名文字 */
 .music-title {
     font-size: 1rem;
     color: #555;
@@ -308,7 +179,6 @@ input[type="checkbox"] {
     font-family: 'ZCOOL KuaiLe', cursive;
 }
 
-/* 播放按钮 */
 .music-btn {
     width: 40px;
     height: 40px;
@@ -329,16 +199,69 @@ input[type="checkbox"] {
 
 .music-btn i {
     font-size: 1.2rem;
-    margin-left: 2px; /* 微调播放图标位置 */
+    margin-left: 2px;
 }
 
-/* 旋转动画关键帧 */
 @keyframes rotateDisc {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* 播放状态下的样式 (由JS控制添加) */
 .music-playing .music-disc {
-    animation-play-state: running; /* 开始旋转 */
+    animation-play-state: running;
+}
+
+/* ========================
+   5. 其他特效与适配
+   ======================== */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* 惊喜特效气泡 */
+.love-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #FF9EAC;
+    color: #FF7E93;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(255, 158, 172, 0.3);
+    pointer-events: none;
+    z-index: 9999;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    white-space: nowrap;
+    animation: floatUp 2.5s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% { opacity: 0; transform: translate(-50%, -30%) scale(0.8); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+    80% { opacity: 1; transform: translate(-50%, -80%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -120%) scale(0.9); }
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .card-widget { padding: 15px !important; }
+    .timer-num.big { font-size: 2.5em; }
+    .timer-unit-group.small { font-size: 1em; padding: 3px 10px; }
+}
+
+input[type="checkbox"] {
+    accent-color: var(--love-primary);
+    transform: scale(1.2);
+    margin-right: 8px;
 }
