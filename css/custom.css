@@ -303,3 +303,20 @@ input[type="checkbox"] {
     padding-bottom: 10px;
     color: #FF7E93;
 }
+
+/* 加密输入框容器 */
+#hbePass {
+    border: 2px solid #FF9EAC !important;
+    border-radius: 20px !important;
+    padding: 8px 15px !important;
+    outline: none !important;
+    display: block;
+    margin: 0 auto;
+}
+
+/* 确认按钮悬停效果 */
+#hbeSubmitBtn:hover {
+    background: #ff8495 !important;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 158, 172, 0.4);
+}
