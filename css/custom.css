@@ -389,10 +389,9 @@ li.task-list-item input[type="checkbox"]:checked ~ p {
 }
 
 
-/* 自定义鼠标指针 (需要你自己找两个32x32的cur或png文件) */
 body {
-    cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur'), auto; /* 默认指针 */
+    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur117.cur'), auto;
 }
-a, img, .music-btn, button {
-    cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur'), pointer; /* 悬停指针 */
+a, img, .music-btn, button, i {
+    cursor: url('https://cur.cursors-4u.net/holidays/hol-4/hol383.cur'), pointer !important;
 }
