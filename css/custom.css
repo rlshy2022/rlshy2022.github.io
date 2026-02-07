@@ -320,3 +320,79 @@ input[type="checkbox"] {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(255, 158, 172, 0.4);
 }
+
+
+/* ========================
+   6. 恋爱清单 (Love List) 专属优化
+   ======================== */
+/* 隐藏原生复选框 */
+li.task-list-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+/* 未完成：空心爱心 */
+li.task-list-item input[type="checkbox"]::after {
+    content: '\f004'; /* FontAwesome 的爱心代码 */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400; /* Regular (空心) */
+    color: #ff9eac;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+/* 已完成：实心爱心 + 跳动动画 */
+li.task-list-item input[type="checkbox"]:checked::after {
+    font-weight: 900; /* Solid (实心) */
+    color: #ff4757;
+    animation: checkbox-pop 0.4s ease-in-out;
+}
+
+/* 完成的任务文字加删除线和变灰 */
+li.task-list-item input[type="checkbox"]:checked + label,
+li.task-list-item input[type="checkbox"]:checked ~ p {
+    text-decoration: line-through;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+@keyframes checkbox-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+    background: #FF9EAC;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ff7e93;
+}
+
+
+/* 自定义鼠标指针 (需要你自己找两个32x32的cur或png文件) */
+body {
+    cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur'), auto; /* 默认指针 */
+}
+a, img, .music-btn, button {
+    cursor: url('https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur'), pointer; /* 悬停指针 */
+}
