@@ -110,12 +110,12 @@
                   show: true,
                   period: 6,
                   trailLength: 0.7,
-                  color: '#fff', // 飞机的拖尾颜色
+                  color: '#0f0fd3', // 飞机的拖尾颜色
                   symbolSize: 3
               },
               lineStyle: {
                   normal: {
-                      color: '#FF9EAC', // 航线颜色
+                      color: '#0cbb35', // 航线颜色
                       width: 0,
                       curveness: 0.2 // 曲线程度
                   }
