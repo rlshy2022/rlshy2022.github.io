@@ -1,7 +1,6 @@
 (function() {
   var mapChart = null;
 
-  // 1. 初始化地图的函数
   function initLoveMap() {
     var dom = document.getElementById('love-map-container');
     
@@ -10,32 +9,45 @@
 
     mapChart = echarts.init(dom);
 
-    // ================= 配置区域开始 =================
+    // ================= 🗺️ 数据配置区域 =================
     
-    // 1. 足迹点数据 (Love Points)
+    // 1. 📍 坐标配置 (方便后面调用，不用每次都查经纬度)
+    var geoCoordMap = {
+      '苏州': [120.58, 31.30],
+      '景德镇': [117.18, 29.30],
+      '扬州': [119.41, 32.39],
+      '安庆': [117.05, 30.53],
+      '广元': [105.84, 32.43],
+      '福州': [119.30, 26.08]
+    };
+
+    // 2. ❤️ 足迹点数据 (地图上跳动的爱心)
     var loveData = [
-      { name: '苏州', value: [120.58, 31.30], date: '2026.01' },
-      { name: '景德镇', value: [117.18, 29.30], date: '2025.12' },
-      { name: '扬州', value: [119.41, 32.39], date: '怡怡大学' },
-      { name: '安庆', value: [117.05, 30.53], date: '欢欢出生地' },
-      { name: '广元', value: [105.84, 32.43], date: '怡怡出生地' },
-      { name: '福州', value: [119.30, 26.08], date: '欢欢大学' }
+      { name: '苏州', value: geoCoordMap['苏州'], date: '2026.01' },
+      { name: '景德镇', value: geoCoordMap['景德镇'], date: '2025.12' },
+      { name: '扬州', value: geoCoordMap['扬州'], date: '怡怡大学' },
+      { name: '安庆', value: geoCoordMap['安庆'], date: '欢欢出生地' },
+      { name: '广元', value: geoCoordMap['广元'], date: '怡怡出生地' },
+      { name: '福州', value: geoCoordMap['福州'], date: '欢欢大学' }
     ];
 
-    // 2. 航线数据 (Flight Lines) - 格式：[起点, 终点]
+    // 3. ✈️ 航线数据 (把新城市都连到苏州)
     var loveLines = [
-      { coords: [[120.58, 31.30], [117.18, 29.30]] }, // 苏州 -> 景德镇
-      { coords: [[120.58, 31.30], [119.41, 32.39]] }, // 苏州 -> 扬州
-      // 可以在这里继续添加航线，例如：
-      // { coords: [[117.05, 30.53], [120.58, 31.30]] }, // 安庆 -> 苏州
+      // 原有的
+      { coords: [geoCoordMap['苏州'], geoCoordMap['景德镇']] }, // 苏州 -> 景德镇
+      { coords: [geoCoordMap['苏州'], geoCoordMap['扬州']] },   // 苏州 -> 扬州
+      
+      // ✨ 新增的航线 (逻辑：从家乡/大学 -> 现在的苏州)
+      { coords: [geoCoordMap['安庆'], geoCoordMap['苏州']] },   // 安庆 -> 苏州
+      { coords: [geoCoordMap['广元'], geoCoordMap['苏州']] },   // 广元 -> 苏州
+      { coords: [geoCoordMap['福州'], geoCoordMap['苏州']] }    // 福州 -> 苏州
     ];
 
-    // 3. 去过的省份 (Visited Provinces)
-    // 这里的 value 没实际用处，主要是为了标记名字让地图高亮
+    // 4. 🚩 去过的省份 (用来给省份上色)
     var visitedProvinces = [
-      { name: '江苏', value: 1 },
-      { name: '浙江', value: 1 },
-      { name: '上海', value: 1 },
+      { name: '江苏', value: 1 }, // 苏州/扬州
+      { name: '浙江', value: 1 }, // 路过?
+      { name: '上海', value: 1 }, // 路过?
       { name: '江西', value: 1 }, // 景德镇
       { name: '安徽', value: 1 }, // 安庆
       { name: '四川', value: 1 }, // 广元
@@ -58,7 +70,6 @@
         echarts.registerMap('china', geoJson);
 
         var option = {
-          // 提示框配置
           tooltip: {
             trigger: 'item',
             formatter: function(params) {
@@ -74,23 +85,22 @@
             textStyle: { color: '#FF7E93', fontFamily: 'ZCOOL KuaiLe' }
           },
           
-          // 地理坐标系组件 (地图的基础层)
           geo: {
             map: 'china',
-            roam: true, // 允许缩放和平移
+            roam: true,
             zoom: 1.2,
-            label: { show: false }, // 不显示省份文字，保持画面干净
+            label: { show: false },
             itemStyle: {
               normal: {
-                areaColor: '#FFF5F7',      // [优化] 地图底色：极淡的晨雾粉，比白色更有质感
-                borderColor: '#FF9EAC',    // [优化] 边框颜色：柔和的粉色
-                borderWidth: 1.5,          // 边框略微加粗
+                areaColor: '#FFF5F7',      // 晨雾粉底色
+                borderColor: '#FF9EAC',    // 柔粉色边框
+                borderWidth: 1.5,
                 shadowColor: 'rgba(255, 158, 172, 0.2)',
                 shadowBlur: 10,
                 shadowOffsetY: 5
               },
               emphasis: {
-                areaColor: '#FFD1D8',      // 鼠标悬停时的颜色
+                areaColor: '#FFD1D8',
                 borderColor: '#FF7E93',
                 borderWidth: 2
               }
@@ -98,22 +108,21 @@
           },
           
           series: [
-            // 系列1: 去过的省份高亮显示
+            // 1. 省份染色
             {
               name: '足迹省份',
               type: 'map',
-              geoIndex: 0, // 绑定到上面的 geo 配置
+              geoIndex: 0,
               data: visitedProvinces,
-              // 这一段是为了让去过的省份显示不同的颜色
               itemStyle: {
                 normal: { 
-                  areaColor: '#FFD1D8',   // [优化] 去过的省份：蜜桃粉，一眼识别
+                  areaColor: '#FFD1D8',   // 去过的省份显示蜜桃粉
                   borderColor: '#FF9EAC'
                 }
               }
             },
             
-            // 系列2: 爱心坐标点 (保持原设计)
+            // 2. 坐标点 (爱心)
             {
               name: 'Love Point',
               type: 'effectScatter',
@@ -130,31 +139,31 @@
                 color: '#555', 
                 fontWeight: 'bold', 
                 fontSize: 12,
-                backgroundColor: 'rgba(255,255,255,0.7)', // 文字加个淡淡的背景，防止看不清
+                backgroundColor: 'rgba(255,255,255,0.7)',
                 padding: [2, 4],
                 borderRadius: 4
               },
               zlevel: 2
             },
             
-            // 系列3: 飞行的航线 (对比色优化)
+            // 3. 飞行航线 (蒂芙尼蓝)
             {
               type: 'lines',
               zlevel: 3,
               effect: {
                 show: true,
-                period: 5,        // [优化] 飞行速度，越小越快
-                trailLength: 0.5, // [优化] 拖尾长度，0-1
-                color: '#4AB7BD', // [重点优化] 航线拖尾颜色：蒂芙尼蓝 (Teal)，与粉色形成绝美对比
-                symbol: 'arrow',  // 箭头图标
+                period: 5,
+                trailLength: 0.5, 
+                color: '#4AB7BD', // 蒂芙尼蓝拖尾
+                symbol: 'arrow',
                 symbolSize: 5
               },
               lineStyle: {
                 normal: {
-                  color: 'rgba(74, 183, 189, 0.2)', // [优化] 航线轨迹底色：淡淡的青色
+                  color: 'rgba(74, 183, 189, 0.2)', // 浅青色轨迹
                   width: 1,
                   opacity: 0.5,
-                  curveness: 0.3 // 曲线弯曲度
+                  curveness: 0.3
                 }
               },
               data: loveLines
@@ -166,7 +175,6 @@
       })
       .catch(error => {
         console.error('地图加载失败:', error);
-        dom.innerHTML = '<div style="text-align:center; padding-top:100px;">地图数据加载失败，请刷新重试 😭</div>';
       });
 
     window.addEventListener('resize', () => {
