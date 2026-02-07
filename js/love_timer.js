@@ -180,4 +180,34 @@
 
   document.addEventListener("DOMContentLoaded", init);
   document.addEventListener("pjax:complete", init);
+
+
+  // -----------------------------------
+  // 5. 网页标题搞怪特效
+  // -----------------------------------
+  var originTitle = document.title;
+  var titleTime;
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      document.title = '😭 别走呀，再看看嘛...';
+      clearTimeout(titleTime);
+    } else {
+      document.title = '😍 你回来啦！欢迎你呀~';
+      titleTime = setTimeout(function() {
+        document.title = originTitle;
+      }, 2000);
+    }
+  });
+
+  // -----------------------------------
+  // 6. 控制台彩蛋 (Console Love Letter)
+  // -----------------------------------
+  try {
+    const styleTitle = 'font-size: 40px; font-weight: bold; color: #FF9EAC; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); font-family: "ZCOOL KuaiLe";';
+    const styleBody = 'font-size: 16px; color: #89C3EB; margin-top: 10px;';
+    
+    console.log('%c 欢欢 ❤️ 怡怡', styleTitle);
+    console.log('%c 我们的故事，写在代码里，更刻在心里。', styleBody);
+    console.log('%c (此博客由欢欢为怡怡专属打造 v2026.02)', 'font-size:12px; color:#ccc;');
+  } catch (e) {}
 })();

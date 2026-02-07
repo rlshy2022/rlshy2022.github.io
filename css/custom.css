@@ -16,6 +16,13 @@ body {
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
     background-attachment: fixed;
     font-family: 'Nunito', 'ZCOOL KuaiLe', sans-serif;
+    /* 1. 默认鼠标：一个粉色的箭头 */
+    cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat780.cur'), auto;
+}
+
+/* 2. 悬停鼠标：变成粉色的小爱心 (当放到链接或按钮上时) */
+a, img, .music-btn, button, #play-icon, i, .card-widget {
+    cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat718.cur'), pointer !important;
 }
 
 #page-header.nav-fixed #nav {
@@ -260,12 +267,6 @@ body {
     .timer-unit-group.small { font-size: 1em; padding: 3px 10px; }
 }
 
-input[type="checkbox"] {
-    accent-color: var(--love-primary);
-    transform: scale(1.2);
-    margin-right: 8px;
-}
-
 /* 相册图片悬浮效果 */
 .gallery-items img {
     border-radius: 12px !important; /* 圆角增加软糯感 */
@@ -304,7 +305,7 @@ input[type="checkbox"] {
     color: #FF7E93;
 }
 
-/* 加密输入框容器 */
+/* 加密输入框容器美化 */
 #hbePass {
     border: 2px solid #FF9EAC !important;
     border-radius: 20px !important;
@@ -319,56 +320,6 @@ input[type="checkbox"] {
     background: #ff8495 !important;
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(255, 158, 172, 0.4);
-}
-
-
-/* ========================
-   6. 恋爱清单 (Love List) 专属优化
-   ======================== */
-/* 隐藏原生复选框 */
-li.task-list-item input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-
-/* 未完成：空心爱心 */
-li.task-list-item input[type="checkbox"]::after {
-    content: '\f004'; /* FontAwesome 的爱心代码 */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 400; /* Regular (空心) */
-    color: #ff9eac;
-    font-size: 18px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 0.3s ease;
-}
-
-/* 已完成：实心爱心 + 跳动动画 */
-li.task-list-item input[type="checkbox"]:checked::after {
-    font-weight: 900; /* Solid (实心) */
-    color: #ff4757;
-    animation: checkbox-pop 0.4s ease-in-out;
-}
-
-/* 完成的任务文字加删除线和变灰 */
-li.task-list-item input[type="checkbox"]:checked + label,
-li.task-list-item input[type="checkbox"]:checked ~ p {
-    text-decoration: line-through;
-    color: #aaa;
-    transition: color 0.3s;
-}
-
-@keyframes checkbox-pop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.4); }
-    100% { transform: scale(1); }
 }
 
 /* 滚动条美化 */
@@ -389,9 +340,126 @@ li.task-list-item input[type="checkbox"]:checked ~ p {
 }
 
 
-body {
-    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur117.cur'), auto;
+/* ========================
+   6. 恋爱清单 (Love List) - 完美对齐修复版
+   ======================== */
+
+/* 设置列表项的基础样式，为定位做准备 */
+li.task-list-item {
+    list-style-type: none;
+    position: relative;
+    padding-left: 24px; /* 给爱心留出空间 */
 }
-a, img, .music-btn, button, i {
-    cursor: url('https://cur.cursors-4u.net/holidays/hol-4/hol383.cur'), pointer !important;
+
+/* 隐藏原本丑丑的方框 */
+li.task-list-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute; /* 绝对定位，防止挤压文字 */
+    left: 0;
+    top: 4px; /* 微调垂直位置，对应文字高度 */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* 未完成状态：空心爱心 */
+li.task-list-item input[type="checkbox"]::before {
+    content: '\f004'; 
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400; /* 空心 */
+    color: #ccc;      
+    font-size: 16px;  /* 字体大小 */
+    display: block;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+/* 悬停变粉 */
+li.task-list-item input[type="checkbox"]:hover::before {
+    color: #FF9EAC;
+}
+
+/* 已完成状态：实心爱心 + 动画 */
+li.task-list-item input[type="checkbox"]:checked::before {
+    font-weight: 900; /* 实心 */
+    color: #FF4757;   
+    animation: checkbox-pop 0.4s ease-in-out;
+}
+
+/* 已完成的文字样式 */
+li.task-list-item input[type="checkbox"]:checked + label,
+li.task-list-item input[type="checkbox"]:checked ~ p {
+    text-decoration: line-through;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+@keyframes checkbox-pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+
+
+
+/* ========================
+   9. 文章内容细节美化 (圆角化)
+   ======================== */
+
+/* 1. 引用块 (Blockquote) 变圆 */
+blockquote {
+    border-radius: 0 10px 10px 0;
+    border-left: 4px solid #FF9EAC !important;
+    background-color: rgba(255, 158, 172, 0.1) !important;
+    color: #666;
+}
+
+/* 2. Note 提示块变圆 */
+.note {
+    border-radius: 15px !important;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* 3. 代码块变圆 */
+#article-container .highlight {
+    border-radius: 15px !important;
+}
+
+
+/* 地图页面适配 */
+@media screen and (max-width: 768px) {
+    #love-map-container {
+        height: 400px !important; /* 手机上稍微矮一点，方便滑动 */
+    }
+}
+
+
+/* 动态波浪 */
+.waves-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh; /* 波浪高度 */
+    z-index: -1; /* 放在背景层 */
+    pointer-events: none;
+}
+.waves {
+    width: 100%;
+    height: 100%;
+}
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+}
+.parallax > use:nth-child(1) { animation-delay: -2s; animation-duration: 7s; }
+.parallax > use:nth-child(2) { animation-delay: -3s; animation-duration: 10s; }
+.parallax > use:nth-child(3) { animation-delay: -4s; animation-duration: 13s; }
+.parallax > use:nth-child(4) { animation-delay: -5s; animation-duration: 20s; }
+@keyframes move-forever {
+    0% { transform: translate3d(-90px,0,0); }
+    100% { transform: translate3d(85px,0,0); }
 }
