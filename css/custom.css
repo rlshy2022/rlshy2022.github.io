@@ -575,23 +575,22 @@ blockquote {
 
 /* 方案一：粉红贴纸风 */
 /* 方案二：半透明气泡风 */
+/* 方案三：深色柔光风 */
 #footer-timer {
-    /* 1. 深灰色文字，清晰易读 */
-    color: #444444 !important;
-    text-shadow: none !important; /* 去掉阴影，保持干净 */
+    /* 1. 纯白文字 */
+    color: #ffffff !important;
     
-    /* 2. 核心：加一个半透明白色背景 */
-    background: rgba(255, 255, 255, 0.85);
-    padding: 8px 20px;        /* 撑大一点空间 */
-    border-radius: 50px;      /* 变成圆润的胶囊形状 */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* 给气泡加个浮空阴影 */
+    /* 2. 核心：多层深绿色/黑色光晕，让文字从背景里“浮”出来 */
+    text-shadow: 
+        0 0 5px rgba(0, 100, 0, 0.8),  /* 第一层：绿色光晕 */
+        0 0 10px rgba(0, 0, 0, 0.8),   /* 第二层：黑色阴影 */
+        0 2px 2px rgba(0, 0, 0, 1) !important; /* 第三层：硬阴影 */
     
     /* 3. 字体设置 */
     font-weight: bold;
-    font-size: 1.1em;
-    font-family: 'Nunito', sans-serif; /* 这种风格适合圆圆的英文字体 */
+    font-size: 1.25em;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
     
-    margin-top: 15px;
+    margin-top: 10px;
     display: inline-block;
-    border: 2px solid #fff; /* 再加个白边框更精致 */
 }
