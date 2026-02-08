@@ -158,12 +158,14 @@
                 symbol: 'arrow',
                 symbolSize: 5
               },
+              // 修改 love_map.js 中的 lineStyle
               lineStyle: {
                 normal: {
-                  color: 'rgba(74, 183, 189, 0.2)', // 浅青色轨迹
+                  color: 'rgba(74, 183, 189, 0.2)',
                   width: 1,
                   opacity: 0.5,
-                  curveness: 0.3
+                  // 让每条线稍微弯曲程度不一样，避免重叠
+                  curveness: 0.2 + Math.random() * 0.3 
                 }
               },
               data: loveLines
