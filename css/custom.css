@@ -524,3 +524,51 @@ blockquote {
     border-bottom: 8px solid transparent;
     border-left: 8px solid #FF9EAC;
 }
+
+
+/* ========================
+   底部 Footer 美化：鲜花草地版
+   ======================== */
+
+#footer {
+    /* 1. 设置背景图 (把下面的 url 换成你自己的图片链接) */
+    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png') no-repeat center bottom !important;
+    background-size: cover !important;
+    
+    /* 2. 去掉原本的粉色背景 */
+    background-color: transparent !important;
+    
+    /* 3. 增加高度，让草地展示得更完整 */
+    height: 260px !important; 
+    padding-top: 100px !important; /* 把文字往下挤，不要挡住远处的风景 */
+    
+    /* 4. 底部文字颜色优化 */
+    color: #fff !important; /* 文字变白，防止看不清 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 给文字加一点阴影，保证在花花草草上面也能看清 */
+#footer-wrap {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+}
+
+#footer-wrap a {
+    color: #fff !important;
+}
+
+/* 隐藏原本 footer 可能会有的伪类遮罩 */
+#footer::before {
+    background: transparent !important;
+}
+
+/* 适配手机端：手机上高度稍微减小一点，不然太占屏幕 */
+@media screen and (max-width: 768px) {
+    #footer {
+        height: 180px !important;
+        padding-top: 60px !important;
+        background-position: 30% bottom !important; /* 调整图片显示位置 */
+    }
+}
