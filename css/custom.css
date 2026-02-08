@@ -573,20 +573,23 @@ blockquote {
     }
 }
 
-/* 修改底部“守护时间”文字颜色 */
+/* 方案一：粉红贴纸风 */
 #footer-timer {
-    /* 1. 颜色设置 */
-    color: #ffffff !important;  /* 这里改颜色：#ffffff是白，#2E7D32是深绿，#FF9EAC是粉 */
+    /* 1. 鲜艳的西瓜红，比浅粉更显眼 */
+    color: #ff3366 !important; 
     
-    /* 2. 为了在草地上看清，加个文字描边/阴影 */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    /* 2. 关键：用 text-shadow 模拟白色加粗描边，让文字和草地彻底分开 */
+    text-shadow: 
+        2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff,
+        0 4px 10px rgba(0,0,0,0.3) !important; /* 最外层再加一点点黑阴影增加立体感 */
     
-    /* 3. 字体样式微调 */
-    font-weight: bold;       /* 加粗 */
-    font-size: 1.1em;        /* 稍微放大一点点 */
-    font-family: 'ZCOOL KuaiLe', sans-serif; /* 用可爱的字体 */
+    /* 3. 字体设置 */
+    font-weight: 900 !important; /* 必须极粗，不然描边会挤压字体 */
+    font-size: 1.3em !important; /* 加大字号 */
+    font-family: 'ZCOOL KuaiLe', sans-serif;
     
-    /* 4. 让它和上面的版权信息拉开点距离 */
-    margin-top: 10px;
+    margin-top: 15px;
     display: inline-block;
+    letter-spacing: 1px; /* 字间距稍微拉开一点，防止描边粘连 */
 }
