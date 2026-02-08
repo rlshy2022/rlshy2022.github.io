@@ -572,3 +572,21 @@ blockquote {
         background-position: 30% bottom !important; /* 调整图片显示位置 */
     }
 }
+
+/* 修改底部“守护时间”文字颜色 */
+#footer-timer {
+    /* 1. 颜色设置 */
+    color: #ffffff !important;  /* 这里改颜色：#ffffff是白，#2E7D32是深绿，#FF9EAC是粉 */
+    
+    /* 2. 为了在草地上看清，加个文字描边/阴影 */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+    
+    /* 3. 字体样式微调 */
+    font-weight: bold;       /* 加粗 */
+    font-size: 1.1em;        /* 稍微放大一点点 */
+    font-family: 'ZCOOL KuaiLe', sans-serif; /* 用可爱的字体 */
+    
+    /* 4. 让它和上面的版权信息拉开点距离 */
+    margin-top: 10px;
+    display: inline-block;
+}
