@@ -573,24 +573,54 @@ blockquote {
     }
 }
 
-/* 方案一：粉红贴纸风 */
-/* 方案二：半透明气泡风 */
-/* 方案三：深色柔光风 */
 #footer-timer {
-    /* 1. 纯白文字 */
-    color: #ffffff !important;
+    /* 1. 鲜艳的西瓜红，比浅粉更显眼 */
+    color: #ff3366 !important; 
     
-    /* 2. 核心：多层深绿色/黑色光晕，让文字从背景里“浮”出来 */
+    /* 2. 关键：用 text-shadow 模拟白色加粗描边，让文字和草地彻底分开 */
     text-shadow: 
-        0 0 5px rgba(0, 100, 0, 0.8),  /* 第一层：绿色光晕 */
-        0 0 10px rgba(0, 0, 0, 0.8),   /* 第二层：黑色阴影 */
-        0 2px 2px rgba(0, 0, 0, 1) !important; /* 第三层：硬阴影 */
+        2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff,
+        0 4px 10px rgba(0,0,0,0.3) !important; /* 最外层再加一点点黑阴影增加立体感 */
     
     /* 3. 字体设置 */
-    font-weight: bold;
-    font-size: 1.25em;
+    font-weight: 900 !important; /* 必须极粗，不然描边会挤压字体 */
+    font-size: 1.3em !important; /* 加大字号 */
     font-family: 'ZCOOL KuaiLe', sans-serif;
     
-    margin-top: 10px;
+    margin-top: 15px;
     display: inline-block;
+    letter-spacing: 1px; /* 字间距稍微拉开一点，防止描边粘连 */
+}
+
+/* ========================
+   底部版权文字统一美化 (方案一：糖果贴纸风)
+   ======================== */
+
+/* 暴力覆盖所有底部文字，包括 span 和链接 */
+#footer-wrap, 
+#footer-wrap span, 
+#footer-wrap a {
+    /* 1. 颜色：统一改成显眼的西瓜红 (和倒计时一致) */
+    color: #ff3366 !important; 
+
+    /* 2. 描边：白色加粗描边 + 黑色投影 (让文字在草地上浮起来) */
+    text-shadow: 
+        2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff,
+        0 4px 10px rgba(0,0,0,0.3) !important;
+
+    /* 3. 字体：加粗、可爱 */
+    font-weight: 900 !important;
+    font-family: 'ZCOOL KuaiLe', sans-serif !important;
+    
+    /* 4. 去掉可能存在的下划线 */
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* 如果你觉得中间跳动的爱心 (❤️) 也要变成粉色，就不需要下面这行。
+   如果你希望爱心保持“正红色”来突出，请保留下面这行代码： */
+#footer-wrap .fa-heart {
+    color: #ff0000 !important; /* 强制爱心为大红色 */
 }
