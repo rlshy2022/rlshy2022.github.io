@@ -615,3 +615,27 @@ blockquote {
     animation: rotateDisc 20s linear infinite;
     border: 3px solid #FF9EAC;
 }
+
+
+/* === 暗黑模式适配 === */
+[data-theme="dark"] :root {
+    /* 把原本的亮粉色，调整为低饱和度的“干燥玫瑰粉”，不刺眼 */
+    --love-primary: #c56e7e; 
+    --love-secondary: #5a8bb0;
+    
+    /* 背景变深色玻璃 */
+    --love-glass-bg: rgba(30, 30, 30, 0.6);
+    --love-glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --love-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] body {
+    /*以此覆盖原本的线性渐变，改用深邃星空色 */
+    background-image: linear-gradient(to top, #1a1a2e 0%, #16213e 100%);
+}
+
+/* 暗黑模式下，文字阴影要去掉或改深，否则会有毛边 */
+[data-theme="dark"] .timer-num,
+[data-theme="dark"] #footer-timer {
+    text-shadow: none !important;
+}
