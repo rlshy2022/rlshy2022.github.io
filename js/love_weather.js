@@ -7,7 +7,8 @@
   async function fetchWeather(cityId) {
     // 接口路径：/v7/weather/now
     // 域名：免费版需使用 devapi.qweather.com
-    const url = `https://devapi.qweather.com/v7/weather/now?location=${cityId}&key=${API_KEY}`;
+    const url = `https://md7fc2pfhe.re.qweatherapi.com/v7/weather/now?location=${cityId}&key=${API_KEY}`;
+    //https://devapi.qweather.com/v7/weather/now?location=101190401&key=2e16968946a849efbc0533612cbb473a
     try {
       const response = await fetch(url);
       const data = await response.json();
