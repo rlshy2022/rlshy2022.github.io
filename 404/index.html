@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 哎呀，走丢了 | 欢欢 & 怡怡</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --love-primary: #FF9EAC;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+        }
+        body {
+            margin: 0; padding: 0;
+            background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'ZCOOL KuaiLe', 'Nunito', sans-serif;
+            overflow: hidden;
+            cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat780.cur'), auto;
+        }
+        .not-found-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            max-width: 420px;
+            width: 85%;
+            position: relative;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+        .img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 4px solid #fff;
+            background: #fff;
+        }
+        .img-container img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        h1 {
+            color: #555; font-size: 2rem; margin: 0 0 15px 0;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.6);
+        }
+        p {
+            color: #666; font-size: 1.15rem; line-height: 1.6; margin-bottom: 35px;
+            font-family: 'Nunito', sans-serif; font-weight: bold;
+        }
+        .heart-beat {
+            color: #FF4757; display: inline-block; animation: beat 1.2s infinite;
+        }
+        .home-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #FF9EAC 0%, #FF7E93 100%);
+            color: white; padding: 12px 40px; border-radius: 50px;
+            text-decoration: none; font-size: 1.2rem; font-weight: bold;
+            box-shadow: 0 6px 15px rgba(255, 126, 147, 0.4);
+            transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.8);
+        }
+        .home-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 126, 147, 0.6);
+            cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat718.cur'), pointer;
+        }
+        .home-btn i { margin-right: 8px; }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        .bg-circle {
+            position: absolute; border-radius: 50%; z-index: -1;
+            filter: blur(50px); opacity: 0.6;
+            animation: floatCard 6s ease-in-out infinite reverse;
+        }
+        .c1 { width: 300px; height: 300px; background: #FF9EAC; top: -5%; left: -5%; }
+        .c2 { width: 250px; height: 250px; background: #89C3EB; bottom: -5%; right: -5%; }
+        @media screen and (max-width: 768px) {
+            .not-found-card { padding: 30px 20px; width: 80%; }
+            .img-container { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-circle c1"></div>
+    <div class="bg-circle c2"></div>
+    <div class="not-found-card">
+        <div class="img-container">
+            <img src="https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/quanjiafu_1.png" alt="Lost together">
+        </div>
+        <h1>哎呀，走丢了？</h1>
+        <p>
+            就像我们偶尔也会迷路<br>
+            但无论走多远<br>
+            我都会找到你 <span class="heart-beat">❤️</span>
+        </p>
+        <a href="/" class="home-btn"><i class="fas fa-home"></i> 带我回家</a>
+    </div>
+</body>
+</html>
