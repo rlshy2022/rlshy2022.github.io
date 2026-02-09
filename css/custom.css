@@ -641,3 +641,26 @@ blockquote {
 [data-theme="dark"] #footer-timer {
     text-shadow: none !important;
 }
+
+
+/* 日历中的圆圈标记 */
+.cal-event-day {
+    background: linear-gradient(135deg, #FF9EAC, #FF4757) !important;
+    color: white !important;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
+}
+
+.cal-today-circle {
+    border: 2px solid #89C3EB;
+    color: #89C3EB;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* 让日历表格的表头更粉一点 */
+.cal-table th {
+    color: #FF9EAC;
+    padding-bottom: 15px;
+}
