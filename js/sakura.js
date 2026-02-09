@@ -1,4 +1,4 @@
-/* * 樱花飘落特效 - 性能优化版
+/* * 樱花飘落特效
  * 不会阻挡点击事件 (pointer-events: none)
  */
 (function() {

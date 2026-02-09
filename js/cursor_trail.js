@@ -1,5 +1,5 @@
 (function() {
-  var colors = ["#FF9EAC", "#FFD1D8", "#89C3EB"]; // 你的主题色
+  var colors = ["#FF9EAC", "#FFD1D8", "#89C3EB"]; // 主题色
   var characters = ["❤", "✨", "🌸"]; // 掉落的形状
   
   var elementGroup = [];
