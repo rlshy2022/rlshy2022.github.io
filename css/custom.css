@@ -510,7 +510,7 @@ blockquote {
 
 #footer {
     /* 1. 设置背景图 */
-    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png') no-repeat center bottom !important;
+    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png?x-oss-process=image/format,webp') no-repeat center bottom !important;
     background-size: cover !important;
     
     /* 2. 去掉原本的粉色背景 */
