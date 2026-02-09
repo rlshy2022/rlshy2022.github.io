@@ -12,6 +12,8 @@
 /* ========================
    2. 基础背景与布局
    ======================== */
+
+   
 body {
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
     background-attachment: fixed;
@@ -123,7 +125,7 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 }
 
 /* ========================
-   4. 音乐播放器样式 (修复版)
+   4. 音乐播放器样式 
    ======================== */
 .love-music-player {
     display: flex;
@@ -341,7 +343,7 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 
 
 /* ========================
-   6. 恋爱清单 (Love List) - 完美对齐修复版
+   6. 恋爱清单
    ======================== */
 
 /* 设置列表项的基础样式，为定位做准备 */
@@ -507,7 +509,7 @@ blockquote {
    ======================== */
 
 #footer {
-    /* 1. 设置背景图 (把下面的 url 换成你自己的图片链接) */
+    /* 1. 设置背景图 */
     background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png') no-repeat center bottom !important;
     background-size: cover !important;
     
@@ -570,7 +572,7 @@ blockquote {
 }
 
 /* ========================
-   底部版权文字统一美化 (糖果贴纸风)
+   底部版权文字统一美化
    ======================== */
 
 /* 暴力覆盖所有底部文字，包括 span 和链接 */
