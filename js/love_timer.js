@@ -210,4 +210,58 @@
     console.log('%c 我们的故事，写在代码里，更刻在心里。', styleBody);
     console.log('%c (此博客由欢欢为怡怡专属打造 v2026.02)', 'font-size:12px; color:#ccc;');
   } catch (e) {}
+
+
+
+  (function() {
+  // ... 你之前的 CONFIG 和 LOVE_QUOTES 应该已经在脚本顶部了 ...
+
+  const handleHoverQuotes = () => {
+    // 1. 获取需要绑定特效的元素
+    // .info-avatar 是侧边栏头像，.love-timer-wrapper 是你写的计时器容器
+    const targets = document.querySelectorAll('.info-avatar, .love-timer-wrapper');
+    const titleElem = document.querySelector('.love-title'); // “我们已经相爱了”那个标题
+
+    if (!targets.length || !titleElem) return;
+
+    // 记录原始标题，以便鼠标离开时恢复
+    const originalTitle = titleElem.innerText;
+
+    targets.forEach(target => {
+      // 鼠标移入：随机换一句情话
+      target.addEventListener('mouseenter', () => {
+        const randomQuote = LOVE_QUOTES[Math.floor(Math.random() * LOVE_QUOTES.length)];
+        titleElem.style.opacity = '0'; // 先透明，做个淡入淡出效果
+        
+        setTimeout(() => {
+          titleElem.innerText = randomQuote;
+          titleElem.style.color = '#FF4757'; // 变红一点，更显眼
+          titleElem.style.opacity = '1';
+        }, 150);
+      });
+
+      // 鼠标移出：恢复原状
+      target.addEventListener('mouseleave', () => {
+        titleElem.style.opacity = '0';
+        
+        setTimeout(() => {
+          titleElem.innerText = originalTitle;
+          titleElem.style.color = '#555'; // 恢复原色
+          titleElem.style.opacity = '1';
+        }, 150);
+      });
+    });
+  };
+
+  // 这里的逻辑需要确保在页面加载后执行
+  // 建议放在你原有的 init 函数中调用
+  const originalInit = typeof init === 'function' ? init : null;
+  const newInit = () => {
+    if (originalInit) originalInit();
+    handleHoverQuotes();
+  };
+
+  document.addEventListener("DOMContentLoaded", newInit);
+  document.addEventListener("pjax:complete", newInit);
+})();
 })();
