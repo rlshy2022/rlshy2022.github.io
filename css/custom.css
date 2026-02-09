@@ -600,3 +600,18 @@ blockquote {
 #footer-wrap .fa-heart {
     color: #ff0000 !important; /* 强制爱心为大红色 */
 }
+
+
+
+/* 手机侧边栏美化 */
+#mobile-sidebar-menus {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+/* 侧边栏头像旋转 */
+#mobile-sidebar-menus .info-avatar img {
+    animation: rotateDisc 20s linear infinite;
+    border: 3px solid #FF9EAC;
+}
