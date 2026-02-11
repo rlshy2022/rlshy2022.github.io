@@ -27,9 +27,9 @@ function initLoveCalendar() {
     let firstDay = new Date(year, month, 1).getDay();
     let daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    let calHtml = `<div class="cal-title" style="font-size: 1.8rem; color: #FF9EAC; font-weight: bold; text-align: center; margin-bottom: 30px; font-family: 'ZCOOL KuaiLe';">${year} 年 ${month + 1} 月</div>`;
-    calHtml += `<table style="width: 100%; border-collapse: collapse; text-align: center; font-size: 1.1rem;">
-                  <thead><tr style="color: #FF9EAC;">
+    let calHtml = `<div class="cal-title">${year} 年 ${month + 1} 月</div>`;
+    calHtml += `<table class="cal-table">
+                  <thead><tr>
                     <th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
                   </tr></thead>
                   <tbody><tr>`;
@@ -40,19 +40,23 @@ function initLoveCalendar() {
     for (let day = 1; day <= daysInMonth; day++) {
         if ((firstDay + day - 1) % 7 === 0 && day !== 1) calHtml += `</tr><tr>`;
 
-        const isEvent = CONFIG.some(e => e.month === (month + 1) && e.day === day);
+        const eventsToday = CONFIG.filter(e => e.month === (month + 1) && e.day === day);
+        const isEvent = eventsToday.length > 0;
         const isToday = (day === today);
 
-        let style = "display: inline-block; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 5px 0;";
+        const title = eventsToday.length
+          ? eventsToday.map(e => e.name).join(" / ")
+          : "";
+
+        let cls = "cal-day";
         if (isEvent) {
-            style += "background: #FF9EAC; color: white; font-weight: bold; box-shadow: 0 4px 10px rgba(255, 158, 172, 0.4);";
+            cls += " cal-event-day";
         } else if (isToday) {
-            style += "border: 2px solid #89C3EB; color: #89C3EB; font-weight: bold;";
-        } else {
-            style += "color: #666;";
+            cls += " cal-today-circle";
         }
 
-        calHtml += `<td><span style="${style}">${day}</span></td>`;
+        const dateKey = `${month + 1}-${day}`;
+        calHtml += `<td><span class="${cls}" data-date="${dateKey}"${title ? ` title="${title}"` : ""}>${day}</span></td>`;
     }
     calHtml += `</tr></tbody></table>`;
     calendarContainer.innerHTML = calHtml;
@@ -60,20 +64,57 @@ function initLoveCalendar() {
     // --- 3. 渲染倒计时列表 ---
     let listHtml = '';
     const sorted = CONFIG.map(e => {
-        let target = new Date(year, e.month - 1, e.day);
-        if (target < new Date().setHours(0,0,0,0)) target.setFullYear(year + 1);
-        e.diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
-        return e;
+        const base = new Date(year, e.month - 1, e.day);
+        const todayZero = new Date();
+        todayZero.setHours(0, 0, 0, 0);
+        let target = base;
+        if (target < todayZero) target = new Date(year + 1, e.month - 1, e.day);
+        const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+        return { ...e, diff };
     }).sort((a, b) => a.diff - b.diff);
 
     sorted.forEach(item => {
+        const dateKey = `${item.month}-${item.day}`;
         listHtml += `
-            <div style="padding: 15px 0; border-bottom: 1px dashed rgba(255,158,172,0.2); display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: #555; font-weight: 500;">${item.name}</span>
-                <span style="color: #FF7E93; font-weight: bold;">还有 ${item.diff} 天</span>
+            <div class="anniversary-item" data-date="${dateKey}">
+                <span class="anniversary-name">${item.name}</span>
+                <span class="anniversary-count">还有 ${item.diff} 天</span>
             </div>`;
     });
     anniversaryList.innerHTML = listHtml;
+
+    // --- 4. 交互联动：点击日历中的纪念日，高亮右侧对应条目并提示 ---
+    const daySpans = calendarContainer.querySelectorAll('.cal-event-day');
+    const items = anniversaryList.querySelectorAll('.anniversary-item');
+
+    const showToast = (text) => {
+        const toast = document.createElement('div');
+        toast.className = 'love-toast';
+        toast.innerHTML = `<i class="fas fa-heart"></i> ${text}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    };
+
+    daySpans.forEach(span => {
+        span.addEventListener('click', () => {
+            const date = span.getAttribute('data-date');
+            items.forEach(it => {
+                if (it.getAttribute('data-date') === date) {
+                    it.classList.add('anniversary-item-active');
+                    it.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    it.classList.remove('anniversary-item-active');
+                }
+            });
+
+            const titleText = span.getAttribute('title');
+            if (titleText) {
+                showToast(titleText);
+            } else {
+                showToast('这一天，对我们来说很特别 💖');
+            }
+        });
+    });
 }
 
 // 适配 Butterfly 的 Pjax 和普通加载

@@ -91,11 +91,11 @@
       // ================= 配置区域结束 =================
 
       mapChart.showLoading({
-      text: '正在绘制我们的足迹...',
-      color: '#FF9EAC',
-      textColor: '#FF9EAC',
-      maskColor: 'rgba(255, 255, 255, 0.8)',
-    });
+        text: '正在绘制我们的足迹...',
+        color: '#FF9EAC',
+        textColor: '#FF9EAC',
+        maskColor: 'rgba(255, 255, 255, 0.8)',
+      });
 
     fetch('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/100000_full.json')
       .then(response => response.json())
@@ -104,6 +104,24 @@
         echarts.registerMap('china', geoJson);
 
         var option = {
+          backgroundColor: 'transparent',
+
+          title: {
+            text: '欢欢 & 怡怡 的旅行足迹',
+            subtext: '每一条连线，都是我们走过的一段路',
+            left: 'center',
+            top: 10,
+            textStyle: {
+              color: '#FF7E93',
+              fontSize: 18,
+              fontFamily: 'ZCOOL KuaiLe'
+            },
+            subtextStyle: {
+              color: '#999',
+              fontSize: 12
+            }
+          },
+
           tooltip: {
             trigger: 'item',
             formatter: function(params) {
@@ -123,7 +141,9 @@
             map: 'china',
             roam: true,
             zoom: 1.2,
-            label: { show: false },
+            label: {
+              show: false
+            },
             itemStyle: {
               normal: {
                 areaColor: '#FFF5F7',      // 晨雾粉底色
@@ -179,6 +199,31 @@
               },
               zlevel: 2
             },
+
+            // 2.1 高亮当前「我们所在」的城市（默认苏州）
+            {
+              name: 'Now',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              data: [{
+                name: '苏州',
+                value: geoCoordMap['苏州'],
+                date: '现在，我们在这里相遇'
+              }],
+              symbol: 'circle',
+              symbolSize: 18,
+              rippleEffect: {
+                brushType: 'stroke',
+                color: 'rgba(255, 126, 163, 0.9)',
+                scale: 4
+              },
+              itemStyle: {
+                color: '#FF7E93',
+                shadowBlur: 18,
+                shadowColor: 'rgba(255, 126, 163, 0.8)'
+              },
+              zlevel: 3
+            },
             
             // 3. 飞行航线 (蒂芙尼蓝)
             {
@@ -196,7 +241,7 @@
               lineStyle: {
                 normal: {
                   color: 'rgba(74, 183, 189, 0.2)',
-                  width: 1,
+                  width: 1.2,
                   opacity: 0.5,
                   // 让每条线稍微弯曲程度不一样，避免重叠
                   curveness: 0.2 + Math.random() * 0.3 

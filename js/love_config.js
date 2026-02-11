@@ -11,9 +11,9 @@
     // 纪念日列表（给 love_calendar 使用）
     anniversaries: [
       { name: "认识纪念日 ❤️", month: 8, day: 18 },
-      { name: "欢欢生日 🎂", month: 8, day: 18 },
-      { name: "怡怡生日 🎁", month: 1, day: 15 },
       { name: "在一起纪念日 👩‍❤️‍👨", month: 8, day: 18 },
+      { name: "欢欢生日 🎂", month: 3, day: 11 },
+      { name: "怡怡生日 🎁", month: 7, day: 6 },
       { name: "情人节 🌹", month: 2, day: 14 },
       { name: "周年纪念 💍", month: 8, day: 18 },
     ],

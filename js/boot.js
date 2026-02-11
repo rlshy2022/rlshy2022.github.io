@@ -75,6 +75,9 @@
       runWhenIdle(() => loadScript("/js/cursor_trail.js?v=4.1").catch(() => {}));
       runWhenIdle(() => loadScript("/js/click_phrases.js").catch(() => {}));
     }
+
+    // 全站交互增强：纪念日角标、心情打卡、每日一签
+    runWhenIdle(() => loadScript("/js/love_interactions.js?v=1.0").catch(() => {}));
   };
 
   document.addEventListener("DOMContentLoaded", boot);
