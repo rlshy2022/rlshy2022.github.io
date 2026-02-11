@@ -23,11 +23,11 @@
 
     // 2. ❤️ 足迹点数据 (地图上跳动的爱心)
     var loveData = [
-      { name: '苏州', value: geoCoordMap['苏州'], date: '2026.01' },
-      { name: '景德镇', value: geoCoordMap['景德镇'], date: '2025.12' },
+      { name: '苏州', value: geoCoordMap['苏州'], date: '怡怡出生地 & 2026.01' },
+      { name: '景德镇', value: geoCoordMap['景德镇'], date: '第一次见面 & 2025.12' },
       { name: '扬州', value: geoCoordMap['扬州'], date: '怡怡大学' },
       { name: '安庆', value: geoCoordMap['安庆'], date: '欢欢出生地' },
-      { name: '广元', value: geoCoordMap['广元'], date: '怡怡出生地' },
+      { name: '广元', value: geoCoordMap['广元'], date: '怡怡家' },
       { name: '福州', value: geoCoordMap['福州'], date: '欢欢大学' }
     ];
 
