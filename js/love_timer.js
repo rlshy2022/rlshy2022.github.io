@@ -214,7 +214,6 @@
 
 
   (function() {
-  // ... 你之前的 CONFIG 和 LOVE_QUOTES 应该已经在脚本顶部了 ...
 
   const handleHoverQuotes = () => {
     // 1. 获取需要绑定特效的元素
