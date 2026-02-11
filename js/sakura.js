@@ -2,6 +2,12 @@
  * 不会阻挡点击事件 (pointer-events: none)
  */
 (function() {
+    // 粗略判断为触屏 / 小屏设备时不启用樱花动画，减轻性能压力
+    var isCoarsePointer = (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || window.innerWidth < 768;
+    if (isCoarsePointer) {
+        return;
+    }
+
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
     function(callback) {
         window.setTimeout(callback, 1000 / 60);

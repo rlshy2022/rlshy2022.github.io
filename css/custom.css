@@ -2,24 +2,54 @@
    1. 全局变量定义
    ======================== */
 :root {
-    --love-primary: #FF9EAC;       /* 主题粉色 */
-    --love-secondary: #89C3EB;     /* 搭配蓝色 */
-    --love-glass-bg: rgba(255, 255, 255, 0.85);
-    --love-glass-border: 1px solid rgba(255, 255, 255, 0.6);
-    --love-shadow: 0 8px 32px 0 rgba(255, 158, 172, 0.15);
+    --love-primary: #FF9EAC;       /* 主题粉色：蜜桃粉 */
+    --love-secondary: #89C3EB;     /* 搭配蓝色：天空蓝 */
+    --love-glass-bg: rgba(255, 255, 255, 0.9);
+    --love-glass-border: 1px solid rgba(255, 255, 255, 0.7);
+    --love-shadow: 0 18px 45px rgba(255, 158, 172, 0.28);
 }
 
 /* ========================
    2. 基础背景与布局
    ======================== */
 
-   
 body {
-    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    /* 更梦幻的紫粉渐变背景 */
+    background-image: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 30%, #fdf2ff 100%);
     background-attachment: fixed;
     font-family: 'Nunito', 'ZCOOL KuaiLe', sans-serif;
     /* 1. 默认鼠标：一个粉色的箭头 */
     cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat780.cur'), auto;
+}
+
+/* 页面整体宽度与留白 */
+#body-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+@media screen and (max-width: 768px) {
+    #body-wrap {
+        padding: 0 10px;
+    }
+}
+
+/* 正文排版优化：行高与段落间距 */
+#article-container {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+#article-container p {
+    margin: 0 0 1em 0;
+}
+
+#article-container h2,
+#article-container h3,
+#article-container h4 {
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
 }
 
 /* 2. 悬停鼠标：变成粉色的小爱心 (当放到链接或按钮上时) */
@@ -45,8 +75,8 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 }
 
 .card-widget:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(255, 158, 172, 0.4) !important;
+    transform: translateY(-6px);
+    box-shadow: 0 24px 55px rgba(255, 158, 172, 0.35) !important;
 }
 
 /* ========================
@@ -57,6 +87,7 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 8px 6px;
 }
 
 .love-title {
@@ -70,6 +101,8 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 .love-card-container {
     width: 100%;
     text-align: center;
+    max-width: 260px;
+    margin: 0 auto;
 }
 
 .timer-num {
@@ -191,7 +224,7 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 .music-btn {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #FF9EAC 0%, #FF7E93 100%);
+    background: radial-gradient(circle at 30% 30%, #ffe6f1 0%, #ff9eac 45%, #ff7e93 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -271,20 +304,31 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 
 /* 相册图片悬浮效果 */
 .gallery-items img {
-    border-radius: 12px !important; /* 圆角增加软糯感 */
-    border: 2px solid #ffffff;
-    transition: all 0.3s ease-in-out;
+    border-radius: 16px !important; /* 圆角增加软糯感 */
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 18px rgba(148, 163, 239, 0.18);
+    transition: all 0.35s ease-in-out;
 }
 
 .gallery-items img:hover {
-    box-shadow: 0 5px 15px rgba(255, 158, 172, 0.4) !important; /* 粉色发光阴影 */
-    transform: scale(1.02); /* 轻微放大 */
+    box-shadow: 0 14px 32px rgba(255, 158, 172, 0.45) !important; /* 粉色发光阴影 */
+    transform: translateY(-4px) scale(1.015); /* 轻微上浮 */
 }
 
 /* 文章顶部图（Banner）圆角化与阴影 */
 #page-header.not-home-page {
     height: 400px; /* 固定高度，看起来更精致 */
     background-color: var(--love-primary); /* 加载时的底色 */
+}
+
+/* 首页最近文章封面比例控制，减少 CLS 抖动 */
+.index #recent-posts .recent-post-item .post-cover img,
+.index .recent-posts .recent-post-item .post-cover img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
 }
 
 /* 给顶部文字加一点粉色发光，防止看不清标题 */
@@ -423,7 +467,8 @@ blockquote {
 .note {
     border-radius: 15px !important;
     border: none !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    background-image: linear-gradient(135deg, rgba(255, 230, 239, 0.95), rgba(242, 244, 255, 0.95)) !important;
+    box-shadow: 0 10px 26px rgba(148, 163, 239, 0.18);
 }
 
 /* 3. 代码块变圆 */
@@ -477,7 +522,7 @@ blockquote {
 /* 怡怡说的话 (左边-白色) */
 .left .chat-content {
     margin-left: 15px;
-    background: #fff;
+    background-image: linear-gradient(135deg, #ffffff, #fdf2ff);
     color: #333;
 }
 .left .chat-content::before {
@@ -491,7 +536,7 @@ blockquote {
 /* 欢欢说的话 (右边-粉色) */
 .right .chat-content {
     margin-right: 15px;
-    background: #FF9EAC;
+    background-image: linear-gradient(135deg, #FF9EAC, #FF7E93);
     color: #fff;
 }
 .right .chat-content::before {
@@ -503,6 +548,45 @@ blockquote {
     border-left: 8px solid #FF9EAC;
 }
 
+/* === 时间轴组件样式 === */
+.love-timeline {
+    position: relative;
+    margin: 30px auto;
+    padding-left: 20px;
+    border-left: 3px solid rgba(255, 158, 172, 0.5);
+}
+
+.love-timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.love-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FF9EAC;
+    box-shadow: 0 0 0 3px rgba(255, 158, 172, 0.3);
+}
+
+.love-timeline-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.love-timeline-content {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 240, 245, 0.96));
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
 
 /* ========================
    底部 Footer 美化：鲜花草地版
@@ -510,7 +594,7 @@ blockquote {
 
 #footer {
     /* 1. 设置背景图 */
-    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png?x-oss-process=image/format,webp') no-repeat center bottom !important;
+    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png?x-oss-process=image/resize,w_1920/format,webp') no-repeat center bottom !important;
     background-size: cover !important;
     
     /* 2. 去掉原本的粉色背景 */
@@ -582,11 +666,10 @@ blockquote {
     /* 1. 颜色：统一改成显眼的西瓜红 (和倒计时一致) */
     color: #ff3366 !important; 
 
-    /* 2. 描边：白色加粗描边 + 黑色投影 (让文字在草地上浮起来) */
+    /* 2. 描边：稍微柔一点的白描边 + 柔和阴影 */
     text-shadow: 
-        2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
-        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff,
-        0 4px 10px rgba(0,0,0,0.3) !important;
+        1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+        0 3px 6px rgba(0,0,0,0.25) !important;
 
     /* 3. 字体：加粗、可爱 */
     font-weight: 900 !important;
@@ -620,7 +703,7 @@ blockquote {
 
 
 /* === 暗黑模式适配 === */
-[data-theme="dark"] :root {
+[data-theme="dark"] {
     /* 低饱和度的“干燥玫瑰粉”，不刺眼 */
     --love-primary: #c56e7e; 
     --love-secondary: #5a8bb0;
@@ -688,11 +771,30 @@ blockquote {
 }
 #weather-tips {
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     color: #FF7E93;
     font-family: 'ZCOOL KuaiLe';
     min-height: 1.2rem;
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+.love-weather-title {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 12px;
+    font-size: 1.2em;
+}
+
+.love-weather-title i {
+    color: #FF9EAC;
+}
+
+.love-section-divider {
+    margin: 18px 0;
+    border: 0;
+    border-top: 2px dashed #FF9EAC;
+    opacity: 0.5;
 }
 
 .love-title {
@@ -713,4 +815,111 @@ span[style*="z-index: 999999"] {
     text-shadow: 0 0 5px rgba(255, 158, 172, 0.5);
     user-select: none;
     font-size: 1.1rem;
+}
+
+/* 欢迎弹窗样式 */
+#love-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    animation: fadeIn 0.5s;
+}
+
+.love-alert-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(255, 158, 172, 0.3);
+    max-width: 320px;
+    width: 90%;
+    transform: scale(0);
+    animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.love-alert-heart {
+    font-size: 50px;
+    margin-bottom: 15px;
+    animation: alertHeartBeat 1.2s infinite;
+}
+
+.love-alert-title {
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.5rem;
+    color: #FF7E93;
+    margin-bottom: 10px;
+}
+
+.love-alert-content {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.love-days {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FF4757;
+    margin: 0 5px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.love-alert-quote {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.love-alert-btn {
+    margin-top: 25px;
+    padding: 10px 40px;
+    background: linear-gradient(135deg, #FF9EAC, #FF4757);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.love-alert-btn:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popUp {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes alertHeartBeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
 }

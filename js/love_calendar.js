@@ -8,8 +8,8 @@ function initLoveCalendar() {
     // 严谨判断：只在当前页面执行
     if (!calendarContainer || !anniversaryList) return;
 
-    // --- 1. 配置你们的纪念日 ---
-    const CONFIG = [
+    // --- 1. 配置你们的纪念日（优先使用 LOVE_CONFIG） ---
+    const CONFIG = (window.LOVE_CONFIG && window.LOVE_CONFIG.anniversaries) || [
         { name: "认识纪念日 ❤️", month: 8, day: 18 },
         { name: "欢欢生日 🎂", month: 8, day: 18 },
         { name: "怡怡生日 🎁", month: 1, day: 15 },
@@ -79,5 +79,3 @@ function initLoveCalendar() {
 // 适配 Butterfly 的 Pjax 和普通加载
 document.addEventListener('DOMContentLoaded', initLoveCalendar);
 document.addEventListener('pjax:complete', initLoveCalendar);
-// 如果没有 Pjax 也能自运行
-initLoveCalendar();

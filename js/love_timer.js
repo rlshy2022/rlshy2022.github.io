@@ -5,10 +5,15 @@
   "use strict";
 
   // --- 配置区域 ---
+  const LOVE_CFG = window.LOVE_CONFIG || {};
   const CONFIG = {
-    loveDate: new Date("2022-08-18T00:00:00"), 
-    siteDate: new Date("2026-02-03T20:00:00"), 
-    refreshInterval: 1000
+    loveDate: new Date(
+      (LOVE_CFG.dates && LOVE_CFG.dates.loveStart) || "2022-08-18T00:00:00"
+    ),
+    siteDate: new Date(
+      (LOVE_CFG.dates && LOVE_CFG.dates.siteStart) || "2026-02-03T20:00:00"
+    ),
+    refreshInterval: 1000,
   };
 
   const LOVE_QUOTES = [
@@ -24,7 +29,15 @@
     "我的世界因为有你，变得粉粉嫩嫩 🌸"
   ];
 
-  const pad = (n) => n < 10 ? `0${n}` : n;
+  const pad = (n) => (n < 10 ? `0${n}` : n);
+
+  const runWhenIdle = (fn) => {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(fn, { timeout: 1500 });
+    } else {
+      setTimeout(fn, 500);
+    }
+  };
 
   // -----------------------------------
   // 1. 强力音乐控制逻辑 (适配 Github Pages)
@@ -176,40 +189,85 @@
     updateUI();
     updateTimer();
     window.loveTimerInterval = setInterval(updateTimer, CONFIG.refreshInterval);
-  };
 
-  document.addEventListener("DOMContentLoaded", init);
-  document.addEventListener("pjax:complete", init);
+    // 音乐按钮可访问性与键盘支持
+    const musicBtn = document.querySelector('.love-music-player .music-btn');
+    if (musicBtn && !musicBtn.dataset.bound) {
+      musicBtn.setAttribute('tabindex', '0');
+      musicBtn.setAttribute('role', 'button');
+      musicBtn.setAttribute('aria-label', '播放或暂停我们的爱情歌曲');
+
+      musicBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          window.toggleMusic && window.toggleMusic();
+        }
+      });
+
+      musicBtn.dataset.bound = '1';
+    }
+
+    // 计时器区域的无障碍属性
+    const timerBox = document.getElementById("love_timer");
+    if (timerBox) {
+      timerBox.setAttribute("aria-live", "polite");
+      timerBox.setAttribute("role", "status");
+    }
+    const footerTimer = document.getElementById("footer-timer");
+    if (footerTimer) {
+      footerTimer.setAttribute("aria-live", "polite");
+      footerTimer.setAttribute("role", "status");
+    }
+
+    // 侧边栏“点我有惊喜”按钮的 aria-label
+    const surpriseBtn =
+      document.querySelector('.card-author a[href="#love-surprise"]') ||
+      document.querySelector('a[href="#love-surprise"]');
+    if (surpriseBtn && !surpriseBtn.dataset.boundA11y) {
+      surpriseBtn.setAttribute("aria-label", "点我收获一条专属小情话");
+      surpriseBtn.setAttribute("role", "button");
+      surpriseBtn.dataset.boundA11y = "1";
+    }
+  };
 
 
   // -----------------------------------
   // 5. 网页标题搞怪特效
   // -----------------------------------
-  var originTitle = document.title;
-  var titleTime;
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      document.title = '😭 别走呀，再看看嘛...';
-      clearTimeout(titleTime);
-    } else {
-      document.title = '😍 你回来啦！欢迎你呀~';
-      titleTime = setTimeout(function() {
-        document.title = originTitle;
-      }, 2000);
-    }
+  runWhenIdle(function () {
+    var originTitle = document.title;
+    var titleTime;
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        document.title = "😭 别走呀，再看看嘛...";
+        clearTimeout(titleTime);
+      } else {
+        document.title = "😍 你回来啦！欢迎你呀~";
+        titleTime = setTimeout(function () {
+          document.title = originTitle;
+        }, 2000);
+      }
+    });
   });
 
   // -----------------------------------
   // 6. 控制台彩蛋 (Console Love Letter)
   // -----------------------------------
-  try {
-    const styleTitle = 'font-size: 40px; font-weight: bold; color: #FF9EAC; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); font-family: "ZCOOL KuaiLe";';
-    const styleBody = 'font-size: 16px; color: #89C3EB; margin-top: 10px;';
-    
-    console.log('%c 欢欢 ❤️ 怡怡', styleTitle);
-    console.log('%c 我们的故事，写在代码里，更刻在心里。', styleBody);
-    console.log('%c (此博客由欢欢为怡怡专属打造 v2026.02)', 'font-size:12px; color:#ccc;');
-  } catch (e) {}
+  runWhenIdle(function () {
+    try {
+      const styleTitle =
+        'font-size: 40px; font-weight: bold; color: #FF9EAC; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); font-family: "ZCOOL KuaiLe";';
+      const styleBody =
+        'font-size: 16px; color: #89C3EB; margin-top: 10px;';
+
+      console.log("%c 欢欢 ❤️ 怡怡", styleTitle);
+      console.log("%c 我们的故事，写在代码里，更刻在心里。", styleBody);
+      console.log(
+        "%c (此博客由欢欢为怡怡专属打造 v2026.02)",
+        "font-size:12px; color:#ccc;"
+      );
+    } catch (e) {}
+  });
 
 
 
@@ -252,11 +310,9 @@
     });
   };
 
-  // 这里的逻辑需要确保在页面加载后执行
-  // 建议放在你原有的 init 函数中调用
-  const originalInit = typeof init === 'function' ? init : null;
+  // 在统一的初始化入口中，既处理计时器/音乐，也处理悬停情话
   const newInit = () => {
-    if (originalInit) originalInit();
+    init();
     handleHoverQuotes();
   };
 

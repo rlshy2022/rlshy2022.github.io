@@ -53,12 +53,17 @@
 
   // 节流，不要生成太多
   let throttle = false;
-  document.addEventListener("mousemove", function(e) {
-    if(!throttle) {
+
+  // 粗略判断是否为触屏 / 移动端设备，移动端不启用鼠标轨迹，减轻负担
+  var isCoarsePointer = (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) || window.innerWidth < 768;
+  if (!isCoarsePointer) {
+    document.addEventListener("mousemove", function(e) {
+      if (!throttle) {
         const elem = new Element();
         elem.update(e.clientX, e.clientY);
         throttle = true;
-        setTimeout(() => throttle = false, 50); // 50ms生成一个
-    }
-  });
+        setTimeout(() => (throttle = false), 50); // 50ms生成一个
+      }
+    });
+  }
 })();

@@ -1,62 +1,96 @@
 (function() {
   var mapChart = null;
+  var resizeBound = false;
+
+  function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = function() { resolve(); };
+      s.onerror = function(e) { reject(e); };
+      document.body.appendChild(s);
+    });
+  }
+
+  function ensureEcharts() {
+    if (window.echarts) return Promise.resolve();
+    return loadScript('https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js');
+  }
 
   function initLoveMap() {
     var dom = document.getElementById('love-map-container');
     
     if (!dom) return;
-    if (mapChart) mapChart.dispose();
+    ensureEcharts().then(function() {
+      if (!window.echarts) return;
 
-    mapChart = echarts.init(dom);
+      if (mapChart) mapChart.dispose();
+      mapChart = echarts.init(dom);
 
-    // ================= 🗺️ 数据配置区域 =================
-    
-    // 1. 📍 坐标配置 (方便后面调用，不用每次都查经纬度)
-    var geoCoordMap = {
-      '苏州': [120.58, 31.30],
-      '景德镇': [117.18, 29.30],
-      '扬州': [119.41, 32.39],
-      '安庆': [117.05, 30.53],
-      '广元': [105.84, 32.43],
-      '福州': [119.30, 26.08]
-    };
+      // ================= 🗺️ 数据配置区域 =================
+      var MAP_CFG = (window.LOVE_CONFIG && window.LOVE_CONFIG.map) || {};
 
-    // 2. ❤️ 足迹点数据 (地图上跳动的爱心)
-    var loveData = [
-      { name: '苏州', value: geoCoordMap['苏州'], date: '怡怡出生地 & 2026.01' },
-      { name: '景德镇', value: geoCoordMap['景德镇'], date: '第一次见面 & 2025.12' },
-      { name: '扬州', value: geoCoordMap['扬州'], date: '怡怡大学' },
-      { name: '安庆', value: geoCoordMap['安庆'], date: '欢欢出生地' },
-      { name: '广元', value: geoCoordMap['广元'], date: '怡怡家' },
-      { name: '福州', value: geoCoordMap['福州'], date: '欢欢大学' }
-    ];
+      // 1. 📍 坐标配置 (方便后面调用，不用每次都查经纬度)
+      var geoCoordMap =
+        MAP_CFG.geoCoordMap || {
+          苏州: [120.58, 31.3],
+          景德镇: [117.18, 29.3],
+          扬州: [119.41, 32.39],
+          安庆: [117.05, 30.53],
+          广元: [105.84, 32.43],
+          福州: [119.3, 26.08],
+        };
 
-    // 3. ✈️ 航线数据 (把新城市都连到苏州)
-    var loveLines = [
-      // 原有的
-      { coords: [geoCoordMap['苏州'], geoCoordMap['景德镇']] }, // 苏州 -> 景德镇
-      { coords: [geoCoordMap['苏州'], geoCoordMap['扬州']] },   // 苏州 -> 扬州
-      
-      // ✨ 新增的航线 (逻辑：从家乡/大学 -> 现在的苏州)
-      { coords: [geoCoordMap['安庆'], geoCoordMap['苏州']] },   // 安庆 -> 苏州
-      { coords: [geoCoordMap['广元'], geoCoordMap['苏州']] },   // 广元 -> 苏州
-      { coords: [geoCoordMap['福州'], geoCoordMap['苏州']] }    // 福州 -> 苏州
-    ];
+      // 2. ❤️ 足迹点数据 (地图上跳动的爱心)
+      var loveData =
+        (MAP_CFG.loveData &&
+          MAP_CFG.loveData.map(function (item) {
+            return {
+              name: item.name,
+              value: geoCoordMap[item.name],
+              date: item.date,
+            };
+          })) ||
+        [
+          { name: "苏州", value: geoCoordMap["苏州"], date: "怡怡出生地 & 2026.01" },
+          { name: "景德镇", value: geoCoordMap["景德镇"], date: "第一次见面 & 2025.12" },
+          { name: "扬州", value: geoCoordMap["扬州"], date: "怡怡大学" },
+          { name: "安庆", value: geoCoordMap["安庆"], date: "欢欢出生地" },
+          { name: "广元", value: geoCoordMap["广元"], date: "怡怡家" },
+          { name: "福州", value: geoCoordMap["福州"], date: "欢欢大学" },
+        ];
 
-    // 4. 🚩 去过的省份 (用来给省份上色)
-    var visitedProvinces = [
-      { name: '江苏', value: 1 }, // 苏州/扬州
-      { name: '浙江', value: 1 }, // 路过?
-      { name: '上海', value: 1 }, // 路过?
-      { name: '江西', value: 1 }, // 景德镇
-      { name: '安徽', value: 1 }, // 安庆
-      { name: '四川', value: 1 }, // 广元
-      { name: '福建', value: 1 }  // 福州
-    ];
+      // 3. ✈️ 航线数据
+      var loveLines =
+        (MAP_CFG.loveLinesFromSuzhou &&
+          MAP_CFG.loveLinesFromSuzhou.map(function (pair) {
+            return { coords: [geoCoordMap[pair[0]], geoCoordMap[pair[1]] ] };
+          })) ||
+        [
+          { coords: [geoCoordMap["苏州"], geoCoordMap["景德镇"]] }, // 苏州 -> 景德镇
+          { coords: [geoCoordMap["苏州"], geoCoordMap["扬州"]] }, // 苏州 -> 扬州
+          { coords: [geoCoordMap["安庆"], geoCoordMap["苏州"]] }, // 安庆 -> 苏州
+          { coords: [geoCoordMap["广元"], geoCoordMap["苏州"]] }, // 广元 -> 苏州
+          { coords: [geoCoordMap["福州"], geoCoordMap["苏州"]] }, // 福州 -> 苏州
+        ];
 
-    // ================= 配置区域结束 =================
+      // 4. 🚩 去过的省份 (用来给省份上色)
+      var visitedProvinces =
+        MAP_CFG.visitedProvinces ||
+        [
+          { name: "江苏", value: 1 }, // 苏州/扬州
+          { name: "浙江", value: 1 }, // 路过?
+          { name: "上海", value: 1 }, // 路过?
+          { name: "江西", value: 1 }, // 景德镇
+          { name: "安徽", value: 1 }, // 安庆
+          { name: "四川", value: 1 }, // 广元
+          { name: "福建", value: 1 }, // 福州
+        ];
 
-    mapChart.showLoading({
+      // ================= 配置区域结束 =================
+
+      mapChart.showLoading({
       text: '正在绘制我们的足迹...',
       color: '#FF9EAC',
       textColor: '#FF9EAC',
@@ -179,8 +213,14 @@
         console.error('地图加载失败:', error);
       });
 
-    window.addEventListener('resize', () => {
-      if(mapChart) mapChart.resize();
+      if (!resizeBound) {
+        window.addEventListener('resize', function() {
+          if (mapChart) mapChart.resize();
+        });
+        resizeBound = true;
+      }
+    }).catch(function(err) {
+      console.error('echarts 加载失败:', err);
     });
   }
 

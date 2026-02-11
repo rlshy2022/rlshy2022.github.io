@@ -4,11 +4,14 @@
  */
 (function() {
   const doOptimize = () => {
-    // 锁定相册区域的图片
-    const images = document.querySelectorAll('.gallery-items img, .fj-gallery-item img');
-    
-    // 我们要追加的参数：限制宽度为 1024px (适合手机和电脑阅读，体积减小极大)
-    const resizeParam = '/resize,w_1024';
+    // 锁定相册区域和正文区域的图片
+    const images = document.querySelectorAll(
+      '.gallery-items img, .fj-gallery-item img, #article-container img'
+    );
+
+    // 根据设备宽度自适应限制尺寸：手机用更小尺寸，桌面用稍大尺寸
+    const isMobile = window.innerWidth < 768;
+    const resizeParam = isMobile ? '/resize,w_800' : '/resize,w_1200';
 
     images.forEach(img => {
       // 兼容 Butterfly 的懒加载，同时获取 data-lazy-src 和 src
@@ -20,7 +23,7 @@
       // 3. 还没有包含 resize 参数（防止重复添加）
       if (src && src.includes('aliyuncs.com') && src.includes('format,webp') && !src.includes('resize')) {
         
-        // 在原有参数后面追加 /resize,w_1024
+        // 在原有参数后面追加 /resize,w_1200
         const newSrc = src + resizeParam;
 
         // 如果是懒加载模式，必须更新 data-lazy-src

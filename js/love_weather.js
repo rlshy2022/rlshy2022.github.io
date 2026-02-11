@@ -1,8 +1,9 @@
 (function() {
   // 你的和风天气 API KEY
   const API_KEY = '2e16968946a849efbc0533612cbb473a'; 
-  const CITY_HUAN = '101220601'; // 安庆 (欢欢)
-  const CITY_YI = '101190401';   // 苏州 (怡怡)
+  const WEATHER_CFG = (window.LOVE_CONFIG && window.LOVE_CONFIG.weather) || {};
+  const CITY_HUAN = WEATHER_CFG.huan ? WEATHER_CFG.huan.id : '101220601'; // 安庆 (欢欢)
+  const CITY_YI = WEATHER_CFG.yi ? WEATHER_CFG.yi.id : '101190401';   // 苏州 (怡怡)
 
   async function fetchWeather(cityId) {
     // 接口路径：/v7/weather/now
