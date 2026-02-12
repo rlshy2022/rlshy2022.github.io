@@ -199,7 +199,224 @@
     });
   };
 
-  // ---------- 4. 留言板：快捷留言 / 回复高亮 / 纪念日提示 ----------
+  // ---------- 4. About 页心情打卡小统计 ----------
+  const isAboutPage = () => {
+    const path = window.location.pathname || "/";
+    return path === "/about/" || path === "/about/index.html";
+  };
+
+  const buildArticleLabel = (path) => {
+    if (!path) return "这篇小情书";
+    try {
+      const clean = path.replace(/\/+$/, "");
+      const parts = clean.split("/");
+      const last = parts[parts.length - 1] || parts[parts.length - 2] || "";
+      return decodeURIComponent(last) || "这篇小情书";
+    } catch (e) {
+      return "这篇小情书";
+    }
+  };
+
+  const initEmotionStatsCard = () => {
+    if (!isAboutPage()) return;
+    if (document.querySelector(".about-emotion-stats-card")) return;
+
+    let store = {};
+    try {
+      const raw = localStorage.getItem("love_emotion_stats");
+      if (raw) store = JSON.parse(raw);
+    } catch (e) {}
+
+    const paths = Object.keys(store || {});
+    if (!paths.length) return;
+
+    let totalLove = 0;
+    let totalWarm = 0;
+    let totalHappy = 0;
+    const byArticle = [];
+
+    paths.forEach((p) => {
+      const stat = store[p] || {};
+      const love = stat.love || 0;
+      const warm = stat.warm || 0;
+      const happy = stat.happy || 0;
+      const sum = love + warm + happy;
+      if (!sum) return;
+      totalLove += love;
+      totalWarm += warm;
+      totalHappy += happy;
+      byArticle.push({ path: p, sum });
+    });
+
+    if (!byArticle.length) return;
+
+    byArticle.sort((a, b) => b.sum - a.sum);
+    const top = byArticle.slice(0, 3);
+
+    const container = document.querySelector(".about-container") || document.getElementById("article-container");
+    if (!container) return;
+
+    const card = document.createElement("div");
+    card.className = "about-emotion-stats-card";
+
+    let topListHtml = "";
+    top.forEach((item, index) => {
+      const label = buildArticleLabel(item.path);
+      topListHtml += `
+        <div class="about-emotion-top-item">
+          <span class="rank">TOP ${index + 1}</span>
+          <span class="title">${label}</span>
+          <span class="count">${item.sum} 次心情回应</span>
+        </div>
+      `;
+    });
+
+    card.innerHTML = `
+      <div class="about-emotion-title">
+        <i class="fas fa-chart-line"></i>
+        最近的小情书心情记录
+      </div>
+      <div class="about-emotion-grid">
+        <div class="about-emotion-stat">
+          <div class="label">好甜</div>
+          <div class="value">${totalLove}</div>
+        </div>
+        <div class="about-emotion-stat">
+          <div class="label">被感动</div>
+          <div class="value">${totalWarm}</div>
+        </div>
+        <div class="about-emotion-stat">
+          <div class="label">好开心</div>
+          <div class="value">${totalHappy}</div>
+        </div>
+      </div>
+      <div class="about-emotion-toplist">
+        ${topListHtml}
+      </div>
+    `;
+
+    container.appendChild(card);
+  };
+
+  // About 页面：在天数下方补充恋爱清单进度一句话
+  const initAboutLoveListSummary = () => {
+    if (!isAboutPage()) return;
+    const el = document.getElementById("about-love-progress-inline");
+    if (!el) return;
+    const loveList = window.LOVE_CONFIG && window.LOVE_CONFIG.loveList;
+    if (!loveList || !loveList.total) return;
+    const percent = Math.round((loveList.done / loveList.total) * 100);
+    el.textContent = `目前我们已经一起完成了 ${loveList.done} / ${loveList.total} 件小事，小宇宙解锁进度 ${percent}%。`;
+  };
+
+  // ---------- 5. 视频页交互：正在播放提示 + 结束小弹幕 ----------
+  const initVideoInteractions = () => {
+    const videos = document.querySelectorAll(".video-card video");
+    if (!videos.length) return;
+
+    let badge = document.getElementById("love-video-now-playing");
+    if (!badge) {
+      badge = document.createElement("div");
+      badge.id = "love-video-now-playing";
+      badge.setAttribute("role", "status");
+      badge.setAttribute("aria-live", "polite");
+      document.body.appendChild(badge);
+    }
+
+    let hideTimer = null;
+    const showBadge = (text) => {
+      badge.textContent = text;
+      badge.classList.add("visible");
+      if (hideTimer) clearTimeout(hideTimer);
+    };
+    const scheduleHide = () => {
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        badge.classList.remove("visible");
+      }, 800);
+    };
+
+    videos.forEach((video, idx) => {
+      const label =
+        video.getAttribute("aria-label") || `第 ${idx + 1} 幕`;
+
+      video.addEventListener("play", () => {
+        showBadge(`正在播放：${label}`);
+      });
+
+      video.addEventListener("pause", () => {
+        scheduleHide();
+      });
+
+      video.addEventListener("ended", () => {
+        scheduleHide();
+        showToast("这一幕已经偷偷存进回忆夹啦 🎞️");
+      });
+    });
+  };
+
+  // ---------- 6. 恋爱清单进度同步（供其他页面统计用） ----------
+  const collectLoveListProgress = () => {
+    const scope = document.querySelector(".page[data-type='love-list']") || document.querySelector(".page-love-list");
+    if (!scope) return;
+
+    const listItems = scope.querySelectorAll('input[type="checkbox"]');
+    const checkedItems = scope.querySelectorAll('input[type="checkbox"]:checked');
+
+    const total = listItems.length;
+    const done = checkedItems.length;
+
+    // 写进全局配置，方便其他页面使用（如日历、统计）
+    window.LOVE_CONFIG = window.LOVE_CONFIG || {};
+    window.LOVE_CONFIG.loveList = {
+      total: total,
+      done: done,
+    };
+  };
+
+  // ---------- 7. 留言板：Twikoo 懒加载占位 + 快捷留言 / 回复高亮 / 纪念日提示 ----------
+  const initTwikooLazyPlaceholder = () => {
+    const path = window.location.pathname || "";
+    const isComments =
+      path === "/comments/" || path === "/comments/index.html";
+    if (!isComments) return;
+
+    const tw = document.getElementById("twikoo");
+    const wrapper = document.querySelector(".comments-card-wrapper");
+    const placeholder = document.querySelector(".comments-twikoo-placeholder");
+    if (!tw || !wrapper || !placeholder) return;
+
+    // 初始隐藏真正的评论容器
+    tw.classList.add("twikoo-hidden");
+
+    if (!("IntersectionObserver" in window)) {
+      tw.classList.remove("twikoo-hidden");
+      if (placeholder && placeholder.parentNode) {
+        placeholder.parentNode.removeChild(placeholder);
+      }
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tw.classList.remove("twikoo-hidden");
+            if (placeholder && placeholder.parentNode) {
+              placeholder.parentNode.removeChild(placeholder);
+            }
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "100px 0px",
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(wrapper);
+  };
   const isCommentsPage = () => {
     const path = window.location.pathname || "";
     return (
@@ -312,11 +529,64 @@
     observer.observe(tw, { childList: true, subtree: true });
   };
 
+  // ---------- 8. 文章页阅读进度条 ----------
+  const initReadingProgress = () => {
+    const article = document.getElementById("article-container");
+    if (!article) return;
+
+    let bar = document.getElementById("love-reading-progress");
+    if (bar) return;
+
+    bar = document.createElement("div");
+    bar.id = "love-reading-progress";
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-label", "阅读进度");
+    bar.innerHTML = '<span class="love-reading-progress-inner"></span>';
+    document.body.appendChild(bar);
+
+    const inner = bar.querySelector(".love-reading-progress-inner");
+    const update = () => {
+      const rect = article.getBoundingClientRect();
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) {
+        inner.style.width = "0%";
+        return;
+      }
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const start = articleTop - window.innerHeight * 0.5;
+      const end = articleTop + articleHeight - window.innerHeight * 0.3;
+      let pct = 0;
+      if (scrollTop <= start) {
+        pct = 0;
+      } else if (scrollTop >= end) {
+        pct = 100;
+      } else {
+        pct = ((scrollTop - start) / (end - start)) * 100;
+      }
+      inner.style.width = pct.toFixed(1) + "%";
+      bar.setAttribute("aria-valuenow", Math.round(pct));
+      bar.setAttribute("aria-valuemin", 0);
+      bar.setAttribute("aria-valuemax", 100);
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  };
+
   const bootInteractions = () => {
     runWhenIdle(initAnniversaryBadge);
     runWhenIdle(initEmotionReactions);
     runWhenIdle(initDailyQuote);
+    runWhenIdle(initEmotionStatsCard);
+    runWhenIdle(initAboutLoveListSummary);
+    runWhenIdle(initVideoInteractions);
+    runWhenIdle(collectLoveListProgress);
+    runWhenIdle(initTwikooLazyPlaceholder);
     runWhenIdle(initCommentsPageEnhance);
+    runWhenIdle(initReadingProgress);
   };
 
   document.addEventListener("DOMContentLoaded", bootInteractions);

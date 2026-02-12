@@ -11,7 +11,6 @@
     // 纪念日列表（给 love_calendar 使用）
     anniversaries: [
       { name: "认识纪念日 ❤️", month: 8, day: 18 },
-      { name: "在一起纪念日 👩‍❤️‍👨", month: 8, day: 18 },
       { name: "欢欢生日 🎂", month: 3, day: 11 },
       { name: "怡怡生日 🎁", month: 7, day: 6 },
       { name: "情人节 🌹", month: 2, day: 14 },
@@ -58,6 +57,38 @@
         { name: "四川", value: 1 },
         { name: "福建", value: 1 },
       ],
+
+      // 与城市关联的文章/记忆卡片（给 love_map 的联动面板用）
+      stories: {
+        景德镇: [
+          {
+            title: "景德镇跨年",
+            url: "/trips/jingdezhen-newyear/",
+            cover:
+              "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%90%88%E7%85%A7/%E5%90%88%E7%85%A7/jdz_hz_2.jpg?x-oss-process=image/format,webp",
+            summary:
+              "从屏幕两端到陶阳里的烟火，我们第一次把所有的心动落在同一座城。",
+          },
+        ],
+        苏州: [
+          {
+            title: "苏州小记",
+            url: "/trips/suzhou-notes/",
+            cover:
+              "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/suzhou2.jpg?x-oss-process=image/format,webp",
+            summary:
+              "七里山塘的风、河边的灯，还有藏在 OSS 里的一张张笑脸，都是苏州送给我们的礼物。",
+          },
+          {
+            title: "爱的放映室：光影里的每一个瞬间",
+            url: "/memories/movie-room/",
+            cover:
+              "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E6%99%AF%E5%BE%B7%E9%95%87/jdz_17.jpg?x-oss-process=image/format,webp",
+            summary:
+              "用一帧一帧的小片段，把日常里的每一个心动瞬间偷偷存档。",
+          },
+        ],
+      },
     },
   };
 })();

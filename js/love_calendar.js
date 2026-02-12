@@ -13,7 +13,6 @@ function initLoveCalendar() {
         { name: "认识纪念日 ❤️", month: 8, day: 18 },
         { name: "欢欢生日 🎂", month: 8, day: 18 },
         { name: "怡怡生日 🎁", month: 1, day: 15 },
-        { name: "在一起纪念日 👩‍❤️‍👨", month: 8, day: 18 },
         { name: "情人节 🌹", month: 2, day: 14 },
         { name: "周年纪念 💍", month: 8, day: 18 }
     ];
@@ -83,6 +82,17 @@ function initLoveCalendar() {
     });
     anniversaryList.innerHTML = listHtml;
 
+    // --- 3.1 恋爱清单进度文案（如果已在其它页面统计过） ---
+    const progressEl = document.getElementById('calendar-love-progress-summary');
+    const loveList = window.LOVE_CONFIG && window.LOVE_CONFIG.loveList;
+    if (progressEl && loveList && loveList.total > 0) {
+        const percent = Math.round((loveList.done / loveList.total) * 100);
+        progressEl.textContent = `目前我们一起完成了 ${loveList.done} / ${loveList.total} 件小事，小宇宙解锁进度 ${percent}%`;
+    }
+
+    // --- 3.2 如果今天正好是纪念日并且清单解锁到一定程度，给一个特别提示 ---
+    const todayEvents = CONFIG.filter(e => e.month === (month + 1) && e.day === today);
+
     // --- 4. 交互联动：点击日历中的纪念日，高亮右侧对应条目并提示 ---
     const daySpans = calendarContainer.querySelectorAll('.cal-event-day');
     const items = anniversaryList.querySelectorAll('.anniversary-item');
@@ -94,6 +104,11 @@ function initLoveCalendar() {
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 2500);
     };
+
+    if (todayEvents.length && loveList && loveList.done >= 5) {
+        const added = loveList.done;
+        showToast(`今天是特别的日子，我们已经一起完成了 ${added} 件小事，小宇宙正在持续扩张中～`);
+    }
 
     daySpans.forEach(span => {
         span.addEventListener('click', () => {

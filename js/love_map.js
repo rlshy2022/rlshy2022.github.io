@@ -18,6 +18,65 @@
     return loadScript('https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js');
   }
 
+  function renderCityStories(cityName, storiesMap) {
+    if (!storiesMap) return;
+    var list = storiesMap[cityName];
+    if (!list || !list.length) return;
+
+    var container = document.getElementById('love-map-stories');
+    if (!container) {
+      var mapDom = document.getElementById('love-map-container');
+      if (!mapDom || !mapDom.parentNode) return;
+      container = document.createElement('div');
+      container.id = 'love-map-stories';
+      mapDom.parentNode.insertBefore(container, mapDom.nextSibling);
+    }
+
+    container.classList.remove('love-map-stories-placeholder');
+
+    var total = list.length;
+    var html =
+      '<div class="map-stories-header">' +
+      '<div class="map-stories-title"><i class="fas fa-map-marker-heart"></i> ' +
+      cityName +
+      ' 的回忆小卡片</div>' +
+      '<div class="map-stories-meta">和这座城市有关的记忆：' +
+      total +
+      ' 条</div>' +
+      '</div>' +
+      '<div class="map-stories-list">';
+
+    list.forEach(function (item) {
+      html +=
+        '<div class="map-story-card">' +
+        '<div class="map-story-cover-wrap">' +
+        '<img src="' +
+        (item.cover || '') +
+        '" alt="' +
+        (item.title || cityName + '的回忆') +
+        '" class="map-story-cover"/>' +
+        '</div>' +
+        '<div class="map-story-body">' +
+        '<div class="map-story-city">' +
+        cityName +
+        '</div>' +
+        '<div class="map-story-title-text">' +
+        (item.title || '') +
+        '</div>' +
+        '<div class="map-story-summary">' +
+        (item.summary || '') +
+        '</div>' +
+        '<a class="map-story-link" href="' +
+        (item.url || '#') +
+        '" target="_blank" rel="noopener">去看看这段回忆</a>' +
+        '</div>' +
+        '</div>';
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
   function initLoveMap() {
     var dom = document.getElementById('love-map-container');
     
@@ -87,6 +146,9 @@
           { name: "四川", value: 1 }, // 广元
           { name: "福建", value: 1 }, // 福州
         ];
+
+      // 5. 🧡 城市关联的文章/记忆
+      var cityStoriesMap = MAP_CFG.stories || {};
 
       // ================= 配置区域结束 =================
 
@@ -253,6 +315,19 @@
         };
 
         mapChart.setOption(option);
+
+        // 点击地图上的城市或爱心时，展示对应的故事卡片
+        mapChart.off('click');
+        mapChart.on('click', function (params) {
+          var name = params.name;
+          if (!name || !cityStoriesMap[name]) return;
+          renderCityStories(name, cityStoriesMap);
+        });
+
+        // 默认展示苏州的故事（如果有配置）
+        if (cityStoriesMap['苏州']) {
+          renderCityStories('苏州', cityStoriesMap);
+        }
       })
       .catch(error => {
         console.error('地图加载失败:', error);
