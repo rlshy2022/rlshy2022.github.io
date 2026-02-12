@@ -255,6 +255,10 @@
   // -----------------------------------
   runWhenIdle(function () {
   try {
+      // 本地调试时减少控制台噪音
+      if (location && (location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+        return;
+      }
       const styleTitle =
         'font-size: 40px; font-weight: bold; color: #FF9EAC; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); font-family: "ZCOOL KuaiLe";';
       const styleBody =
@@ -262,10 +266,6 @@
     
       console.log("%c 欢欢 ❤️ 怡怡", styleTitle);
       console.log("%c 我们的故事，写在代码里，更刻在心里。", styleBody);
-      console.log(
-        "%c (此博客由欢欢为怡怡专属打造 v2026.02)",
-        "font-size:12px; color:#ccc;"
-      );
   } catch (e) {}
   });
 

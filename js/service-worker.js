@@ -3,8 +3,8 @@
  * 实现离线访问和快速二次加载
  */
 
-const CACHE_NAME = 'love-blog-v1.0';
-const RUNTIME_CACHE = 'love-blog-runtime-v1.0';
+const CACHE_NAME = 'love-blog-v1.1';
+const RUNTIME_CACHE = 'love-blog-runtime-v1.1';
 
 // 需要缓存的静态资源
 const STATIC_ASSETS = [
@@ -15,7 +15,6 @@ const STATIC_ASSETS = [
   '/js/love_timer.js',
   '/js/love_interactions.js',
   '/js/love_components.js',
-  '/js/image_responsive.js',
   '/js/oss_optimize.js'
 ];
 
@@ -25,7 +24,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[SW] Caching static assets');
-      return cache.addAll(STATIC_ASSETS.map(url => new Request(url, { cache: 'reload' })));
+      return cache.addAll(STATIC_ASSETS);
     }).then(() => {
       return self.skipWaiting(); // 立即激活
     })
@@ -67,7 +66,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // 静态资源：Cache First策略
-  if (STATIC_ASSETS.some(asset => url.pathname.includes(asset))) {
+  if (STATIC_ASSETS.includes(url.pathname)) {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
         if (cachedResponse) {

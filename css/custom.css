@@ -58,28 +58,12 @@ body {
     border-radius: 14px;
     border: 2px solid rgba(255, 255, 255, 0.9);
     box-shadow: 0 6px 18px rgba(148, 163, 239, 0.15);
-    transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
-    will-change: transform, box-shadow;
-    opacity: 0;
-    animation: imageFadeIn 0.5s ease-out forwards;
-}
-
-@keyframes imageFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 #article-container img:hover {
-    box-shadow: 0 12px 32px rgba(255, 158, 172, 0.4);
-    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 10px 28px rgba(255, 158, 172, 0.35);
+    transform: translateY(-2px);
 }
 
 [data-theme="dark"] #article-container img {
@@ -453,10 +437,8 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
 
 .gallery-items img:hover,
 .gallery-items .item img:hover {
-    box-shadow: 0 16px 36px rgba(255, 158, 172, 0.5) !important;
-    transform: translateY(-6px) scale(1.02);
-    z-index: 10;
-    position: relative;
+    box-shadow: 0 14px 32px rgba(255, 158, 172, 0.45) !important;
+    transform: translateY(-4px) scale(1.015);
 }
 
 /* 相册区域图片懒加载占位与渐显（与 love_components 配合） */
@@ -1055,11 +1037,14 @@ blockquote {
     overflow: hidden;
     position: relative;
     background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(255, 228, 239, 0.92));
+    min-height: 480px; /* 桌面端必须给高度，否则 ECharts 无法渲染 */
+    height: 520px;
 }
 
 @media screen and (max-width: 768px) {
     #love-map-container {
-        height: 400px !important; /* 手机上稍微矮一点，方便滑动 */
+        height: 400px !important;
+        min-height: 400px;
         box-shadow: 0 12px 32px rgba(255, 158, 172, 0.3);
     }
 }

@@ -50,7 +50,6 @@
     if (
       document.querySelector(".gallery-items img, .fj-gallery-item img, #article-container img")
     ) {
-      runWhenIdle(() => loadScript("/js/image_responsive.js?v=1.0").catch(() => {}));
       runWhenIdle(() => loadScript("/js/oss_optimize.js").catch(() => {}));
       runWhenIdle(() => loadScript("/js/love_components.js?v=1.0").catch(() => {}));
     }

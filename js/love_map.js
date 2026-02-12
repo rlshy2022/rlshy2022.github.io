@@ -159,10 +159,25 @@
         maskColor: 'rgba(255, 255, 255, 0.8)',
       });
 
-    fetch('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/100000_full.json')
-      .then(response => response.json())
+    // 优先读取同源 GeoJSON（避免 CORS / 403 / 运营商劫持返回 HTML）
+    // 该文件由 scripts/map/cache_china_geojson.js 在生成前写入 source/geo/，最终发布到 /geo/100000_full.json
+    var geoJsonUrl = '/geo/100000_full.json';
+    fetch(geoJsonUrl, { cache: 'no-cache' })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('GeoJSON 请求失败: ' + response.status + ' ' + response.statusText);
+        }
+        var ct = response.headers.get('content-type') || '';
+        if (ct && !ct.includes('application/json') && !ct.includes('application/geo+json')) {
+          // 常见：403/劫持返回 HTML，直接提示
+          throw new Error('GeoJSON 响应不是 JSON（content-type=' + ct + '）');
+        }
+        return response.json();
+      })
       .then(geoJson => {
         mapChart.hideLoading();
+        var loadingWrap = dom.querySelector('.love-map-loading');
+        if (loadingWrap) loadingWrap.remove();
         echarts.registerMap('china', geoJson);
 
         var option = {
@@ -331,6 +346,15 @@
       })
       .catch(error => {
         console.error('地图加载失败:', error);
+        if (mapChart) mapChart.hideLoading();
+        var loadingEl = dom && dom.querySelector && dom.querySelector('.love-map-loading');
+        if (loadingEl) {
+          loadingEl.innerHTML =
+            '<p style="color:#FF7E93;margin:0;line-height:1.6;">' +
+            '<i class="fas fa-exclamation-circle"></i> 地图数据加载失败。' +
+            '<br/>请确认已生成 <code>/geo/100000_full.json</code>（见 scripts/map/cache_china_geojson.js）。' +
+            '</p>';
+        }
       });
 
       if (!resizeBound) {
@@ -344,6 +368,11 @@
     });
   }
 
+  // 直接访问 /love-map/ 时，love_map.js 由 boot.js 异步加载，此时 DOMContentLoaded 已触发，
+  // 所以必须：脚本加载后若容器已存在则立即执行一次
+  if (document.getElementById('love-map-container')) {
+    initLoveMap();
+  }
   document.addEventListener('DOMContentLoaded', initLoveMap);
   document.addEventListener('pjax:complete', initLoveMap);
 
