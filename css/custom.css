@@ -242,6 +242,55 @@ a, img, .music-btn, button, #play-icon, i, .card-widget {
     padding: 10px 0;
 }
 
+/* 点击情话主题切换按钮（位于音乐封面下方） */
+.click-theme-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px 0 2px;
+}
+
+.click-theme-btn {
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.96);
+    color: #FF7E93;
+    box-shadow: 0 3px 8px rgba(255, 158, 172, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    white-space: nowrap;
+}
+
+.click-theme-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(255, 158, 172, 0.5);
+    background: rgba(255, 250, 252, 0.98);
+}
+
+.click-theme-btn.is-active {
+    background: linear-gradient(135deg, #FF9EAC, #FF7E93);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(255, 126, 147, 0.6);
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .click-theme-btn {
+    background: rgba(30, 30, 40, 0.9);
+    color: #FF9EAC;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .click-theme-btn.is-active {
+    background: linear-gradient(135deg, #c56e7e, #e85a6e);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+
 .music-disc-container {
     width: 120px;
     height: 120px;
