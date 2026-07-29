@@ -1,0 +1,114 @@
+/* ========================
+   6. 恋爱清单
+   ======================== */
+
+.love-list-hero {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.love-list-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.love-list-title {
+    font-size: 1.6rem;
+    color: #FF9EAC;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    margin: 0;
+}
+
+.love-list-title-underline {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF9EAC, #FF7E93);
+    margin: 10px auto 0 auto;
+    border-radius: 999px;
+}
+
+.love-list-progress-text {
+    color: #FF9EAC;
+    font-weight: bold;
+}
+
+.love-list-progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+    margin: 10px auto 25px auto;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(255, 158, 172, 0.35);
+}
+
+.love-list-progress-inner {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #FF9EAC, #FF7E93);
+    transition: width 0.6s ease;
+}
+
+/* 设置列表项的基础样式，为定位做准备（渲染为爱心复选框） */
+li.task-list-item {
+    list-style-type: none;
+    position: relative;
+    padding-left: 24px; /* 给爱心留出空间 */
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+/* 隐藏原本丑丑的方框 */
+li.task-list-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    position: absolute; /* 绝对定位，防止挤压文字 */
+    left: 0;
+    top: 4px; /* 微调垂直位置，对应文字高度 */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* 未完成状态：空心爱心 */
+li.task-list-item input[type="checkbox"]::before {
+    content: '\f004';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400; /* 空心 */
+    color: #ccc;
+    font-size: 16px;  /* 字体大小 */
+    display: block;
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+/* 悬停变粉 */
+li.task-list-item input[type="checkbox"]:hover::before {
+    color: #FF9EAC;
+}
+
+/* 已完成状态：实心爱心 + 动画 */
+li.task-list-item input[type="checkbox"]:checked::before {
+    font-weight: 900; /* 实心 */
+    color: #FF4757;
+    animation: checkbox-pop 0.4s ease-in-out;
+}
+
+/* 已完成的文字样式 */
+li.task-list-item input[type="checkbox"]:checked + label,
+li.task-list-item input[type="checkbox"]:checked ~ p {
+    text-decoration: line-through;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+@keyframes checkbox-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35); }
+    70% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}

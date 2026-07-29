@@ -49,4 +49,7 @@
 
   document.addEventListener('DOMContentLoaded', schedule);
   document.addEventListener('pjax:complete', schedule);
+  window.addEventListener('hexo-blog-decrypt', () => {
+    setTimeout(schedule, 60);
+  });
 })();

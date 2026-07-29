@@ -1,0 +1,31 @@
+/* ========================
+   首页 / About 「今日一签」
+   ======================== */
+
+#love-daily-quote-btn {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 98;
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    background: radial-gradient(circle at 30% 0, #ffe9f0, #ffd0e1);
+    color: #ff4f84;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(255, 158, 172, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 768px) {
+    #love-daily-quote-btn {
+        left: 12px;
+        bottom: 12px;
+        font-size: 11px;
+        padding: 7px 12px;
+    }
+}

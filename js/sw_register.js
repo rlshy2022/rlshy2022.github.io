@@ -1,41 +1,40 @@
 /**
  * Service Worker 注册脚本
- * 在页面加载时注册Service Worker
+ * - 生产环境注册根目录 Service Worker，确保能接管整站页面
+ * - 本地预览时主动注销，避免缓存干扰调试
  */
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/js/service-worker.js')
-        .then((registration) => {
-          console.log('[SW] Registered:', registration.scope);
+  if (!("serviceWorker" in navigator)) return;
+  if (window.LOVE_CONFIG && window.LOVE_CONFIG.features && window.LOVE_CONFIG.features.pwa === false) return;
 
-          // 检查更新
-          registration.addEventListener('updatefound', () => {
-            const newWorker = registration.installing;
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // 新版本可用，提示用户刷新
-                console.log('[SW] New version available');
-                // 可以在这里显示更新提示
-              }
-            });
-          });
-        })
-        .catch((error) => {
-          console.log('[SW] Registration failed:', error);
-        });
+  const isLocalPreview =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
 
-      // 监听Service Worker控制权变更
-      let refreshing = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (!refreshing) {
-          refreshing = true;
-          window.location.reload();
-        }
-      });
+  window.addEventListener("load", async () => {
+    if (isLocalPreview) {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+      } catch (e) {}
+      return;
+    }
+
+    try {
+      await navigator.serviceWorker.register("/service-worker.js");
+    } catch (e) {
+      return;
+    }
+
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!refreshing) {
+        refreshing = true;
+        window.location.reload();
+      }
     });
-  }
+  });
 })();

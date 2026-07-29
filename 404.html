@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="走丢也没关系，这里有一张温柔的 404 页面，带你回到欢欢和怡怡的小窝。">
+    <meta name="robots" content="noindex, nofollow">
     <title>404 - 哎呀，走丢了 | 欢欢 & 怡怡</title>
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --love-primary: #FF9EAC;
             --glass-bg: rgba(255, 255, 255, 0.75);
+            --love-font-body: 'Aptos', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            --love-font-display: 'STKaiti', 'KaiTi', '华文楷体', '楷体', 'LXGW WenKai', 'Microsoft YaHei', cursive;
         }
         body {
             margin: 0; padding: 0;
@@ -19,9 +21,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'ZCOOL KuaiLe', 'Nunito', sans-serif;
+            font-family: var(--love-font-display);
             overflow: hidden;
-            cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat780.cur'), auto;
+            cursor: auto;
         }
         .not-found-card {
             background: var(--glass-bg);
@@ -55,7 +57,7 @@
         }
         p {
             color: #666; font-size: 1.15rem; line-height: 1.6; margin-bottom: 35px;
-            font-family: 'Nunito', sans-serif; font-weight: bold;
+            font-family: var(--love-font-body); font-weight: bold;
         }
         .heart-beat {
             color: #FF4757; display: inline-block; animation: beat 1.2s infinite;
@@ -71,9 +73,9 @@
         .home-btn:hover {
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 25px rgba(255, 126, 147, 0.6);
-            cursor: url('https://cur.cursors-4u.net/nature/nat-8/nat718.cur'), pointer;
+            cursor: pointer;
         }
-        .home-btn i { margin-right: 8px; }
+        .home-btn-icon { margin-right: 8px; line-height: 1; }
         @keyframes floatCard {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-12px); }
@@ -101,7 +103,7 @@
     <div class="bg-circle c2"></div>
     <div class="not-found-card">
         <div class="img-container">
-            <img src="https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/quanjiafu_1.png?x-oss-process=image/format,webp" alt="Lost together">
+            <img src="https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/quanjiafu_1.png?x-oss-process=image/format,webp" alt="两个人一起迷路也会重新找到彼此的合照">
         </div>
         <h1>哎呀，走丢了？</h1>
         <p>
@@ -109,7 +111,7 @@
             但无论走多远<br>
             我都会找到你 <span class="heart-beat">❤️</span>
         </p>
-        <a href="/" class="home-btn"><i class="fas fa-home"></i> 带我回家</a>
+        <a href="/" class="home-btn"><span class="home-btn-icon" aria-hidden="true">⌂</span> 带我回家</a>
     </div>
 </body>
 </html>

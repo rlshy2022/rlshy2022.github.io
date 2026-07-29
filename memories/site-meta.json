@@ -1,0 +1,445 @@
+{
+  "generatedAt": "2026-07-29T14:35:57.590Z",
+  "scenes": [
+    {
+      "key": "jingdezhen",
+      "label": "景德镇",
+      "badge": "初见篇章",
+      "accent": "#7eb6ff",
+      "chapter": "景德镇",
+      "desc": "第一次真正站到彼此身边，连跨年烟火都成了会反复回想的背景音。",
+      "quote": "原来喜欢真的会在见面的那一刻安静下来。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%90%88%E7%85%A7/%E5%90%88%E7%85%A7/jdz_hz_2.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=jingdezhen",
+      "photoWallUrl": "/photo-wall/?scene=jingdezhen",
+      "timelineUrl": "/love-timeline/?scene=jingdezhen",
+      "passport": true,
+      "passportTitle": "陶阳里跨年护照",
+      "passportNote": "把第一次见面的温度盖成永久有效的印章。",
+      "stamp": "JINGDEZHEN",
+      "keywords": [
+        "景德镇",
+        "jingdezhen",
+        "jdz",
+        "陶阳里",
+        "跨年"
+      ]
+    },
+    {
+      "key": "suzhou",
+      "label": "苏州",
+      "badge": "旅行记录",
+      "accent": "#e6a2b0",
+      "chapter": "苏州",
+      "desc": "七里山塘、小桥边的灯和一起散步的晚上，都留在苏州这组记录里。",
+      "quote": "那天我们边走边吃，苏州就被记住了。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/suzhou2.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=suzhou",
+      "photoWallUrl": "/photo-wall/?scene=suzhou",
+      "timelineUrl": "/love-timeline/?scene=suzhou",
+      "passport": true,
+      "passportTitle": "苏州旅行护照",
+      "passportNote": "七里山塘、小桥、夜色和照片都在这里。",
+      "stamp": "SUZHOU",
+      "keywords": [
+        "苏州",
+        "suzhou",
+        "sz_",
+        "七里山塘",
+        "山塘"
+      ]
+    },
+    {
+      "key": "yangzhou",
+      "label": "扬州",
+      "badge": "烟花三月",
+      "accent": "#e5a47e",
+      "chapter": "扬州",
+      "desc": "扬州这一站留下了重逢、校园散步、采购和一起煮火锅的记录。",
+      "quote": "到了扬州以后，见面这件事终于落到真实生活里。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E6%89%AC%E5%B7%9E/yz8.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=yangzhou",
+      "photoWallUrl": "/photo-wall/?scene=yangzhou",
+      "timelineUrl": "/love-timeline/?scene=yangzhou",
+      "passport": true,
+      "passportTitle": "扬州重逢护照",
+      "passportNote": "校园、超市、火锅和散步都盖在这一站。",
+      "stamp": "YANGZHOU",
+      "keywords": [
+        "扬州",
+        "yangzhou",
+        "yz",
+        "烟花三月",
+        "重逢"
+      ]
+    },
+    {
+      "key": "huangshan",
+      "label": "黄山",
+      "badge": "清明出走",
+      "accent": "#92ab78",
+      "chapter": "黄山",
+      "desc": "清明去黄山市区，逛屯溪老街、黎阳老街，在新安江边晒太阳，也写下红色心愿牌。",
+      "quote": "四月的黄山，记住的是老街、江边和那块心愿牌。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/hs/qt/qt18.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=huangshan",
+      "photoWallUrl": "/photo-wall/?scene=huangshan",
+      "timelineUrl": "/love-timeline/?scene=huangshan",
+      "passport": true,
+      "passportTitle": "黄山春日护照",
+      "passportNote": "这一章的印章里带着老街的风和江边的暖阳。",
+      "stamp": "HUANGSHAN",
+      "keywords": [
+        "黄山",
+        "huangshan",
+        "img/hs/",
+        "屯溪",
+        "黎阳",
+        "清明"
+      ]
+    },
+    {
+      "key": "shaoxing",
+      "label": "绍兴",
+      "badge": "五一水乡",
+      "accent": "#8fb0a9",
+      "chapter": "绍兴",
+      "desc": "五一在绍兴走鲁迅故里、沈园、东湖乌篷船、仓桥直街和书圣故里。",
+      "quote": "绍兴这一趟，记住了水巷、乌篷船和一起吃过的小吃。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/shaoxing/cover.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=shaoxing",
+      "photoWallUrl": "/photo-wall/?scene=shaoxing",
+      "timelineUrl": "/love-timeline/?scene=shaoxing",
+      "passport": true,
+      "passportTitle": "绍兴江南旅行护照",
+      "passportNote": "这枚印章里留着乌篷船的水声和青石板路的回响。",
+      "stamp": "SHAOXING",
+      "keywords": [
+        "绍兴",
+        "shaoxing",
+        "sx",
+        "乌篷船",
+        "沈园",
+        "鲁迅故里"
+      ]
+    },
+    {
+      "key": "fuzhou",
+      "label": "福州",
+      "badge": "母校与海",
+      "accent": "#6fa9b7",
+      "chapter": "福州",
+      "desc": "2026 年 6 月 17 日，我们在福州见面，去了福师大、西门小吃街和长乐海边。",
+      "quote": "福州从这一天开始，也有了我们一起走过的路。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=fuzhou",
+      "photoWallUrl": "/photo-wall/?scene=fuzhou",
+      "timelineUrl": "/love-timeline/?scene=fuzhou",
+      "passport": true,
+      "passportTitle": "福州六月护照",
+      "passportNote": "这枚印章里有福师大的路、西门小吃街的热气和长乐海边的风。",
+      "stamp": "FUZHOU",
+      "keywords": [
+        "福州",
+        "fuzhou",
+        "福建师范大学",
+        "福师大",
+        "西门小吃街",
+        "长乐",
+        "看海"
+      ]
+    },
+    {
+      "key": "ningguo_huangshan",
+      "label": "宁国黄山",
+      "badge": "七月登山",
+      "accent": "#7da06f",
+      "chapter": "宁国黄山",
+      "desc": "2026 年 7 月，我们先在宁国把旅行打开，再去爬黄山，最后回到屯溪、黎阳和新安江边，看见四月的红色心愿牌还在。",
+      "quote": "7 月先到宁国，再爬黄山，最后回去看四月的红色心愿牌。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=ningguo_huangshan",
+      "photoWallUrl": "/photo-wall/?scene=ningguo_huangshan",
+      "timelineUrl": "/love-timeline/?scene=ningguo_huangshan",
+      "passport": true,
+      "passportTitle": "宁国黄山七月护照",
+      "passportNote": "先宁国、再爬黄山、再回屯溪黎阳新安江，连四月写下的红色心愿牌也还在等我们。",
+      "stamp": "NG-HS",
+      "keywords": [
+        "宁国",
+        "ningguo",
+        "宁国黄山",
+        "nghs",
+        "黄山",
+        "huangshan",
+        "爬黄山",
+        "登黄山",
+        "屯溪",
+        "屯溪老街",
+        "黎阳",
+        "黎阳老街",
+        "新安江",
+        "心愿牌",
+        "祈福心愿挂件",
+        "红色心愿牌"
+      ]
+    },
+    {
+      "key": "gifts",
+      "label": "礼物",
+      "badge": "心意存档",
+      "accent": "#d9879b",
+      "chapter": "gifts",
+      "desc": "这里记录互相准备礼物、拆开礼物和收到惊喜的时刻。",
+      "quote": "你收到的是礼物，我收到的是你开心时亮起来的眼睛。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E7%A4%BC%E7%89%A9/hh_s_yy_1.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=gifts",
+      "photoWallUrl": "/photo-wall/?scene=gifts",
+      "timelineUrl": "/love-timeline/?scene=gifts",
+      "passport": false,
+      "passportTitle": "礼物",
+      "passportNote": "",
+      "stamp": "GIFTS",
+      "keywords": [
+        "礼物",
+        "gift",
+        "hh_s_yy",
+        "yy_s_hh"
+      ]
+    },
+    {
+      "key": "birthday",
+      "label": "生日",
+      "badge": "特别日子",
+      "accent": "#d7b46f",
+      "chapter": "birthday",
+      "desc": "蛋糕、烛光、愿望和生日照片都放在这里。",
+      "quote": "生日这一天，最重要的是你在。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/dg1.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=birthday",
+      "photoWallUrl": "/photo-wall/?scene=birthday",
+      "timelineUrl": "/love-timeline/?scene=birthday",
+      "passport": false,
+      "passportTitle": "生日",
+      "passportNote": "",
+      "stamp": "BIRTHDAY",
+      "keywords": [
+        "生日",
+        "birthday",
+        "dg"
+      ]
+    },
+    {
+      "key": "daily",
+      "label": "日常",
+      "badge": "日常片段",
+      "accent": "#85b7a6",
+      "chapter": "daily",
+      "desc": "聊天、电影、情书和一些没有出远门的日子，都归到日常里。",
+      "quote": "后来最珍贵的回忆，常常都来自最普通的一天。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/quanjiafu_3.png?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=daily",
+      "photoWallUrl": "/photo-wall/?scene=daily",
+      "timelineUrl": "/love-timeline/?scene=daily",
+      "passport": false,
+      "passportTitle": "日常",
+      "passportNote": "",
+      "stamp": "DAILY",
+      "keywords": [
+        "日常",
+        "daily",
+        "相遇",
+        "yeetalk",
+        "情书",
+        "电影"
+      ]
+    }
+  ],
+  "specialDays": [
+    {
+      "key": "anniversary",
+      "month": 8,
+      "day": 18,
+      "name": "周年纪念",
+      "badge": "今日限定",
+      "heroTitle": "今天回到 2022 年 8 月 18 日",
+      "heroDesc": "从 Yeetalk 那朵玫瑰开始，时间轴里已经留下很多后来的日子。",
+      "toast": "周年快乐，今天从相遇那一页开始看。",
+      "accent": "#e68aa2",
+      "themeClass": "is-special-anniversary",
+      "featureTitle": "先看相遇，再看后来的每一站",
+      "featureDesc": "时间轴会从 2022 年 8 月 18 日排到最近一次旅行。",
+      "recommendedScene": "daily",
+      "recommendedLinks": [
+        {
+          "label": "打开时间轴",
+          "url": "/love-timeline/"
+        },
+        {
+          "label": "去回忆中心",
+          "url": "/memory-hub/"
+        },
+        {
+          "label": "抽一颗扭蛋",
+          "url": "/memory-gacha/"
+        }
+      ]
+    },
+    {
+      "key": "huan-birthday",
+      "month": 3,
+      "day": 11,
+      "name": "欢欢生日",
+      "badge": "生日限定",
+      "heroTitle": "今天是欢欢生日",
+      "heroDesc": "蛋糕、礼物、照片和生日那天的话，都可以从这里打开。",
+      "toast": "生日快乐，今天先去看礼物和照片。",
+      "accent": "#f1b36b",
+      "themeClass": "is-special-birthday",
+      "featureTitle": "先看生日和礼物",
+      "featureDesc": "礼物、生日照片和相关回忆会排在前面。",
+      "recommendedScene": "birthday",
+      "recommendedLinks": [
+        {
+          "label": "看礼物",
+          "url": "/gallery/?chapter=gifts"
+        },
+        {
+          "label": "打开扭蛋机",
+          "url": "/memory-gacha/?type=festival"
+        },
+        {
+          "label": "查看未来信件",
+          "url": "/future-letters/"
+        }
+      ]
+    },
+    {
+      "key": "yi-birthday",
+      "month": 7,
+      "day": 6,
+      "name": "怡怡生日",
+      "badge": "生日限定",
+      "heroTitle": "今天是怡怡生日",
+      "heroDesc": "生日、礼物、旅行照片和想说的话，今天都放在前面。",
+      "toast": "生日快乐，今天先看属于你的那些页。",
+      "accent": "#f0b670",
+      "themeClass": "is-special-birthday",
+      "featureTitle": "先从生日相关内容开始",
+      "featureDesc": "礼物、旅行和特别日子的入口会排在前面。",
+      "recommendedScene": "birthday",
+      "recommendedLinks": [
+        {
+          "label": "查看回忆中心",
+          "url": "/memory-hub/"
+        },
+        {
+          "label": "去旅行护照",
+          "url": "/travel-passport/"
+        },
+        {
+          "label": "看照片墙",
+          "url": "/photo-wall/?scene=birthday"
+        }
+      ]
+    },
+    {
+      "key": "valentine",
+      "month": 2,
+      "day": 14,
+      "name": "情人节",
+      "badge": "节日限定",
+      "heroTitle": "今天是情人节",
+      "heroDesc": "情书、时间轴和未来信件，今天都适合从前往后看一遍。",
+      "toast": "情人节快乐，今天先打开情书和时间轴。",
+      "accent": "#df829c",
+      "themeClass": "is-special-valentine",
+      "featureTitle": "情书和时间轴排在前面",
+      "featureDesc": "先看写下来的话，再看我们一起走过的节点。",
+      "recommendedScene": "daily",
+      "recommendedLinks": [
+        {
+          "label": "未来信件",
+          "url": "/future-letters/"
+        },
+        {
+          "label": "情书入口",
+          "url": "/memory-gacha/?type=letter"
+        },
+        {
+          "label": "去时间轴",
+          "url": "/love-timeline/"
+        }
+      ]
+    }
+  ],
+  "perspectives": {
+    "default": "huan",
+    "items": [
+      {
+        "key": "huan",
+        "label": "欢欢视角",
+        "shortLabel": "欢欢",
+        "heroTitle": "我把相遇、见面和旅行都放在这里",
+        "heroDesc": "这里按时间、地点和照片整理我们的记录，方便以后回来找。",
+        "hubTitle": "从时间线开始，看我们走过哪些地方",
+        "hubDesc": "相遇、见面、旅行、日常、相册和未来信件都集中在这里。",
+        "passportNote": "旅行护照按城市整理，每一站都能回到对应文章、相册和时间线。",
+        "letterNote": "有些当时没说完整的话，先写在未来信件里。"
+      },
+      {
+        "key": "yi",
+        "label": "怡怡视角",
+        "shortLabel": "怡怡",
+        "heroTitle": "我想把和你一起走过的地方都留下来",
+        "heroDesc": "这里有文章、照片、时间线和旅行路线，翻开就能看到那天发生过什么。",
+        "hubTitle": "从最近的旅行开始，再往前看每一段",
+        "hubDesc": "回忆中心会把文章、照片墙、旅行护照和未来信件放到一起。",
+        "passportNote": "这本护照记录我们去过的城市，以及每一站最值得回看的照片。",
+        "letterNote": "有些话留给之后的日期，再一起打开。"
+      }
+    ]
+  },
+  "voicePostcards": [
+    {
+      "key": "suzhou-postcard",
+      "title": "苏州胶片明信片",
+      "speaker": "欢欢",
+      "badge": "试播片",
+      "scene": "suzhou",
+      "summary": "苏州这段配上音乐，适合和七里山塘的照片一起看。",
+      "audio": "/music/love.mp3",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/suzhou2.jpg?x-oss-process=image/format,webp"
+    },
+    {
+      "key": "huangshan-postcard",
+      "title": "黄山春日明信片",
+      "speaker": "怡怡",
+      "badge": "试播片",
+      "scene": "huangshan",
+      "summary": "黄山这段配上音乐，适合和老街、江边、心愿牌一起重看。",
+      "audio": "/music/love.mp3",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/hs/qt/qt18.jpg?x-oss-process=image/format,webp"
+    },
+    {
+      "key": "fuzhou-postcard",
+      "title": "福州海风明信片",
+      "speaker": "欢欢",
+      "badge": "试播片",
+      "scene": "fuzhou",
+      "summary": "福州这段配上音乐，适合和福师大、西门小吃街、长乐海边一起重看。",
+      "audio": "/music/love.mp3",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp"
+    },
+    {
+      "key": "ningguo-huangshan-postcard",
+      "title": "宁国黄山七月明信片",
+      "speaker": "怡怡",
+      "badge": "试播片",
+      "scene": "ningguo_huangshan",
+      "summary": "先在宁国玩，再爬上黄山，最后回到屯溪、黎阳和新安江边，把四月的红色心愿牌重新打开。",
+      "audio": "/music/love.mp3",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp"
+    }
+  ]
+}

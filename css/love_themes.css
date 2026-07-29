@@ -1,0 +1,831 @@
+/* ======================== 科幻霓虹主题 ======================== */
+.theme-sci-fi {
+    --love-primary: #22D3EE;
+    --love-secondary: #A855F7;
+    --love-glass-bg: rgba(15, 23, 42, 0.85);
+    --love-glass-border: 1px solid rgba(148, 163, 184, 0.6);
+    --love-shadow: 0 20px 55px rgba(15, 23, 42, 0.9), 0 0 0 1px rgba(37, 99, 235, 0.35);
+}
+
+/* 背景与页面整体氛围：深蓝星空 + 霓虹晕光 */
+.theme-sci-fi body {
+    background-image:
+        radial-gradient(circle at 10% 0%, rgba(56,189,248,0.5), transparent 55%),
+        radial-gradient(circle at 90% 10%, rgba(168,85,247,0.45), transparent 55%),
+        radial-gradient(circle at 15% 80%, rgba(59,130,246,0.4), transparent 55%),
+        linear-gradient(135deg, #020617 0%, #020617 40%, #020617 100%);
+    background-attachment: fixed;
+}
+
+.theme-sci-fi body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(148,163,184,0.12) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 顶部进度条 / 阅读条等可以沿用主色，不重复定义 */
+
+/* 卡片：玻璃 + 霓虹边框 */
+.theme-sci-fi .card-widget {
+    background: radial-gradient(circle at top left, rgba(56,189,248,0.15), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(168,85,247,0.15), transparent 55%),
+                rgba(15,23,42,0.9) !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(148,163,184,0.75) !important;
+    box-shadow:
+        0 20px 55px rgba(15,23,42,0.9),
+        0 0 0 1px rgba(37,99,235,0.4),
+        0 0 32px rgba(56,189,248,0.35) !important;
+    backdrop-filter: blur(22px);
+}
+
+.theme-sci-fi .card-widget:hover {
+    box-shadow:
+        0 26px 70px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(56,189,248,0.6),
+        0 0 40px rgba(168,85,247,0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* 导航栏：深色玻璃条 + 蓝紫描边 */
+.theme-sci-fi #page-header.nav-fixed #nav {
+    background: rgba(15,23,42,0.9) !important;
+    box-shadow:
+        0 8px 30px rgba(15,23,42,0.95),
+        0 1px 0 rgba(30,64,175,0.8),
+        0 0 20px rgba(56,189,248,0.4) !important;
+    border-bottom: 1px solid rgba(148,163,184,0.8) !important;
+}
+
+/* 标题装饰：线性蓝紫霓虹条 */
+.theme-sci-fi #article-container h2::before {
+    background: linear-gradient(180deg, #22D3EE, #A855F7) !important;
+    box-shadow: 0 0 14px rgba(56,189,248,0.9);
+}
+
+.theme-sci-fi #article-container h3::before {
+    background: linear-gradient(180deg, #A855F7, #F97316) !important;
+}
+
+/* 正文图片边框：细蓝光 + 暗底阴影 */
+.theme-sci-fi #article-container img {
+    border-color: rgba(56,189,248,0.7) !important;
+    box-shadow:
+        0 10px 32px rgba(15,23,42,0.95),
+        0 0 0 1px rgba(15,23,42,1),
+        0 0 20px rgba(56,189,248,0.5) !important;
+}
+
+.theme-sci-fi #article-container img:hover {
+    box-shadow:
+        0 16px 40px rgba(15,23,42,1),
+        0 0 0 1px rgba(56,189,248,0.8),
+        0 0 28px rgba(168,85,247,0.7) !important;
+}
+
+/* 阅读进度条：青蓝到紫的霓虹条 */
+.theme-sci-fi #love-reading-progress .love-reading-progress-inner {
+    background: linear-gradient(90deg, #22D3EE 0%, #38BDF8 25%, #4F46E5 60%, #A855F7 100%) !important;
+    box-shadow: 0 0 22px rgba(56,189,248,0.85);
+}
+
+/* 回顶按钮：圆形霓虹按钮 */
+.theme-sci-fi #rightside #go-up {
+    background: radial-gradient(circle at 30% 0, #22D3EE, #0F172A 60%) !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(148,163,184,0.85) !important;
+    box-shadow: 0 10px 30px rgba(15,23,42,0.95), 0 0 26px rgba(56,189,248,0.8) !important;
+}
+
+.theme-sci-fi #rightside #go-up:hover {
+    box-shadow: 0 14px 40px rgba(15,23,42,1), 0 0 34px rgba(129,140,248,0.9) !important;
+    transform: translateY(-2px);
+}
+
+/* 页脚：深蓝底 + 霓虹描边 */
+.theme-sci-fi #footer {
+    background: radial-gradient(circle at top, #1E293B 0%, #020617 55%, #000000 100%) !important;
+    border-top: 1px solid rgba(37,99,235,0.8) !important;
+}
+
+.theme-sci-fi #footer::before {
+    background: transparent !important;
+}
+
+.theme-sci-fi #footer-wrap span,
+.theme-sci-fi #footer-wrap a {
+    color: rgba(191,219,254,0.9) !important;
+}
+
+.theme-sci-fi #footer-wrap .fa-heart {
+    color: #F472B6 !important;
+}
+
+/* 恋爱计时数字：赛博蓝色光晕 */
+.theme-sci-fi .timer-num,
+.theme-sci-fi #footer-timer {
+    color: #E0F2FE !important;
+    text-shadow: 0 0 14px rgba(56,189,248,0.85);
+}
+
+/* 滚动条：蓝紫渐变轨迹 */
+.theme-sci-fi ::-webkit-scrollbar-track {
+    background: rgba(15,23,42,0.9);
+}
+
+.theme-sci-fi ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #22D3EE, #6366F1, #A855F7);
+    border-radius: 6px;
+    border: 2px solid rgba(15,23,42,1);
+}
+
+.theme-sci-fi ::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 18px rgba(56,189,248,0.9);
+}
+
+/* 心情打卡 / 评论等按钮：半透明玻璃 + 霓虹描边 */
+.theme-sci-fi .comment-shortcut,
+.theme-sci-fi .emotion-reactions button,
+.theme-sci-fi .love-anniv-link,
+.theme-sci-fi #love-daily-quote-btn {
+    background: radial-gradient(circle at 0 0, rgba(56,189,248,0.25), transparent 60%),
+                rgba(15,23,42,0.95) !important;
+    border: 1px solid rgba(148,163,184,0.8) !important;
+    color: rgba(226,232,240,0.95) !important;
+}
+
+.theme-sci-fi .comment-shortcut:hover,
+.theme-sci-fi .emotion-reactions button:hover,
+.theme-sci-fi .love-anniv-link:hover,
+.theme-sci-fi #love-daily-quote-btn:hover {
+    box-shadow: 0 8px 26px rgba(15,23,42,0.9), 0 0 24px rgba(56,189,248,0.75) !important;
+    transform: translateY(-2px);
+}
+
+/* 音乐唱片：蓝紫霓虹边框 */
+.theme-sci-fi .music-disc-container {
+    border-color: #22D3EE !important;
+    box-shadow:
+        0 0 24px rgba(56,189,248,0.85),
+        0 0 30px rgba(168,85,247,0.7) !important;
+}
+
+/* 焦点环：蓝紫高亮 */
+.theme-sci-fi a:focus-visible,
+.theme-sci-fi button:focus-visible,
+.theme-sci-fi input:focus-visible,
+.theme-sci-fi [tabindex]:focus-visible {
+    outline: 2px solid #38BDF8 !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(56,189,248,0.45) !important;
+}
+
+/* ======================== 新春主题专属样式（美化版） ======================== */
+.theme-spring-festival {
+    --love-primary: #B22222;
+    --love-secondary: #C9A227;
+    --love-glass-border: 1px solid rgba(201, 162, 39, 0.45);
+    --love-shadow: 0 18px 48px rgba(178, 34, 34, 0.18), 0 0 0 1px rgba(255, 215, 0, 0.08);
+}
+
+/* 顶部装饰条：金红渐变 + 轻微流光 */
+.theme-spring-festival body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #8B4513 0%, #A52A2A 15%, #C9A227 35%, #D4AF37 50%, #C9A227 65%, #A52A2A 85%, #8B4513 100%);
+    background-size: 200% 100%;
+    animation: spring-bar-shine 8s ease-in-out infinite;
+    z-index: 9999;
+    pointer-events: none;
+    box-shadow: 0 2px 12px rgba(201, 162, 39, 0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+    .theme-spring-festival body::before { animation: none; }
+}
+@keyframes spring-bar-shine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* 卡片：金边 + 内光 + 圆角强调 */
+.theme-spring-festival .card-widget {
+    border: 1px solid rgba(201, 162, 39, 0.5) !important;
+    box-shadow: 0 12px 40px rgba(178, 34, 34, 0.12), 0 0 0 1px rgba(255, 215, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+    border-radius: 16px !important;
+    transition: box-shadow 0.35s ease, transform 0.3s ease !important;
+}
+
+.theme-spring-festival .card-widget:hover {
+    box-shadow: 0 20px 52px rgba(178, 34, 34, 0.2), 0 0 0 1px rgba(201, 162, 39, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* 导航栏：米金底 + 底边金线 */
+.theme-spring-festival #page-header.nav-fixed #nav {
+    background: linear-gradient(180deg, rgba(255, 248, 220, 0.96) 0%, rgba(255, 236, 200, 0.94) 100%) !important;
+    box-shadow: 0 4px 16px rgba(178, 34, 34, 0.1), 0 3px 0 0 rgba(201, 162, 39, 0.35) !important;
+    border-bottom: 1px solid rgba(201, 162, 39, 0.25) !important;
+}
+
+/* 文章标题装饰条 */
+.theme-spring-festival #article-container h2::before {
+    background: linear-gradient(180deg, #C9A227, #B22222) !important;
+    box-shadow: 0 0 8px rgba(201, 162, 39, 0.4);
+}
+
+.theme-spring-festival #article-container h3::before {
+    background: linear-gradient(180deg, #D4AF37, #C9A227) !important;
+}
+
+/* 正文图片：暖色边框 */
+.theme-spring-festival #article-container img {
+    border-color: rgba(201, 162, 39, 0.5) !important;
+    box-shadow: 0 8px 24px rgba(178, 34, 34, 0.15), 0 0 0 1px rgba(255, 215, 0, 0.1) !important;
+}
+
+.theme-spring-festival #article-container img:hover {
+    box-shadow: 0 12px 32px rgba(178, 34, 34, 0.22), 0 0 0 1px rgba(201, 162, 39, 0.35) !important;
+}
+
+/* 阅读进度条 */
+.theme-spring-festival #love-reading-progress .love-reading-progress-inner {
+    background: linear-gradient(90deg, #B22222, #C9A227 50%, #D4AF37) !important;
+    box-shadow: 0 0 12px rgba(201, 162, 39, 0.4);
+}
+
+/* 回顶按钮 */
+.theme-spring-festival #rightside #go-up {
+    background: linear-gradient(135deg, #B22222 0%, #C9A227 50%, #D4AF37 100%) !important;
+    box-shadow: 0 6px 22px rgba(178, 34, 34, 0.4), 0 0 16px rgba(201, 162, 39, 0.2) !important;
+    border: 1px solid rgba(255, 215, 0, 0.35) !important;
+}
+
+.theme-spring-festival #rightside #go-up:hover {
+    box-shadow: 0 8px 30px rgba(178, 34, 34, 0.5), 0 0 24px rgba(255, 215, 0, 0.35) !important;
+    transform: translateY(-2px);
+}
+
+/* 日历 */
+.theme-spring-festival .cal-event-day {
+    background: linear-gradient(135deg, #B22222, #8B0000) !important;
+    box-shadow: 0 4px 12px rgba(178, 34, 34, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.theme-spring-festival .cal-today-circle {
+    border-color: #C9A227 !important;
+    color: #B8860B !important;
+    background: rgba(201, 162, 39, 0.18) !important;
+    box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.35), 0 0 16px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* 页脚：暖色渐变 */
+.theme-spring-festival #footer {
+    background: linear-gradient(to top, #2D1810 0%, #4A2520 40%, #5C2E28 100%) !important;
+    border-top: 2px solid rgba(201, 162, 39, 0.4) !important;
+}
+
+.theme-spring-festival #footer::before {
+    background: transparent !important;
+}
+
+.theme-spring-festival #footer-wrap a,
+.theme-spring-festival #footer-wrap span {
+    color: rgba(255, 228, 181, 0.95) !important;
+}
+
+.theme-spring-festival #footer-wrap .fa-heart {
+    color: #C9A227 !important;
+}
+
+/* 恋爱计时 / 侧栏文字在新春下的强调色 */
+.theme-spring-festival .timer-num,
+.theme-spring-festival #footer-timer {
+    color: var(--love-primary) !important;
+    text-shadow: 0 0 12px rgba(201, 162, 39, 0.35);
+}
+
+/* 滚动条 */
+.theme-spring-festival ::-webkit-scrollbar-track {
+    background: rgba(255, 248, 220, 0.4);
+    border-radius: 6px;
+}
+
+.theme-spring-festival ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #B22222, #C9A227);
+    border-radius: 6px;
+    border: 2px solid rgba(255, 248, 220, 0.3);
+}
+
+.theme-spring-festival ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #8B0000, #B8860B);
+    box-shadow: 0 0 12px rgba(201, 162, 39, 0.5);
+}
+
+/* 心情打卡 / 评论快捷等按钮 */
+.theme-spring-festival .comment-shortcut,
+.theme-spring-festival .emotion-reactions button,
+.theme-spring-festival .love-anniv-link,
+.theme-spring-festival #love-daily-quote-btn {
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.12), rgba(201, 162, 39, 0.15)) !important;
+    border: 1px solid rgba(201, 162, 39, 0.4) !important;
+    color: #A52A2A !important;
+}
+
+.theme-spring-festival .comment-shortcut:hover,
+.theme-spring-festival .emotion-reactions button:hover,
+.theme-spring-festival .love-anniv-link:hover,
+.theme-spring-festival #love-daily-quote-btn:hover {
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.2), rgba(201, 162, 39, 0.25)) !important;
+    box-shadow: 0 4px 16px rgba(201, 162, 39, 0.3);
+}
+
+/* 音乐唱片边框新春色 */
+.theme-spring-festival .music-disc-container {
+    border-color: var(--love-primary) !important;
+    box-shadow: 0 0 20px rgba(178, 34, 34, 0.35), 0 0 0 2px rgba(201, 162, 39, 0.3) !important;
+}
+
+/* 新春主题下焦点环：金红色 */
+.theme-spring-festival a:focus-visible,
+.theme-spring-festival button:focus-visible,
+.theme-spring-festival input:focus-visible,
+.theme-spring-festival [tabindex]:focus-visible {
+    outline: 2px solid #C9A227 !important;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(201, 162, 39, 0.25) !important;
+}
+
+/* 日历中的圆圈标记 */
+.cal-event-day {
+    background: linear-gradient(135deg, #FF9EAC, #FF4757) !important;
+    color: white !important;
+    border-radius: 50%;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
+}
+
+.cal-today-circle {
+    border: 2px solid #89C3EB;
+    color: #89C3EB;
+    border-radius: 50%;
+    font-weight: bold;
+    background: rgba(137, 195, 235, 0.25);
+    box-shadow: 0 0 0 4px rgba(137, 195, 235, 0.35);
+    animation: love-cal-today-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes love-cal-today-pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(137, 195, 235, 0.35); }
+    50% { box-shadow: 0 0 0 8px rgba(137, 195, 235, 0.2); }
+}
+
+/* 让日历表格的表头更粉一点 */
+.cal-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.cal-table th {
+    color: #FF9EAC;
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+
+.cal-table td {
+    padding: 4px 0;
+}
+
+.cal-day {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    margin: 5px 0;
+    color: #666;
+}
+
+/* 纪念日历页面整体布局（与 love-calendar 页面配合） */
+.calendar-main-card {
+    display: flex;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(18px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 18px 48px rgba(255, 158, 172, 0.28);
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    min-height: 450px;
+}
+
+#calendar-left {
+    flex: 1.3;
+    padding: 35px;
+    border-right: 2px dashed rgba(255, 158, 172, 0.3);
+}
+
+#calendar-right {
+    flex: 0.7;
+    padding: 35px;
+}
+
+.anniversary-header {
+    font-size: 1.8rem !important;
+    font-weight: bold;
+    color: #FF4757 !important;
+    margin-bottom: 25px;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.beat-red {
+    color: #FF4757 !important;
+    animation: heartBeat 1.3s infinite;
+    display: inline-block;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+.anniversary-item {
+    padding: 15px 0;
+    border-bottom: 1px dashed rgba(255,158,172,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05rem;
+}
+
+.anniversary-name {
+    color: #555;
+    font-weight: 500;
+}
+
+.anniversary-count {
+    color: #FF7E93;
+    font-weight: bold;
+}
+
+.anniversary-item-active {
+    background: rgba(255, 230, 239, 0.8);
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 6px 18px rgba(255, 158, 172, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .calendar-main-card {
+    flex-direction: column;
+  }
+  #calendar-left {
+    border-right: none;
+    border-bottom: 2px dashed rgba(255, 158, 172, 0.3);
+  }
+  .anniversary-header {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* 纪念日历右侧恋爱清单进度文案 */
+.calendar-love-progress-summary {
+    font-size: 0.9rem;
+    color: #777;
+    margin: -10px 0 4px;
+}
+
+/* 留言板页面样式 */
+.comments-main-card {
+    max-width: 800px;
+    margin: 10px auto 25px auto;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 16px 40px rgba(255, 158, 172, 0.25);
+}
+
+.comments-intro h2 {
+    font-size: 1.6rem;
+    margin: 0 0 10px 0;
+    color: #FF7E93;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comments-intro p {
+    margin: 4px 0;
+    color: #555;
+}
+
+.comments-tip {
+    font-size: 0.95rem;
+    color: #FF7E93;
+}
+
+.comments-shortcuts {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.shortcuts-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-right: 6px;
+}
+
+.comment-shortcut {
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.96);
+    color: #ff4f84;
+    box-shadow: 0 3px 8px rgba(255, 158, 172, 0.45);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.comment-shortcut:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(255, 158, 172, 0.6);
+    background: rgba(255, 250, 252, 0.98);
+}
+
+.comments-card-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(235, 235, 255, 0.9);
+}
+
+.comments-twikoo-placeholder {
+    padding: 18px 16px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 244, 248, 0.96), rgba(242, 244, 255, 0.96));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+    color: #777;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.comments-twikoo-placeholder i {
+    margin-right: 6px;
+    color: #FF9EAC;
+}
+
+.twikoo-hidden {
+    display: none;
+}
+
+/* Twikoo 评论区域美化 */
+#twikoo {
+    margin-top: 4px;
+}
+
+#twikoo .tk-comment {
+    border-radius: 14px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+#twikoo .tk-comment.tk-comment-highlight {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 158, 172, 0.45);
+    border: 1px solid rgba(255, 158, 172, 0.7);
+    background: rgba(255, 247, 250, 0.98);
+}
+
+#twikoo .tk-nick {
+    color: #FF7E93;
+    font-weight: 600;
+}
+
+#twikoo .tk-time {
+    color: #aaa;
+    font-size: 0.8rem;
+}
+
+#twikoo .tk-content {
+    line-height: 1.7;
+    color: #444;
+}
+
+#twikoo .tk-submit {
+    border-radius: 14px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+#twikoo .tk-input .el-textarea__inner,
+#twikoo textarea {
+    border-radius: 12px !important;
+    border-color: rgba(255, 158, 172, 0.6) !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+#twikoo .tk-input .el-textarea__inner:focus,
+#twikoo textarea:focus {
+    border-color: #FF9EAC !important;
+    border-width: 2px !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(255, 158, 172, 0.25) !important;
+}
+
+#twikoo .tk-input .el-textarea__inner:focus-visible,
+#twikoo textarea:focus-visible {
+    border-color: #FF9EAC !important;
+    box-shadow: 0 0 0 3px rgba(255, 158, 172, 0.3) !important;
+}
+
+#twikoo .tk-submit button,
+#twikoo .tk-submit .tk-send {
+    background: radial-gradient(circle at 30% 30%, #ffe6f1 0%, #ff9eac 45%, #ff7e93 100%) !important;
+    color: #fff !important;
+    border-radius: 999px !important;
+    padding: 6px 20px !important;
+    border: none !important;
+    box-shadow: 0 6px 16px rgba(255, 126, 147, 0.45) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .comments-main-card {
+        padding: 18px 16px;
+        margin-top: 5px;
+    }
+    .comments-card-wrapper {
+        padding: 14px 12px;
+    }
+}
+
+.weather-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    text-align: center;
+}
+.weather-item .city {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+.weather-item .info {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--love-primary);
+}
+.weather-divider {
+    color: #FF9EAC;
+    animation: beat 1.5s infinite;
+}
+#weather-tips {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #FF7E93;
+    font-family: 'ZCOOL KuaiLe';
+    min-height: 1.2rem;
+    margin-top: 10px;
+}
+
+.love-weather-title {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 12px;
+    font-size: 1.2em;
+}
+
+.love-weather-title i {
+    color: #FF9EAC;
+}
+
+.love-section-divider {
+    margin: 18px 0;
+    border: 0;
+    border-top: 2px dashed #FF9EAC;
+    opacity: 0.5;
+}
+
+/* About 页面：心情统计小卡片 */
+.about-emotion-stats-card {
+    margin-top: 24px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 14px 36px rgba(255, 158, 172, 0.24);
+}
+
+.about-emotion-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #FF7E93;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.about-emotion-title i {
+    color: #FF9EAC;
+}
+
+.about-emotion-grid {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.about-emotion-stat {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 244, 248, 0.96), rgba(242, 244, 255, 0.96));
+    text-align: center;
+}
+
+.about-emotion-stat .label {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 2px;
+}
+
+.about-emotion-stat .value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FF7E93;
+}
+
+.about-emotion-toplist {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.about-emotion-top-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+}
+
+.about-emotion-top-item .rank {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: rgba(255, 158, 172, 0.12);
+    color: #FF7E93;
+}
+
+.about-emotion-top-item .title {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.about-emotion-top-item .count {
+    font-size: 0.78rem;
+    color: #999;
+}
+
+@media screen and (max-width: 768px) {
+    .about-emotion-grid {
+        flex-direction: column;
+    }
+}

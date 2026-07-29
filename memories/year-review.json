@@ -1,0 +1,404 @@
+{
+  "generatedAt": "2026-07-29T14:35:57.591Z",
+  "yearCount": 3,
+  "totalCount": 23,
+  "currentYear": 2026,
+  "years": [
+    {
+      "year": 2026,
+      "title": "2026 年回顾",
+      "totalCount": 21,
+      "articleCount": 14,
+      "manualCount": 7,
+      "travelCount": 15,
+      "festivalCount": 1,
+      "letterCount": 2,
+      "primaryScene": {
+        "key": "daily",
+        "label": "日常",
+        "accent": "#85b7a6",
+        "count": 7
+      },
+      "scenes": [
+        {
+          "key": "daily",
+          "label": "日常",
+          "accent": "#85b7a6",
+          "count": 7
+        },
+        {
+          "key": "ningguo_huangshan",
+          "label": "宁国黄山",
+          "accent": "#7da06f",
+          "count": 3
+        },
+        {
+          "key": "fuzhou",
+          "label": "福州",
+          "accent": "#6fa9b7",
+          "count": 2
+        },
+        {
+          "key": "huangshan",
+          "label": "黄山",
+          "accent": "#92ab78",
+          "count": 2
+        },
+        {
+          "key": "suzhou",
+          "label": "苏州",
+          "accent": "#e6a2b0",
+          "count": 2
+        },
+        {
+          "key": "yangzhou",
+          "label": "扬州",
+          "accent": "#e5a47e",
+          "count": 2
+        },
+        {
+          "key": "jingdezhen",
+          "label": "景德镇",
+          "accent": "#7eb6ff",
+          "count": 1
+        },
+        {
+          "key": "gifts",
+          "label": "礼物",
+          "accent": "#d9879b",
+          "count": 1
+        },
+        {
+          "key": "shaoxing",
+          "label": "绍兴",
+          "accent": "#8fb0a9",
+          "count": 1
+        }
+      ],
+      "months": [
+        {
+          "month": 1,
+          "count": 1
+        },
+        {
+          "month": 2,
+          "count": 11
+        },
+        {
+          "month": 3,
+          "count": 1
+        },
+        {
+          "month": 4,
+          "count": 2
+        },
+        {
+          "month": 5,
+          "count": 1
+        },
+        {
+          "month": 6,
+          "count": 2
+        },
+        {
+          "month": 7,
+          "count": 3
+        },
+        {
+          "month": 8,
+          "count": 0
+        },
+        {
+          "month": 9,
+          "count": 0
+        },
+        {
+          "month": 10,
+          "count": 0
+        },
+        {
+          "month": 11,
+          "count": 0
+        },
+        {
+          "month": 12,
+          "count": 0
+        }
+      ],
+      "highlights": [
+        {
+          "id": "year-post-2",
+          "source": "post",
+          "type": "travel",
+          "scene": "ningguo_huangshan",
+          "badge": "旅行回忆",
+          "title": "七月宁国黄山游记",
+          "summary": "2026 年 7 月 15 日到 7 月 22 日，我们先到宁国玩，再去把上次没有爬的黄山真正爬上去，最后回到屯溪老街、黎阳老街和新安江边，看见四月写下的红色心愿牌还在，又把它打开看了一遍。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/ningguo-huangshan-2026/",
+          "isoDate": "2026-07-22",
+          "year": 2026,
+          "month": 7,
+          "timestamp": 1784730000000
+        },
+        {
+          "id": "ningguo-huangshan-climb",
+          "source": "manual",
+          "type": "travel",
+          "scene": "ningguo_huangshan",
+          "badge": "七月登山",
+          "title": "这一次真的爬上黄山",
+          "summary": "从宁国转去黄山之后，我们把上次没有爬的黄山补上，又回到屯溪老街、黎阳老街和新安江边，看见四月写下的红色心愿牌还在。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/ningguo-huangshan-2026/",
+          "isoDate": "2026-07-17",
+          "year": 2026,
+          "month": 7,
+          "timestamp": 1784246400000
+        },
+        {
+          "id": "ningguo-huangshan-start",
+          "source": "manual",
+          "type": "travel",
+          "scene": "ningguo_huangshan",
+          "badge": "宁国开篇",
+          "title": "七月旅行先到宁国",
+          "summary": "2026 年 7 月 15 日，我们先到了宁国，在宁国玩到 7 月 17 日，再从宁国去黄山。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs14.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/ningguo-huangshan-2026/",
+          "isoDate": "2026-07-15",
+          "year": 2026,
+          "month": 7,
+          "timestamp": 1784073600000
+        },
+        {
+          "id": "year-post-12",
+          "source": "post",
+          "type": "travel",
+          "scene": "fuzhou",
+          "badge": "旅行回忆",
+          "title": "福州小记",
+          "summary": "2026 年 6 月 17 日，我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去了长乐看海，吃了很多美食，也拍下很多好看的照片。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/fuzhou-2026/",
+          "isoDate": "2026-06-17",
+          "year": 2026,
+          "month": 6,
+          "timestamp": 1781706000000
+        },
+        {
+          "id": "fuzhou-reunion",
+          "source": "manual",
+          "type": "travel",
+          "scene": "fuzhou",
+          "badge": "母校与海",
+          "title": "在福州见面，去福师大和长乐看海",
+          "summary": "我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去长乐看海。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/fuzhou-2026/",
+          "isoDate": "2026-06-17",
+          "year": 2026,
+          "month": 6,
+          "timestamp": 1781654400000
+        },
+        {
+          "id": "year-post-1",
+          "source": "post",
+          "type": "travel",
+          "scene": "shaoxing",
+          "badge": "旅行回忆",
+          "title": "五一绍兴游记",
+          "summary": "五一假期和你一起漫步绍兴，在青石板路上感受江南水乡的温婉与诗意，把每一个小瞬间都写成我们的故事。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/sx1/sx_2.jpg?x-oss-process=image/format,webp",
+          "url": "/2026/05/05/%E4%BA%94%E4%B8%80%E7%BB%8D%E5%85%B4%E6%B8%B8%E8%AE%B0/",
+          "isoDate": "2026-05-05",
+          "year": 2026,
+          "month": 5,
+          "timestamp": 1777953600000
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "title": "2025 年回顾",
+      "totalCount": 1,
+      "articleCount": 0,
+      "manualCount": 1,
+      "travelCount": 0,
+      "festivalCount": 0,
+      "letterCount": 0,
+      "primaryScene": {
+        "key": "jingdezhen",
+        "label": "景德镇",
+        "accent": "#7eb6ff",
+        "count": 1
+      },
+      "scenes": [
+        {
+          "key": "jingdezhen",
+          "label": "景德镇",
+          "accent": "#7eb6ff",
+          "count": 1
+        }
+      ],
+      "months": [
+        {
+          "month": 1,
+          "count": 0
+        },
+        {
+          "month": 2,
+          "count": 0
+        },
+        {
+          "month": 3,
+          "count": 0
+        },
+        {
+          "month": 4,
+          "count": 0
+        },
+        {
+          "month": 5,
+          "count": 0
+        },
+        {
+          "month": 6,
+          "count": 0
+        },
+        {
+          "month": 7,
+          "count": 0
+        },
+        {
+          "month": 8,
+          "count": 0
+        },
+        {
+          "month": 9,
+          "count": 0
+        },
+        {
+          "month": 10,
+          "count": 0
+        },
+        {
+          "month": 11,
+          "count": 0
+        },
+        {
+          "month": 12,
+          "count": 1
+        }
+      ],
+      "highlights": [
+        {
+          "id": "first-meeting",
+          "source": "manual",
+          "type": "milestone",
+          "scene": "jingdezhen",
+          "badge": "第一次见面",
+          "title": "第一次真正站到彼此身边",
+          "summary": "2025 年最后一天，我们在景德镇第一次真正见面，一起跨进 2026 年。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%90%88%E7%85%A7/%E5%90%88%E7%85%A7/jdz_hz_2.jpg?x-oss-process=image/format,webp",
+          "url": "/trips/jingdezhen-newyear/",
+          "isoDate": "2025-12-31",
+          "year": 2025,
+          "month": 12,
+          "timestamp": 1767139200000
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "title": "2022 年回顾",
+      "totalCount": 1,
+      "articleCount": 0,
+      "manualCount": 1,
+      "travelCount": 0,
+      "festivalCount": 0,
+      "letterCount": 0,
+      "primaryScene": {
+        "key": "daily",
+        "label": "日常",
+        "accent": "#85b7a6",
+        "count": 1
+      },
+      "scenes": [
+        {
+          "key": "daily",
+          "label": "日常",
+          "accent": "#85b7a6",
+          "count": 1
+        }
+      ],
+      "months": [
+        {
+          "month": 1,
+          "count": 0
+        },
+        {
+          "month": 2,
+          "count": 0
+        },
+        {
+          "month": 3,
+          "count": 0
+        },
+        {
+          "month": 4,
+          "count": 0
+        },
+        {
+          "month": 5,
+          "count": 0
+        },
+        {
+          "month": 6,
+          "count": 0
+        },
+        {
+          "month": 7,
+          "count": 0
+        },
+        {
+          "month": 8,
+          "count": 1
+        },
+        {
+          "month": 9,
+          "count": 0
+        },
+        {
+          "month": 10,
+          "count": 0
+        },
+        {
+          "month": 11,
+          "count": 0
+        },
+        {
+          "month": 12,
+          "count": 0
+        }
+      ],
+      "highlights": [
+        {
+          "id": "story-start",
+          "source": "manual",
+          "type": "milestone",
+          "scene": "daily",
+          "badge": "故事开始",
+          "title": "我们的故事开始了",
+          "summary": "2022 年 8 月 18 日，我们在 Yeetalk 相遇，后来的很多记录都从这一天开始。",
+          "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/yeetalk.png?x-oss-process=image/format,webp",
+          "url": "/2026/02/06/%E7%9B%B8%E9%81%87/",
+          "isoDate": "2022-08-18",
+          "year": 2022,
+          "month": 8,
+          "timestamp": 1660780800000
+        }
+      ]
+    }
+  ]
+}

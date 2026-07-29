@@ -1,0 +1,445 @@
+/* ===== Love Timeline ===== */
+.love-timeline-shell {
+    --timeline-accent: #e39aa9;
+    padding: 26px 24px 30px;
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at top right, rgba(255, 190, 201, 0.22), transparent 32%),
+        linear-gradient(145deg, rgba(255, 252, 253, 0.96), rgba(249, 245, 247, 0.94));
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    box-shadow: 0 18px 36px rgba(206, 145, 158, 0.12);
+}
+
+.love-timeline-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+    gap: 18px;
+    align-items: start;
+    margin-bottom: 22px;
+}
+
+.love-timeline-kicker,
+.memory-gacha-kicker,
+.love-special-day-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255, 158, 172, 0.12);
+    color: #b66073;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.love-timeline-title,
+.memory-gacha-title {
+    margin: 16px 0 12px;
+    color: #5b434c;
+    font-size: 2rem;
+    line-height: 1.25;
+}
+
+.love-timeline-desc,
+.memory-gacha-desc {
+    margin: 0;
+    color: #7f6972;
+    line-height: 1.85;
+}
+
+.love-timeline-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.love-timeline-stat,
+.memory-gacha-summary-card {
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.86);
+    box-shadow: 0 14px 28px rgba(206, 145, 158, 0.1);
+}
+
+.love-timeline-stat .value,
+.memory-gacha-summary-card strong {
+    display: block;
+    color: #5b434c;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.love-timeline-stat .label,
+.memory-gacha-summary-card span,
+.memory-gacha-summary-card small {
+    display: block;
+    color: #8d747d;
+}
+
+.love-timeline-toolbar {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.love-timeline-filter-group,
+.memory-gacha-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.love-timeline-filter,
+.memory-gacha-filter {
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 158, 172, 0.16);
+    background: rgba(255, 255, 255, 0.74);
+    color: #8f6170;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.love-timeline-filter.is-soft {
+    background: rgba(145, 190, 210, 0.1);
+}
+
+.love-timeline-filter.is-active,
+.memory-gacha-filter.is-active,
+.memory-gacha-trigger {
+    background: linear-gradient(135deg, #ff9eac, #ff7a92);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 12px 22px rgba(255, 122, 146, 0.18);
+}
+
+.love-timeline-filter:hover,
+.memory-gacha-filter:hover,
+.memory-gacha-trigger:hover,
+.love-timeline-action:hover,
+.memory-gacha-action:hover {
+    transform: translateY(-1px);
+}
+
+.love-timeline-list {
+    display: grid;
+    gap: 24px;
+}
+
+.love-timeline-year {
+    display: grid;
+    gap: 14px;
+}
+
+.love-timeline-year-label {
+    display: inline-flex;
+    width: fit-content;
+    min-height: 34px;
+    align-items: center;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(145, 190, 210, 0.12);
+    color: #6a7f92;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.love-timeline-year-list {
+    position: relative;
+    display: grid;
+    gap: 18px;
+    padding-left: 26px;
+}
+
+.love-timeline-year-list::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255, 158, 172, 0.6), rgba(145, 190, 210, 0.5));
+}
+
+.love-timeline-card {
+    position: relative;
+    display: grid;
+    gap: 10px;
+}
+
+.love-timeline-dot {
+    position: absolute;
+    left: -22px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--timeline-accent);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.94);
+}
+
+.love-timeline-date {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    color: #8f717b;
+    font-size: 0.92rem;
+}
+
+.love-timeline-card-main {
+    display: grid;
+    grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    box-shadow: 0 14px 28px rgba(206, 145, 158, 0.1);
+}
+
+.love-timeline-cover {
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 148px;
+    background: linear-gradient(135deg, rgba(255, 186, 198, 0.24), rgba(145, 190, 210, 0.18));
+}
+
+.love-timeline-cover img,
+.memory-gacha-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.love-timeline-content,
+.memory-gacha-content {
+    min-width: 0;
+}
+
+.love-timeline-tags,
+.memory-gacha-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.love-timeline-badge,
+.love-timeline-tag,
+.memory-gacha-badge,
+.memory-gacha-tags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 158, 172, 0.1);
+    color: #ab6171;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.love-timeline-card-title,
+.memory-gacha-result-title {
+    margin: 14px 0 10px;
+    color: #5b434c;
+    font-size: 1.22rem;
+    line-height: 1.45;
+}
+
+.love-timeline-card-summary,
+.memory-gacha-result-summary {
+    margin: 0;
+    color: #7f6972;
+    line-height: 1.85;
+}
+
+.love-timeline-actions,
+.memory-gacha-actions,
+.memory-gacha-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.love-timeline-action,
+.memory-gacha-action,
+.memory-gacha-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    text-decoration: none !important;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.love-timeline-action,
+.memory-gacha-action {
+    background: rgba(255, 158, 172, 0.12);
+    color: #9c6170 !important;
+}
+
+.love-timeline-action.is-ghost,
+.memory-gacha-action.is-ghost,
+.memory-gacha-trigger.is-ghost {
+    background: rgba(255, 255, 255, 0.72);
+    color: #8f6170 !important;
+    box-shadow: none;
+}
+
+.love-timeline-empty,
+.memory-gacha-placeholder,
+.memory-gacha-empty {
+    padding: 24px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    color: #7f6972;
+}
+
+/* ===== Memory Gacha ===== */
+.memory-gacha-shell {
+    padding: 26px 24px 30px;
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at top right, rgba(255, 197, 178, 0.24), transparent 34%),
+        linear-gradient(145deg, rgba(255, 252, 253, 0.96), rgba(250, 246, 248, 0.94));
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    box-shadow: 0 18px 36px rgba(206, 145, 158, 0.12);
+}
+
+.memory-gacha-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(230px, 0.8fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.memory-gacha-toolbar {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.memory-gacha-trigger {
+    border: none;
+}
+
+.memory-gacha-result.is-drawing {
+    opacity: 0.68;
+    transform: scale(0.99);
+}
+
+.memory-gacha-result-card {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.84);
+    box-shadow: 0 14px 28px rgba(206, 145, 158, 0.1);
+}
+
+.memory-gacha-cover {
+    overflow: hidden;
+    border-radius: 18px;
+    min-height: 220px;
+    background: linear-gradient(135deg, rgba(255, 186, 198, 0.24), rgba(145, 190, 210, 0.18));
+}
+
+.memory-gacha-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #8f717b;
+}
+
+.memory-gacha-action[data-gacha-favorite] {
+    border: 1px solid rgba(255, 158, 172, 0.18);
+    cursor: pointer;
+    font: inherit;
+}
+
+.memory-gacha-history {
+    margin-top: 18px;
+}
+
+.memory-gacha-history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: #7f6972;
+}
+
+.memory-gacha-history-head span {
+    color: #c06a7c;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.memory-gacha-history-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.memory-gacha-history-item {
+    display: flex;
+    min-height: 96px;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    color: #5b434c !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memory-gacha-history-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(206, 145, 158, 0.12);
+}
+
+.memory-gacha-history-item span {
+    color: #bd6577;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.memory-gacha-history-item strong {
+    line-height: 1.45;
+}
+
+[data-theme="dark"] .memory-gacha-history-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f4dce3 !important;
+}
+
+@media (max-width: 900px) {
+    .memory-gacha-history-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .memory-gacha-history-list {
+        grid-template-columns: 1fr;
+    }
+}

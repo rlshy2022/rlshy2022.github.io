@@ -86,6 +86,8 @@
 
   document.addEventListener("DOMContentLoaded", bootComponents);
   document.addEventListener("pjax:complete", bootComponents);
+  window.addEventListener("hexo-blog-decrypt", () => {
+    setTimeout(bootComponents, 60);
+  });
 })();
-
 

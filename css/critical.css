@@ -1,3 +1,25 @@
+@font-face {
+    font-family: 'Nunito';
+    src:
+        local('Aptos'),
+        local('Segoe UI'),
+        local('PingFang SC'),
+        local('Hiragino Sans GB'),
+        local('Microsoft YaHei');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ZCOOL KuaiLe';
+    src:
+        local('华文楷体'),
+        local('STKaiti'),
+        local('KaiTi'),
+        local('楷体'),
+        local('LXGW WenKai');
+    font-display: swap;
+}
+
 /* ========================
    Critical CSS - 首屏关键样式
    内联到HTML <head>中，减少渲染阻塞

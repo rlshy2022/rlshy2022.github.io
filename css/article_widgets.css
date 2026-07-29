@@ -1,0 +1,125 @@
+/* 视频播放状态浮标 */
+#love-video-now-playing {
+    position: fixed;
+    right: 16px;
+    bottom: 90px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 0.85rem;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 999;
+}
+
+#love-video-now-playing.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+/* === 聊天对话框样式 === */
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Nunito', sans-serif;
+}
+.chat-item {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+.chat-item.left { flex-direction: row; }
+.chat-item.right { flex-direction: row-reverse; }
+
+.chat-avatar img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.chat-content {
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 1.5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+/* 怡怡说的话 (左边-白色) */
+.left .chat-content {
+    margin-left: 15px;
+    background-image: linear-gradient(135deg, #ffffff, #fdf2ff);
+    color: #333;
+}
+.left .chat-content::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 15px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fff;
+}
+/* 欢欢说的话 (右边-粉色) */
+.right .chat-content {
+    margin-right: 15px;
+    background-image: linear-gradient(135deg, #FF9EAC, #FF7E93);
+    color: #fff;
+}
+.right .chat-content::before {
+    content: '';
+    position: absolute;
+    right: -8px; top: 15px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #FF9EAC;
+}
+
+/* === 时间轴组件样式 === */
+.love-timeline {
+    position: relative;
+    margin: 30px auto;
+    padding-left: 20px;
+    border-left: 3px solid rgba(255, 158, 172, 0.5);
+}
+
+.love-timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.love-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -11px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FF9EAC;
+    box-shadow: 0 0 0 3px rgba(255, 158, 172, 0.3);
+}
+
+.love-timeline-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 4px;
+}
+
+.love-timeline-content {
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 240, 245, 0.96));
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}

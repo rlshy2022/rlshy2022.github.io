@@ -1,0 +1,952 @@
+/* Site clarity layer: compact spacing, readable hierarchy, restrained decoration. */
+
+:root {
+  --clarity-bg: #f7f4f6;
+  --clarity-surface: #ffffff;
+  --clarity-subtle: #f5f8fa;
+  --clarity-border: rgba(42, 49, 56, 0.1);
+  --clarity-border-strong: rgba(42, 49, 56, 0.16);
+  --clarity-text: #30373d;
+  --clarity-muted: #66737d;
+  --clarity-accent: #c75e73;
+  --clarity-blue: #527f9c;
+  --clarity-green: #527f68;
+  --clarity-radius: 8px;
+  --clarity-shadow: 0 10px 24px rgba(42, 49, 56, 0.08);
+  --clarity-shadow-soft: 0 4px 12px rgba(42, 49, 56, 0.06);
+
+  --memory-surface: #ffffff;
+  --memory-card: #ffffff;
+  --memory-border: rgba(42, 49, 56, 0.1);
+  --memory-shadow: 0 10px 24px rgba(42, 49, 56, 0.08);
+  --memory-text: #30373d;
+  --memory-muted: #66737d;
+}
+
+body {
+  background: linear-gradient(180deg, #fbf8fa 0%, #f4f8fa 100%) !important;
+  background-attachment: fixed !important;
+  color: var(--clarity-text);
+}
+
+* {
+  letter-spacing: 0 !important;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+#web_bg,
+#web_bg::before,
+#web_bg::after {
+  background: transparent !important;
+}
+
+.layout {
+  max-width: 1180px !important;
+}
+
+.layout #page,
+.layout #post,
+.card-widget,
+.recent-post-item {
+  border: 1px solid var(--clarity-border) !important;
+  border-radius: var(--clarity-radius) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: var(--clarity-shadow-soft) !important;
+}
+
+.card-widget {
+  padding: 18px 16px !important;
+}
+
+#page-header:not(.full_page),
+#page-header.not-home-page {
+  height: 260px !important;
+  min-height: 240px !important;
+}
+
+#page-header:not(.full_page)::before {
+  background: rgba(0, 0, 0, 0.28) !important;
+}
+
+#page-header #site-title,
+#page-header #page-title {
+  font-size: 2.5rem !important;
+  line-height: 1.18 !important;
+}
+
+#page-header #site-subtitle {
+  font-size: 1.08rem !important;
+  line-height: 1.55 !important;
+}
+
+#nav #site-name,
+#nav .nav-site-title {
+  display: inline-flex !important;
+  min-height: 40px !important;
+  align-items: center !important;
+}
+
+#content-inner > .home-story-hero,
+#content-inner > .home-memory-portal,
+#content-inner > .home-chapter-shelf,
+#content-inner > .home-memory-showcase {
+  margin-bottom: 18px !important;
+}
+
+.home-story-hero,
+.home-memory-portal,
+.home-chapter-card,
+.home-chapter-card.is-featured,
+.home-memory-card,
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell,
+.love-special-day-spotlight {
+  border: 1px solid var(--clarity-border) !important;
+  border-radius: var(--clarity-radius) !important;
+  background: var(--clarity-surface) !important;
+  box-shadow: var(--clarity-shadow) !important;
+  overflow: hidden;
+}
+
+.home-story-hero::before,
+.home-story-hero::after,
+.home-memory-portal::before,
+.memory-page-shell::before,
+.home-chapter-card::after,
+.home-memory-card::before,
+.love-special-day-spotlight::before {
+  display: none !important;
+}
+
+.home-story-hero {
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.8fr) !important;
+  gap: 16px !important;
+  padding: 22px !important;
+}
+
+.home-story-title,
+.home-memory-title,
+.home-chapter-title,
+.home-memory-portal-header h2,
+.memory-page-hero h2,
+.love-timeline-title,
+.memory-gacha-title,
+.memory-panel-head h3,
+.year-review-card h3 {
+  margin-top: 10px !important;
+  margin-bottom: 8px !important;
+  color: var(--clarity-text) !important;
+  font-family: "Nunito", "Microsoft YaHei", "PingFang SC", sans-serif !important;
+  font-size: 1.55rem !important;
+  line-height: 1.28 !important;
+}
+
+.memory-panel-head h3,
+.year-review-card h3,
+.memory-search-card h3,
+.passport-card h3,
+.future-letter-card h3,
+.memory-voice-card h3,
+.love-timeline-card-title,
+.home-memory-card-title,
+.home-chapter-card-title {
+  font-size: 1.08rem !important;
+  line-height: 1.42 !important;
+}
+
+.home-story-desc,
+.home-memory-subtitle,
+.home-chapter-subtitle,
+.home-memory-portal-header p,
+.memory-page-hero p,
+.love-timeline-desc,
+.memory-gacha-desc,
+.memory-panel-head p,
+.home-memory-summary,
+.home-chapter-card-desc,
+.memory-search-card p,
+.passport-card p,
+.future-letter-card p,
+.memory-voice-card p,
+.year-review-card p,
+.love-timeline-card-summary {
+  color: var(--clarity-muted) !important;
+  line-height: 1.65 !important;
+}
+
+.home-story-kicker,
+.home-memory-kicker,
+.home-chapter-kicker,
+.home-memory-portal-kicker,
+.memory-page-kicker,
+.memory-panel-kicker,
+.love-timeline-kicker,
+.memory-gacha-kicker,
+.home-memory-portal-badge,
+.home-chapter-badge,
+.memory-scene-card-badge,
+.memory-voice-badge,
+.love-timeline-badge,
+.love-timeline-tag,
+.year-review-card-kicker,
+.year-review-highlight-badge {
+  border-radius: var(--clarity-radius) !important;
+  background: var(--clarity-subtle) !important;
+  color: var(--clarity-muted) !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+}
+
+.home-story-link,
+.home-memory-random,
+.home-memory-link,
+.home-memory-toggle,
+.memory-chip,
+.memory-gacha-filter,
+.love-timeline-filter,
+.love-timeline-action,
+.memory-gacha-action,
+.memory-gacha-trigger,
+.memory-scene-card-actions a,
+.memory-search-actions a,
+.memory-action-btn,
+.passport-card-actions a,
+.timeline-scene-pill,
+.love-special-day-spotlight-link,
+.memory-panel-head a {
+  min-height: 40px !important;
+  align-items: center;
+  border-radius: var(--clarity-radius) !important;
+  box-shadow: none !important;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.home-story-link:not(.is-ghost),
+.home-memory-random,
+.memory-gacha-trigger,
+.love-timeline-filter.is-active,
+.memory-chip.is-active,
+.memory-gacha-filter.is-active {
+  background: #c75e73 !important;
+  color: #fff !important;
+  border-color: #c75e73 !important;
+}
+
+.home-story-link.is-ghost,
+.home-memory-link,
+.home-memory-toggle,
+.timeline-scene-pill,
+.memory-panel-head a {
+  background: #fff !important;
+  color: var(--clarity-text) !important;
+  border: 1px solid var(--clarity-border) !important;
+}
+
+.home-story-link:hover,
+.home-memory-random:hover,
+.home-memory-link:hover,
+.home-memory-toggle:hover,
+.home-chapter-card:hover,
+.home-memory-portal-card:hover,
+.memory-chip:hover,
+.love-timeline-filter:hover,
+.memory-gacha-filter:hover {
+  transform: none !important;
+}
+
+.home-story-next,
+.home-story-stat,
+.home-memory-portal-stats div,
+.memory-page-stats div,
+.memory-panel,
+.memory-hub-quick-link,
+.memory-hub-continue-card,
+.memory-hub-quest-card,
+.memory-graph-story,
+.memory-graph-scene,
+.memory-letter-preview,
+.memory-achievement,
+.memory-empty-state,
+.love-timeline-empty,
+.memory-gacha-empty,
+.memory-gacha-placeholder,
+.year-review-card,
+.year-review-month,
+.year-review-highlight,
+.memory-search-card,
+.passport-card,
+.future-letter-card,
+.memory-voice-card,
+.memory-gacha-result-card,
+.memory-gacha-history-item,
+.passport-highlight-item,
+.home-memory-continue,
+.home-memory-continue-card,
+.memory-today-item,
+.passport-highlight-item {
+  border: 1px solid var(--clarity-border) !important;
+  border-radius: var(--clarity-radius) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.home-story-stat,
+.home-memory-portal-stats div,
+.memory-page-stats div,
+.love-timeline-stat,
+.year-review-card-stats div,
+.memory-gacha-summary-card,
+.memory-play-progress-ring {
+  min-height: 72px;
+  padding: 12px !important;
+}
+
+.home-story-stat .value,
+.home-memory-portal-stats strong,
+.memory-page-stats strong,
+.love-timeline-stat .value,
+.year-review-card-stats strong,
+.memory-gacha-summary-card strong {
+  color: var(--clarity-accent) !important;
+  font-size: 1.35rem !important;
+}
+
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell {
+  margin: 18px 0 !important;
+  padding: 24px !important;
+}
+
+.home-memory-portal {
+  margin: 18px 0 !important;
+  padding: 24px !important;
+}
+
+.memory-page-hero,
+.home-memory-portal-header,
+.love-timeline-hero,
+.memory-gacha-hero {
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr) !important;
+  gap: 16px !important;
+  align-items: start !important;
+  margin-bottom: 16px !important;
+}
+
+.memory-page-stats,
+.home-memory-portal-stats,
+.love-timeline-stats,
+.year-review-card-stats {
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.memory-page-switcher,
+.home-memory-portal-switcher {
+  margin: 12px 0 0 !important;
+}
+
+.love-perspective-switch {
+  gap: 8px !important;
+}
+
+.love-perspective-switch-btn {
+  min-height: 40px !important;
+  padding: 6px 12px !important;
+  border-radius: var(--clarity-radius) !important;
+  box-shadow: none !important;
+}
+
+.memory-hub-quick-links {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 12px !important;
+  margin-top: 16px !important;
+}
+
+.memory-hub-quick-link {
+  padding: 14px !important;
+}
+
+.memory-hub-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.38fr) !important;
+  gap: 16px !important;
+  margin-top: 18px !important;
+}
+
+.memory-panel {
+  padding: 18px !important;
+}
+
+.memory-panel-head {
+  gap: 12px !important;
+  margin-bottom: 14px !important;
+}
+
+.memory-hub-journey-board,
+.travel-passport-route,
+.future-letter-grid,
+.year-review-stack {
+  gap: 14px !important;
+  margin-top: 16px !important;
+}
+
+.memory-scene-grid,
+.memory-voice-grid,
+.future-letter-grid,
+.year-review-highlights,
+.home-memory-portal-grid,
+.home-memory-portal-grid.is-six,
+.home-chapter-grid {
+  gap: 12px !important;
+}
+
+.home-memory-portal-grid.is-six {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.home-chapter-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.home-chapter-card,
+.home-chapter-card.is-featured {
+  grid-column: auto !important;
+  min-height: 160px !important;
+  padding: 16px !important;
+}
+
+.home-chapter-card::before {
+  height: 3px !important;
+  background: var(--chapter-accent, #c75e73) !important;
+}
+
+.home-chapter-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: var(--clarity-radius) !important;
+  box-shadow: none !important;
+}
+
+.home-memory-showcase-v2 .home-memory-card {
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1fr) !important;
+  gap: 18px !important;
+  padding: 18px !important;
+}
+
+.home-memory-showcase-v2 .home-memory-stage {
+  min-height: 280px !important;
+}
+
+.home-memory-showcase-v2 .home-memory-stack {
+  display: none !important;
+}
+
+.home-memory-showcase-v2 .home-memory-flipcard {
+  width: min(220px, 100%) !important;
+}
+
+.home-memory-showcase-v2 .home-memory-face,
+.home-memory-showcase-v2 .home-memory-face-front,
+.home-memory-showcase-v2 .home-memory-face-back,
+.home-memory-showcase-v2 .home-memory-face-back .home-memory-image {
+  border-radius: var(--clarity-radius) !important;
+  box-shadow: none !important;
+}
+
+.home-memory-showcase-v2 .home-memory-face-back .home-memory-image {
+  border: 0 !important;
+}
+
+.home-memory-continue {
+  margin-top: 16px !important;
+  padding: 16px !important;
+}
+
+.home-memory-continue-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+}
+
+.memory-search-input {
+  min-height: 44px;
+  border-radius: var(--clarity-radius) !important;
+  border: 1px solid var(--clarity-border-strong) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.memory-search-toolbar,
+.memory-search-toolbar.is-deep-search,
+.love-timeline-toolbar,
+.memory-gacha-toolbar {
+  gap: 12px !important;
+}
+
+.memory-search-results,
+.memory-search-summary {
+  margin-top: 14px !important;
+}
+
+.memory-search-summary-card {
+  border: 1px solid var(--clarity-border) !important;
+  border-radius: var(--clarity-radius) !important;
+  background: var(--clarity-subtle) !important;
+  box-shadow: none !important;
+}
+
+.memory-search-card,
+.passport-card {
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr) !important;
+}
+
+.memory-search-content,
+.passport-card-body,
+.future-letter-body,
+.memory-voice-card-body,
+.year-review-highlight-body {
+  padding: 16px !important;
+}
+
+.memory-search-cover,
+.passport-card-cover {
+  block-size: 200px !important;
+}
+
+.future-letter-cover-wrap,
+.memory-voice-cover,
+.year-review-highlight-cover {
+  block-size: 220px !important;
+}
+
+.memory-card-cover::before {
+  display: none !important;
+}
+
+.memory-scene-card {
+  padding: 16px !important;
+  border-top-width: 3px !important;
+}
+
+.passport-card-stamp {
+  right: 12px !important;
+  bottom: 12px !important;
+  padding: 7px 10px !important;
+  border-radius: var(--clarity-radius) !important;
+  font-size: 0.78rem !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+.future-letter-content,
+.future-letter-lock {
+  border-radius: var(--clarity-radius) !important;
+  background: var(--clarity-subtle) !important;
+}
+
+.love-timeline-list {
+  gap: 18px !important;
+}
+
+.love-timeline-year-list {
+  gap: 14px !important;
+  padding-left: 22px !important;
+}
+
+.love-timeline-card-main,
+.memory-gacha-result-card {
+  grid-template-columns: minmax(0, 170px) minmax(0, 1fr) !important;
+  gap: 14px !important;
+  padding: 14px !important;
+  border-radius: var(--clarity-radius) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.love-timeline-cover,
+.memory-gacha-cover {
+  min-height: 144px !important;
+  border-radius: var(--clarity-radius) !important;
+  background: var(--clarity-subtle) !important;
+}
+
+.timeline-scene-rail {
+  margin: 12px 0 16px !important;
+}
+
+.timeline-journey-board {
+  grid-template-columns: 1fr !important;
+}
+
+.timeline-journey-board .passport-story-loop {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+}
+
+.timeline-journey-board .memory-graph-story {
+  min-width: 0 !important;
+}
+
+.year-review-card {
+  padding: 18px !important;
+}
+
+.year-review-card-head {
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr) !important;
+  gap: 14px !important;
+}
+
+.year-review-month-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+
+.year-review-month {
+  padding: 10px 6px !important;
+}
+
+.year-review-highlights {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.memory-play-progress-ring {
+  width: 88px !important;
+  height: 88px !important;
+  background:
+    radial-gradient(circle at center, #fff 54%, transparent 55%),
+    conic-gradient(#c75e73, #527f9c, #527f68, #c75e73) !important;
+}
+
+.article-next-stop-float {
+  border-radius: var(--clarity-radius) !important;
+  box-shadow: var(--clarity-shadow) !important;
+}
+
+@media (max-width: 1100px) {
+  .memory-hub-grid,
+  .home-story-hero,
+  .home-memory-portal-header,
+  .memory-page-hero,
+  .love-timeline-hero,
+  .memory-gacha-hero,
+  .year-review-card-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-memory-portal-grid.is-six,
+  .home-chapter-grid,
+  .memory-scene-grid,
+  .future-letter-grid,
+  .memory-voice-grid,
+  .year-review-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll !important;
+  }
+
+  .layout {
+    padding: 0 12px !important;
+  }
+
+  .layout #page,
+  .layout #post {
+    padding: 16px !important;
+  }
+
+  #page-header:not(.full_page),
+  #page-header.not-home-page {
+    height: 170px !important;
+    min-height: 170px !important;
+  }
+
+  #page-header #site-title,
+  #page-header #page-title {
+    font-size: 1.75rem !important;
+    line-height: 1.22 !important;
+  }
+
+  #page-header #site-subtitle {
+    font-size: 0.96rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .card-widget {
+    padding: 14px !important;
+  }
+
+  .home-story-hero,
+  .home-memory-portal,
+  .memory-page-shell,
+  .love-timeline-shell,
+  .memory-gacha-shell,
+  .love-special-day-spotlight {
+    margin: 14px 0 !important;
+    padding: 16px !important;
+  }
+
+  .home-story-hero,
+  .home-memory-card,
+  .home-memory-showcase-v2 .home-memory-card,
+  .memory-search-card,
+  .passport-card,
+  .love-timeline-card-main,
+  .memory-gacha-result-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-story-desc,
+  .home-memory-subtitle,
+  .home-chapter-subtitle,
+  .home-memory-portal-header p,
+  .memory-page-hero p,
+  .love-timeline-desc,
+  .memory-gacha-desc,
+  .memory-panel-head p,
+  .home-memory-cover-note {
+    display: none !important;
+  }
+
+  .home-story-title,
+  .home-memory-title,
+  .home-chapter-title,
+  .home-memory-portal-header h2,
+  .memory-page-hero h2,
+  .love-timeline-title,
+  .memory-gacha-title {
+    font-size: 1.28rem !important;
+  }
+
+  .memory-panel-head h3,
+  .year-review-card h3,
+  .memory-search-card h3,
+  .passport-card h3,
+  .future-letter-card h3,
+  .memory-voice-card h3,
+  .love-timeline-card-title,
+  .home-memory-card-title,
+  .home-chapter-card-title {
+    font-size: 1rem !important;
+  }
+
+  .home-story-side,
+  .memory-page-stats,
+  .home-memory-portal-stats,
+  .love-timeline-stats,
+  .year-review-card-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .home-story-stat,
+  .home-memory-portal-stats div,
+  .memory-page-stats div,
+  .love-timeline-stat,
+  .year-review-card-stats div,
+  .memory-gacha-summary-card {
+    min-height: 58px !important;
+    padding: 9px !important;
+  }
+
+  .home-story-stat .value,
+  .home-memory-portal-stats strong,
+  .memory-page-stats strong,
+  .love-timeline-stat .value,
+  .year-review-card-stats strong,
+  .memory-gacha-summary-card strong {
+    font-size: 1.12rem !important;
+  }
+
+  .home-story-actions,
+  .home-memory-actions,
+  .home-memory-showcase-v2 .home-memory-actions {
+    flex-direction: row !important;
+    align-items: stretch !important;
+  }
+
+  .home-story-link,
+  .home-memory-random,
+  .home-memory-link,
+  .home-memory-toggle,
+  .home-memory-showcase-v2 .home-memory-random,
+  .home-memory-showcase-v2 .home-memory-toggle,
+  .home-memory-showcase-v2 .home-memory-link {
+    width: auto !important;
+    flex: 1 1 130px;
+    justify-content: center;
+  }
+
+  .home-memory-portal-grid.is-six,
+  .home-chapter-grid,
+  .memory-scene-grid,
+  .future-letter-grid,
+  .memory-voice-grid,
+  .year-review-highlights {
+    grid-template-columns: 1fr !important;
+  }
+
+  .home-chapter-card,
+  .home-chapter-card.is-featured,
+  .home-memory-portal-card {
+    min-height: auto !important;
+    padding: 14px !important;
+  }
+
+  .home-memory-showcase-v2 .home-memory-stage {
+    min-height: 220px !important;
+    padding: 0 !important;
+  }
+
+  .home-memory-showcase-v2 .home-memory-flipcard {
+    width: min(190px, 100%) !important;
+  }
+
+  .home-memory-showcase-v2 .home-memory-face-front {
+    padding: 16px !important;
+  }
+
+  .home-memory-showcase-v2 .home-memory-face-back {
+    padding: 8px !important;
+  }
+
+  .home-memory-continue-grid,
+  .memory-hub-quick-links,
+  .memory-hub-grid,
+  .year-review-card-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-hub-journey-board {
+    display: none !important;
+  }
+
+  .memory-panel {
+    padding: 14px !important;
+  }
+
+  .memory-panel-head {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  .memory-panel-head a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .memory-search-cover,
+  .passport-card-cover,
+  .future-letter-cover-wrap,
+  .memory-voice-cover,
+  .year-review-highlight-cover {
+    block-size: 180px !important;
+  }
+
+  .memory-search-actions,
+  .passport-card-actions,
+  .love-timeline-actions,
+  .memory-gacha-actions,
+  .memory-gacha-buttons {
+    gap: 8px !important;
+  }
+
+  .memory-chip,
+  .memory-gacha-filter,
+  .love-timeline-filter {
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 8px 10px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .love-timeline-year-list {
+    padding-left: 0 !important;
+  }
+
+  .love-timeline-year-list::before,
+  .love-timeline-dot {
+    display: none !important;
+  }
+
+  .year-review-month-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .year-review-card {
+    padding: 14px !important;
+  }
+
+  .future-letter-content {
+    padding: 14px !important;
+  }
+
+  #rightside {
+    display: none !important;
+  }
+
+  .article-next-stop-float {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-theme="dark"] {
+  --clarity-bg: #171b20;
+  --clarity-surface: #20262d;
+  --clarity-subtle: #252d35;
+  --clarity-border: rgba(255, 255, 255, 0.1);
+  --clarity-border-strong: rgba(255, 255, 255, 0.16);
+  --clarity-text: #edf1f4;
+  --clarity-muted: #b7c1c9;
+  --clarity-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  --clarity-shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.18);
+
+  --memory-surface: #20262d;
+  --memory-card: #20262d;
+  --memory-border: rgba(255, 255, 255, 0.1);
+  --memory-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  --memory-text: #edf1f4;
+  --memory-muted: #b7c1c9;
+}
+
+[data-theme="dark"] body {
+  background: #171b20 !important;
+}
+
+[data-theme="dark"] .layout #page,
+[data-theme="dark"] .layout #post,
+[data-theme="dark"] .card-widget,
+[data-theme="dark"] .recent-post-item,
+[data-theme="dark"] .home-story-hero,
+[data-theme="dark"] .home-memory-portal,
+[data-theme="dark"] .home-chapter-card,
+[data-theme="dark"] .home-chapter-card.is-featured,
+[data-theme="dark"] .home-memory-card,
+[data-theme="dark"] .memory-page-shell,
+[data-theme="dark"] .love-timeline-shell,
+[data-theme="dark"] .memory-gacha-shell,
+[data-theme="dark"] .memory-panel,
+[data-theme="dark"] .memory-search-card,
+[data-theme="dark"] .passport-card,
+[data-theme="dark"] .future-letter-card,
+[data-theme="dark"] .memory-voice-card,
+[data-theme="dark"] .year-review-card,
+[data-theme="dark"] .love-timeline-card-main {
+  background: var(--clarity-surface) !important;
+  border-color: var(--clarity-border) !important;
+  color: var(--clarity-text) !important;
+}

@@ -1,0 +1,177 @@
+/* ===== Special Day ===== */
+.love-special-day-banner {
+    position: relative;
+    z-index: 20;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(230, 138, 162, 0.92), rgba(255, 184, 126, 0.92));
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(198, 106, 129, 0.18);
+}
+
+.love-special-day-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 0.92rem;
+}
+
+.love-special-day-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 800;
+}
+
+.love-special-day-active .home-story-hero,
+.love-special-day-active .home-today-memory,
+.love-special-day-active .love-timeline-shell,
+.love-special-day-active .memory-gacha-shell {
+    box-shadow: 0 22px 40px rgba(230, 138, 162, 0.16);
+}
+
+.love-special-day-active .home-story-link,
+.love-special-day-active .home-today-memory-side-link,
+.love-special-day-active .memory-gacha-trigger,
+.love-special-day-active .love-timeline-action {
+    box-shadow: 0 14px 24px rgba(230, 138, 162, 0.18);
+}
+
+.love-special-day-chip {
+    margin-bottom: 14px;
+}
+
+.love-special-day-toast {
+    position: fixed;
+    right: 22px;
+    bottom: 24px;
+    z-index: 9999;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    max-width: min(360px, calc(100vw - 32px));
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(42, 29, 35, 0.92);
+    color: #fff;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(16px);
+    opacity: 0;
+    transition: transform 0.24s ease, opacity 0.24s ease;
+}
+
+.love-special-day-toast.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+[data-theme="dark"] .home-today-memory-item-link,
+[data-theme="dark"] .love-timeline-shell,
+[data-theme="dark"] .memory-gacha-shell,
+[data-theme="dark"] .love-timeline-card-main,
+[data-theme="dark"] .love-timeline-stat,
+[data-theme="dark"] .memory-gacha-summary-card,
+[data-theme="dark"] .memory-gacha-result-card,
+[data-theme="dark"] .love-timeline-empty,
+[data-theme="dark"] .memory-gacha-placeholder,
+[data-theme="dark"] .memory-gacha-empty {
+    background:
+        radial-gradient(circle at top right, rgba(197, 110, 126, 0.12), transparent 34%),
+        linear-gradient(145deg, rgba(28, 31, 43, 0.96), rgba(22, 24, 34, 0.94));
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #d7c4cb;
+}
+
+[data-theme="dark"] .love-timeline-title,
+[data-theme="dark"] .memory-gacha-title,
+[data-theme="dark"] .love-timeline-card-title,
+[data-theme="dark"] .memory-gacha-result-title,
+[data-theme="dark"] .love-timeline-stat .value,
+[data-theme="dark"] .memory-gacha-summary-card strong {
+    color: #f4dce3;
+}
+
+[data-theme="dark"] .love-timeline-desc,
+[data-theme="dark"] .memory-gacha-desc,
+[data-theme="dark"] .love-timeline-card-summary,
+[data-theme="dark"] .memory-gacha-result-summary,
+[data-theme="dark"] .love-timeline-stat .label,
+[data-theme="dark"] .memory-gacha-summary-card span,
+[data-theme="dark"] .memory-gacha-summary-card small,
+[data-theme="dark"] .love-timeline-date {
+    color: #d1bcc4;
+}
+
+[data-theme="dark"] .love-timeline-badge,
+[data-theme="dark"] .love-timeline-tag,
+[data-theme="dark"] .memory-gacha-badge,
+[data-theme="dark"] .memory-gacha-tags span,
+[data-theme="dark"] .love-timeline-filter,
+[data-theme="dark"] .memory-gacha-filter,
+[data-theme="dark"] .home-today-memory-item-link {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffd7df !important;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+@media screen and (max-width: 900px) {
+    .love-timeline-hero,
+    .memory-gacha-hero,
+    .memory-gacha-result-card {
+        grid-template-columns: 1fr;
+    }
+
+    .love-timeline-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .love-timeline-card-main {
+        grid-template-columns: 1fr;
+    }
+
+    .love-timeline-cover,
+    .memory-gacha-cover {
+        min-height: 200px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .love-timeline-shell,
+    .memory-gacha-shell {
+        padding: 22px 16px 24px;
+        border-radius: 24px;
+    }
+
+    .love-timeline-title,
+    .memory-gacha-title {
+        font-size: 1.6rem;
+    }
+
+    .love-timeline-year-list {
+        padding-left: 22px;
+    }
+
+    .love-timeline-dot {
+        left: -18px;
+    }
+
+    .love-special-day-banner {
+        padding: 10px 12px;
+    }
+
+    .love-special-day-banner-inner,
+    .memory-gacha-buttons {
+        justify-content: stretch;
+    }
+
+    .memory-gacha-trigger,
+    .memory-gacha-action,
+    .love-timeline-action {
+        width: 100%;
+    }
+}

@@ -31,6 +31,18 @@
 
   const pad = (n) => (n < 10 ? `0${n}` : n);
 
+  const ensureAudioSource = (audio) => {
+    if (!audio || audio.dataset.loaded === "1") return;
+
+    const src = audio.dataset.src;
+    if (src && !audio.getAttribute("src")) {
+      audio.setAttribute("src", src);
+      audio.load();
+    }
+
+    audio.dataset.loaded = "1";
+  };
+
   const runWhenIdle = (fn) => {
     if (window.requestIdleCallback) {
       window.requestIdleCallback(fn, { timeout: 1500 });
@@ -46,6 +58,7 @@
   const updateMusicState = (isPlaying) => {
     const disc = document.getElementById('music-disc');
     const icon = document.getElementById('play-icon');
+    const musicBtn = document.querySelector('.love-music-player .music-btn');
     
     if (isPlaying) {
       if (disc) disc.classList.add('music-playing');
@@ -54,6 +67,9 @@
       if (disc) disc.classList.remove('music-playing');
       if (icon) icon.className = 'fas fa-play';
     }
+    if (musicBtn) {
+      musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+    }
   };
 
   window.toggleMusic = function() {
@@ -61,45 +77,11 @@
     if (!audio) return;
 
     if (audio.paused) {
-      // 手动点击播放
-      audio.play().then(() => updateMusicState(true)).catch(console.error);
+      ensureAudioSource(audio);
+      audio.play().then(() => updateMusicState(true)).catch(() => updateMusicState(false));
     } else {
       audio.pause();
       updateMusicState(false);
-    }
-  };
-
-  const tryAutoPlay = () => {
-    const audio = document.getElementById('love-audio');
-    if (!audio) return;
-
-    // 1. 尝试直接播放
-    const playPromise = audio.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          updateMusicState(true); // 成功播放
-        })
-        .catch((e) => {
-          console.log("自动播放被拦截，等待交互唤醒");
-          updateMusicState(false);
-          
-          // 2. 添加一次性全局监听 (点击/触摸/滑动任意位置即播放)
-          const forcePlay = () => {
-            audio.play().then(() => {
-              updateMusicState(true);
-              // 移除监听器，避免重复触发
-              document.removeEventListener('click', forcePlay);
-              document.removeEventListener('touchstart', forcePlay);
-              document.removeEventListener('scroll', forcePlay);
-            }).catch(e => console.log("交互唤醒仍失败", e));
-          };
-
-          document.addEventListener('click', forcePlay);
-          document.addEventListener('touchstart', forcePlay);
-          document.addEventListener('scroll', forcePlay);
-        });
     }
   };
 
@@ -131,6 +113,7 @@
   const updateUI = () => {
     const titleElem = document.querySelector('.card-announcement .item-headline span');
     const iconElem = document.querySelector('.card-announcement .item-headline i');
+    const audio = document.getElementById("love-audio");
     
     if (titleElem) titleElem.innerText = '爱的开始';
     if (iconElem) {
@@ -142,8 +125,7 @@
     document.removeEventListener('click', handleSurpriseClick);
     document.addEventListener('click', handleSurpriseClick);
 
-    // 尝试播放音乐
-    tryAutoPlay();
+    updateMusicState(!!(audio && !audio.paused && !audio.ended));
   };
 
   // -----------------------------------
@@ -190,21 +172,21 @@
     updateTimer();
     window.loveTimerInterval = setInterval(updateTimer, CONFIG.refreshInterval);
 
-    // 音乐按钮可访问性与键盘支持
+    // 音乐按钮事件绑定
+    const audio = document.getElementById("love-audio");
     const musicBtn = document.querySelector('.love-music-player .music-btn');
     if (musicBtn && !musicBtn.dataset.bound) {
-      musicBtn.setAttribute('tabindex', '0');
-      musicBtn.setAttribute('role', 'button');
-      musicBtn.setAttribute('aria-label', '播放或暂停我们的爱情歌曲');
-
-      musicBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          window.toggleMusic && window.toggleMusic();
-        }
+      musicBtn.addEventListener('click', () => {
+        window.toggleMusic && window.toggleMusic();
       });
 
       musicBtn.dataset.bound = '1';
+    }
+    if (audio && !audio.dataset.uiBound) {
+      audio.addEventListener("play", () => updateMusicState(true));
+      audio.addEventListener("pause", () => updateMusicState(false));
+      audio.addEventListener("ended", () => updateMusicState(false));
+      audio.dataset.uiBound = "1";
     }
 
     // 计时器区域的无障碍属性
@@ -250,27 +232,6 @@
     });
   });
 
-  // -----------------------------------
-  // 6. 控制台彩蛋 (Console Love Letter)
-  // -----------------------------------
-  runWhenIdle(function () {
-  try {
-      // 本地调试时减少控制台噪音
-      if (location && (location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
-        return;
-      }
-      const styleTitle =
-        'font-size: 40px; font-weight: bold; color: #FF9EAC; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); font-family: "ZCOOL KuaiLe";';
-      const styleBody =
-        'font-size: 16px; color: #89C3EB; margin-top: 10px;';
-    
-      console.log("%c 欢欢 ❤️ 怡怡", styleTitle);
-      console.log("%c 我们的故事，写在代码里，更刻在心里。", styleBody);
-  } catch (e) {}
-  });
-
-
-
   (function() {
 
   const handleHoverQuotes = () => {
@@ -282,9 +243,12 @@
     if (!targets.length || !titleElem) return;
 
     // 记录原始标题，以便鼠标离开时恢复
-    const originalTitle = titleElem.innerText;
+    const originalTitle = titleElem.dataset.originalTitle || titleElem.innerText;
+    titleElem.dataset.originalTitle = originalTitle;
 
     targets.forEach(target => {
+      if (target.dataset.hoverQuoteBound === '1') return;
+
       // 鼠标移入：随机换一句情话
       target.addEventListener('mouseenter', () => {
         const randomQuote = LOVE_QUOTES[Math.floor(Math.random() * LOVE_QUOTES.length)];
@@ -307,6 +271,8 @@
           titleElem.style.opacity = '1';
         }, 150);
       });
+
+      target.dataset.hoverQuoteBound = '1';
     });
   };
 

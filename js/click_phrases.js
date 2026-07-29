@@ -1,105 +1,6 @@
 (function () {
   // 1. 主题与全局配置
-  const THEMES = {
-    // 梦幻粉色：当前默认风格
-    pink_dream: {
-      id: "pink_dream",
-      displayName: "粉色恋爱",
-      phrases: [
-        "爱你 ❤️",
-        "想你 ✨",
-        "么么哒 🌸",
-        "执子之手 🤝",
-        "欢欢 ❤️ 怡怡",
-        "始终如一",
-        "咱俩天下第一好",
-        "小窝最暖"
-      ],
-      particles: ["💗", "✨", "💖", "💫", "⭐", "🌸", "💕", "💞"],
-      baseDistance: 85,
-      baseDuration: 730,
-      pathStyle: "mixed", // 直上 + 弧线 + 少量绕圈
-      gradients: {
-        light: "linear-gradient(180deg, rgba(255,255,255,0.95), #FFD1DC)",
-        dark: "linear-gradient(180deg, #D81B60, #880E4F)",
-        textShadowLight: "0 0 6px rgba(0,0,0,0.35)",
-        textShadowDark: "0 0 6px rgba(255,255,255,0.55)"
-      },
-      particleCount: 7,
-      // 整体皮肤（全站配色与背景）
-      skin: {
-        primary: "#FF9EAC",
-        secondary: "#89C3EB",
-        bodyBg:
-          "linear-gradient(135deg, #a18cd1 0%, #fbc2eb 30%, #fdf2ff 100%)",
-        metaThemeColor: "#FF9EAC"
-      }
-    },
-    // 星光夜空：偏蓝紫 + 绕圈轨迹
-    star_night: {
-      id: "star_night",
-      displayName: "星光夜空",
-      phrases: [
-        "陪你看星星 ✨",
-        "今晚的月亮为你亮",
-        "你是我的小星星 ⭐",
-        "星河滚烫，你是人间理想",
-        "夜空下的约定 🌙",
-        "银河为你铺路",
-        "抬头总能看到你"
-      ],
-      particles: ["✨", "⭐", "🌙", "💫", "🌌"],
-      baseDistance: 110,
-      baseDuration: 900,
-      pathStyle: "orbit", // 更偏向绕圈旋转
-      gradients: {
-        light: "linear-gradient(180deg, #5C6BC0, #1E88E5)",
-        dark: "linear-gradient(180deg, #BBDEFB, #E3F2FD)",
-        textShadowLight: "0 0 6px rgba(0,0,0,0.45)",
-        textShadowDark: "0 0 8px rgba(0,0,0,0.7)"
-      },
-      particleCount: 6,
-      skin: {
-        primary: "#5C6BC0",
-        secondary: "#90CAF9",
-        bodyBg:
-          "linear-gradient(135deg, #050816 0%, #0b1120 40%, #020617 100%)",
-        metaThemeColor: "#0b1120"
-      }
-    },
-    // 元气早晨：清爽橙黄 + 波浪轨迹
-    sunny_morning: {
-      id: "sunny_morning",
-      displayName: "元气早晨",
-      phrases: [
-        "早安呀 ☀️",
-        "今天也要开心",
-        "元气满满 💪",
-        "多喝热水呀",
-        "阳光正好 🌈",
-        "出门记得戴口罩",
-        "拥抱新的一天"
-      ],
-      particles: ["☀️", "✨", "🌈", "🍊", "🌻"],
-      baseDistance: 75,
-      baseDuration: 650,
-      pathStyle: "wave", // 左右摆动更明显
-      gradients: {
-        light: "linear-gradient(180deg, #FFB74D, #FF9800)",
-        dark: "linear-gradient(180deg, #FFF8E1, #FFE082)",
-        textShadowLight: "0 0 5px rgba(255,255,255,0.5)",
-        textShadowDark: "0 0 7px rgba(0,0,0,0.5)"
-      },
-      particleCount: 5,
-      skin: {
-        primary: "#FFB74D",
-        secondary: "#FFCC80",
-        bodyBg:
-          "linear-gradient(135deg, #FFFDE7 0%, #FFF3E0 45%, #FFE0B2 100%)",
-        metaThemeColor: "#FFB74D"
-      }
-    }
-  };
+  const THEMES = window.CLICK_PHRASE_THEMES || {};
 
   const DEFAULT_THEME_KEY = "pink_dream";
 
@@ -109,10 +10,27 @@
   const THROTTLE_MS = 80;       // 触发节流（ms）
   const PARTICLE_COUNT_DEFAULT = 7; // 每次点击生成的粒子数量默认值
   const SOUND_STORAGE_KEY = "clickPhraseSoundEnabled";
+  const THEME_STORAGE_KEY = "clickPhraseTheme";
   const THEME_BUTTON_SELECTOR = ".click-theme-btn";
+  const IGNORE_EFFECT_SELECTOR =
+    ".click-phrase-sound-toggle, .click-theme-btn, .music-btn, .love-anniv-link";
 
   let currentThemeKey = null;
   let activeTheme = null;
+
+  /** @returns {typeof THEMES[keyof typeof THEMES]} 当前生效主题 */
+  function getActiveTheme() {
+    return activeTheme || THEMES[DEFAULT_THEME_KEY];
+  }
+
+  /** 用户是否开启了“减少动效” */
+  function prefersReducedMotion() {
+    try {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    } catch (e) {
+      return false;
+    }
+  }
   let lastEffectTime = 0;
   let lastTapTime = 0;
   let tapTimeoutId = null;
@@ -120,6 +38,10 @@
   let pointerDownPosition = null;
   let soundEnabled = true;
   let audioContext = null;
+
+  function shouldIgnoreEffectTarget(target) {
+    return !!(target && target.closest && target.closest(IGNORE_EFFECT_SELECTOR));
+  }
 
   // 解析 rgb/rgba 字符串
   function parseRGB(colorString) {
@@ -162,13 +84,6 @@
     }
   }
 
-  // 主题相关：随机选一个主题 key
-  function pickRandomThemeKey() {
-    const keys = Object.keys(THEMES);
-    if (!keys.length) return DEFAULT_THEME_KEY;
-    return keys[Math.floor(Math.random() * keys.length)];
-  }
-
   // 应用整站皮肤（全局颜色与背景）
   function applySkinForTheme(theme) {
     if (!theme || !theme.skin) return;
@@ -208,8 +123,22 @@
     currentThemeKey = theme.id;
     activeTheme = theme;
     applySkinForTheme(theme);
-    // 同步右侧卡片中的按钮高亮
+
+    const root = document.documentElement;
+    if (root) {
+      // 先清空扩展主题 class
+      root.classList.remove("theme-spring-festival", "theme-sci-fi");
+      if (theme.id === "spring_festival") {
+        root.classList.add("theme-spring-festival");
+      } else if (theme.id === "sci_fi_neon") {
+        root.classList.add("theme-sci-fi");
+      }
+    }
+
     syncThemeButtons();
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, currentThemeKey);
+    } catch (e) { /* ignore */ }
   }
 
   function syncThemeButtons() {
@@ -233,9 +162,31 @@
     applyTheme(themeKey);
   }
 
+  function bindThemeButtons() {
+    const buttons = document.querySelectorAll(THEME_BUTTON_SELECTOR);
+    if (!buttons.length) return;
+
+    buttons.forEach(function (btn) {
+      if (btn.dataset.themeBound === "1") return;
+
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const themeKey = btn.getAttribute("data-theme-key");
+        if (themeKey) {
+          setThemeExternally(themeKey);
+        }
+      });
+
+      btn.dataset.themeBound = "1";
+    });
+
+    syncThemeButtons();
+  }
+
   // 随机选择一个轨迹类型：直上 / 左弧线 / 右弧线 / S 形 / 小行星绕圈
   function getRandomPathType(mode) {
-    const theme = activeTheme || THEMES[DEFAULT_THEME_KEY];
+    const theme = getActiveTheme();
 
     // 基础路径
     const base = ["up", "arcLeft", "arcRight"];
@@ -308,6 +259,8 @@
 
   // 声音开关 UI
   function setupSoundToggle() {
+    if (document.querySelector(".click-phrase-sound-toggle")) return;
+
     // 从本地存储读取上次设置
     try {
       const saved = window.localStorage.getItem(SOUND_STORAGE_KEY);
@@ -375,17 +328,14 @@
     document.body.appendChild(toggle);
   }
 
-  // 粒子 / Emoji 零散效果
+  // 粒子 / Emoji 零散效果（减少动效时不生成）
   function createParticles(x, y) {
-    const theme = activeTheme || THEMES[DEFAULT_THEME_KEY];
+    if (prefersReducedMotion()) return;
+    const theme = getActiveTheme();
     const particleEmojis =
-      (theme && theme.particles && theme.particles.length
-        ? theme.particles
-        : ["💗", "✨", "⭐"]) || ["💗", "✨", "⭐"];
+      (theme.particles && theme.particles.length ? theme.particles : ["💗", "✨", "⭐"]);
     const count =
-      theme && typeof theme.particleCount === "number"
-        ? theme.particleCount
-        : PARTICLE_COUNT_DEFAULT;
+      typeof theme.particleCount === "number" ? theme.particleCount : PARTICLE_COUNT_DEFAULT;
 
     for (let i = 0; i < count; i++) {
       const p = document.createElement("span");
@@ -413,15 +363,16 @@
       const duration = 380 + Math.random() * 180; // ms
 
       let startTime = null;
+      let rafId = null;
 
       function animateParticle(ts) {
         if (!startTime) startTime = ts;
         const elapsed = ts - startTime;
-        const progress = Math.min(elapsed / duration, 1); // 0~1
+        const progress = Math.min(elapsed / duration, 1);
 
         const radius = maxRadius * progress;
         const offsetX = Math.cos(angle) * radius;
-        const offsetY = Math.sin(angle) * radius * 0.7 - 10 * progress; // 略微上扬
+        const offsetY = Math.sin(angle) * radius * 0.7 - 10 * progress;
 
         const scale = 0.7 + 0.5 * (1 - progress);
         const opacity = 1 - progress;
@@ -433,30 +384,82 @@
         p.style.filter = `blur(${blur}px)`;
 
         if (progress < 1) {
-          requestAnimationFrame(animateParticle);
+          rafId = requestAnimationFrame(animateParticle);
         } else {
+          rafId = null;
           p.remove();
         }
       }
 
-      requestAnimationFrame(animateParticle);
+      rafId = requestAnimationFrame(animateParticle);
     }
+  }
+
+  // 减少动效模式：仅短暂显示文字后淡出，无轨迹/粒子
+  function createPhraseReduced(x, y, mode) {
+    const themeCfg = getActiveTheme();
+    const phrasePool =
+      themeCfg.phrases && themeCfg.phrases.length ? themeCfg.phrases : THEMES[DEFAULT_THEME_KEY].phrases;
+    const text = phrasePool[Math.floor(Math.random() * phrasePool.length)];
+    const span = document.createElement("span");
+    span.innerText = text;
+
+    span.style.zIndex = "999999";
+    span.style.position = "fixed";
+    span.style.top = `${y}px`;
+    span.style.left = `${x}px`;
+    span.style.fontWeight = "bold";
+    span.style.fontFamily = "'ZCOOL KuaiLe', sans-serif";
+    span.style.pointerEvents = "none";
+    span.style.whiteSpace = "nowrap";
+    span.style.transform = "translate(-50%, -50%)";
+    span.style.fontSize = mode === "double" ? "1.4rem" : mode === "long" ? "1.2rem" : "1rem";
+
+    const bgThemeType = getTextThemeAtPoint(x, y);
+    const gradients = themeCfg.gradients || {};
+    if (bgThemeType === "lightText") {
+      span.style.backgroundImage = gradients.dark || "linear-gradient(180deg, #D81B60, #880E4F)";
+      span.style.textShadow = gradients.textShadowDark || "0 0 6px rgba(255,255,255,0.55)";
+    } else {
+      span.style.backgroundImage = gradients.light || "linear-gradient(180deg, rgba(255,255,255,0.95), #FFD1DC)";
+      span.style.textShadow = gradients.textShadowLight || "0 0 6px rgba(0,0,0,0.35)";
+    }
+    span.style.color = "transparent";
+    span.style.backgroundClip = "text";
+    span.style.webkitBackgroundClip = "text";
+    document.body.appendChild(span);
+
+    playClickSound(mode);
+
+    const duration = 400;
+    let startTime = null;
+    let rafId = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      span.style.opacity = String(1 - progress);
+      if (progress < 1) rafId = requestAnimationFrame(step);
+      else { span.remove(); }
+    }
+    rafId = requestAnimationFrame(step);
   }
 
   // 创建并播放点击文字，mode: 'single' | 'double' | 'long'
   function createPhrase(x, y, mode) {
     const now = Date.now();
-    // 简单节流，避免极端高频触发导致性能问题
-    if (now - lastEffectTime < THROTTLE_MS && mode === "single") {
-      return;
-    }
+    if (now - lastEffectTime < THROTTLE_MS && mode === "single") return;
     lastEffectTime = now;
 
-    const themeCfgForText = activeTheme || THEMES[DEFAULT_THEME_KEY];
+    if (prefersReducedMotion()) {
+      createPhraseReduced(x, y, mode);
+      return;
+    }
+
+    const themeCfgForText = getActiveTheme();
     const phrasePool =
-      (themeCfgForText && themeCfgForText.phrases && themeCfgForText.phrases.length
+      themeCfgForText.phrases && themeCfgForText.phrases.length
         ? themeCfgForText.phrases
-        : THEMES[DEFAULT_THEME_KEY].phrases) || THEMES[DEFAULT_THEME_KEY].phrases;
+        : THEMES[DEFAULT_THEME_KEY].phrases;
     const text =
       phrasePool[Math.floor(Math.random() * phrasePool.length)];
     const span = document.createElement("span");
@@ -485,7 +488,7 @@
 
     // 颜色：根据背景亮度 + 当前主题调整渐变色
     const bgThemeType = getTextThemeAtPoint(x, y);
-    const themeCfg = activeTheme || THEMES[DEFAULT_THEME_KEY];
+    const themeCfg = getActiveTheme();
     const gradients = themeCfg.gradients || {};
 
     if (bgThemeType === "lightText") {
@@ -515,13 +518,9 @@
 
     // 动画参数：上飘距离 / 时长 / 旋转等 + 多轨迹（按主题微调）
     const baseDistance =
-      (themeCfgForText && typeof themeCfgForText.baseDistance === "number"
-        ? themeCfgForText.baseDistance
-        : 80) || 80;
+      typeof themeCfgForText.baseDistance === "number" ? themeCfgForText.baseDistance : 80;
     const baseDuration =
-      (themeCfgForText && typeof themeCfgForText.baseDuration === "number"
-        ? themeCfgForText.baseDuration
-        : 700) || 700;
+      typeof themeCfgForText.baseDuration === "number" ? themeCfgForText.baseDuration : 700;
 
     const distance = mode === "long" ? baseDistance * 1.4 : baseDistance;
     const duration =
@@ -535,16 +534,16 @@
     const pathType = getRandomPathType(mode);
 
     let startTime = null;
+    let rafId = null;
 
     function animateFrame(timestamp) {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
-      const progress = Math.min(elapsed / duration, 1); // 0 ~ 1
+      const progress = Math.min(elapsed / duration, 1);
 
       let xOffset = 0;
-      let yOffset = -distance * progress; // 默认直线上飘
+      let yOffset = -distance * progress;
 
-      // 不同路径的偏移
       if (pathType === "arcLeft") {
         const bend = Math.sin(progress * Math.PI);
         xOffset = -40 * bend;
@@ -555,16 +554,16 @@
         xOffset = 35 * Math.sin(progress * 2 * Math.PI);
         yOffset = -distance * (0.8 * progress + 0.2 * progress * progress);
       } else if (pathType === "orbit") {
-        const angle = progress * Math.PI * 2 * 1.1; // 小行星绕一圈多一点
+        const angle = progress * Math.PI * 2 * 1.1;
         const radius = 10 + 36 * progress;
         xOffset = Math.cos(angle) * radius;
         yOffset = -distance * progress + Math.sin(angle) * radius * 0.35;
       }
 
-      const scale = startScale + 0.35 * progress; // 缩放
-      const rotate = rotateDirection * 18 * progress; // 旋转角度
-      const opacity = 1 - progress; // 渐隐
-      const blur = 2.5 * progress; // 模糊
+      const scale = startScale + 0.35 * progress;
+      const rotate = rotateDirection * 18 * progress;
+      const opacity = 1 - progress;
+      const blur = 2.5 * progress;
 
       span.style.transform =
         `translate(-50%, -50%) translate(${xOffset}px, ${yOffset}px) ` +
@@ -573,13 +572,14 @@
       span.style.filter = `blur(${blur}px)`;
 
       if (progress < 1) {
-        requestAnimationFrame(animateFrame);
+        rafId = requestAnimationFrame(animateFrame);
       } else {
+        rafId = null;
         span.remove();
       }
     }
 
-    requestAnimationFrame(animateFrame);
+    rafId = requestAnimationFrame(animateFrame);
   }
 
   // 绑定手势（支持 PC 和 移动端，优先用 Pointer 事件）
@@ -589,11 +589,7 @@
         "pointerdown",
         function (e) {
           // 点击声音按钮时不触发效果
-          if (
-            e.target &&
-            e.target.closest &&
-            e.target.closest(".click-phrase-sound-toggle")
-          ) {
+          if (shouldIgnoreEffectTarget(e.target)) {
             return;
           }
 
@@ -618,11 +614,7 @@
       document.addEventListener(
         "pointerup",
         function (e) {
-          if (
-            e.target &&
-            e.target.closest &&
-            e.target.closest(".click-phrase-sound-toggle")
-          ) {
+          if (shouldIgnoreEffectTarget(e.target)) {
             return;
           }
 
@@ -680,11 +672,7 @@
     } else {
       // 老浏览器降级：仅支持单击效果
       document.addEventListener("click", function (e) {
-        if (
-          e.target &&
-          e.target.closest &&
-          e.target.closest(".click-phrase-sound-toggle")
-        ) {
+        if (shouldIgnoreEffectTarget(e.target)) {
           return;
         }
         createPhrase(e.clientX, e.clientY, "single");
@@ -692,10 +680,13 @@
     }
   }
 
-  // 初始化主题系统并暴露切换方法给全局（供侧边栏按钮调用）
   function initThemeSystem() {
-    const randomKey = pickRandomThemeKey();
-    applyTheme(randomKey);
+    let key = DEFAULT_THEME_KEY;
+    try {
+      const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+      if (saved && THEMES[saved]) key = saved;
+    } catch (e) { /* 无本地存储时用默认粉色 */ }
+    applyTheme(key);
   }
 
   // 挂到 window 上，方便在 HTML 中直接调用 setClickPhraseTheme('xxx')
@@ -706,4 +697,7 @@
   initThemeSystem();
   setupGestureHandlers();
   setupSoundToggle();
+  bindThemeButtons();
+  document.addEventListener("DOMContentLoaded", bindThemeButtons);
+  document.addEventListener("pjax:complete", bindThemeButtons);
 })();                                                                                                                                                                                                                                                                                                                                        

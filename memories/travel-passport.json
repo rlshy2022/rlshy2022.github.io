@@ -1,0 +1,237 @@
+{
+  "generatedAt": "2026-07-29T14:35:57.591Z",
+  "routeCount": 7,
+  "routes": [
+    {
+      "key": "jingdezhen",
+      "order": 1,
+      "label": "景德镇",
+      "title": "陶阳里跨年护照",
+      "note": "把第一次见面的温度盖成永久有效的印章。",
+      "badge": "初见篇章",
+      "accent": "#7eb6ff",
+      "stamp": "JINGDEZHEN",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%90%88%E7%85%A7/%E5%90%88%E7%85%A7/jdz_hz_2.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=jingdezhen",
+      "photoWallUrl": "/photo-wall/?scene=jingdezhen",
+      "timelineUrl": "/love-timeline/?scene=jingdezhen",
+      "firstDate": "2025-12-31",
+      "latestDate": "2026-02-06",
+      "memoryCount": 2,
+      "highlights": [
+        {
+          "title": "第一次真正站到彼此身边",
+          "badge": "第一次见面",
+          "summary": "2025 年最后一天，我们在景德镇第一次真正见面，一起跨进 2026 年。",
+          "isoDate": "2025-12-31",
+          "url": "/trips/jingdezhen-newyear/"
+        },
+        {
+          "title": "景德镇跨年",
+          "badge": "写成文章",
+          "summary": "第一次在同一座城一起跨年，把景德镇的烟火、拥抱和心动都留在了这段回忆里。",
+          "isoDate": "2026-02-06",
+          "url": "/trips/jingdezhen-newyear/"
+        }
+      ]
+    },
+    {
+      "key": "suzhou",
+      "order": 2,
+      "label": "苏州",
+      "title": "苏州旅行护照",
+      "note": "七里山塘、小桥、夜色和照片都在这里。",
+      "badge": "旅行记录",
+      "accent": "#e6a2b0",
+      "stamp": "SUZHOU",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/suzhou2.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=suzhou",
+      "photoWallUrl": "/photo-wall/?scene=suzhou",
+      "timelineUrl": "/love-timeline/?scene=suzhou",
+      "firstDate": "2026-01-23",
+      "latestDate": "2026-02-04",
+      "memoryCount": 2,
+      "highlights": [
+        {
+          "title": "在苏州留下第一段共同足迹",
+          "badge": "一起旅行",
+          "summary": "我们一起去了苏州，走七里山塘，看小桥晚风，留下第一次共同旅行的照片。",
+          "isoDate": "2026-01-23",
+          "url": "/trips/suzhou-notes/"
+        },
+        {
+          "title": "苏州小记",
+          "badge": "写成文章",
+          "summary": "把苏州的风、灯火和我们一起走过的路都记下来，让这段小旅行一直发着光。",
+          "isoDate": "2026-02-04",
+          "url": "/trips/suzhou-notes/"
+        }
+      ]
+    },
+    {
+      "key": "yangzhou",
+      "order": 3,
+      "label": "扬州",
+      "title": "扬州重逢护照",
+      "note": "校园、超市、火锅和散步都盖在这一站。",
+      "badge": "烟花三月",
+      "accent": "#e5a47e",
+      "stamp": "YANGZHOU",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E6%89%AC%E5%B7%9E/yz8.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=yangzhou",
+      "photoWallUrl": "/photo-wall/?scene=yangzhou",
+      "timelineUrl": "/love-timeline/?scene=yangzhou",
+      "firstDate": "2026-02-27",
+      "latestDate": "2026-03-04",
+      "memoryCount": 2,
+      "highlights": [
+        {
+          "title": "在扬州见面、散步、一起煮火锅",
+          "badge": "扬州重逢",
+          "summary": "扬州这次有校园散步、超市采购和一起煮火锅，寒假攒下的想念终于落到现实里。",
+          "isoDate": "2026-02-27",
+          "url": "/2026/03/04/%E7%83%9F%E8%8A%B1%E4%B8%89%E6%9C%88%E4%B8%8B%E6%89%AC%E5%B7%9E/"
+        },
+        {
+          "title": "烟花三月下扬州",
+          "badge": "写成文章",
+          "summary": "寒假异地恋结束后，我们在扬州度过了五天的甜蜜相聚时光，记录下那些温馨而珍贵的瞬间。",
+          "isoDate": "2026-03-04",
+          "url": "/2026/03/04/%E7%83%9F%E8%8A%B1%E4%B8%89%E6%9C%88%E4%B8%8B%E6%89%AC%E5%B7%9E/"
+        }
+      ]
+    },
+    {
+      "key": "huangshan",
+      "order": 4,
+      "label": "黄山",
+      "title": "黄山春日护照",
+      "note": "这一章的印章里带着老街的风和江边的暖阳。",
+      "badge": "清明出走",
+      "accent": "#92ab78",
+      "stamp": "HUANGSHAN",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/hs/qt/qt18.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=huangshan",
+      "photoWallUrl": "/photo-wall/?scene=huangshan",
+      "timelineUrl": "/love-timeline/?scene=huangshan",
+      "firstDate": "2026-04-03",
+      "latestDate": "2026-04-07",
+      "memoryCount": 2,
+      "highlights": [
+        {
+          "title": "清明假期去了黄山市区",
+          "badge": "清明出走",
+          "summary": "清明去了黄山，逛屯溪老街、黎阳老街和新安江边，也写下了红色心愿牌。",
+          "isoDate": "2026-04-03",
+          "url": "/2026/04/07/%E6%B8%85%E6%98%8E%E7%9A%84%E9%BB%84%E5%B1%B1%E5%B0%8F%E8%AE%B0/"
+        },
+        {
+          "title": "清明的黄山游记",
+          "badge": "写成文章",
+          "summary": "2026 年 4 月清明假期，我们在扬州见面后的下一次旅行去了黄山，在老街、江边和暖洋洋的春日里，又认真收藏了一次属于我们的快乐。",
+          "isoDate": "2026-04-07",
+          "url": "/2026/04/07/%E6%B8%85%E6%98%8E%E7%9A%84%E9%BB%84%E5%B1%B1%E5%B0%8F%E8%AE%B0/"
+        }
+      ]
+    },
+    {
+      "key": "shaoxing",
+      "order": 5,
+      "label": "绍兴",
+      "title": "绍兴江南旅行护照",
+      "note": "这枚印章里留着乌篷船的水声和青石板路的回响。",
+      "badge": "五一水乡",
+      "accent": "#8fb0a9",
+      "stamp": "SHAOXING",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/shaoxing/cover.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=shaoxing",
+      "photoWallUrl": "/photo-wall/?scene=shaoxing",
+      "timelineUrl": "/love-timeline/?scene=shaoxing",
+      "firstDate": "2026-05-05",
+      "latestDate": "2026-05-05",
+      "memoryCount": 1,
+      "highlights": [
+        {
+          "title": "五一绍兴游记",
+          "badge": "写成文章",
+          "summary": "五一假期和你一起漫步绍兴，在青石板路上感受江南水乡的温婉与诗意，把每一个小瞬间都写成我们的故事。",
+          "isoDate": "2026-05-05",
+          "url": "/2026/05/05/%E4%BA%94%E4%B8%80%E7%BB%8D%E5%85%B4%E6%B8%B8%E8%AE%B0/"
+        }
+      ]
+    },
+    {
+      "key": "fuzhou",
+      "order": 6,
+      "label": "福州",
+      "title": "福州六月护照",
+      "note": "这枚印章里有福师大的路、西门小吃街的热气和长乐海边的风。",
+      "badge": "母校与海",
+      "accent": "#6fa9b7",
+      "stamp": "FUZHOU",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=fuzhou",
+      "photoWallUrl": "/photo-wall/?scene=fuzhou",
+      "timelineUrl": "/love-timeline/?scene=fuzhou",
+      "firstDate": "2026-06-17",
+      "latestDate": "2026-06-17",
+      "memoryCount": 2,
+      "highlights": [
+        {
+          "title": "在福州见面，去福师大和长乐看海",
+          "badge": "母校与海",
+          "summary": "我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去长乐看海。",
+          "isoDate": "2026-06-17",
+          "url": "/trips/fuzhou-2026/"
+        },
+        {
+          "title": "福州小记",
+          "badge": "写成文章",
+          "summary": "2026 年 6 月 17 日，我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去了长乐看海，吃了很多美食，也拍下很多好看的照片。",
+          "isoDate": "2026-06-17",
+          "url": "/trips/fuzhou-2026/"
+        }
+      ]
+    },
+    {
+      "key": "ningguo_huangshan",
+      "order": 7,
+      "label": "宁国黄山",
+      "title": "宁国黄山七月护照",
+      "note": "先宁国、再爬黄山、再回屯溪黎阳新安江，连四月写下的红色心愿牌也还在等我们。",
+      "badge": "七月登山",
+      "accent": "#7da06f",
+      "stamp": "NG-HS",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=ningguo_huangshan",
+      "photoWallUrl": "/photo-wall/?scene=ningguo_huangshan",
+      "timelineUrl": "/love-timeline/?scene=ningguo_huangshan",
+      "firstDate": "2026-07-15",
+      "latestDate": "2026-07-22",
+      "memoryCount": 3,
+      "highlights": [
+        {
+          "title": "七月旅行先到宁国",
+          "badge": "宁国开篇",
+          "summary": "2026 年 7 月 15 日，我们先到了宁国，在宁国玩到 7 月 17 日，再从宁国去黄山。",
+          "isoDate": "2026-07-15",
+          "url": "/trips/ningguo-huangshan-2026/"
+        },
+        {
+          "title": "这一次真的爬上黄山",
+          "badge": "七月登山",
+          "summary": "从宁国转去黄山之后，我们把上次没有爬的黄山补上，又回到屯溪老街、黎阳老街和新安江边，看见四月写下的红色心愿牌还在。",
+          "isoDate": "2026-07-17",
+          "url": "/trips/ningguo-huangshan-2026/"
+        },
+        {
+          "title": "七月宁国黄山游记",
+          "badge": "写成文章",
+          "summary": "2026 年 7 月 15 日到 7 月 22 日，我们先到宁国玩，再去把上次没有爬的黄山真正爬上去，最后回到屯溪老街、黎阳老街和新安江边，看见四月写下的红色心愿牌还在，又把它打开看了一遍。",
+          "isoDate": "2026-07-22",
+          "url": "/trips/ningguo-huangshan-2026/"
+        }
+      ]
+    }
+  ]
+}

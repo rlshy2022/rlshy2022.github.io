@@ -1,0 +1,52 @@
+/* ========================
+   文章尾部心情打卡组件
+   ======================== */
+
+.emotion-reactions {
+    margin-top: 26px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(255, 244, 248, 0.96), rgba(242, 244, 255, 0.96));
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 158, 172, 0.35);
+}
+
+.emotion-reactions .emotion-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ff4f84;
+    margin-bottom: 8px;
+}
+
+.emotion-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.emotion-buttons button {
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff4f84;
+    box-shadow: 0 4px 10px rgba(255, 158, 172, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.emotion-buttons button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(255, 158, 172, 0.55);
+    background: rgba(255, 250, 252, 0.96);
+}
+
+.emotion-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(255, 158, 172, 0.45);
+}

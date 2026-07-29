@@ -1,0 +1,97 @@
+/* ========================
+   底部 Footer 美化：鲜花草地版
+   ======================== */
+
+#footer {
+    /* 1. 设置背景图 */
+    background: url('https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/caodi.png?x-oss-process=image/resize,w_1920/format,webp') no-repeat center bottom !important;
+    background-size: cover !important;
+
+    /* 2. 去掉原本的粉色背景 */
+    background-color: transparent !important;
+
+    /* 3. 增加高度，让草地展示得更完整 */
+    height: 260px !important;
+    padding-top: 100px !important; /* 把文字往下挤，不要挡住远处的风景 */
+
+    /* 4. 底部文字颜色优化 */
+    color: #fff !important; /* 文字变白，防止看不清 */
+    position: relative;
+    z-index: 1;
+}
+
+/* 给文字加一点阴影，保证在花花草草上面也能看清 */
+#footer-wrap {
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+}
+
+#footer-wrap a {
+    color: #fff !important;
+}
+
+/* 隐藏原本 footer 可能会有的伪类遮罩 */
+#footer::before {
+    background: transparent !important;
+}
+
+/* 适配手机端：手机上高度稍微减小一点，不然太占屏幕 */
+@media screen and (max-width: 768px) {
+    #footer {
+        height: 180px !important;
+        padding-top: 60px !important;
+        background-position: 30% bottom !important; /* 调整图片显示位置 */
+    }
+}
+
+#footer-timer {
+    /* 1. 鲜艳的西瓜红，比浅粉更显眼 */
+    color: #ff3366 !important;
+
+    /* 2. 关键：用 text-shadow 模拟白色加粗描边，让文字和草地彻底分开 */
+    text-shadow:
+        2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff,
+        0 4px 10px rgba(0,0,0,0.3) !important; /* 最外层再加一点点黑阴影增加立体感 */
+
+    /* 3. 字体设置 */
+    font-weight: 900 !important; /* 必须极粗，不然描边会挤压字体 */
+    font-size: 1.3em !important; /* 加大字号 */
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+
+    margin-top: 15px;
+    display: inline-block;
+    letter-spacing: 1px; /* 字间距稍微拉开一点，防止描边粘连 */
+}
+
+/* ========================
+   底部版权文字统一美化
+   ======================== */
+
+/* 暴力覆盖所有底部文字，包括 span 和链接 */
+#footer-wrap,
+#footer-wrap span,
+#footer-wrap a {
+    /* 1. 颜色：统一改成显眼的西瓜红 (和倒计时一致) */
+    color: #ff3366 !important;
+
+    /* 2. 描边：稍微柔一点的白描边 + 柔和阴影 */
+    text-shadow:
+        1px 0 #fff, -1px 0 #fff, 0 1px #fff, 0 -1px #fff,
+        0 3px 6px rgba(0,0,0,0.25) !important;
+
+    /* 3. 字体：加粗、可爱 */
+    font-weight: 900 !important;
+    font-family: 'ZCOOL KuaiLe', sans-serif !important;
+
+    /* 4. 去掉可能存在的下划线 */
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* 如果你觉得中间跳动的爱心 (❤️) 也要变成粉色，就不需要下面这行。
+   如果你希望爱心保持“正红色”来突出，请保留下面这行代码： */
+#footer-wrap .fa-heart {
+    color: #ff0000 !important; /* 强制爱心为大红色 */
+}

@@ -3,6 +3,13 @@
 
   // --- 配置信息 ---
   const LOVE_CFG = window.LOVE_CONFIG || {};
+  const featureEnabled = (key, defaultValue = true) => {
+    const features = (window.LOVE_CONFIG && window.LOVE_CONFIG.features) || LOVE_CFG.features;
+    if (!features || !Object.prototype.hasOwnProperty.call(features, key)) {
+      return defaultValue;
+    }
+    return features[key] !== false;
+  };
   const LOVE_START_DATE =
     (LOVE_CFG.dates && LOVE_CFG.dates.loveStart && LOVE_CFG.dates.loveStart.substring(0, 10)) ||
     "2022-08-18";
@@ -61,6 +68,11 @@
       btn.setAttribute('aria-label', '进入我们的小窝');
       btn.focus();
     }
+  }
+
+  if (!featureEnabled('loveAlert')) {
+    document.getElementById('love-alert-overlay')?.remove();
+    return;
   }
 
   // 适配 Butterfly：仅在首页弹出，并通过 localStorage 控制频率，避免过于打扰

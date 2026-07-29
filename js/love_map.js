@@ -18,18 +18,87 @@
     return loadScript('https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js');
   }
 
+  function updateActiveCity(cityName) {
+    document.querySelectorAll('[data-map-city]').forEach(function(button) {
+      button.classList.toggle('is-active', button.getAttribute('data-map-city') === cityName);
+    });
+  }
+
+  function ensureStoriesContainer() {
+    var container = document.getElementById('love-map-stories');
+    if (container) return container;
+
+    var mapDom = document.getElementById('love-map-container');
+    if (!mapDom || !mapDom.parentNode) return null;
+    container = document.createElement('div');
+    container.id = 'love-map-stories';
+    mapDom.parentNode.insertBefore(container, mapDom.nextSibling);
+    return container;
+  }
+
+  function renderCityRail(loveData, storiesMap) {
+    var mapDom = document.getElementById('love-map-container');
+    if (!mapDom || !mapDom.parentNode) return;
+
+    var rail = document.getElementById('love-map-city-rail');
+    if (!rail) {
+      rail = document.createElement('div');
+      rail.id = 'love-map-city-rail';
+      rail.className = 'love-map-city-rail';
+      mapDom.parentNode.insertBefore(rail, mapDom);
+    }
+
+    rail.innerHTML =
+      '<div class="love-map-city-title">城市入口</div>' +
+      '<div class="love-map-city-list">' +
+      loveData
+        .map(function(item) {
+          var hasStories = storiesMap[item.name] && storiesMap[item.name].length;
+          return (
+            '<button type="button" class="love-map-city-btn' +
+            (hasStories ? '' : ' is-empty') +
+            '" data-map-city="' +
+            item.name +
+            '"' +
+            (hasStories ? '' : ' disabled') +
+            '>' +
+            '<span>' +
+            item.name +
+            '</span>' +
+            '<small>' +
+            (hasStories ? storiesMap[item.name].length + ' 条' : '待补充') +
+            '</small>' +
+            '</button>'
+          );
+        })
+        .join('') +
+      '</div>';
+
+    rail.querySelectorAll('[data-map-city]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var cityName = button.getAttribute('data-map-city');
+        if (cityName) renderCityStories(cityName, storiesMap);
+      });
+    });
+  }
+
   function renderCityStories(cityName, storiesMap) {
     if (!storiesMap) return;
     var list = storiesMap[cityName];
-    if (!list || !list.length) return;
+    updateActiveCity(cityName);
 
-    var container = document.getElementById('love-map-stories');
-    if (!container) {
-      var mapDom = document.getElementById('love-map-container');
-      if (!mapDom || !mapDom.parentNode) return;
-      container = document.createElement('div');
-      container.id = 'love-map-stories';
-      mapDom.parentNode.insertBefore(container, mapDom.nextSibling);
+    var container = ensureStoriesContainer();
+    if (!container) return;
+
+    if (!list || !list.length) {
+      container.classList.add('love-map-stories-placeholder');
+      container.innerHTML =
+        '<div class="map-stories-inner">' +
+        '<p>' +
+        cityName +
+        ' 的故事卡片还在整理中。</p>' +
+        '</div>';
+      return;
     }
 
     container.classList.remove('love-map-stories-placeholder');
@@ -96,9 +165,11 @@
           苏州: [120.58, 31.3],
           景德镇: [117.18, 29.3],
           扬州: [119.41, 32.39],
+          黄山: [118.33, 29.72],
           安庆: [117.05, 30.53],
           广元: [105.84, 32.43],
           福州: [119.3, 26.08],
+          宁国: [118.98, 30.63],
         };
 
       // 2. ❤️ 足迹点数据 (地图上跳动的爱心)
@@ -115,9 +186,11 @@
           { name: "苏州", value: geoCoordMap["苏州"], date: "怡怡出生地 & 2026.01" },
           { name: "景德镇", value: geoCoordMap["景德镇"], date: "第一次见面 & 2025.12" },
           { name: "扬州", value: geoCoordMap["扬州"], date: "怡怡大学" },
+          { name: "黄山", value: geoCoordMap["黄山"], date: "清明与七月再访 & 2026.04/07" },
           { name: "安庆", value: geoCoordMap["安庆"], date: "欢欢出生地" },
           { name: "广元", value: geoCoordMap["广元"], date: "怡怡家" },
-          { name: "福州", value: geoCoordMap["福州"], date: "欢欢大学" },
+          { name: "福州", value: geoCoordMap["福州"], date: "母校重逢 & 2026.06" },
+          { name: "宁国", value: geoCoordMap["宁国"], date: "七月出走 & 2026.07" },
         ];
 
       // 3. ✈️ 航线数据
@@ -129,9 +202,14 @@
         [
           { coords: [geoCoordMap["苏州"], geoCoordMap["景德镇"]] }, // 苏州 -> 景德镇
           { coords: [geoCoordMap["苏州"], geoCoordMap["扬州"]] }, // 苏州 -> 扬州
+          { coords: [geoCoordMap["扬州"], geoCoordMap["黄山"]] }, // 扬州 -> 黄山
+          { coords: [geoCoordMap["黄山"], geoCoordMap["福州"]] }, // 黄山 -> 福州
           { coords: [geoCoordMap["安庆"], geoCoordMap["苏州"]] }, // 安庆 -> 苏州
           { coords: [geoCoordMap["广元"], geoCoordMap["苏州"]] }, // 广元 -> 苏州
           { coords: [geoCoordMap["福州"], geoCoordMap["苏州"]] }, // 福州 -> 苏州
+          { coords: [geoCoordMap["苏州"], geoCoordMap["宁国"]] }, // 苏州 -> 宁国
+          { coords: [geoCoordMap["宁国"], geoCoordMap["黄山"]] }, // 宁国 -> 黄山
+          { coords: [geoCoordMap["黄山"], geoCoordMap["苏州"]] }, // 黄山 -> 苏州
         ];
 
       // 4. 🚩 去过的省份 (用来给省份上色)
@@ -149,6 +227,8 @@
 
       // 5. 🧡 城市关联的文章/记忆
       var cityStoriesMap = MAP_CFG.stories || {};
+      var isCompactMap = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      renderCityRail(loveData, cityStoriesMap);
 
       // ================= 配置区域结束 =================
 
@@ -184,6 +264,7 @@
           backgroundColor: 'transparent',
 
           title: {
+            show: !isCompactMap,
             text: '欢欢 & 怡怡 的旅行足迹',
             subtext: '每一条连线，都是我们走过的一段路',
             left: 'center',
@@ -217,7 +298,7 @@
           geo: {
             map: 'china',
             roam: true,
-            zoom: 1.2,
+            zoom: isCompactMap ? 1.05 : 1.2,
             label: {
               show: false
             },
@@ -260,11 +341,11 @@
               coordinateSystem: 'geo',
               data: loveData,
               symbol: 'path://M512 925.714c-16.517 0-32.613-6.096-45.257-17.152l-10.428-9.136C186.486 663.268 28.571 506.012 28.571 346.076c0-149.61 118.892-271.325 264.914-271.325 81.371 0 157.086 38.303 207.257 104.996 50.171-66.693 125.886-104.996 207.257-104.996 146.022 0 264.914 121.715 264.914 271.325 0 159.936-157.915 317.192-427.744 553.35l-10.428 9.136c-12.645 11.056-28.74 17.152-45.257 17.152z',
-              symbolSize: 12,
-              rippleEffect: { brushType: 'stroke', color: '#FF4757', scale: 3 },
+              symbolSize: isCompactMap ? 10 : 12,
+              rippleEffect: { brushType: 'stroke', color: '#FF4757', scale: isCompactMap ? 2.2 : 3 },
               itemStyle: { color: '#FF4757', shadowBlur: 10, shadowColor: '#333' },
               label: { 
-                show: true, 
+                show: !isCompactMap,
                 position: 'right', 
                 formatter: '{b}', 
                 color: '#555', 
@@ -307,7 +388,7 @@
               type: 'lines',
               zlevel: 3,
               effect: {
-                show: true,
+                show: !isCompactMap,
                 period: 5,
                 trailLength: 0.5, 
                 color: '#4AB7BD', // 蒂芙尼蓝拖尾

@@ -1,0 +1,308 @@
+/* ========================
+   3. 恋爱计时器专用样式
+   ======================== */
+.love-timer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px;
+}
+
+.love-title {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.love-card-container {
+    width: 100%;
+    text-align: center;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+.timer-num {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    color: var(--love-primary);
+    text-shadow: 2px 2px 4px rgba(255, 158, 172, 0.2);
+}
+
+.timer-num.big {
+    font-size: 3.6em;
+    line-height: 1.1;
+    display: block;
+    margin: 5px 0;
+    background: linear-gradient(135deg, #FF9EAC 0%, #FF7E93 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timer-text {
+    font-size: 1rem;
+    color: #888;
+    vertical-align: middle;
+    margin-top: -10px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.timer-unit-group.small {
+    font-size: 1.3em;
+    color: #777;
+    background: rgba(255,255,255,0.6);
+    padding: 5px 15px;
+    border-radius: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-split {
+    margin: 0 4px;
+    color: #FF9EAC;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+.second-beat {
+    color: #FF7E93;
+    display: inline-block;
+    min-width: 28px;
+}
+
+/* ========================
+   4. 音乐播放器样式
+   ======================== */
+.love-music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+/* 点击情话主题切换按钮（位于音乐封面下方） */
+.click-theme-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin: 8px 0 2px;
+}
+
+.click-theme-btn {
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.96);
+    color: #FF7E93;
+    box-shadow: 0 3px 8px rgba(255, 158, 172, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    white-space: nowrap;
+}
+
+.click-theme-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(255, 158, 172, 0.5);
+    background: rgba(255, 250, 252, 0.98);
+}
+
+.click-theme-btn.is-active {
+    background: linear-gradient(135deg, #FF9EAC, #FF7E93);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(255, 126, 147, 0.6);
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .click-theme-btn {
+    background: rgba(30, 30, 40, 0.9);
+    color: #FF9EAC;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .click-theme-btn.is-active {
+    background: linear-gradient(135deg, #c56e7e, #e85a6e);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+
+/* 新春主题按钮：喜庆亮红 + 金 */
+.click-theme-btn-spring {
+    color: #C41E3A !important;
+    background: linear-gradient(135deg, rgba(255,240,245,0.98), rgba(255,228,225,0.95)) !important;
+    box-shadow: 0 3px 10px rgba(227,24,55,0.3), inset 0 1px 0 rgba(255,255,255,0.6) !important;
+    border: 1px solid rgba(255,69,0,0.35) !important;
+}
+.click-theme-btn-spring:hover {
+    box-shadow: 0 5px 16px rgba(227,24,55,0.45), inset 0 1px 0 rgba(255,255,255,0.7) !important;
+    transform: translateY(-1px);
+}
+.theme-spring-festival .click-theme-btn-spring.is-active,
+.click-theme-btn-spring.is-active {
+    background: linear-gradient(135deg, #FF4757 0%, #E31837 50%, #DC143C 100%) !important;
+    color: #FFD700 !important;
+    border-color: rgba(255,215,0,0.6) !important;
+    box-shadow: 0 6px 22px rgba(227,24,55,0.55), 0 0 24px rgba(255,215,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+    animation: spring-btn-glow 2.5s ease-in-out infinite;
+}
+@keyframes spring-btn-glow {
+    0%, 100% { box-shadow: 0 6px 22px rgba(227,24,55,0.55), 0 0 24px rgba(255,215,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25); }
+    50%  { box-shadow: 0 6px 28px rgba(227,24,55,0.65), 0 0 32px rgba(255,215,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3); }
+}
+
+/* 科幻霓虹主题按钮：蓝紫霓虹 */
+.click-theme-btn-sci-fi {
+    color: #E0F2FE !important;
+    background: radial-gradient(circle at 0 0, rgba(56,189,248,0.35), transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(168,85,247,0.4), transparent 55%),
+                rgba(15,23,42,0.96) !important;
+    border: 1px solid rgba(56,189,248,0.7) !important;
+    box-shadow: 0 0 10px rgba(56,189,248,0.7) !important;
+}
+.click-theme-btn-sci-fi:hover {
+    box-shadow: 0 0 14px rgba(56,189,248,0.9), 0 0 18px rgba(168,85,247,0.75) !important;
+    transform: translateY(-1px);
+}
+.theme-sci-fi .click-theme-btn-sci-fi.is-active,
+.click-theme-btn-sci-fi.is-active {
+    background: linear-gradient(135deg, #0EA5E9 0%, #22D3EE 35%, #A855F7 80%) !important;
+    color: #0B1120 !important;
+    border-color: rgba(191,219,254,0.9) !important;
+    box-shadow: 0 0 24px rgba(56,189,248,0.9), 0 0 32px rgba(168,85,247,0.85) !important;
+}
+
+.music-disc-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--love-primary);
+    box-shadow: 0 0 15px rgba(255, 158, 172, 0.4);
+    position: relative;
+    margin-bottom: 15px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.music-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    animation: rotateDisc 10s linear infinite;
+    animation-play-state: paused;
+}
+
+/* 关键修复：强制封面填充且不变形 */
+.music-disc img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 50%;
+}
+
+.music-disc-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid var(--love-secondary);
+    z-index: 2;
+}
+
+.music-title {
+    font-size: 1rem;
+    color: #555;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.music-btn {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 30%, #ffe6f1 0%, #ff9eac 45%, #ff7e93 100%);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 126, 147, 0.3);
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.music-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.music-btn:active {
+    transform: scale(0.92);
+}
+
+.music-btn:active::after {
+    animation: love-btn-ripple 0.45s ease-out forwards;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+}
+
+.music-btn:hover:active {
+    transform: scale(0.92);
+}
+
+.music-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.92);
+    outline-offset: 2px;
+}
+
+.music-btn i {
+    font-size: 1.2rem;
+    margin-left: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes love-btn-ripple {
+    0% { transform: scale(0); opacity: 0.6; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes rotateDisc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.music-playing .music-disc {
+    animation-play-state: running;
+}
