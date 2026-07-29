@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T14:35:57.588Z",
+  "generatedAt": "2026-07-29T15:02:19.936Z",
   "itemCount": 23,
   "scenes": [
     {
@@ -133,13 +133,13 @@
       ],
       "seasons": [
         {
-          "key": "spring",
-          "label": "春天",
+          "key": "winter",
+          "label": "冬天",
           "count": 1
         },
         {
-          "key": "winter",
-          "label": "冬天",
+          "key": "spring",
+          "label": "春天",
           "count": 1
         }
       ],
@@ -485,6 +485,11 @@
       ],
       "moods": [
         {
+          "key": "celebration",
+          "label": "仪式感",
+          "count": 2
+        },
+        {
           "key": "journey",
           "label": "出走",
           "count": 2
@@ -497,11 +502,6 @@
         {
           "key": "soft",
           "label": "温柔",
-          "count": 2
-        },
-        {
-          "key": "celebration",
-          "label": "仪式感",
           "count": 2
         }
       ],
@@ -553,13 +553,13 @@
           "count": 3
         },
         {
-          "key": "fuzhou",
-          "label": "福州",
+          "key": "yangzhou",
+          "label": "扬州",
           "count": 2
         },
         {
-          "key": "huangshan",
-          "label": "黄山",
+          "key": "fuzhou",
+          "label": "福州",
           "count": 2
         },
         {
@@ -568,8 +568,8 @@
           "count": 2
         },
         {
-          "key": "yangzhou",
-          "label": "扬州",
+          "key": "huangshan",
+          "label": "黄山",
           "count": 2
         },
         {
@@ -724,8 +724,8 @@
       "sceneKeys": [
         "daily",
         "ningguo_huangshan",
-        "fuzhou",
-        "huangshan"
+        "yangzhou",
+        "fuzhou"
       ]
     },
     "/love-timeline/": {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T14:35:57.591Z",
+  "generatedAt": "2026-07-29T15:02:19.943Z",
   "yearCount": 3,
   "totalCount": 23,
   "currentYear": 2026,
@@ -33,15 +33,15 @@
           "count": 3
         },
         {
-          "key": "fuzhou",
-          "label": "福州",
-          "accent": "#6fa9b7",
+          "key": "yangzhou",
+          "label": "扬州",
+          "accent": "#e5a47e",
           "count": 2
         },
         {
-          "key": "huangshan",
-          "label": "黄山",
-          "accent": "#92ab78",
+          "key": "fuzhou",
+          "label": "福州",
+          "accent": "#6fa9b7",
           "count": 2
         },
         {
@@ -51,9 +51,9 @@
           "count": 2
         },
         {
-          "key": "yangzhou",
-          "label": "扬州",
-          "accent": "#e5a47e",
+          "key": "huangshan",
+          "label": "黄山",
+          "accent": "#92ab78",
           "count": 2
         },
         {
@@ -172,7 +172,7 @@
           "timestamp": 1784073600000
         },
         {
-          "id": "year-post-12",
+          "id": "year-post-11",
           "source": "post",
           "type": "travel",
           "scene": "fuzhou",
@@ -202,7 +202,7 @@
           "timestamp": 1781654400000
         },
         {
-          "id": "year-post-1",
+          "id": "year-post-3",
           "source": "post",
           "type": "travel",
           "scene": "shaoxing",
