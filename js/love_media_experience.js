@@ -372,9 +372,13 @@
     }
   };
 
-  // ---------- 5. 照片墙：胶片墙 / 筛选 / 沉浸式查看 ----------
+  // ---------- 5. 照片墙：分组网格 / 筛选 / 沉浸式查看 ----------
   const initPhotoWallExperience = () => {
     if (!isPhotoWallPage()) return;
+    if (window.LOVE_PHOTO_WALL_EXPERIENCE) {
+      window.LOVE_PHOTO_WALL_EXPERIENCE();
+      return;
+    }
 
     const article = document.getElementById("article-container");
     const wall = document.getElementById("love-photo-wall");
@@ -458,10 +462,9 @@
             <i class="fas fa-film"></i>
             Memory Film Wall
           </span>
-          <h2 class="love-photo-wall-title">把很多张小瞬间，钉成一整面会发光的回忆墙</h2>
+          <h2 class="love-photo-wall-title">照片墙</h2>
           <p class="love-photo-wall-desc">
-            这里没有严格按时间排列，像真正的回忆一样，有些片段会突然跳出来，
-            有些温柔则会在你慢慢往下翻的时候重新发亮。
+            按地点整理，默认分批展示。先看主要画面，点开照片再看完整细节。
           </p>
           <div class="love-photo-wall-stats">
             <div class="love-photo-wall-stat">
@@ -513,11 +516,11 @@
       <section class="love-photo-wall-board">
         <div class="love-photo-wall-board-head">
           <div>
-            <span class="love-photo-wall-board-kicker">自由翻阅</span>
-            <h3 class="love-photo-wall-board-title">不按顺序，也刚好是回忆该有的样子</h3>
+            <span class="love-photo-wall-board-kicker">Browse</span>
+            <h3 class="love-photo-wall-board-title">照片浏览</h3>
           </div>
           <p class="love-photo-wall-board-note">
-            点任意一张都可以进入沉浸式查看，手机上也能直接点按钮切换前后照片。
+            每次只展开一组，浏览节奏更稳；切换地点后会重新从第一组开始。
           </p>
         </div>
       </section>

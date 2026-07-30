@@ -9,10 +9,15 @@
     return path === "/comments/" || path === "/comments/index.html";
   };
 
+  const getTwikooRoot = () =>
+    document.getElementById("twikoo-wrap") ||
+    document.querySelector("#post-comment #twikoo") ||
+    document.getElementById("twikoo");
+
   const initTwikooLazyPlaceholder = () => {
     if (!isCommentsPage()) return;
 
-    const twikoo = document.getElementById("twikoo");
+    const twikoo = getTwikooRoot();
     const wrapper = document.querySelector(".comments-card-wrapper");
     const placeholder = document.querySelector(".comments-twikoo-placeholder");
     if (!twikoo || !wrapper || !placeholder) return;
@@ -48,7 +53,7 @@
   };
 
   const findTwikooTextarea = () => {
-    const twikoo = document.getElementById("twikoo");
+    const twikoo = getTwikooRoot();
     if (!twikoo) return null;
     return twikoo.querySelector(".tk-input textarea") || twikoo.querySelector("textarea");
   };
@@ -80,7 +85,7 @@
   };
 
   const initReplyHighlight = () => {
-    const twikoo = document.getElementById("twikoo");
+    const twikoo = getTwikooRoot();
     if (!twikoo || twikoo.dataset.replyHighlightBound === "1") return;
 
     twikoo.addEventListener("click", (event) => {
@@ -130,7 +135,7 @@
   const initCommentsPageEnhance = () => {
     if (!isCommentsPage()) return;
 
-    const twikoo = document.getElementById("twikoo");
+    const twikoo = getTwikooRoot();
     initTwikooLazyPlaceholder();
     attachShortcutHandlers();
     initCommentsAnniversaryBanner();

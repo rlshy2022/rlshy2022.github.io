@@ -1,5 +1,5 @@
 /* ========================
-   照片墙页面：胶片墙 / 筛选 / 看图层
+   照片墙页面：分组照片墙 / 筛选 / 看图层
    ======================== */
 .love-photo-wall-page {
     position: relative;
@@ -1014,4 +1014,778 @@ html {
 [data-theme="dark"] ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #c56e7e, #b85a6a);
     border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================
+   照片墙 2026 舒展网格重构
+   ======================== */
+.love-photo-wall-page {
+    --wall-surface: rgba(255, 255, 255, 0.96);
+    --wall-surface-soft: rgba(248, 247, 245, 0.95);
+    --wall-line: rgba(74, 64, 69, 0.12);
+    --wall-text: #3f363a;
+    --wall-muted: #746970;
+    --wall-accent: #b9828f;
+    --wall-shadow: 0 14px 34px rgba(72, 59, 66, 0.08);
+}
+
+.love-photo-wall-shell {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.love-photo-wall-hero,
+.love-photo-wall-toolbar,
+.love-photo-wall-board {
+    border: 1px solid var(--wall-line);
+    border-radius: 8px;
+    background: var(--wall-surface);
+    box-shadow: var(--wall-shadow);
+    animation: love-gallery-rise 0.42s ease both;
+}
+
+.love-photo-wall-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    gap: 24px;
+    align-items: stretch;
+    padding: 24px;
+    overflow: visible;
+}
+
+.love-photo-wall-hero::before,
+.love-photo-wall-hero::after,
+.love-photo-wall-feature-photo-wrap::before,
+.love-photo-wall-polaroid::before,
+.love-photo-wall-polaroid::after {
+    display: none !important;
+}
+
+.love-photo-wall-copy,
+.love-photo-wall-feature {
+    position: relative;
+    z-index: 1;
+}
+
+.love-photo-wall-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.love-photo-wall-kicker,
+.love-photo-wall-board-kicker,
+.love-photo-wall-feature-label,
+.love-photo-wall-modal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 5px 9px;
+    border: 1px solid var(--wall-line);
+    border-radius: 8px;
+    background: var(--wall-surface-soft);
+    color: var(--wall-accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.3;
+}
+
+.love-photo-wall-title {
+    margin: 14px 0 10px;
+    color: var(--wall-text);
+    font-family: inherit;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.love-photo-wall-desc {
+    max-width: 640px;
+    margin: 0;
+    color: var(--wall-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+}
+
+.love-photo-wall-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.love-photo-wall-stat {
+    min-width: 0;
+    padding: 12px 10px;
+    border: 1px solid var(--wall-line);
+    border-radius: 8px;
+    background: var(--wall-surface-soft);
+    box-shadow: none;
+    text-align: left;
+}
+
+.love-photo-wall-stat .value {
+    display: block;
+    color: var(--wall-text);
+    font-family: inherit;
+    font-size: 1.42rem;
+    font-weight: 850;
+    line-height: 1.1;
+}
+
+.love-photo-wall-stat .label {
+    display: block;
+    margin-top: 5px;
+    color: var(--wall-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+.love-photo-wall-feature {
+    --photo-accent: var(--wall-accent);
+    display: grid;
+    grid-template-columns: minmax(145px, 0.45fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 14px;
+    align-items: center;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--wall-line);
+    border-radius: 8px;
+    background: var(--wall-surface-soft);
+    box-shadow: none;
+}
+
+.love-photo-wall-feature-photo-wrap {
+    position: relative;
+    min-height: 0;
+    padding: 0;
+    border: 1px solid rgba(74, 64, 69, 0.08);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: none;
+    transform: none;
+    overflow: hidden;
+}
+
+.love-photo-wall-feature-photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.love-photo-wall-feature-chip {
+    position: absolute;
+    left: 10px;
+    right: auto;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: rgba(20, 18, 20, 0.64);
+    color: #fff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1.35;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.love-photo-wall-feature-body {
+    display: grid;
+    gap: 9px;
+}
+
+.love-photo-wall-feature-title {
+    margin: 0;
+    color: var(--wall-text);
+    font-size: 1.25rem;
+    line-height: 1.24;
+}
+
+.love-photo-wall-feature-desc {
+    margin: 0;
+    color: var(--wall-muted);
+    line-height: 1.75;
+}
+
+.love-photo-wall-feature-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.love-photo-wall-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 9px 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--wall-accent) !important;
+    color: #fff !important;
+    font: inherit;
+    font-weight: 760;
+    line-height: 1.2;
+    text-decoration: none !important;
+    box-shadow: 0 10px 20px rgba(115, 87, 96, 0.14) !important;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.love-photo-wall-action.is-ghost {
+    border-color: var(--wall-line);
+    background: var(--wall-surface) !important;
+    color: var(--wall-text) !important;
+    box-shadow: none !important;
+}
+
+.love-photo-wall-action:hover {
+    transform: translateY(-1px);
+}
+
+.love-photo-wall-action:focus-visible,
+.love-photo-wall-filter:focus-visible,
+.love-photo-wall-item:focus-visible,
+.love-photo-wall-modal-close:focus-visible,
+.love-photo-wall-modal-nav:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--photo-accent, var(--wall-accent)) 58%, white);
+    outline-offset: 2px;
+}
+
+.love-photo-wall-action:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.love-photo-wall-toolbar,
+.love-photo-wall-board {
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.love-photo-wall-toolbar {
+    position: sticky;
+    top: 82px;
+    z-index: 8;
+    display: grid;
+    gap: 12px;
+}
+
+.love-photo-wall-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.love-photo-wall-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 7px 10px;
+    border: 1px solid var(--wall-line);
+    border-radius: 8px;
+    background: #fff !important;
+    color: var(--wall-text);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 760;
+    line-height: 1.2;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.love-photo-wall-filter em {
+    min-width: 24px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    background: var(--wall-surface-soft);
+    color: var(--wall-muted);
+    font-size: 0.74rem;
+    font-style: normal;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.love-photo-wall-filter.is-active,
+.love-photo-wall-filter:hover {
+    border-color: color-mix(in srgb, var(--wall-accent) 56%, white);
+    background: color-mix(in srgb, var(--wall-accent) 12%, white) !important;
+    color: var(--wall-text);
+    transform: none;
+}
+
+.love-photo-wall-filter.is-active em,
+.love-photo-wall-filter:hover em {
+    background: #fff;
+    color: var(--wall-accent);
+}
+
+.love-photo-wall-status {
+    margin: 0;
+    color: var(--wall-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.love-photo-wall-status strong {
+    color: var(--wall-text);
+}
+
+.love-photo-wall-board-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.love-photo-wall-board-title {
+    margin: 9px 0 0;
+    color: var(--wall-text);
+    font-size: clamp(1.25rem, 2.2vw, 1.72rem);
+    line-height: 1.18;
+}
+
+.love-photo-wall-board-note {
+    max-width: 430px;
+    margin: 0;
+    color: var(--wall-muted);
+    line-height: 1.75;
+}
+
+.love-photo-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 18px;
+    align-items: start;
+    margin: 0;
+    padding: 0;
+    column-count: initial;
+    column-gap: initial;
+}
+
+.love-photo-wall-item {
+    --photo-accent: var(--wall-accent);
+    --photo-ratio: 4 / 3;
+    display: block;
+    position: relative;
+    min-width: 0;
+    aspect-ratio: var(--photo-ratio);
+    margin: 0;
+    border: 1px solid rgba(74, 64, 69, 0.1);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(72, 59, 66, 0.08);
+    overflow: hidden;
+    break-inside: initial;
+    cursor: pointer;
+    transform: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.18s ease;
+}
+
+.love-photo-wall-polaroid {
+    padding: 0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(72, 59, 66, 0.08);
+    transform: none !important;
+}
+
+.love-photo-wall-item.is-wide {
+    grid-column: span 2;
+    --photo-ratio: 16 / 9;
+}
+
+.love-photo-wall-item.is-tall {
+    --photo-ratio: 4 / 5;
+}
+
+.love-photo-wall-item.is-square {
+    --photo-ratio: 1 / 1;
+}
+
+.love-photo-wall-item:hover,
+.love-photo-wall-item:focus-visible {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 16px 30px rgba(72, 59, 66, 0.13);
+}
+
+.love-photo-wall-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    vertical-align: middle;
+}
+
+.love-photo-wall-item-meta {
+    position: absolute;
+    inset: 10px 10px auto 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+    pointer-events: none;
+}
+
+.love-photo-wall-item-badge,
+.love-photo-wall-item-index {
+    display: inline-flex;
+    align-items: center;
+    max-width: 78%;
+    padding: 4px 7px;
+    border-radius: 8px;
+    font-size: 0.72rem;
+    font-weight: 760;
+    line-height: 1.35;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.love-photo-wall-item-badge {
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--photo-accent);
+    box-shadow: none;
+}
+
+.love-photo-wall-item-index {
+    flex: 0 0 auto;
+    background: rgba(19, 18, 20, 0.58);
+    color: #fff;
+}
+
+.love-photo-wall-item.is-hidden {
+    display: none !important;
+}
+
+.love-photo-wall-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.love-photo-wall-more.is-hidden {
+    display: none;
+}
+
+.love-photo-wall-empty {
+    display: none;
+    margin: 0;
+    padding: 32px 16px;
+    color: var(--wall-muted);
+    text-align: center;
+}
+
+.love-photo-wall-empty.is-active {
+    display: block;
+}
+
+.love-photo-wall-modal {
+    --photo-accent: var(--wall-accent);
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+}
+
+.love-photo-wall-modal.is-open {
+    display: block;
+}
+
+.love-photo-wall-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 12, 14, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.love-photo-wall-modal-dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    width: min(1120px, calc(100vw - 28px));
+    height: min(90vh, 820px);
+    margin: min(5vh, 34px) auto;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(22, 23, 28, 0.96);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+
+.love-photo-wall-modal-stage {
+    min-width: 0;
+    min-height: 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.035);
+    overflow: hidden;
+}
+
+.love-photo-wall-modal-image {
+    display: block;
+    max-width: 100%;
+    max-height: calc(90vh - 174px);
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.love-photo-wall-modal-nav,
+.love-photo-wall-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.love-photo-wall-modal-nav:hover,
+.love-photo-wall-modal-close:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+.love-photo-wall-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.love-photo-wall-modal-meta {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.love-photo-wall-modal-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+}
+
+.love-photo-wall-modal-chip {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: color-mix(in srgb, var(--photo-accent) 20%, rgba(255, 255, 255, 0.12));
+    color: #fff;
+}
+
+.love-photo-wall-modal-counter {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.love-photo-wall-modal-title {
+    color: #fff;
+    font-size: 1.18rem;
+    line-height: 1.35;
+}
+
+.love-photo-wall-modal-desc {
+    max-width: 800px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.74);
+    line-height: 1.72;
+}
+
+body.love-photo-wall-modal-open {
+    overflow: hidden;
+}
+
+[data-theme="dark"] .love-photo-wall-page {
+    --wall-surface: rgba(28, 30, 37, 0.96);
+    --wall-surface-soft: rgba(37, 39, 47, 0.94);
+    --wall-line: rgba(255, 255, 255, 0.1);
+    --wall-text: #f0e7ea;
+    --wall-muted: #c9babf;
+    --wall-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+}
+
+[data-theme="dark"] .love-photo-wall-feature-photo-wrap,
+[data-theme="dark"] .love-photo-wall-filter,
+[data-theme="dark"] .love-photo-wall-item,
+[data-theme="dark"] .love-photo-wall-polaroid {
+    background: rgba(31, 33, 40, 0.98) !important;
+}
+
+[data-theme="dark"] .love-photo-wall-filter.is-active,
+[data-theme="dark"] .love-photo-wall-filter:hover {
+    background: color-mix(in srgb, var(--wall-accent) 20%, rgba(31, 33, 40, 0.98)) !important;
+    color: #fff;
+}
+
+[data-theme="dark"] .love-photo-wall-filter em {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .love-photo-wall-item-badge {
+    background: rgba(24, 26, 32, 0.78);
+}
+
+@media screen and (max-width: 1180px) {
+    .love-photo-wall-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .love-photo-wall-feature {
+        grid-template-columns: minmax(220px, 0.78fr) minmax(0, 1fr);
+        grid-template-rows: auto;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .love-photo-wall {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 14px;
+    }
+
+    .love-photo-wall-board-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .love-photo-wall-hero,
+    .love-photo-wall-toolbar,
+    .love-photo-wall-board {
+        padding: 16px;
+    }
+
+    .love-photo-wall-title {
+        font-size: clamp(1.82rem, 9vw, 2.35rem);
+    }
+
+    .love-photo-wall-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .love-photo-wall-feature {
+        grid-template-columns: 1fr;
+    }
+
+    .love-photo-wall-feature-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .love-photo-wall-action {
+        width: 100%;
+        padding-inline: 10px;
+        white-space: nowrap;
+    }
+
+    .love-photo-wall-toolbar {
+        top: 68px;
+    }
+
+    .love-photo-wall-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: thin;
+    }
+
+    .love-photo-wall-filter {
+        flex: 0 0 auto;
+    }
+
+    .love-photo-wall-item.is-wide {
+        grid-column: span 1;
+    }
+
+    .love-photo-wall-modal-dialog {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: minmax(0, 1fr) 44px auto;
+        width: calc(100vw - 14px);
+        height: min(92vh, 760px);
+        margin: 7px auto;
+        padding: 54px 12px 12px;
+        gap: 10px;
+    }
+
+    .love-photo-wall-modal-stage {
+        grid-column: 1 / -1;
+    }
+
+    .love-photo-wall-modal-nav {
+        width: 100%;
+        height: 44px;
+    }
+
+    .love-photo-wall-modal-meta {
+        grid-column: 1 / -1;
+    }
+
+    .love-photo-wall-modal-image {
+        max-height: calc(92vh - 214px);
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .love-photo-wall-shell {
+        gap: 14px;
+    }
+
+    .love-photo-wall-hero,
+    .love-photo-wall-toolbar,
+    .love-photo-wall-board {
+        padding: 14px;
+    }
+
+    .love-photo-wall-stats {
+        gap: 8px;
+    }
+
+    .love-photo-wall-stat {
+        padding: 10px 8px;
+    }
+
+    .love-photo-wall {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .love-photo-wall-feature-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .love-photo-wall-board-note {
+        max-width: none;
+    }
 }

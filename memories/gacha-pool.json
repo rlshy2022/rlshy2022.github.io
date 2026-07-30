@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T15:02:19.923Z",
+  "generatedAt": "2026-07-30T02:40:28.657Z",
   "itemCount": 23,
   "manualCount": 9,
   "articleCount": 14,
@@ -64,7 +64,7 @@
       "timestamp": 1784073600000
     },
     {
-      "id": "gacha-post-11",
+      "id": "gacha-post-12",
       "source": "post",
       "type": "travel",
       "scene": "fuzhou",
@@ -248,7 +248,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-10",
+      "id": "gacha-post-11",
       "source": "post",
       "type": "gift",
       "scene": "gifts",
@@ -316,7 +316,7 @@
       "timestamp": 1770377536000
     },
     {
-      "id": "gacha-post-14",
+      "id": "gacha-post-10",
       "source": "post",
       "type": "letter",
       "scene": "daily",
@@ -333,7 +333,7 @@
       "timestamp": 1770365420000
     },
     {
-      "id": "gacha-post-12",
+      "id": "gacha-post-14",
       "source": "post",
       "type": "travel",
       "scene": "suzhou",

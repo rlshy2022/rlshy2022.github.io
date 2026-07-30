@@ -115,7 +115,8 @@
     }
 
     if (isPhotoWallPage()) {
-      loadStyle("/css/photo_wall.css?v=1.0");
+      loadStyle("/css/photo_wall.css?v=1.2");
+      loadScript("/js/photo_wall_experience.js?v=1.0").catch(() => {});
     }
 
     // ===== D. Article and encrypted-page experience =====
@@ -153,7 +154,7 @@
       featureEnabled("commentsEnhance") &&
       (document.getElementById("twikoo") || isPath("/comments/"))
     ) {
-      runWhenIdle(() => loadScript("/js/comments_enhance.js?v=1.0").catch(() => {}));
+      runWhenIdle(() => loadScript("/js/comments_enhance.js?v=1.1").catch(() => {}));
     }
 
     // ===== F. Memory world pages (map/timeline/gacha/hub/search/letters/review) =====
@@ -224,7 +225,7 @@
       runWhenIdle(() => loadScript("/js/love_special_day.js?v=2.0").catch(() => {}));
     }
 
-    runWhenIdle(() => loadScript("/js/love_interactions.js?v=2.1").catch(() => {}));
+    runWhenIdle(() => loadScript("/js/love_interactions.js?v=2.3").catch(() => {}));
     runWhenIdle(() => loadScript("/js/memory_explorer.js?v=1.2").catch(() => {}));
 
     if (featureEnabled("anniversaryBadge")) {

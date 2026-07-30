@@ -1,0 +1,590 @@
+/* 2026 site upgrade: calmer pages, wider tools, cleaner media grids. */
+:root {
+  --site-radius: 8px;
+  --site-surface: rgba(255, 255, 255, 0.96);
+  --site-surface-strong: #fff;
+  --site-bg: #f7f8fb;
+  --site-text: #26323c;
+  --site-muted: #667580;
+  --site-border: rgba(44, 51, 58, 0.1);
+  --site-border-strong: rgba(44, 51, 58, 0.16);
+  --site-accent: #c75e73;
+  --site-accent-soft: rgba(199, 94, 115, 0.1);
+  --site-blue: #527f9c;
+  --site-green: #527f68;
+  --site-shadow: 0 12px 28px rgba(27, 35, 45, 0.08);
+}
+
+html {
+  scroll-padding-top: 72px;
+}
+
+body {
+  color: var(--site-text);
+  background: var(--site-bg) !important;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  letter-spacing: 0 !important;
+}
+
+#page-header:not(.full_page),
+#page-header.not-home-page {
+  height: 220px !important;
+  min-height: 220px !important;
+}
+
+#page-header:not(.full_page)::before,
+#page-header.not-home-page::before {
+  background: rgba(20, 24, 30, 0.32) !important;
+}
+
+#page-header:not(.full_page) #site-title,
+#page-header.not-home-page #site-title,
+#page-header:not(.full_page) #page-title,
+#page-header.not-home-page #page-title {
+  font-size: clamp(2rem, 4vw, 2.8rem) !important;
+  line-height: 1.16 !important;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.22) !important;
+}
+
+#body-wrap.page #content-inner.layout {
+  width: min(1220px, calc(100% - 48px)) !important;
+  max-width: 1220px !important;
+  gap: 18px !important;
+}
+
+#body-wrap.page #page,
+#body-wrap.post #post {
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+@supports selector(:has(*)) {
+  body:has(#memory-hub-page) #page-header.not-home-page,
+  body:has(#love-timeline-page) #page-header.not-home-page,
+  body:has(#memory-search-page) #page-header.not-home-page,
+  body:has(#travel-passport-page) #page-header.not-home-page,
+  body:has(#memory-gacha-page) #page-header.not-home-page,
+  body:has(#future-letters-page) #page-header.not-home-page,
+  body:has(#year-review-page) #page-header.not-home-page,
+  body:has(#love-calendar-container) #page-header.not-home-page,
+  body:has(#love-map-container) #page-header.not-home-page,
+  body:has(.love-photo-wall) #page-header.not-home-page,
+  #body-wrap.type-gallery #page-header.not-home-page {
+    height: 190px !important;
+    min-height: 190px !important;
+  }
+
+  body:has(#memory-hub-page) #page-header.not-home-page #page-site-info,
+  body:has(#love-timeline-page) #page-header.not-home-page #page-site-info,
+  body:has(#memory-search-page) #page-header.not-home-page #page-site-info,
+  body:has(#travel-passport-page) #page-header.not-home-page #page-site-info,
+  body:has(#memory-gacha-page) #page-header.not-home-page #page-site-info,
+  body:has(#future-letters-page) #page-header.not-home-page #page-site-info,
+  body:has(#year-review-page) #page-header.not-home-page #page-site-info,
+  body:has(#love-calendar-container) #page-header.not-home-page #page-site-info,
+  body:has(#love-map-container) #page-header.not-home-page #page-site-info,
+  body:has(.love-photo-wall) #page-header.not-home-page #page-site-info,
+  #body-wrap.type-gallery #page-header.not-home-page #page-site-info {
+    display: none !important;
+  }
+
+  #page:has(#memory-hub-page),
+  #page:has(#love-timeline-page),
+  #page:has(#memory-search-page),
+  #page:has(#travel-passport-page),
+  #page:has(#memory-gacha-page),
+  #page:has(#future-letters-page),
+  #page:has(#year-review-page),
+  #page:has(#love-calendar-container),
+  #page:has(#love-map-container),
+  #page:has(.love-photo-wall),
+  #body-wrap.type-gallery #page {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #page:has(#memory-hub-page) #article-container,
+  #page:has(#love-timeline-page) #article-container,
+  #page:has(#memory-search-page) #article-container,
+  #page:has(#travel-passport-page) #article-container,
+  #page:has(#memory-gacha-page) #article-container,
+  #page:has(#future-letters-page) #article-container,
+  #page:has(#year-review-page) #article-container,
+  #page:has(#love-calendar-container) #article-container,
+  #page:has(#love-map-container) #article-container,
+  #page:has(.love-photo-wall) #article-container,
+  #body-wrap.type-gallery #article-container {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}
+
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell,
+.love-photo-wall-shell,
+.calendar-page-wrapper,
+.comments-main-card,
+.comments-card-wrapper {
+  width: 100% !important;
+  margin: 0 auto 22px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell {
+  padding: 26px !important;
+}
+
+.memory-page-hero,
+.love-timeline-hero,
+.memory-gacha-hero {
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr) !important;
+  gap: 18px !important;
+  padding-bottom: 18px !important;
+  border-bottom: 1px solid var(--site-border) !important;
+}
+
+.memory-page-kicker,
+.love-timeline-kicker,
+.memory-gacha-kicker,
+.memory-panel-kicker,
+.memory-hub-continue-kicker,
+.year-review-card-kicker,
+.love-gallery-kicker,
+.love-gallery-spotlight-kicker,
+.love-gallery-chapter-badge {
+  border-radius: var(--site-radius) !important;
+  background: rgba(82, 127, 156, 0.1) !important;
+  color: var(--site-blue) !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.memory-page-hero h2,
+.love-timeline-title,
+.memory-gacha-title,
+.love-gallery-title {
+  color: var(--site-text) !important;
+  font-family: inherit !important;
+  font-size: clamp(1.7rem, 3vw, 2.25rem) !important;
+  line-height: 1.2 !important;
+}
+
+.memory-page-hero p,
+.love-timeline-desc,
+.memory-gacha-desc,
+.love-gallery-desc,
+.memory-panel-head p {
+  max-width: 760px !important;
+  color: var(--site-muted) !important;
+  line-height: 1.75 !important;
+}
+
+.memory-page-stats,
+.love-timeline-stats,
+.year-review-card-stats,
+.love-gallery-stats {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.memory-page-stats div,
+.love-timeline-stat,
+.year-review-card-stats div,
+.memory-gacha-summary-card,
+.love-gallery-stat {
+  min-height: 78px !important;
+  border: 1px solid var(--site-border) !important;
+  border-radius: var(--site-radius) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: none !important;
+}
+
+.memory-hub-grid {
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr) !important;
+  gap: 18px !important;
+}
+
+.memory-hub-quick-links,
+.timeline-journey-board .passport-story-loop,
+.passport-story-loop,
+.memory-graph-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-scene-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)) !important;
+}
+
+.memory-panel,
+.memory-hub-quick-link,
+.memory-hub-continue-card,
+.memory-hub-quest-card,
+.memory-scene-card,
+.memory-graph-scene,
+.memory-search-summary-card,
+.memory-search-card,
+.passport-card,
+.future-letter-card,
+.future-letter-content,
+.future-letter-lock,
+.memory-voice-card,
+.memory-gacha-result-card,
+.memory-gacha-placeholder,
+.memory-gacha-empty,
+.year-review-card,
+.year-review-highlight,
+.year-review-month,
+.memory-letter-preview,
+.memory-achievement,
+.memory-today-item,
+.map-story-card,
+#love-map-stories,
+.love-map-city-rail {
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: none !important;
+}
+
+.memory-panel,
+.year-review-card {
+  padding: 20px !important;
+}
+
+.memory-search-results,
+.travel-passport-route {
+  display: grid !important;
+  gap: 14px !important;
+}
+
+.memory-search-card,
+.passport-card {
+  grid-template-columns: minmax(210px, 260px) minmax(0, 1fr) !important;
+  overflow: hidden !important;
+}
+
+.memory-search-cover,
+.passport-card-cover {
+  block-size: 100% !important;
+  min-height: 210px !important;
+}
+
+.love-timeline-card-main,
+.memory-gacha-result-card {
+  grid-template-columns: minmax(190px, 260px) minmax(0, 1fr) !important;
+  min-height: 210px !important;
+}
+
+.love-timeline-cover,
+.memory-gacha-cover {
+  min-height: 180px !important;
+  height: 100% !important;
+}
+
+.future-letter-grid,
+.memory-voice-grid,
+.year-review-highlights {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+}
+
+.year-review-card-head {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr) !important;
+}
+
+.year-review-month-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+}
+
+.memory-chip,
+.memory-gacha-filter,
+.love-timeline-filter,
+.love-timeline-year-label,
+.love-timeline-action,
+.memory-gacha-action,
+.memory-gacha-trigger,
+.memory-search-actions a,
+.memory-search-actions button,
+.passport-card-actions a,
+.future-letter-actions a,
+.memory-panel-head a,
+.love-map-city-btn,
+.map-story-link,
+.comment-shortcut,
+.love-gallery-action,
+.love-gallery-spotlight-link {
+  min-height: 40px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border-strong) !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.love-timeline-year-label {
+  padding: 8px 12px !important;
+}
+
+#rightside button,
+#rightside a {
+  min-width: 40px !important;
+  min-height: 40px !important;
+}
+
+.year-review-story-list a,
+.memory-graph-story a {
+  min-height: 36px !important;
+  padding: 7px 10px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-chip.is-active,
+.memory-gacha-filter.is-active,
+.love-timeline-filter.is-active,
+.memory-gacha-trigger,
+.memory-search-actions a:first-child,
+.passport-card-actions a:first-child,
+.love-map-city-btn.is-active,
+.love-gallery-action:not(.is-ghost):not(.is-soft) {
+  border-color: rgba(199, 94, 115, 0.38) !important;
+  background: var(--site-accent) !important;
+  color: #fff !important;
+}
+
+.memory-search-input,
+.el-input__inner,
+.tk-input .el-input__inner,
+.tk-textarea textarea {
+  min-height: 42px !important;
+  border-radius: var(--site-radius) !important;
+  border-color: var(--site-border-strong) !important;
+  box-shadow: none !important;
+}
+
+.love-gallery-hero,
+.love-gallery-spotlight,
+.love-gallery-chapter {
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface) !important;
+  box-shadow: var(--site-shadow) !important;
+  overflow: hidden !important;
+}
+
+.love-gallery-hero::before,
+.love-gallery-hero::after,
+.love-gallery-spotlight::before,
+.love-gallery-spotlight::after,
+.love-gallery-chapter::before,
+.love-gallery-chapter::after {
+  display: none !important;
+}
+
+.love-gallery-hero {
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr) !important;
+  gap: 18px !important;
+  padding: 24px !important;
+}
+
+.love-gallery-cover,
+.gallery-items img,
+.gallery-items .item,
+.gallery-items .item img,
+.fj-gallery-item,
+.fj-gallery-item img,
+#article-container > img {
+  border-radius: var(--site-radius) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.gallery-items img:hover,
+.gallery-items .item img:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.love-gallery-nav {
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface) !important;
+  box-shadow: none !important;
+}
+
+#love-map-container {
+  min-height: 560px !important;
+  height: min(62vh, 620px) !important;
+  border: 1px solid var(--site-border) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+.map-stories-list {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+}
+
+.calendar-main-card,
+#love-calendar-container {
+  border-radius: var(--site-radius) !important;
+  box-shadow: none !important;
+}
+
+.comments-main-card,
+.comments-card-wrapper {
+  padding: 24px !important;
+}
+
+.comment-shortcut {
+  padding: 8px 12px !important;
+}
+
+#rightside button,
+#rightside a {
+  border-radius: var(--site-radius) !important;
+}
+
+@media (max-width: 1100px) {
+  #body-wrap.page #content-inner.layout {
+    width: min(100% - 32px, 980px) !important;
+  }
+
+  .memory-page-hero,
+  .love-timeline-hero,
+  .memory-gacha-hero,
+  .memory-hub-grid,
+  .love-gallery-hero,
+  .year-review-card-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .year-review-month-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #page-header:not(.full_page),
+  #page-header.not-home-page {
+    height: 150px !important;
+    min-height: 150px !important;
+  }
+
+  #page-header:not(.full_page) #site-title,
+  #page-header.not-home-page #site-title,
+  #page-header:not(.full_page) #page-title,
+  #page-header.not-home-page #page-title {
+    font-size: 1.65rem !important;
+  }
+
+  #body-wrap.page #content-inner.layout {
+    width: 100% !important;
+    padding: 0 12px !important;
+  }
+
+  @supports selector(:has(*)) {
+    body:has(#memory-hub-page) #page-header.not-home-page,
+    body:has(#love-timeline-page) #page-header.not-home-page,
+    body:has(#memory-search-page) #page-header.not-home-page,
+    body:has(#travel-passport-page) #page-header.not-home-page,
+    body:has(#memory-gacha-page) #page-header.not-home-page,
+    body:has(#future-letters-page) #page-header.not-home-page,
+    body:has(#year-review-page) #page-header.not-home-page,
+    body:has(#love-calendar-container) #page-header.not-home-page,
+    body:has(#love-map-container) #page-header.not-home-page,
+    body:has(.love-photo-wall) #page-header.not-home-page,
+    #body-wrap.type-gallery #page-header.not-home-page {
+      height: 126px !important;
+      min-height: 126px !important;
+    }
+  }
+
+  #body-wrap.page #page,
+  #body-wrap.post #post {
+    padding: 16px !important;
+  }
+
+  .memory-page-shell,
+  .love-timeline-shell,
+  .memory-gacha-shell,
+  .comments-main-card,
+  .comments-card-wrapper {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .memory-page-hero,
+  .love-timeline-hero,
+  .memory-gacha-hero {
+    gap: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .memory-page-stats,
+  .love-timeline-stats,
+  .year-review-card-stats,
+  .love-gallery-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .memory-search-card,
+  .passport-card,
+  .love-timeline-card-main,
+  .memory-gacha-result-card,
+  .love-gallery-hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-search-cover,
+  .passport-card-cover,
+  .love-timeline-cover,
+  .memory-gacha-cover {
+    min-height: 190px !important;
+  }
+
+  .year-review-month-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .memory-chip,
+  .memory-gacha-filter,
+  .love-timeline-filter {
+    flex: 1 1 calc(50% - 8px) !important;
+  }
+
+  .love-gallery-title,
+  .memory-page-hero h2,
+  .love-timeline-title,
+  .memory-gacha-title {
+    font-size: 1.32rem !important;
+  }
+
+  #love-map-container {
+    height: 330px !important;
+    min-height: 330px !important;
+  }
+}
+
+[data-theme="dark"] {
+  --site-surface: rgba(32, 38, 45, 0.96);
+  --site-surface-strong: #20262d;
+  --site-bg: #171b20;
+  --site-text: #eef2f6;
+  --site-muted: #aeb7c0;
+  --site-border: rgba(238, 242, 246, 0.1);
+  --site-border-strong: rgba(238, 242, 246, 0.16);
+  --site-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+}
