@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.663Z",
+  "generatedAt": "2026-08-27T16:24:11.855Z",
   "scenes": [
     {
       "key": "jingdezhen",
@@ -182,6 +182,35 @@
         "心愿牌",
         "祈福心愿挂件",
         "红色心愿牌"
+      ]
+    },
+    {
+      "key": "suzhou_2026_08",
+      "label": "八月苏州",
+      "badge": "四周年重逢",
+      "accent": "#c98bab",
+      "chapter": "八月苏州",
+      "desc": "2026 年 8 月 13 日到 18 日，我们又在苏州见面，逛了雨中的留园和寒山寺，也在四周年那天切开了写着 1462 的蛋糕。",
+      "quote": "四年前的一朵玫瑰，四年后长成了 1462 天的蛋糕。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=suzhou_2026_08",
+      "photoWallUrl": "/photo-wall/?scene=suzhou_2026_08",
+      "timelineUrl": "/love-timeline/?scene=suzhou_2026_08",
+      "passport": true,
+      "passportTitle": "八月苏州四周年护照",
+      "passportNote": "这一站的印章里有留园的雨、寒山寺的锦鲤，和四周年那块写着 1462 的蛋糕。",
+      "stamp": "SZ-08",
+      "keywords": [
+        "八月苏州",
+        "suzhou_2026_08",
+        "26_8suzhou",
+        "2026.8suzhou",
+        "四周年",
+        "留园",
+        "寒山寺",
+        "徐府牛",
+        "鑫花溪",
+        "1462"
       ]
     },
     {
@@ -440,6 +469,16 @@
       "summary": "先在宁国玩，再爬上黄山，最后回到屯溪、黎阳和新安江边，把四月的红色心愿牌重新打开。",
       "audio": "/music/love.mp3",
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/nghs/nghs57.jpg?x-oss-process=image/format,webp"
+    },
+    {
+      "key": "suzhou-august-postcard",
+      "title": "八月苏州四周年明信片",
+      "speaker": "欢欢",
+      "badge": "试播片",
+      "scene": "suzhou_2026_08",
+      "summary": "留园的雨、寒山寺的锦鲤、两次徐府牛，和四周年那块写着 1462 的蛋糕，都在这张明信片里。",
+      "audio": "/music/love.mp3",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp"
     }
   ]
 }

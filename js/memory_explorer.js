@@ -23,7 +23,6 @@
     "/gallery/": { pageType: "gallery", title: "甜蜜相册" },
     "/photo-wall/": { pageType: "photo-wall", title: "照片墙" },
     "/future-letters/": { pageType: "letters", title: "未来信件" },
-    "/year-review/": { pageType: "year-review", title: "年度回顾" },
     "/love-map/": { pageType: "map", title: "足迹地图" },
     "/love-calendar/": { pageType: "calendar", title: "纪念日历" },
   };
@@ -283,32 +282,6 @@
     return { state, reward: reward || null, firstVisitToday };
   };
 
-  const showRewardToast = (reward, streakCount) => {
-    if (!reward || isSilentMode()) return;
-    const message = `探索奖励解锁：${reward.badge} · 已连续 ${streakCount} 天`;
-    if (
-      typeof window.btf !== "undefined" &&
-      typeof window.btf.snackbarShow === "function" &&
-      window.GLOBAL_CONFIG &&
-      window.GLOBAL_CONFIG.Snackbar
-    ) {
-      window.btf.snackbarShow(message);
-      return;
-    }
-
-    const toast = document.createElement("div");
-    toast.className = "love-special-day-toast is-visible";
-    toast.innerHTML = `
-      <i class="fas fa-compass"></i>
-      <span>${escapeHtml(message)}</span>
-    `;
-    document.body.appendChild(toast);
-    window.setTimeout(() => {
-      toast.classList.remove("is-visible");
-      window.setTimeout(() => toast.remove(), 220);
-    }, 2600);
-  };
-
   const rankCandidates = (items, current, visitedEntries) => {
     const currentTime = current && current.timestamp ? Number(current.timestamp) : 0;
     return uniqueByPath(items)
@@ -460,16 +433,8 @@
 
   const buildHomeJourneyMarkup = (searchData, graphData, meta, state) => {
     const visitedEntries = state && state.visitedEntries ? state.visitedEntries : {};
-    const visitedPaths = Object.keys(visitedEntries);
     const itemMap = buildItemMap(searchData && searchData.items);
-    const visitedItems = uniqueByPath(
-      safeArray(searchData && searchData.items).filter((item) =>
-        visitedPaths.includes(normalizePath(item && item.url))
-      )
-    );
-    const visitedSceneKeys = Array.from(new Set(visitedItems.map((item) => item.scene).filter(Boolean)));
     const activeDay = runtime.getActiveSpecialDay ? runtime.getActiveSpecialDay() : null;
-    const nextReward = REWARD_LEVELS.find((item) => item.count > Number(state.streakCount || 0)) || null;
     const preset = getGraphPreset(graphData, "/memory-hub/");
     const nextStop =
       pickNextUnvisited(preset.nextStops, itemMap, visitedEntries) ||
@@ -477,22 +442,18 @@
         .sort((left, right) => Number(right.timestamp || 0) - Number(left.timestamp || 0))
         .find((item) => !visitedEntries[normalizePath(item && item.url)]) ||
       null;
-    const progressPercent =
-      Number(searchData && searchData.itemCount)
-        ? Math.min(100, Math.round((visitedItems.length / Number(searchData.itemCount || 1)) * 100))
-        : 0;
-    const sceneProgress = safeArray(meta && meta.scenes).length
-      ? `${visitedSceneKeys.length}/${safeArray(meta && meta.scenes).length}`
-      : "0/0";
-    const rewardCopy = activeDay
+    const totalCount = Number(searchData && searchData.itemCount) || safeArray(searchData && searchData.items).length;
+    const sceneCount = safeArray(meta && meta.scenes).length;
+    const latestYear = safeArray(searchData && searchData.years)[0] || null;
+    const recommendationCopy = activeDay
       ? activeDay.featureDesc || "今天的推荐入口已经排好。"
-      : nextReward
-        ? `再连续 ${Math.max(nextReward.count - Number(state.streakCount || 0), 1)} 天，就会解锁「${nextReward.badge}」。`
-        : "探索奖励已经全部点亮，接下来继续查看内容。";
+      : nextStop
+        ? `${nextStop.title || "下一页回忆"} 适合接着看。`
+        : "可以从时间轴或旅行路线继续看。";
     const links = activeDay && safeArray(activeDay.recommendedLinks).length
       ? safeArray(activeDay.recommendedLinks).slice(0, 3)
       : [
-          nextStop ? { label: "自动推荐下一站", url: nextStop.url } : null,
+          nextStop ? { label: "继续看这一页", url: nextStop.url } : null,
           { label: "去时间轴", url: "/love-timeline/" },
           { label: "看旅行路线", url: "/travel-passport/" },
         ].filter(Boolean);
@@ -501,33 +462,30 @@
       <section class="home-memory-journey-strip">
         <div class="home-memory-journey-main">
           <span class="home-memory-journey-kicker">${escapeHtml(
-            activeDay ? activeDay.badge || "今日限定" : "探索进度"
+            activeDay ? activeDay.badge || "今日限定" : "继续查看"
           )}</span>
-          <h3 class="home-memory-journey-title">已经连续探索 ${escapeHtml(
-            state.streakCount || 0
-          )} 天，点亮 ${escapeHtml(visitedItems.length)}/${escapeHtml(
-            searchData.itemCount || 0
-          )} 页回忆</h3>
-          <p class="home-memory-journey-desc">${escapeHtml(rewardCopy)}</p>
-          <div class="home-memory-journey-progress">
-            <span style="width:${progressPercent}%;"></span>
-          </div>
+          <h3 class="home-memory-journey-title">${
+            activeDay
+              ? escapeHtml(activeDay.featureTitle || activeDay.name || "今天适合翻开的几页")
+              : nextStop
+                ? `继续看：${escapeHtml(nextStop.title || "下一页回忆")}`
+                : "从时间线或旅行路线继续看"
+          }</h3>
+          <p class="home-memory-journey-desc">${escapeHtml(recommendationCopy)}</p>
           ${renderScenePills(graphData, preset.sceneKeys)}
         </div>
         <div class="home-memory-journey-stats">
           <div>
-            <strong>${escapeHtml(progressPercent)}%</strong>
-            <span>内容探索</span>
+            <strong>${escapeHtml(totalCount)}</strong>
+            <span>公开回忆</span>
           </div>
           <div>
-            <strong>${escapeHtml(sceneProgress)}</strong>
-            <span>场景解锁</span>
+            <strong>${escapeHtml(sceneCount)}</strong>
+            <span>场景入口</span>
           </div>
           <div>
-            <strong>${escapeHtml(
-              activeDay ? activeDay.name || "今日限定" : nextReward ? nextReward.badge : "已完成"
-            )}</strong>
-            <span>${escapeHtml(activeDay ? "今日路线" : nextReward ? "下一奖励" : "奖励状态")}</span>
+            <strong>${escapeHtml((latestYear && latestYear.label) || "长期")}</strong>
+            <span>最新年份</span>
           </div>
         </div>
         <div class="home-memory-journey-links">
@@ -554,29 +512,6 @@
 
     portal.querySelectorAll(".home-memory-journey-strip").forEach((node) => node.remove());
     portal.insertAdjacentHTML("beforeend", buildHomeJourneyMarkup(searchData, graphData, meta, state));
-
-    const visitedEntries = state && state.visitedEntries ? state.visitedEntries : {};
-    portal.querySelectorAll(".home-memory-portal-card").forEach((card) => {
-      const path = normalizePath(card.getAttribute("href") || "");
-      const explored = Boolean(visitedEntries[path]);
-      card.classList.toggle("is-visited", explored);
-      if (explored) {
-        card.setAttribute("data-explored", "已探索");
-      } else {
-        card.removeAttribute("data-explored");
-      }
-    });
-
-    const todaySide = document.querySelector(".home-today-memory-side-card");
-    if (todaySide && !todaySide.querySelector(".home-memory-side-streak")) {
-      const badge = document.createElement("div");
-      badge.className = "home-memory-side-streak";
-      badge.innerHTML = `
-        <span class="label">连续探索</span>
-        <strong>${escapeHtml(state.streakCount || 0)} 天</strong>
-      `;
-      todaySide.appendChild(badge);
-    }
 
     return true;
   };
@@ -869,11 +804,8 @@
   const init = () => {
     Promise.all([loadSearchIndex()]).then(([searchData]) => {
       if (lastTrackedPath !== getCurrentPath()) {
-        const visit = trackVisit(buildVisitContext(searchData));
+        trackVisit(buildVisitContext(searchData));
         lastTrackedPath = getCurrentPath();
-        if (visit && visit.reward) {
-          showRewardToast(visit.reward, visit.state && visit.state.streakCount);
-        }
       }
       initHomeJourney();
       initArticleJourney();

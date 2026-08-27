@@ -142,6 +142,14 @@
               "七里山塘的风、河边的灯，还有藏在 OSS 里的一张张笑脸，都是苏州送给我们的礼物。",
           },
           {
+            title: "八月苏州重逢记",
+            url: "/trips/suzhou-august-2026/",
+            cover:
+              "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+            summary:
+              "2026 年 8 月 13 日到 18 日，我们又在苏州见面，逛了留园和寒山寺，吃了两次徐府牛，还在四周年那天切开了写着 1462 的蛋糕。",
+          },
+          {
             title: "爱的放映室：光影里的每一个瞬间",
             url: "/memories/movie-room/",
             cover:
@@ -178,6 +186,13 @@
         desc: "苏州这一组记录里，有七里山塘、小桥、晚风和一起散步的照片。",
         quote: "那天我们边走边吃，苏州就被记住了。",
         accent: "#ff8aa5",
+      },
+      八月苏州: {
+        badge: "四周年重逢",
+        date: "2026 · 八月",
+        desc: "八月苏州这一组记录里，有雨中的留园、寒山寺的锦鲤和四周年写着 1462 的蛋糕。",
+        quote: "四年前的一朵玫瑰，四年后长成了 1462 天的蛋糕。",
+        accent: "#c98bab",
       },
       扬州: {
         badge: "烟花三月",
@@ -239,6 +254,14 @@
         desc: "第一次把喜欢从屏幕两端，走进同一座城市的证据。",
         accent: "#7eb6ff",
         keywords: ["jdz_", "景德镇", "jingdezhen"],
+      },
+      {
+        key: "suzhou_2026_08",
+        label: "八月苏州",
+        badge: "四周年重逢",
+        desc: "留园的雨、寒山寺的锦鲤，和四周年那块写着 1462 的蛋糕。",
+        accent: "#c98bab",
+        keywords: ["26_8suzhou", "2026.8suzhou", "img/2026.8suzhou/", "八月苏州", "四周年", "留园", "寒山寺"],
       },
       {
         key: "suzhou",

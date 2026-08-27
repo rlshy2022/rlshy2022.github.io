@@ -7,13 +7,10 @@
   if (!runtime) return;
 
   let loadPromise = null;
-  let searchPromise = null;
-  let graphPromise = null;
   let perspectiveBound = false;
 
   const safeArray = runtime.safeArray || ((value) => (Array.isArray(value) ? value : []));
   const formatDate = runtime.formatDate || ((value) => String(value || ""));
-  const normalizePath = runtime.normalizePath || ((value) => String(value || "/"));
 
   const TYPE_LABELS = {
     all: "全部类型",
@@ -36,25 +33,6 @@
       });
     }
     return loadPromise;
-  };
-
-  const loadSearchIndex = () => {
-    if (!searchPromise) {
-      searchPromise = runtime.fetchJson("/memories/search-index.json", {
-        itemCount: 0,
-        items: [],
-      });
-    }
-    return searchPromise;
-  };
-
-  const loadGraph = () => {
-    if (!graphPromise) {
-      graphPromise = runtime.getGraph
-        ? runtime.getGraph()
-        : Promise.resolve({ pagePresets: {}, scenes: [] });
-    }
-    return graphPromise;
   };
 
   const getParams = () => {
@@ -148,33 +126,11 @@
     `;
   };
 
-  const renderTimelineStory = (item, label) => `
-    <a class="memory-graph-story" href="${item.url}">
-      <span class="memory-graph-story-badge">${label}</span>
-      <strong>${item.title || "继续翻下一页"}</strong>
-      <p>${item.summary || "从这里继续把时间线和文章页连起来。"}</p>
-      <small>${formatDate(item.isoDate || "")}</small>
-    </a>
-  `;
-
-  const render = (container, meta, perspective, data, searchData, graphData) => {
+  const render = (container, meta, perspective, data) => {
     const params = getParams();
     const allEvents = safeArray(data && data.events);
     const sceneKeys = Array.from(new Set(allEvents.map((item) => runtime.inferScene(item))));
     const scenes = safeArray(meta.scenes).filter((scene) => sceneKeys.includes(scene.key));
-    const itemMap = safeArray(searchData.items).reduce((acc, item) => {
-      acc[normalizePath(item && item.url)] = item;
-      return acc;
-    }, {});
-    const preset = (graphData.pagePresets && graphData.pagePresets["/love-timeline/"]) || {
-      nextStops: [],
-      sceneKeys: [],
-    };
-    const featuredStories = safeArray(preset.nextStops)
-      .map((url) => itemMap[normalizePath(url)])
-      .filter(Boolean)
-      .slice(0, 3);
-
     const initialScene = params.get("scene") || "all";
     const initialType = params.get("type") || "all";
     const initialYear = params.get("year") || "all";
@@ -201,7 +157,7 @@
       scene: sceneOptions.some((item) => item.value === initialScene) ? initialScene : "all",
       type: typeOptions.some((item) => item.value === initialType) ? initialType : "all",
       year: yearOptions.some((item) => item.value === initialYear) ? initialYear : "all",
-      openYears: buildGroups(allEvents).slice(0, 2).reduce((acc, group) => {
+      openYears: buildGroups(allEvents).reduce((acc, group) => {
         acc[group.year] = true;
         return acc;
       }, {}),
@@ -255,17 +211,6 @@
           </div>
           <div class="love-timeline-filter-group">
             ${createFilterButtons(yearOptions, state.year, "love-timeline-filter is-soft", "year")}
-          </div>
-        </section>
-
-        <section class="memory-hub-journey-board timeline-journey-board">
-          <section class="memory-hub-quest-card">
-            <span class="memory-hub-continue-kicker">继续探索</span>
-            <strong>按年份收起，再按线索展开</strong>
-            <p>移动端不再是一条无限长流。先选年份，再挑场景，最后顺着推荐页继续走。</p>
-          </section>
-          <div class="passport-story-loop">
-            ${featuredStories.map((item) => renderTimelineStory(item, "继续下一站")).join("")}
           </div>
         </section>
 
@@ -371,10 +316,10 @@
     const container = document.querySelector(PAGE_SELECTOR);
     if (!container) return;
 
-    Promise.all([runtime.getMeta(), runtime.getPerspective(), loadTimelineData(), loadSearchIndex(), loadGraph()]).then(
-      ([meta, perspective, data, searchData, graphData]) => {
+    Promise.all([runtime.getMeta(), runtime.getPerspective(), loadTimelineData()]).then(
+      ([meta, perspective, data]) => {
         if (!document.body.contains(container)) return;
-        render(container, meta, perspective, data || {}, searchData || {}, graphData || {});
+        render(container, meta, perspective, data || {});
       }
     );
 

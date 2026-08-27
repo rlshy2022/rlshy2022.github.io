@@ -92,7 +92,7 @@
         runWhenIdle(() => loadScript("/js/love_alert.js?v=1.0").catch(() => {}));
       }
       if (featureEnabled("homePortal")) {
-        runWhenIdle(() => loadScript("/js/home_memory_portal.js?v=1.1").catch(() => {}));
+        runWhenIdle(() => loadScript("/js/home_memory_portal.js?v=1.2").catch(() => {}));
       }
     }
 
@@ -121,7 +121,7 @@
 
     // ===== D. Article and encrypted-page experience =====
     if (document.getElementById("hbePass") || document.getElementById("hbeSubmitBtn")) {
-      runWhenIdle(() => loadScript("/js/encrypt_ui.js?v=1.1").catch(() => {}));
+      runWhenIdle(() => loadScript("/js/encrypt_ui.js?v=1.2").catch(() => {}));
     }
 
     if (document.getElementById("article-container")) {
@@ -164,12 +164,12 @@
     }
 
     if (document.getElementById("love-calendar-container")) {
-      loadScript("/js/love_calendar.js?v=1.0").catch(() => {});
+      loadScript("/js/love_calendar.js?v=1.1").catch(() => {});
     }
 
     if (document.getElementById("love-timeline-page")) {
       loadStyle("/css/memory_pages.css?v=1.0");
-      runWhenIdle(() => loadScript("/js/love_timeline.js?v=2.3").catch(() => {}));
+      runWhenIdle(() => loadScript("/js/love_timeline.js?v=2.4").catch(() => {}));
     }
 
     if (document.getElementById("memory-gacha-page")) {
@@ -178,7 +178,7 @@
     }
 
     if (document.getElementById("memory-hub-page")) {
-      runWhenIdle(() => loadScript("/js/memory_hub.js?v=1.5").catch(() => {}));
+      runWhenIdle(() => loadScript("/js/memory_hub.js?v=1.6").catch(() => {}));
     }
 
     if (document.getElementById("travel-passport-page")) {
@@ -191,10 +191,6 @@
 
     if (document.getElementById("memory-search-page")) {
       runWhenIdle(() => loadScript("/js/memory_search.js?v=1.5").catch(() => {}));
-    }
-
-    if (document.getElementById("year-review-page")) {
-      runWhenIdle(() => loadScript("/js/year_review.js?v=1.3").catch(() => {}));
     }
 
     // ===== G. Engagement effects and page bridges =====
@@ -226,7 +222,7 @@
     }
 
     runWhenIdle(() => loadScript("/js/love_interactions.js?v=2.3").catch(() => {}));
-    runWhenIdle(() => loadScript("/js/memory_explorer.js?v=1.2").catch(() => {}));
+    runWhenIdle(() => loadScript("/js/memory_explorer.js?v=1.3").catch(() => {}));
 
     if (featureEnabled("anniversaryBadge")) {
       loadStyle("/css/anniversary_badge.css?v=1.1");

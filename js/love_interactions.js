@@ -18,6 +18,7 @@
       timelineLabel: "景德镇",
       keywords: ["景德镇", "jingdezhen", "陶阳里", "中国陶瓷博物馆", "跨年"],
     },
+    suzhou_2026_08: { galleryChapter: "八月苏州", timelineLabel: "八月苏州", keywords: ["八月苏州", "四周年"] },
     suzhou: {
       galleryChapter: "苏州",
       timelineLabel: "苏州",

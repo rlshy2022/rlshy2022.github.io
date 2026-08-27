@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.661Z",
-  "itemCount": 23,
+  "generatedAt": "2026-08-27T16:24:11.855Z",
+  "itemCount": 26,
   "years": [
     {
       "key": "2026",
       "label": "2026",
-      "count": 21
+      "count": 24
     },
     {
       "key": "2025",
@@ -22,22 +22,22 @@
     {
       "key": "travel",
       "label": "travel",
-      "count": 15
+      "count": 16
+    },
+    {
+      "key": "milestone",
+      "label": "milestone",
+      "count": 3
+    },
+    {
+      "key": "festival",
+      "label": "festival",
+      "count": 2
     },
     {
       "key": "letter",
       "label": "letter",
       "count": 2
-    },
-    {
-      "key": "milestone",
-      "label": "milestone",
-      "count": 2
-    },
-    {
-      "key": "festival",
-      "label": "festival",
-      "count": 1
     },
     {
       "key": "gift",
@@ -61,6 +61,12 @@
       "label": "日常",
       "accent": "#85b7a6",
       "count": 8
+    },
+    {
+      "key": "suzhou_2026_08",
+      "label": "八月苏州",
+      "accent": "#c98bab",
+      "count": 3
     },
     {
       "key": "ningguo_huangshan",
@@ -120,7 +126,7 @@
     {
       "key": "summer",
       "label": "夏天",
-      "count": 6
+      "count": 9
     },
     {
       "key": "spring",
@@ -132,12 +138,12 @@
     {
       "key": "journey",
       "label": "出走",
-      "count": 16
+      "count": 17
     },
     {
       "key": "celebration",
       "label": "仪式感",
-      "count": 3
+      "count": 5
     },
     {
       "key": "confession",
@@ -151,6 +157,123 @@
     }
   ],
   "items": [
+    {
+      "id": "search-post-4",
+      "source": "post",
+      "type": "festival",
+      "scene": "suzhou_2026_08",
+      "sceneLabel": "八月苏州",
+      "badge": "特别日子",
+      "title": "八月苏州重逢记",
+      "summary": "2026 年 8 月 13 日到 8 月 18 日，我们又在苏州见面。一起逛了雨中的留园和寒山寺，吃了两次徐府牛、很多次鑫花溪米粉，还在 8 月 18 日那天，用一块写着 1462 的蛋糕，过了我们相识四周年。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [
+        "恋爱日记",
+        "旅行",
+        "苏州"
+      ],
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "徐府牛",
+        "鑫花溪",
+        "四周年",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-18",
+      "year": 2026,
+      "month": 8,
+      "day": 18,
+      "timestamp": 1787062800000,
+      "city": "苏州",
+      "season": "summer",
+      "seasonLabel": "夏天",
+      "mood": "celebration",
+      "moodLabel": "仪式感",
+      "tripKey": "suzhou_2026_08",
+      "routeKey": "suzhou_2026_08",
+      "festivalKey": "anniversary",
+      "people": [
+        "我们"
+      ],
+      "searchBlob": "八月苏州重逢记 2026 年 8 月 13 日到 8 月 18 日，我们又在苏州见面。一起逛了雨中的留园和寒山寺，吃了两次徐府牛、很多次鑫花溪米粉，还在 8 月 18 日那天，用一块写着 1462 的蛋糕，过了我们相识四周年。 特别日子 festival suzhou_2026_08 八月苏州 苏州 苏州 夏天 仪式感 suzhou_2026_08 anniversary 苏州 留园 寒山寺 徐府牛 鑫花溪 四周年 八月旅行 恋爱日记 旅行 苏州 我们"
+    },
+    {
+      "id": "suzhou-anniversary-4",
+      "source": "manual",
+      "type": "milestone",
+      "scene": "suzhou_2026_08",
+      "sceneLabel": "八月苏州",
+      "badge": "相识四周年",
+      "title": "相识四周年，1462 天",
+      "summary": "2026 年 8 月 18 日，我们在苏州用一块写着 1462 的荔枝蛋糕过了相识四周年，蜡烛上的烟雾替我们数完了这四年的每一天。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [],
+      "tags": [
+        "四周年",
+        "纪念日",
+        "蛋糕"
+      ],
+      "isoDate": "2026-08-18",
+      "year": 2026,
+      "month": 8,
+      "day": 18,
+      "timestamp": 1787011200000,
+      "city": "苏州",
+      "season": "summer",
+      "seasonLabel": "夏天",
+      "mood": "celebration",
+      "moodLabel": "仪式感",
+      "tripKey": "suzhou_2026_08",
+      "routeKey": "suzhou_2026_08",
+      "festivalKey": "anniversary",
+      "people": [
+        "我们"
+      ],
+      "searchBlob": "相识四周年，1462 天 2026 年 8 月 18 日，我们在苏州用一块写着 1462 的荔枝蛋糕过了相识四周年，蜡烛上的烟雾替我们数完了这四年的每一天。 相识四周年 milestone suzhou_2026_08 八月苏州 苏州 苏州 夏天 仪式感 suzhou_2026_08 anniversary 四周年 纪念日 蛋糕 我们"
+    },
+    {
+      "id": "suzhou-august-meet",
+      "source": "manual",
+      "type": "travel",
+      "scene": "suzhou_2026_08",
+      "sceneLabel": "八月苏州",
+      "badge": "八月重逢",
+      "title": "八月又在苏州见面",
+      "summary": "2026 年 8 月 13 日到 18 日，我们在苏州见面，逛了雨中的留园和寒山寺，吃了两次徐府牛和鑫花溪米粉。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_30.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [],
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-13",
+      "year": 2026,
+      "month": 8,
+      "day": 13,
+      "timestamp": 1786579200000,
+      "city": "苏州",
+      "season": "summer",
+      "seasonLabel": "夏天",
+      "mood": "journey",
+      "moodLabel": "出走",
+      "tripKey": "suzhou_2026_08",
+      "routeKey": "suzhou_2026_08",
+      "festivalKey": "",
+      "people": [
+        "我们"
+      ],
+      "searchBlob": "八月又在苏州见面 2026 年 8 月 13 日到 18 日，我们在苏州见面，逛了雨中的留园和寒山寺，吃了两次徐府牛和鑫花溪米粉。 八月重逢 travel suzhou_2026_08 八月苏州 苏州 苏州 夏天 出走 suzhou_2026_08 苏州 留园 寒山寺 八月旅行 我们"
+    },
     {
       "id": "search-post-2",
       "source": "post",
@@ -286,12 +409,12 @@
         "福州"
       ],
       "tags": [
-        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海"
+        "看海",
+        "美食"
       ],
       "isoDate": "2026-06-17",
       "year": 2026,
@@ -309,7 +432,7 @@
       "people": [
         "欢欢"
       ],
-      "searchBlob": "福州小记 2026 年 6 月 17 日，我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去了长乐看海，吃了很多美食，也拍下很多好看的照片。 旅行回忆 travel fuzhou 福州 福州 福州 夏天 出走 fuzhou 美食 福州 福建师范大学 福师大西门小吃街 长乐 看海 恋爱日记 旅行 福州 欢欢"
+      "searchBlob": "福州小记 2026 年 6 月 17 日，我们在福州见面，去了欢欢的母校福建师范大学，逛了福师大西门小吃街，又去了长乐看海，吃了很多美食，也拍下很多好看的照片。 旅行回忆 travel fuzhou 福州 福州 福州 夏天 出走 fuzhou 福州 福建师范大学 福师大西门小吃街 长乐 看海 美食 恋爱日记 旅行 福州 欢欢"
     },
     {
       "id": "fuzhou-reunion",
@@ -622,43 +745,6 @@
       "searchBlob": "💕 情人节 · 在二月十四日，写给怡怡 写在情人节的一封专属告白，把想说给怡怡的话和那天的温柔心情都留了下来。 特别日子 festival daily 日常 情人节 情人节 冬天 告白 valentine 小情书 情人节 恋爱日常 恋爱日记 情人节 怡怡"
     },
     {
-      "id": "search-post-4",
-      "source": "post",
-      "type": "travel",
-      "scene": "daily",
-      "sceneLabel": "日常",
-      "badge": "旅行回忆",
-      "title": "寒假的吃吃吃和玩玩玩",
-      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
-      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
-      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
-      "location": "美食",
-      "categories": [
-        "恋爱日记",
-        "美食"
-      ],
-      "tags": [
-        "美食"
-      ],
-      "isoDate": "2026-02-11",
-      "year": 2026,
-      "month": 2,
-      "day": 11,
-      "timestamp": 1770776595000,
-      "city": "美食",
-      "season": "winter",
-      "seasonLabel": "冬天",
-      "mood": "journey",
-      "moodLabel": "出走",
-      "tripKey": "",
-      "routeKey": "",
-      "festivalKey": "",
-      "people": [
-        "我们"
-      ],
-      "searchBlob": "寒假的吃吃吃和玩玩玩 记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。 旅行回忆 travel daily 日常 美食 美食 冬天 出走 美食 恋爱日记 美食 我们"
-    },
-    {
       "id": "search-post-11",
       "source": "post",
       "type": "gift",
@@ -731,6 +817,43 @@
         "我们"
       ],
       "searchBlob": "美食拯救世界 把那些一起吃到满足、想到就会笑起来的味道，整理成这一份专属的美食回忆。 写成文章 post daily 日常 美食 美食 冬天 温柔 美食 恋爱日记 美食 我们"
+    },
+    {
+      "id": "search-post-15",
+      "source": "post",
+      "type": "travel",
+      "scene": "daily",
+      "sceneLabel": "日常",
+      "badge": "旅行回忆",
+      "title": "寒假的吃吃吃和玩玩玩",
+      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
+      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
+      "location": "美食",
+      "categories": [
+        "恋爱日记",
+        "美食"
+      ],
+      "tags": [
+        "美食"
+      ],
+      "isoDate": "2026-02-11",
+      "year": 2026,
+      "month": 2,
+      "day": 11,
+      "timestamp": 1770776595000,
+      "city": "美食",
+      "season": "winter",
+      "seasonLabel": "冬天",
+      "mood": "journey",
+      "moodLabel": "出走",
+      "tripKey": "",
+      "routeKey": "",
+      "festivalKey": "",
+      "people": [
+        "我们"
+      ],
+      "searchBlob": "寒假的吃吃吃和玩玩玩 记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。 旅行回忆 travel daily 日常 美食 美食 冬天 出走 美食 恋爱日记 美食 我们"
     },
     {
       "id": "search-post-9",

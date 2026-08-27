@@ -7,7 +7,6 @@
   let todayPromise = null;
   let futurePromise = null;
   let timelinePromise = null;
-  let yearReviewPromise = null;
   let searchPromise = null;
   let perspectiveBound = false;
 
@@ -40,17 +39,6 @@
       timelinePromise = runtime.fetchJson("/memories/love-timeline.json", { events: [] });
     }
     return timelinePromise;
-  };
-
-  const loadYearReview = () => {
-    if (!yearReviewPromise) {
-      yearReviewPromise = runtime.fetchJson("/memories/year-review.json", {
-        yearCount: 0,
-        currentYear: "",
-        years: [],
-      });
-    }
-    return yearReviewPromise;
   };
 
   const loadSearchIndex = () => {
@@ -86,7 +74,7 @@
     </a>
   `;
 
-  const buildPortal = ({ meta, perspective, today, futureLetters, timeline, yearReview, searchData }) => {
+  const buildPortal = ({ meta, perspective, today, futureLetters, timeline, searchData }) => {
     const recentPosts = document.getElementById("recent-posts");
     if (!recentPosts) return;
 
@@ -98,7 +86,6 @@
     const routes = safeArray(meta && meta.scenes).filter((scene) => scene.passport);
     const latestUnlockedLetter = safeArray(futureLetters && futureLetters.letters).find((item) => item.unlocked);
     const eventCount = safeArray(timeline && timeline.events).length;
-    const latestYear = safeArray(yearReview && yearReview.years)[0];
     const exploration = runtime.getExplorationSummary
       ? runtime.getExplorationSummary(safeArray(searchData && searchData.items))
       : null;
@@ -142,15 +129,6 @@
         href: "/future-letters/",
       },
       {
-        badge: "年度回顾",
-        title: latestYear ? `${latestYear.year} 年回顾` : "年度回顾",
-        desc: latestYear
-          ? `${latestYear.year} 年的旅行、节日和文章已经整理成年度页。`
-          : "按年份查看旅行、节日、文章和高光片段。",
-        meta: `${yearReview.yearCount || 0} 个年份`,
-        href: "/year-review/",
-      },
-      {
         badge: "深度检索",
         title: "回忆搜索",
         desc: "按年份、场景、类型和关键词把回忆重新筛出来，找某个地点或某个阶段会更快。",
@@ -166,12 +144,12 @@
         <div>
           <span class="home-memory-portal-kicker">Story Portal</span>
           <h2>${(perspective && perspective.hubTitle) || "先从最值得点开的几扇门进去"}</h2>
-          <p>${(perspective && perspective.hubDesc) || "时间线、旅行护照、未来信件、年度回顾和今天的回忆都放在首页第一排。"}</p>
+          <p>${(perspective && perspective.hubDesc) || "时间线、旅行护照、未来信件、搜索和今天的回忆都放在首页第一排。"}</p>
         </div>
         <div class="home-memory-portal-stats">
           <div><strong>${eventCount}</strong><span>时间节点</span></div>
           <div><strong>${meta.scenes.length || 0}</strong><span>场景入口</span></div>
-          <div><strong>${yearReview.yearCount || 0}</strong><span>年度页</span></div>
+          <div><strong>${searchData.itemCount || 0}</strong><span>可检索</span></div>
         </div>
       </div>
       <div class="home-memory-portal-switcher" data-role="switcher"></div>
@@ -253,11 +231,10 @@
       loadToday(),
       loadFutureLetters(),
       loadTimeline(),
-      loadYearReview(),
       loadSearchIndex(),
-    ]).then(([meta, perspective, today, futureLetters, timeline, yearReview, searchData]) => {
+    ]).then(([meta, perspective, today, futureLetters, timeline, searchData]) => {
       if (!document.getElementById("recent-posts")) return;
-      buildPortal({ meta, perspective, today, futureLetters, timeline, yearReview, searchData });
+      buildPortal({ meta, perspective, today, futureLetters, timeline, searchData });
     });
 
     if (!perspectiveBound) {

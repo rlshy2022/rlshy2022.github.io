@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.666Z",
-  "routeCount": 7,
+  "generatedAt": "2026-08-27T16:24:11.858Z",
+  "routeCount": 8,
   "routes": [
     {
       "key": "jingdezhen",
@@ -230,6 +230,46 @@
           "summary": "2026 年 7 月 15 日到 7 月 22 日，我们先到宁国玩，再去把上次没有爬的黄山真正爬上去，最后回到屯溪老街、黎阳老街和新安江边，看见四月写下的红色心愿牌还在，又把它打开看了一遍。",
           "isoDate": "2026-07-22",
           "url": "/trips/ningguo-huangshan-2026/"
+        }
+      ]
+    },
+    {
+      "key": "suzhou_2026_08",
+      "order": 8,
+      "label": "八月苏州",
+      "title": "八月苏州四周年护照",
+      "note": "这一站的印章里有留园的雨、寒山寺的锦鲤，和四周年那块写着 1462 的蛋糕。",
+      "badge": "四周年重逢",
+      "accent": "#c98bab",
+      "stamp": "SZ-08",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "galleryUrl": "/gallery/?chapter=suzhou_2026_08",
+      "photoWallUrl": "/photo-wall/?scene=suzhou_2026_08",
+      "timelineUrl": "/love-timeline/?scene=suzhou_2026_08",
+      "firstDate": "2026-08-13",
+      "latestDate": "2026-08-18",
+      "memoryCount": 3,
+      "highlights": [
+        {
+          "title": "八月又在苏州见面",
+          "badge": "八月重逢",
+          "summary": "2026 年 8 月 13 日到 18 日，我们在苏州见面，逛了雨中的留园和寒山寺，吃了两次徐府牛和鑫花溪米粉。",
+          "isoDate": "2026-08-13",
+          "url": "/trips/suzhou-august-2026/"
+        },
+        {
+          "title": "相识四周年，1462 天",
+          "badge": "相识四周年",
+          "summary": "2026 年 8 月 18 日，我们在苏州用一块写着 1462 的荔枝蛋糕过了相识四周年，蜡烛上的烟雾替我们数完了这四年的每一天。",
+          "isoDate": "2026-08-18",
+          "url": "/trips/suzhou-august-2026/"
+        },
+        {
+          "title": "八月苏州重逢记",
+          "badge": "写成文章",
+          "summary": "2026 年 8 月 13 日到 8 月 18 日，我们又在苏州见面。一起逛了雨中的留园和寒山寺，吃了两次徐府牛、很多次鑫花溪米粉，还在 8 月 18 日那天，用一块写着 1462 的蛋糕，过了我们相识四周年。",
+          "isoDate": "2026-08-18",
+          "url": "/trips/suzhou-august-2026/"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.645Z",
-  "unlockedCount": 4,
-  "pendingCount": 1,
+  "generatedAt": "2026-08-27T16:24:11.829Z",
+  "unlockedCount": 6,
+  "pendingCount": 0,
   "letters": [
     {
       "key": "site-start-letter",
@@ -79,9 +79,25 @@
       "signature": "欢欢 & 怡怡",
       "unlockDate": "2026-08-18",
       "unlockTimestamp": 1787011200000,
-      "daysRemaining": 19,
-      "unlocked": false,
-      "content": ""
+      "daysRemaining": 0,
+      "unlocked": true,
+      "content": "给周年那天的我们：\n\n如果你们在这一天重新打开这封信，希望此刻的小站里已经多了更多文章、照片和旅行记录。\n\n愿那时候的你们，依然会因为普通的一天而开心，也依然愿意把喜欢说出口、写下来、留住。\n\n愿你们继续一起去新的地方，也愿你们继续把旧的回忆翻很多遍。"
+    },
+    {
+      "key": "suzhou-fourth-anniversary",
+      "title": "写给相识四周年的我们",
+      "scene": "suzhou_2026_08",
+      "badge": "已解锁",
+      "accent": "#c98bab",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "summary": "这封信写给四周年之后的我们，记住八月苏州的留园、寒山寺和那块写着 1462 的蛋糕。",
+      "teaser": "等这封信打开的时候，希望你们还记得 2026.8.13-8.18 的苏州，记得留园的雨、寒山寺的锦鲤，还有蜡烛烟雾里写着的 1462 天。",
+      "signature": "欢欢",
+      "unlockDate": "2026-08-19",
+      "unlockTimestamp": 1787097600000,
+      "daysRemaining": 0,
+      "unlocked": true,
+      "content": "给四周年之后的我们：\n\n2022 年 8 月 18 日，你在 Yeetalk 送出一朵玫瑰；2026 年 8 月 18 日，我们在苏州切开了写着 1462 的蛋糕。\n\n这四年不是一直顺利，异地、想念、偶尔的争吵和走散，都在里面。但最后我们都走回来了，还把每一年都过成了新的章节：景德镇、苏州、扬州、黄山、绍兴、福州，再到这次八月重新回到苏州。\n\n这次的苏州有留园的雨、寒山寺抢食的锦鲤和睡在消防箱上的黑猫，有两次徐府牛和好几顿鑫花溪。可最重要的画面，还是你对着蛋糕许愿、烟雾慢慢浮出 1462 的那一刻。\n\n如果以后的我们在某个八月再翻到这封信，希望那时我们已经又一起过了很多个四周年，也依旧愿意把喜欢说出口、写下来、留住。"
     }
   ]
 }

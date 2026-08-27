@@ -62,6 +62,14 @@
       keywords: ["jdz_", "景德镇", "jingdezhen"],
     },
     {
+      key: "suzhou_2026_08",
+      label: "八月苏州",
+      badge: "四周年重逢",
+      desc: "雨中的留园、寒山寺的锦鲤，和四周年写着 1462 的蛋糕。",
+      accent: "#b07a93",
+      keywords: ["26_8suzhou", "2026.8suzhou", "img/2026.8suzhou/", "八月苏州", "四周年", "留园", "寒山寺"],
+    },
+    {
       key: "suzhou",
       label: "苏州",
       badge: "旅行记录",

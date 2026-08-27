@@ -44,6 +44,43 @@
     actions.appendChild(toggle);
   }
 
+  function ensureActions(main, content, pass) {
+    let actions = main?.querySelector('.love-encrypt-actions');
+    if (actions) return actions;
+
+    const inputWrap = pass.closest('.hbe-input') || pass.parentElement || content;
+    actions = document.createElement('div');
+    actions.className = 'love-encrypt-actions';
+    actions.innerHTML = `
+      <button type="button" class="love-encrypt-submit">确认解锁</button>
+      <p id="hbeStatus" class="love-encrypt-status is-idle">输入约定好的密码，点一下确认就能打开。</p>
+    `;
+
+    inputWrap.insertAdjacentElement('afterend', actions);
+
+    const submit = actions.querySelector('.love-encrypt-submit');
+    submit?.addEventListener('click', () => {
+      const status = document.getElementById('hbeStatus');
+      if (status) {
+        status.className = 'love-encrypt-status is-loading';
+        status.textContent = '正在确认暗号...';
+      }
+      pass.focus({ preventScroll: true });
+      main.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          bubbles: true,
+          cancelable: true,
+          key: 'Enter',
+          code: 'Enter',
+          keyCode: 13,
+          which: 13,
+        })
+      );
+    });
+
+    return actions;
+  }
+
   function bindHintReset(pass) {
     const status = document.getElementById('hbeStatus');
     if (!pass || !status || pass.dataset.hintBound === 'true') return;
@@ -64,7 +101,6 @@
     const main = document.getElementById('hexo-blog-encrypt');
     const content = main?.querySelector('.hbe-content');
     const pass = document.getElementById('hbePass');
-    const actions = main?.querySelector('.love-encrypt-actions');
 
     if (!main || !content || !pass) return;
     if (main.dataset.loveEnhanced === 'true') return;
@@ -72,6 +108,7 @@
     main.dataset.loveEnhanced = 'true';
 
     ensureHero(content);
+    const actions = ensureActions(main, content, pass);
     ensureVisibilityToggle(pass, actions);
     bindHintReset(pass);
 

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.656Z",
-  "eventCount": 23,
-  "manualCount": 9,
-  "postCount": 14,
+  "generatedAt": "2026-08-27T16:24:11.838Z",
+  "eventCount": 26,
+  "manualCount": 11,
+  "postCount": 15,
   "scenes": [
     "daily",
     "jingdezhen",
@@ -12,7 +12,8 @@
     "huangshan",
     "shaoxing",
     "fuzhou",
-    "ningguo_huangshan"
+    "ningguo_huangshan",
+    "suzhou_2026_08"
   ],
   "events": [
     {
@@ -205,7 +206,7 @@
       "timestamp": 1770454800000
     },
     {
-      "id": "timeline-post-4",
+      "id": "timeline-post-15",
       "source": "post",
       "type": "travel",
       "scene": "daily",
@@ -499,12 +500,12 @@
         "福州"
       ],
       "tags": [
-        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海"
+        "看海",
+        "美食"
       ],
       "isoDate": "2026-06-17",
       "year": 2026,
@@ -589,6 +590,84 @@
       "month": 7,
       "day": 22,
       "timestamp": 1784730000000
+    },
+    {
+      "id": "suzhou-august-meet",
+      "source": "manual",
+      "type": "travel",
+      "scene": "suzhou_2026_08",
+      "badge": "八月重逢",
+      "title": "八月又在苏州见面",
+      "summary": "2026 年 8 月 13 日到 18 日，我们在苏州见面，逛了雨中的留园和寒山寺，吃了两次徐府牛和鑫花溪米粉。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_30.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [],
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-13",
+      "year": 2026,
+      "month": 8,
+      "day": 13,
+      "timestamp": 1786579200000
+    },
+    {
+      "id": "suzhou-anniversary-4",
+      "source": "manual",
+      "type": "milestone",
+      "scene": "suzhou_2026_08",
+      "badge": "相识四周年",
+      "title": "相识四周年，1462 天",
+      "summary": "2026 年 8 月 18 日，我们在苏州用一块写着 1462 的荔枝蛋糕过了相识四周年，蜡烛上的烟雾替我们数完了这四年的每一天。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [],
+      "tags": [
+        "四周年",
+        "纪念日",
+        "蛋糕"
+      ],
+      "isoDate": "2026-08-18",
+      "year": 2026,
+      "month": 8,
+      "day": 18,
+      "timestamp": 1787011200000
+    },
+    {
+      "id": "timeline-post-4",
+      "source": "post",
+      "type": "festival",
+      "scene": "suzhou_2026_08",
+      "badge": "特别日子",
+      "title": "八月苏州重逢记",
+      "summary": "2026 年 8 月 13 日到 8 月 18 日，我们又在苏州见面。一起逛了雨中的留园和寒山寺，吃了两次徐府牛、很多次鑫花溪米粉，还在 8 月 18 日那天，用一块写着 1462 的蛋糕，过了我们相识四周年。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "location": "苏州",
+      "categories": [
+        "恋爱日记",
+        "旅行",
+        "苏州"
+      ],
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "徐府牛",
+        "鑫花溪",
+        "四周年",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-18",
+      "year": 2026,
+      "month": 8,
+      "day": 18,
+      "timestamp": 1787062800000
     }
   ]
 }

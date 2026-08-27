@@ -1,9 +1,68 @@
 {
-  "generatedAt": "2026-07-30T02:40:28.657Z",
-  "itemCount": 23,
-  "manualCount": 9,
-  "articleCount": 14,
+  "generatedAt": "2026-08-27T16:24:11.840Z",
+  "itemCount": 26,
+  "manualCount": 11,
+  "articleCount": 15,
   "items": [
+    {
+      "id": "gacha-post-4",
+      "source": "post",
+      "type": "festival",
+      "scene": "suzhou_2026_08",
+      "badge": "特别日子",
+      "title": "八月苏州重逢记",
+      "summary": "2026 年 8 月 13 日到 8 月 18 日，我们又在苏州见面。一起逛了雨中的留园和寒山寺，吃了两次徐府牛、很多次鑫花溪米粉，还在 8 月 18 日那天，用一块写着 1462 的蛋糕，过了我们相识四周年。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "徐府牛",
+        "鑫花溪",
+        "四周年",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-18",
+      "timestamp": 1787062800000
+    },
+    {
+      "id": "suzhou-anniversary-4",
+      "source": "manual",
+      "type": "milestone",
+      "scene": "suzhou_2026_08",
+      "badge": "相识四周年",
+      "title": "相识四周年，1462 天",
+      "summary": "2026 年 8 月 18 日，我们在苏州用一块写着 1462 的荔枝蛋糕过了相识四周年，蜡烛上的烟雾替我们数完了这四年的每一天。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_12.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "tags": [
+        "四周年",
+        "纪念日",
+        "蛋糕"
+      ],
+      "isoDate": "2026-08-18",
+      "timestamp": 1787011200000
+    },
+    {
+      "id": "suzhou-august-meet",
+      "source": "manual",
+      "type": "travel",
+      "scene": "suzhou_2026_08",
+      "badge": "八月重逢",
+      "title": "八月又在苏州见面",
+      "summary": "2026 年 8 月 13 日到 18 日，我们在苏州见面，逛了雨中的留园和寒山寺，吃了两次徐府牛和鑫花溪米粉。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026.8suzhou/26_8suzhou_30.jpg?x-oss-process=image/format,webp",
+      "url": "/trips/suzhou-august-2026/",
+      "tags": [
+        "苏州",
+        "留园",
+        "寒山寺",
+        "八月旅行"
+      ],
+      "isoDate": "2026-08-13",
+      "timestamp": 1786579200000
+    },
     {
       "id": "gacha-post-2",
       "source": "post",
@@ -74,12 +133,12 @@
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
       "url": "/trips/fuzhou-2026/",
       "tags": [
-        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海"
+        "看海",
+        "美食"
       ],
       "isoDate": "2026-06-17",
       "timestamp": 1781706000000
@@ -232,22 +291,6 @@
       "timestamp": 1770998400000
     },
     {
-      "id": "gacha-post-4",
-      "source": "post",
-      "type": "travel",
-      "scene": "daily",
-      "badge": "旅行扭蛋",
-      "title": "寒假的吃吃吃和玩玩玩",
-      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
-      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
-      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
-      "tags": [
-        "美食"
-      ],
-      "isoDate": "2026-02-11",
-      "timestamp": 1770776595000
-    },
-    {
       "id": "gacha-post-11",
       "source": "post",
       "type": "gift",
@@ -273,6 +316,22 @@
       "summary": "把那些一起吃到满足、想到就会笑起来的味道，整理成这一份专属的美食回忆。",
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/foodcover.jpg?x-oss-process=image/format,webp",
       "url": "/2026/02/11/%E7%BE%8E%E9%A3%9F%E7%89%B9%E5%88%8A/",
+      "tags": [
+        "美食"
+      ],
+      "isoDate": "2026-02-11",
+      "timestamp": 1770776595000
+    },
+    {
+      "id": "gacha-post-15",
+      "source": "post",
+      "type": "travel",
+      "scene": "daily",
+      "badge": "旅行扭蛋",
+      "title": "寒假的吃吃吃和玩玩玩",
+      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
+      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
       "tags": [
         "美食"
       ],

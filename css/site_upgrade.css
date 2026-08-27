@@ -72,7 +72,6 @@ select {
   body:has(#travel-passport-page) #page-header.not-home-page,
   body:has(#memory-gacha-page) #page-header.not-home-page,
   body:has(#future-letters-page) #page-header.not-home-page,
-  body:has(#year-review-page) #page-header.not-home-page,
   body:has(#love-calendar-container) #page-header.not-home-page,
   body:has(#love-map-container) #page-header.not-home-page,
   body:has(.love-photo-wall) #page-header.not-home-page,
@@ -87,7 +86,6 @@ select {
   body:has(#travel-passport-page) #page-header.not-home-page #page-site-info,
   body:has(#memory-gacha-page) #page-header.not-home-page #page-site-info,
   body:has(#future-letters-page) #page-header.not-home-page #page-site-info,
-  body:has(#year-review-page) #page-header.not-home-page #page-site-info,
   body:has(#love-calendar-container) #page-header.not-home-page #page-site-info,
   body:has(#love-map-container) #page-header.not-home-page #page-site-info,
   body:has(.love-photo-wall) #page-header.not-home-page #page-site-info,
@@ -101,7 +99,6 @@ select {
   #page:has(#travel-passport-page),
   #page:has(#memory-gacha-page),
   #page:has(#future-letters-page),
-  #page:has(#year-review-page),
   #page:has(#love-calendar-container),
   #page:has(#love-map-container),
   #page:has(.love-photo-wall),
@@ -118,7 +115,6 @@ select {
   #page:has(#travel-passport-page) #article-container,
   #page:has(#memory-gacha-page) #article-container,
   #page:has(#future-letters-page) #article-container,
-  #page:has(#year-review-page) #article-container,
   #page:has(#love-calendar-container) #article-container,
   #page:has(#love-map-container) #article-container,
   #page:has(.love-photo-wall) #article-container,
@@ -163,7 +159,6 @@ select {
 .memory-gacha-kicker,
 .memory-panel-kicker,
 .memory-hub-continue-kicker,
-.year-review-card-kicker,
 .love-gallery-kicker,
 .love-gallery-spotlight-kicker,
 .love-gallery-chapter-badge {
@@ -197,7 +192,6 @@ select {
 
 .memory-page-stats,
 .love-timeline-stats,
-.year-review-card-stats,
 .love-gallery-stats {
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
   gap: 12px !important;
@@ -205,7 +199,6 @@ select {
 
 .memory-page-stats div,
 .love-timeline-stat,
-.year-review-card-stats div,
 .memory-gacha-summary-card,
 .love-gallery-stat {
   min-height: 78px !important;
@@ -248,9 +241,6 @@ select {
 .memory-gacha-result-card,
 .memory-gacha-placeholder,
 .memory-gacha-empty,
-.year-review-card,
-.year-review-highlight,
-.year-review-month,
 .memory-letter-preview,
 .memory-achievement,
 .memory-today-item,
@@ -263,8 +253,7 @@ select {
   box-shadow: none !important;
 }
 
-.memory-panel,
-.year-review-card {
+.memory-panel {
   padding: 20px !important;
 }
 
@@ -299,17 +288,8 @@ select {
 }
 
 .future-letter-grid,
-.memory-voice-grid,
-.year-review-highlights {
+.memory-voice-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-}
-
-.year-review-card-head {
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr) !important;
-}
-
-.year-review-month-grid {
-  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
 }
 
 .memory-chip,
@@ -346,7 +326,6 @@ select {
   min-height: 40px !important;
 }
 
-.year-review-story-list a,
 .memory-graph-story a {
   min-height: 36px !important;
   padding: 7px 10px !important;
@@ -466,13 +445,8 @@ select {
   .love-timeline-hero,
   .memory-gacha-hero,
   .memory-hub-grid,
-  .love-gallery-hero,
-  .year-review-card-head {
+  .love-gallery-hero {
     grid-template-columns: 1fr !important;
-  }
-
-  .year-review-month-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
   }
 }
 
@@ -502,7 +476,6 @@ select {
     body:has(#travel-passport-page) #page-header.not-home-page,
     body:has(#memory-gacha-page) #page-header.not-home-page,
     body:has(#future-letters-page) #page-header.not-home-page,
-    body:has(#year-review-page) #page-header.not-home-page,
     body:has(#love-calendar-container) #page-header.not-home-page,
     body:has(#love-map-container) #page-header.not-home-page,
     body:has(.love-photo-wall) #page-header.not-home-page,
@@ -535,7 +508,6 @@ select {
 
   .memory-page-stats,
   .love-timeline-stats,
-  .year-review-card-stats,
   .love-gallery-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
@@ -553,10 +525,6 @@ select {
   .love-timeline-cover,
   .memory-gacha-cover {
     min-height: 190px !important;
-  }
-
-  .year-review-month-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 
   .memory-chip,
@@ -587,4 +555,1599 @@ select {
   --site-border: rgba(238, 242, 246, 0.1);
   --site-border-strong: rgba(238, 242, 246, 0.16);
   --site-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+}
+
+/* Module pages should not show cropped decorative header photos. */
+#body-wrap.page #page-header.not-home-page {
+  height: 72px !important;
+  min-height: 72px !important;
+  background-image: none !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid var(--site-border) !important;
+  box-shadow: 0 8px 24px rgba(27, 35, 45, 0.06) !important;
+  backdrop-filter: blur(16px);
+}
+
+#body-wrap.page #page-header.not-home-page::before {
+  display: none !important;
+}
+
+#body-wrap.page #page-header.not-home-page #page-site-info,
+#body-wrap.page #page-header.not-home-page #site-info {
+  display: none !important;
+}
+
+#body-wrap.page #page-header.not-home-page #nav {
+  color: var(--site-text) !important;
+  text-shadow: none !important;
+}
+
+#body-wrap.page #page-header.not-home-page #nav a,
+#body-wrap.page #page-header.not-home-page #nav .site-page,
+#body-wrap.page #page-header.not-home-page #nav .site-name,
+#body-wrap.page #page-header.not-home-page #toggle-menu .site-page {
+  color: var(--site-text) !important;
+  text-shadow: none !important;
+}
+
+#body-wrap.page #page-header.not-home-page #nav a:hover,
+#body-wrap.page #page-header.not-home-page #toggle-menu .site-page:hover {
+  color: var(--site-accent) !important;
+}
+
+#body-wrap.page #content-inner.layout {
+  padding-top: 24px !important;
+}
+
+@media (max-width: 768px) {
+  #body-wrap.page #page-header.not-home-page {
+    height: 62px !important;
+    min-height: 62px !important;
+  }
+
+  #body-wrap.page #content-inner.layout {
+    padding-top: 14px !important;
+  }
+}
+
+[data-theme="dark"] #body-wrap.page #page-header.not-home-page {
+  background: rgba(23, 27, 32, 0.96) !important;
+  border-bottom-color: var(--site-border) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+/* Memory hub: reduce stacked clutter and make every block earn its place. */
+.memory-hub-shell {
+  display: grid !important;
+  gap: 16px !important;
+}
+
+.memory-hub-shell .memory-page-hero {
+  align-items: stretch !important;
+  margin: 0 !important;
+}
+
+.memory-hub-shell .memory-page-hero > div:first-child {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.memory-hub-shell .memory-page-hero h2 {
+  max-width: 780px !important;
+}
+
+.memory-hub-shell .memory-page-switcher {
+  justify-content: flex-start !important;
+  margin: -4px 0 0 !important;
+}
+
+.memory-hub-shell .memory-hub-quick-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin: 0 !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link {
+  min-height: 120px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  background: linear-gradient(180deg, var(--site-surface-strong), var(--site-surface)) !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link strong,
+.memory-hub-shell .memory-hub-quick-link small,
+.memory-hub-shell .memory-hub-continue-card p,
+.memory-hub-shell .memory-hub-quest-card p,
+.memory-hub-shell .memory-scene-card p,
+.memory-hub-shell .memory-search-content p,
+.memory-hub-shell .memory-letter-preview p,
+.memory-hub-shell .memory-voice-card p {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link strong,
+.memory-hub-shell .memory-hub-continue-card p,
+.memory-hub-shell .memory-hub-quest-card p,
+.memory-hub-shell .memory-search-content p,
+.memory-hub-shell .memory-letter-preview p,
+.memory-hub-shell .memory-voice-card p {
+  -webkit-line-clamp: 2 !important;
+}
+
+.memory-hub-shell .memory-scene-card p {
+  -webkit-line-clamp: 3 !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link small {
+  -webkit-line-clamp: 1 !important;
+}
+
+.memory-hub-shell .memory-hub-journey-board,
+.memory-hub-shell .search-journey-board,
+.memory-hub-shell .passport-journey-board,
+.memory-hub-shell .timeline-journey-board,
+.memory-hub-shell .future-letter-board {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.memory-hub-shell .memory-hub-journey-board {
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr) !important;
+  gap: 12px !important;
+}
+
+.memory-hub-shell .memory-hub-continue-card,
+.memory-hub-shell .memory-hub-quest-card {
+  min-height: 150px !important;
+  padding: 18px !important;
+}
+
+.memory-hub-shell .memory-hub-grid {
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  margin: 0 !important;
+}
+
+.memory-hub-shell .memory-hub-main {
+  display: grid !important;
+  gap: 16px !important;
+}
+
+.memory-hub-shell .memory-panel {
+  padding: 18px !important;
+}
+
+.memory-hub-shell .memory-panel-head {
+  align-items: flex-start !important;
+  gap: 14px !important;
+  margin-bottom: 16px !important;
+}
+
+.memory-hub-shell .memory-panel-head h3 {
+  line-height: 1.28 !important;
+  margin: 8px 0 0 !important;
+}
+
+.memory-hub-shell .memory-panel-head p {
+  margin: 8px 0 0 !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card {
+  min-height: 218px !important;
+  padding: 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card-actions {
+  margin-top: auto !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card-actions a {
+  min-height: 34px !important;
+  padding: 7px 10px !important;
+}
+
+.memory-hub-related-panel .memory-graph-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-hub-related-panel .memory-graph-scene {
+  padding: 16px !important;
+}
+
+.memory-hub-related-panel .memory-graph-story p {
+  display: none !important;
+}
+
+.memory-hub-related-panel .memory-graph-story-list {
+  gap: 8px !important;
+}
+
+.memory-hub-search-panel .memory-search-toolbar {
+  display: grid !important;
+  gap: 12px !important;
+}
+
+.memory-hub-search-panel .memory-search-filters {
+  max-height: 96px !important;
+  overflow: auto !important;
+  padding-right: 4px !important;
+}
+
+.memory-hub-search-panel .memory-search-results {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-hub-search-panel .memory-search-card {
+  grid-template-columns: 150px minmax(0, 1fr) !important;
+  min-height: 168px !important;
+}
+
+.memory-hub-search-panel .memory-search-cover {
+  min-height: 168px !important;
+  height: 100% !important;
+}
+
+.memory-hub-search-panel .memory-search-content {
+  padding: 16px !important;
+}
+
+.memory-hub-search-panel .memory-search-meta {
+  gap: 6px !important;
+}
+
+.memory-hub-search-panel .memory-search-actions {
+  margin-top: 12px !important;
+}
+
+.memory-hub-shell .memory-hub-side {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+}
+
+.memory-hub-progress-panel {
+  grid-column: 1 / -1 !important;
+}
+
+.memory-hub-progress-panel .memory-achievement-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.memory-hub-progress-panel .memory-achievement:nth-child(n + 5) {
+  display: none !important;
+}
+
+.memory-hub-shell .memory-letter-preview-list,
+.memory-hub-shell .memory-today-list {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.memory-hub-voice-panel .memory-voice-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-hub-voice-panel .memory-voice-card {
+  grid-template-columns: 130px minmax(0, 1fr) !important;
+}
+
+.memory-hub-voice-panel .memory-voice-cover {
+  min-height: 150px !important;
+}
+
+/* Shared module cleanup: the same calmer rhythm applies outside Memory Hub. */
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell,
+.travel-passport-shell,
+.future-letters-shell {
+  display: grid !important;
+  gap: 16px !important;
+}
+
+.memory-hub-journey-board,
+.search-journey-board,
+.passport-journey-board,
+.timeline-journey-board,
+.future-letter-board {
+  gap: 12px !important;
+}
+
+.search-journey-board .memory-hub-continue-card,
+.search-journey-board .memory-hub-quest-card,
+.passport-journey-board .memory-hub-continue-card,
+.passport-journey-board .memory-hub-quest-card,
+.timeline-journey-board .memory-hub-continue-card,
+.timeline-journey-board .memory-hub-quest-card,
+.future-letter-board .memory-hub-continue-card,
+.future-letter-board .memory-hub-quest-card {
+  min-height: 0 !important;
+  padding: 16px !important;
+}
+
+.memory-search-shell .memory-search-results,
+.love-timeline-shell .love-timeline-list,
+.travel-passport-shell .passport-grid,
+.future-letters-shell .future-letter-grid {
+  gap: 16px !important;
+}
+
+@media (max-width: 1100px) {
+  .memory-hub-shell .memory-hub-quick-links,
+  .memory-hub-shell .memory-hub-journey-board,
+  .memory-hub-related-panel .memory-graph-grid,
+  .memory-hub-search-panel .memory-search-results,
+  .memory-hub-shell .memory-hub-side,
+  .memory-hub-voice-panel .memory-voice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-hub-progress-panel .memory-achievement-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .memory-hub-shell {
+    gap: 12px !important;
+  }
+
+  .memory-hub-shell .memory-page-switcher {
+    margin-top: 0 !important;
+  }
+
+  .memory-hub-shell .memory-panel,
+  .memory-hub-shell .memory-hub-quick-link,
+  .memory-hub-shell .memory-hub-continue-card,
+  .memory-hub-shell .memory-hub-quest-card {
+    padding: 14px !important;
+  }
+
+  .memory-hub-scenes-panel .memory-scene-grid,
+  .memory-hub-progress-panel .memory-achievement-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-hub-search-panel .memory-search-card,
+  .memory-hub-voice-panel .memory-voice-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-hub-search-panel .memory-search-cover,
+  .memory-hub-voice-panel .memory-voice-cover {
+    min-height: 190px !important;
+  }
+
+  .memory-hub-search-panel .memory-search-filters {
+    max-height: 140px !important;
+  }
+}
+
+/* Final simplification pass: keep hub labels compact and remove sidebar residue. */
+.memory-hub-shell .memory-page-kicker,
+.memory-search-shell .memory-page-kicker,
+.travel-passport-shell .memory-page-kicker,
+.future-letters-shell .memory-page-kicker {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: max-content !important;
+  align-items: center !important;
+  padding: 7px 12px !important;
+}
+
+.memory-hub-shell .memory-page-hero {
+  min-height: 0 !important;
+}
+
+.memory-hub-shell .memory-hub-side {
+  grid-template-columns: 1fr !important;
+}
+
+.memory-hub-today-panel .memory-today-list {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+.memory-hub-today-panel .memory-today-item {
+  min-height: 92px !important;
+}
+
+@media (max-width: 1100px) {
+  .memory-hub-today-panel .memory-today-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .memory-hub-today-panel .memory-today-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* About page portraits: keep the old compact card-and-avatar scale. */
+.type-about .about-container {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+  margin: 24px 0 28px !important;
+}
+
+.type-about .profile-card {
+  padding: 24px !important;
+  text-align: center !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: none !important;
+}
+
+.type-about .avatar-box {
+  width: 150px !important;
+  height: 150px !important;
+  margin: 0 auto 16px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+.type-about .avatar-box img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  border: 4px solid rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 10px 24px rgba(124, 91, 103, 0.16) !important;
+  transform: none !important;
+}
+
+.type-about .avatar-box img:hover {
+  transform: none !important;
+  box-shadow: 0 10px 24px rgba(124, 91, 103, 0.16) !important;
+}
+
+.type-about .name {
+  margin: 6px 0 14px !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+
+.type-about .role-title {
+  display: inline-block !important;
+  margin-left: 6px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+}
+
+.type-about .tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 0 0 14px !important;
+}
+
+.type-about .quote {
+  margin: 0 !important;
+  padding: 12px !important;
+  border-radius: var(--site-radius) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  text-align: left !important;
+}
+
+.type-about .center-heart {
+  align-self: center !important;
+  justify-self: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: var(--site-accent) !important;
+}
+
+@media (max-width: 768px) {
+  .type-about .about-container {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .type-about .profile-card {
+    padding: 18px !important;
+  }
+
+  .type-about .avatar-box {
+    width: 118px !important;
+    height: 118px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+/* Site-wide product layout pass: compact, readable module screens. */
+#body-wrap.page #content-inner.layout {
+  padding-top: 18px !important;
+}
+
+#body-wrap.post #content-inner.layout {
+  width: min(980px, calc(100% - 48px)) !important;
+  max-width: 980px !important;
+}
+
+#body-wrap.post #aside-content {
+  display: none !important;
+}
+
+#body-wrap.post #post {
+  width: 100% !important;
+}
+
+.memory-page-shell,
+.love-timeline-shell,
+.memory-gacha-shell,
+.travel-passport-shell,
+.future-letters-shell,
+.love-photo-wall-shell,
+.calendar-page-wrapper {
+  gap: 14px !important;
+}
+
+.memory-page-hero,
+.love-timeline-hero,
+.memory-gacha-hero {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: end !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 16px 0 12px !important;
+  gap: 18px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.memory-page-hero h2,
+.love-timeline-title,
+.memory-gacha-title {
+  margin: 8px 0 6px !important;
+  max-width: 760px !important;
+  font-size: clamp(1.52rem, 2.1vw, 2rem) !important;
+  line-height: 1.24 !important;
+}
+
+.memory-page-hero p,
+.love-timeline-desc,
+.memory-gacha-desc {
+  max-width: 720px !important;
+  margin: 0 !important;
+  color: var(--site-muted) !important;
+  line-height: 1.75 !important;
+}
+
+.memory-page-stats,
+.love-timeline-stats,
+.memory-gacha-hero > .memory-gacha-summary-card {
+  justify-self: end !important;
+}
+
+.memory-page-stats,
+.love-timeline-stats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  max-width: 360px !important;
+}
+
+.memory-page-stats div,
+.love-timeline-stat,
+.memory-gacha-summary-card {
+  min-width: 104px !important;
+  min-height: 0 !important;
+  padding: 11px 13px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-page-stats strong,
+.love-timeline-stat strong,
+.memory-gacha-summary-card strong {
+  font-size: 1.28rem !important;
+  line-height: 1.1 !important;
+}
+
+.memory-page-switcher {
+  margin: 0 !important;
+}
+
+.memory-page-switcher,
+.timeline-scene-rail,
+.love-timeline-filter-group,
+.memory-gacha-filters,
+.memory-search-filters,
+.love-photo-wall-filters {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 2px 2px 6px !important;
+  scrollbar-width: thin !important;
+}
+
+.memory-page-switcher > *,
+.timeline-scene-link,
+.love-timeline-filter,
+.memory-gacha-filter,
+.memory-chip,
+.love-photo-wall-filter {
+  flex: 0 0 auto !important;
+}
+
+.memory-chip,
+.love-timeline-filter,
+.memory-gacha-filter,
+.love-photo-wall-filter,
+.timeline-scene-link {
+  min-height: 34px !important;
+  padding: 0 12px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-panel,
+.memory-hub-continue-card,
+.memory-hub-quest-card,
+.passport-card,
+.future-letter-card,
+.memory-gacha-result-card,
+.memory-gacha-placeholder,
+.memory-gacha-empty,
+.love-photo-wall-hero,
+.love-photo-wall-toolbar,
+.love-photo-wall-board,
+.calendar-main-card {
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+.memory-panel {
+  padding: 18px !important;
+}
+
+.memory-panel-head {
+  margin-bottom: 14px !important;
+}
+
+.memory-panel-head h3 {
+  margin-top: 6px !important;
+}
+
+/* Memory Hub gets a clearer editorial order with less duplicated chrome. */
+.memory-hub-shell .memory-page-stats {
+  display: none !important;
+}
+
+.memory-hub-shell .memory-page-hero {
+  padding-bottom: 6px !important;
+}
+
+.memory-hub-shell .memory-hub-quick-links {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link {
+  min-height: 96px !important;
+  padding: 14px !important;
+}
+
+.memory-hub-shell .memory-hub-quick-link:nth-child(n + 9) {
+  display: none !important;
+}
+
+.memory-hub-shell .memory-hub-journey-board {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card {
+  min-height: 184px !important;
+  padding: 16px !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.memory-hub-scenes-panel .memory-scene-card-actions a {
+  flex: 0 0 auto !important;
+}
+
+.memory-hub-related-panel .memory-graph-grid,
+.memory-hub-voice-panel .memory-voice-grid,
+.memory-hub-search-panel .memory-search-results {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.memory-hub-progress-panel,
+.memory-hub-voice-panel,
+.memory-hub-year-panel {
+  display: none !important;
+}
+
+/* Search page: keep filters powerful but stop them from owning the first screen. */
+.memory-search-shell .memory-search-toolbar.is-deep-search {
+  display: grid !important;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1fr) !important;
+  gap: 10px 14px !important;
+  align-items: start !important;
+}
+
+.memory-search-shell .memory-search-input,
+.memory-search-shell .memory-search-history {
+  grid-column: 1 / -1 !important;
+}
+
+.memory-search-shell .memory-search-input {
+  min-height: 44px !important;
+  padding: 0 14px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-search-filter-block {
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+.memory-search-filter-block strong {
+  color: var(--site-muted) !important;
+  font-size: 0.9rem !important;
+}
+
+.memory-search-summary {
+  margin: 12px 0 !important;
+}
+
+.memory-search-summary-card {
+  padding: 10px 12px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-search-shell .memory-search-results {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.memory-search-shell .memory-search-card {
+  grid-template-columns: 148px minmax(0, 1fr) !important;
+  min-height: 158px !important;
+}
+
+.memory-search-shell .memory-search-cover {
+  min-height: 158px !important;
+  height: 100% !important;
+}
+
+.memory-search-shell .memory-search-content {
+  padding: 14px !important;
+}
+
+.memory-search-shell .memory-search-content p {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+}
+
+.memory-search-shell .search-journey-board {
+  display: none !important;
+}
+
+/* Timeline: default-expanded years need clean labels and smaller cards. */
+.love-timeline-toolbar {
+  display: grid !important;
+  gap: 10px !important;
+  padding: 14px !important;
+}
+
+.love-timeline-year {
+  border-radius: var(--site-radius) !important;
+}
+
+.love-timeline-year-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: auto !important;
+  min-height: 38px !important;
+  padding: 0 12px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.love-timeline-year-label span,
+.love-timeline-year-label small {
+  display: inline-flex !important;
+  white-space: nowrap !important;
+}
+
+.love-timeline-year-label small {
+  color: var(--site-muted) !important;
+}
+
+.love-timeline-year-list {
+  gap: 12px !important;
+}
+
+.love-timeline-card-main {
+  grid-template-columns: 170px minmax(0, 1fr) !important;
+  min-height: 0 !important;
+  padding: 14px !important;
+  gap: 14px !important;
+}
+
+.love-timeline-cover {
+  min-height: 142px !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  border-radius: var(--site-radius) !important;
+  background: #f1f4f7 !important;
+}
+
+.love-timeline-cover img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.love-timeline-card-title {
+  font-size: 1.12rem !important;
+  line-height: 1.35 !important;
+}
+
+.love-timeline-card-summary {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+}
+
+/* Passport and future letters: remove intro repetition and surface the cards. */
+.travel-passport-shell .passport-journey-board,
+.future-letters-shell .future-letter-board {
+  display: none !important;
+}
+
+.travel-passport-route {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.passport-card {
+  grid-template-columns: 1fr !important;
+  overflow: hidden !important;
+}
+
+.passport-card-cover {
+  min-height: 0 !important;
+  height: 210px !important;
+  border-radius: 0 !important;
+}
+
+.passport-card-cover img,
+.future-letter-cover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.passport-card-body,
+.future-letter-body {
+  padding: 16px !important;
+}
+
+.passport-card h3,
+.future-letter-card h3 {
+  font-size: 1.12rem !important;
+  line-height: 1.35 !important;
+}
+
+.passport-card p,
+.future-letter-summary,
+.future-letter-content p {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+}
+
+.passport-highlight-list,
+.passport-story-loop.is-inline {
+  display: none !important;
+}
+
+.future-letter-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.future-letter-card {
+  overflow: hidden !important;
+}
+
+.future-letter-cover-wrap {
+  height: 180px !important;
+  min-height: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Gacha: keep the interaction, remove the empty showroom feeling. */
+.memory-gacha-toolbar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: end !important;
+  gap: 12px !important;
+  padding: 14px !important;
+}
+
+.memory-gacha-filter-wrap {
+  display: grid !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+
+.memory-gacha-buttons {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+}
+
+.memory-gacha-trigger,
+.memory-gacha-action {
+  min-height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.memory-gacha-result-card {
+  grid-template-columns: 220px minmax(0, 1fr) !important;
+}
+
+.memory-gacha-cover {
+  min-height: 190px !important;
+  height: 100% !important;
+}
+
+.memory-gacha-placeholder,
+.memory-gacha-empty {
+  min-height: 118px !important;
+  padding: 18px !important;
+}
+
+.memory-gacha-history-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+/* Calendar: load into a balanced two-column card. */
+.calendar-main-card {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr) !important;
+  gap: 18px !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 20px !important;
+}
+
+#calendar-left,
+#calendar-right {
+  width: auto !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+#calendar-left {
+  padding-right: 18px !important;
+  border-right: 1px solid var(--site-border) !important;
+}
+
+.cal-table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 6px !important;
+}
+
+.cal-day {
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  margin: 0 !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.anniversary-header {
+  margin: 0 0 12px !important;
+  font-size: 1.3rem !important;
+  line-height: 1.3 !important;
+}
+
+.anniversary-item {
+  padding: 11px 0 !important;
+}
+
+.calendar-love-progress-summary {
+  margin-top: 12px !important;
+  padding: 12px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+/* Love list: make the checklist the page, not a poster followed by content. */
+#page:has(.love-list-hero) #article-container {
+  display: block !important;
+}
+
+.love-list-hero {
+  display: block !important;
+  width: 100% !important;
+  height: min(28vh, 260px) !important;
+  min-height: 170px !important;
+  margin: 0 0 16px !important;
+  border-radius: var(--site-radius) !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.love-list-header {
+  margin: 0 0 14px !important;
+  text-align: left !important;
+}
+
+.love-list-title {
+  font-size: clamp(1.45rem, 2vw, 1.9rem) !important;
+}
+
+#page:has(.love-list-hero) blockquote {
+  margin: 0 0 18px !important;
+  padding: 16px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+}
+
+#page:has(.love-list-hero) ul.contains-task-list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px 14px !important;
+  padding: 0 !important;
+}
+
+#page:has(.love-list-hero) li.task-list-item {
+  position: relative !important;
+  min-height: 48px !important;
+  margin: 0 !important;
+  padding: 12px 12px 12px 38px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  line-height: 1.6 !important;
+  list-style: none !important;
+}
+
+#page:has(.love-list-hero) li.task-list-item input[type="checkbox"] {
+  position: absolute !important;
+  left: 12px !important;
+  top: 16px !important;
+}
+
+/* Encrypted gallery: replace the raw input look with a clear unlock card. */
+.type-gallery #hexo-blog-encrypt {
+  display: block !important;
+  max-width: 720px !important;
+  margin: 56px auto !important;
+  padding: 28px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+.type-gallery .hbe-content {
+  display: grid !important;
+  gap: 16px !important;
+}
+
+.love-encrypt-hero {
+  text-align: left !important;
+}
+
+.love-encrypt-hero h2 {
+  margin: 6px 0 !important;
+  font-size: clamp(1.35rem, 2vw, 1.75rem) !important;
+  line-height: 1.3 !important;
+}
+
+.love-encrypt-hero p {
+  margin: 0 !important;
+  color: var(--site-muted) !important;
+  line-height: 1.75 !important;
+}
+
+.type-gallery .hbe-input {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+.type-gallery .hbe-input-label {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  transform: none !important;
+  color: var(--site-muted) !important;
+  font-size: 0.92rem !important;
+}
+
+.type-gallery .hbe-input-label::before,
+.type-gallery .hbe-input-label::after {
+  display: none !important;
+}
+
+.type-gallery #hbePass {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: 46px !important;
+  margin-top: 8px !important;
+  padding: 0 14px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border-strong) !important;
+  background: #fff !important;
+  color: var(--site-text) !important;
+  box-shadow: none !important;
+}
+
+.love-encrypt-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.love-encrypt-submit,
+.love-encrypt-visibility {
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  color: var(--site-text) !important;
+  cursor: pointer !important;
+}
+
+.love-encrypt-submit {
+  border-color: transparent !important;
+  background: var(--site-accent) !important;
+  color: #fff !important;
+}
+
+.love-encrypt-status {
+  flex: 1 1 220px !important;
+  margin: 0 !important;
+  color: var(--site-muted) !important;
+  line-height: 1.6 !important;
+}
+
+/* Photo wall: stable grid instead of cramped masonry and half-cropped cards. */
+.love-photo-wall-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 330px) !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 20px !important;
+  min-height: 0 !important;
+  background: var(--site-surface-strong) !important;
+}
+
+.love-photo-wall-hero::before,
+.love-photo-wall-hero::after {
+  display: none !important;
+}
+
+.love-photo-wall-title {
+  margin: 10px 0 8px !important;
+  font-size: clamp(1.5rem, 2.2vw, 2rem) !important;
+  line-height: 1.25 !important;
+}
+
+.love-photo-wall-desc {
+  max-width: 680px !important;
+  color: var(--site-muted) !important;
+}
+
+.love-photo-wall-stats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 14px !important;
+}
+
+.love-photo-wall-stat {
+  min-width: 112px !important;
+  padding: 10px 12px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.love-photo-wall-feature {
+  grid-template-columns: 96px minmax(0, 1fr) !important;
+  align-self: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px !important;
+  border-radius: var(--site-radius) !important;
+  background: #f8fafc !important;
+}
+
+.love-photo-wall-feature-photo-wrap {
+  padding: 0 !important;
+  transform: none !important;
+  border-radius: var(--site-radius) !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.love-photo-wall-feature-photo-wrap::before,
+.love-photo-wall-polaroid::before,
+.love-photo-wall-polaroid::after {
+  display: none !important;
+}
+
+.love-photo-wall-feature-photo {
+  aspect-ratio: 1 / 1 !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.love-photo-wall-feature-title {
+  font-size: 1.05rem !important;
+  line-height: 1.32 !important;
+}
+
+.love-photo-wall-feature-label {
+  display: none !important;
+}
+
+.love-photo-wall-feature-desc {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  color: var(--site-muted) !important;
+}
+
+.love-photo-wall-feature-actions {
+  gap: 8px !important;
+}
+
+.love-photo-wall-action {
+  min-height: 34px !important;
+  padding: 0 10px !important;
+  border-radius: var(--site-radius) !important;
+}
+
+.love-photo-wall-toolbar,
+.love-photo-wall-board {
+  padding: 16px !important;
+}
+
+.love-photo-wall-board-head {
+  display: flex !important;
+  align-items: end !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  margin-bottom: 12px !important;
+}
+
+.love-photo-wall-board-note {
+  max-width: 420px !important;
+  margin: 0 !important;
+  color: var(--site-muted) !important;
+}
+
+.love-photo-wall {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)) !important;
+  gap: 14px !important;
+  column-count: unset !important;
+  column-gap: normal !important;
+}
+
+.love-photo-wall-item,
+.love-photo-wall-item.is-wide,
+.love-photo-wall-item.is-tall,
+.love-photo-wall-item.is-square {
+  display: block !important;
+  margin: 0 !important;
+  transform: none !important;
+  break-inside: auto !important;
+}
+
+.love-photo-wall-polaroid {
+  height: 100% !important;
+  padding: 0 !important;
+  transform: none !important;
+  overflow: hidden !important;
+  border-radius: var(--site-radius) !important;
+  border: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  box-shadow: none !important;
+}
+
+.love-photo-wall-item img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  border-radius: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.love-photo-wall-item-meta {
+  position: static !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 9px 10px !important;
+  background: #fff !important;
+  transform: none !important;
+}
+
+.love-photo-wall-more {
+  margin-top: 14px !important;
+}
+
+.love-photo-wall-modal-dialog {
+  border-radius: var(--site-radius) !important;
+}
+
+/* Misc display pages. */
+.type-comments #article-container > img:first-child {
+  display: block !important;
+  width: 100% !important;
+  height: min(34vh, 300px) !important;
+  min-height: 190px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: var(--site-radius) !important;
+  margin: 0 0 18px !important;
+}
+
+/* Keep decorative meadow footer off internal pages; it was fighting the modules. */
+#body-wrap.page #footer,
+#body-wrap.post #footer {
+  height: auto !important;
+  min-height: 0 !important;
+  margin-top: 24px !important;
+  padding: 18px 0 !important;
+  border-top: 1px solid var(--site-border) !important;
+  background: var(--site-surface-strong) !important;
+  background-image: none !important;
+  color: var(--site-muted) !important;
+}
+
+#body-wrap.page #footer::before,
+#body-wrap.post #footer::before {
+  display: none !important;
+}
+
+#body-wrap.page #footer-wrap,
+#body-wrap.page #footer-wrap span,
+#body-wrap.page #footer-wrap a,
+#body-wrap.post #footer-wrap,
+#body-wrap.post #footer-wrap span,
+#body-wrap.post #footer-wrap a {
+  color: var(--site-muted) !important;
+  font-size: 0.92rem !important;
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+}
+
+#body-wrap.page #footer-timer,
+#body-wrap.post #footer-timer {
+  margin-top: 6px !important;
+  color: var(--site-accent) !important;
+  font-size: 0.95rem !important;
+  font-family: inherit !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+}
+
+@media (max-width: 1100px) {
+  .memory-hub-shell .memory-hub-quick-links,
+  .memory-hub-shell .memory-hub-journey-board,
+  .memory-hub-related-panel .memory-graph-grid,
+  .memory-hub-voice-panel .memory-voice-grid,
+  .memory-hub-search-panel .memory-search-results,
+  .memory-search-shell .memory-search-results,
+  .travel-passport-route,
+  .future-letter-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-search-shell .memory-search-toolbar.is-deep-search,
+  .calendar-main-card,
+  .love-photo-wall-hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  #calendar-left {
+    padding-right: 0 !important;
+    padding-bottom: 16px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--site-border) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #body-wrap.page #content-inner.layout,
+  #body-wrap.post #content-inner.layout {
+    width: min(100% - 24px, 100%) !important;
+  }
+
+  .memory-page-hero,
+  .love-timeline-hero,
+  .memory-gacha-hero {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 12px 0 8px !important;
+  }
+
+  .memory-page-stats,
+  .love-timeline-stats {
+    display: none !important;
+  }
+
+  .memory-panel,
+  .calendar-main-card,
+  .love-photo-wall-hero,
+  .love-photo-wall-toolbar,
+  .love-photo-wall-board,
+  .type-gallery #hexo-blog-encrypt {
+    padding: 14px !important;
+  }
+
+  .memory-search-shell .memory-search-card,
+  .love-timeline-card-main,
+  .memory-gacha-result-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-search-shell .memory-search-cover,
+  .love-timeline-cover,
+  .memory-gacha-cover,
+  .passport-card-cover,
+  .future-letter-cover-wrap {
+    height: auto !important;
+    min-height: 180px !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .memory-gacha-toolbar {
+    grid-template-columns: 1fr !important;
+  }
+
+  .memory-gacha-buttons {
+    flex-wrap: wrap !important;
+  }
+
+  #page:has(.love-list-hero) ul.contains-task-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .love-list-hero {
+    height: 220px !important;
+    min-height: 0 !important;
+  }
+
+  .love-photo-wall {
+    grid-template-columns: repeat(auto-fill, minmax(142px, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .love-photo-wall-feature {
+    grid-template-columns: 82px minmax(0, 1fr) !important;
+  }
+
+  .love-photo-wall-stat {
+    min-width: calc(50% - 4px) !important;
+  }
+
+  .memory-hub-shell .memory-hub-quick-links,
+  .love-photo-wall-feature,
+  .memory-search-shell .memory-panel-head a {
+    display: none !important;
+  }
+
+  .love-photo-wall-title {
+    margin-top: 8px !important;
+  }
+
+  .love-photo-wall-desc {
+    line-height: 1.65 !important;
+  }
+
+  .calendar-main-card,
+  #calendar-left,
+  #calendar-right,
+  #love-calendar-container {
+    overflow-x: hidden !important;
+  }
+
+  .cal-table {
+    table-layout: fixed !important;
+    border-spacing: 2px !important;
+  }
+
+  .cal-table th,
+  .cal-table td {
+    width: 14.285% !important;
+    min-width: 0 !important;
+    padding: 2px 0 !important;
+    text-align: center !important;
+  }
+
+  .cal-day {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin: 2px auto !important;
+    font-size: 0.88rem !important;
+  }
+
+  .anniversary-header {
+    font-size: 1.2rem !important;
+  }
+
+  .anniversary-item {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 8px !important;
+    font-size: 0.98rem !important;
+  }
+
+  .anniversary-count {
+    white-space: nowrap !important;
+  }
 }

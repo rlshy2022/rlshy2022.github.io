@@ -132,6 +132,10 @@ function initLoveCalendar() {
     });
 }
 
-// 适配 Butterfly 的 Pjax 和普通加载
-document.addEventListener('DOMContentLoaded', initLoveCalendar);
+// 适配 Butterfly 的 Pjax、普通加载和异步脚本加载
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLoveCalendar);
+} else {
+    initLoveCalendar();
+}
 document.addEventListener('pjax:complete', initLoveCalendar);

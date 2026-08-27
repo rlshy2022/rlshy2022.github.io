@@ -10,6 +10,11 @@
       timelineLabel: "景德镇",
       keywords: ["景德镇", "jingdezhen", "陶阳里", "中国陶瓷博物馆", "跨年"],
     },
+    suzhou_2026_08: {
+      galleryChapter: "八月苏州",
+      timelineLabel: "八月苏州",
+      keywords: ["八月苏州", "四周年", "留园", "寒山寺", "26_8suzhou", "suzhou_2026_08"],
+    },
     suzhou: {
       galleryChapter: "苏州",
       timelineLabel: "苏州",
@@ -429,6 +434,14 @@
         keywords: ["jdz_", "景德镇", "jingdezhen"],
       },
       {
+        key: "suzhou_2026_08",
+        label: "八月苏州",
+        badge: "四周年重逢",
+        desc: "留园的雨、寒山寺的锦鲤，和四周年那块写着 1462 的蛋糕。",
+        accent: "#e39aa9",
+        keywords: ["26_8suzhou", "2026.8suzhou", "img/2026.8suzhou/", "八月苏州", "四周年", "留园", "寒山寺"],
+      },
+      {
         key: "suzhou",
         label: "苏州",
         badge: "旅行胶片",
@@ -510,6 +523,7 @@
 
     // 兜底：如果链接里只有目录中文（例如“/景德镇/”“/扬州/”）但不含关键词缩写，也能正确归类
     const fallbackByPath = [
+      { match: ["/2026.8suzhou/", "26_8suzhou", "八月苏州"], key: "suzhou_2026_08" },
       { match: ["/景德镇/", "jingdezhen"], key: "jingdezhen" },
       { match: ["/苏州/", "suzhou"], key: "suzhou" },
       { match: ["/扬州/", "yangzhou"], key: "yangzhou" },
