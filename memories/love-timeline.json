@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T16:24:11.838Z",
+  "generatedAt": "2026-08-28T05:07:44.922Z",
   "eventCount": 26,
   "manualCount": 11,
   "postCount": 15,
@@ -105,7 +105,7 @@
       "timestamp": 1770076800000
     },
     {
-      "id": "timeline-post-14",
+      "id": "timeline-post-15",
       "source": "post",
       "type": "travel",
       "scene": "suzhou",
@@ -181,7 +181,7 @@
       "timestamp": 1770377536000
     },
     {
-      "id": "timeline-post-9",
+      "id": "timeline-post-13",
       "source": "post",
       "type": "travel",
       "scene": "daily",
@@ -206,7 +206,7 @@
       "timestamp": 1770454800000
     },
     {
-      "id": "timeline-post-15",
+      "id": "timeline-post-5",
       "source": "post",
       "type": "travel",
       "scene": "daily",
@@ -254,7 +254,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "timeline-post-13",
+      "id": "timeline-post-14",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -278,7 +278,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "timeline-post-5",
+      "id": "timeline-post-7",
       "source": "post",
       "type": "festival",
       "scene": "daily",
@@ -353,7 +353,7 @@
       "timestamp": 1772150400000
     },
     {
-      "id": "timeline-post-8",
+      "id": "timeline-post-9",
       "source": "post",
       "type": "travel",
       "scene": "yangzhou",
@@ -404,7 +404,7 @@
       "timestamp": 1775174400000
     },
     {
-      "id": "timeline-post-7",
+      "id": "timeline-post-8",
       "source": "post",
       "type": "travel",
       "scene": "huangshan",
@@ -500,12 +500,12 @@
         "福州"
       ],
       "tags": [
+        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海",
-        "美食"
+        "看海"
       ],
       "isoDate": "2026-06-17",
       "year": 2026,

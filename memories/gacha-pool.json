@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T16:24:11.840Z",
+  "generatedAt": "2026-08-28T05:07:44.938Z",
   "itemCount": 26,
   "manualCount": 11,
   "articleCount": 15,
@@ -133,12 +133,12 @@
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/fuzhou/fuzhou32.jpg?x-oss-process=image/format,webp",
       "url": "/trips/fuzhou-2026/",
       "tags": [
+        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海",
-        "美食"
+        "看海"
       ],
       "isoDate": "2026-06-17",
       "timestamp": 1781706000000
@@ -182,7 +182,7 @@
       "timestamp": 1777953600000
     },
     {
-      "id": "gacha-post-7",
+      "id": "gacha-post-8",
       "source": "post",
       "type": "travel",
       "scene": "huangshan",
@@ -218,7 +218,7 @@
       "timestamp": 1775174400000
     },
     {
-      "id": "gacha-post-8",
+      "id": "gacha-post-9",
       "source": "post",
       "type": "travel",
       "scene": "yangzhou",
@@ -273,7 +273,7 @@
       "timestamp": 1771171200000
     },
     {
-      "id": "gacha-post-5",
+      "id": "gacha-post-7",
       "source": "post",
       "type": "festival",
       "scene": "daily",
@@ -289,6 +289,22 @@
       ],
       "isoDate": "2026-02-14",
       "timestamp": 1770998400000
+    },
+    {
+      "id": "gacha-post-5",
+      "source": "post",
+      "type": "travel",
+      "scene": "daily",
+      "badge": "旅行扭蛋",
+      "title": "寒假的吃吃吃和玩玩玩",
+      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
+      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
+      "tags": [
+        "美食"
+      ],
+      "isoDate": "2026-02-11",
+      "timestamp": 1770776595000
     },
     {
       "id": "gacha-post-11",
@@ -307,7 +323,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-13",
+      "id": "gacha-post-14",
       "source": "post",
       "type": "daily",
       "scene": "daily",
@@ -323,23 +339,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-15",
-      "source": "post",
-      "type": "travel",
-      "scene": "daily",
-      "badge": "旅行扭蛋",
-      "title": "寒假的吃吃吃和玩玩玩",
-      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
-      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
-      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
-      "tags": [
-        "美食"
-      ],
-      "isoDate": "2026-02-11",
-      "timestamp": 1770776595000
-    },
-    {
-      "id": "gacha-post-9",
+      "id": "gacha-post-13",
       "source": "post",
       "type": "travel",
       "scene": "daily",
@@ -392,7 +392,7 @@
       "timestamp": 1770365420000
     },
     {
-      "id": "gacha-post-14",
+      "id": "gacha-post-15",
       "source": "post",
       "type": "travel",
       "scene": "suzhou",

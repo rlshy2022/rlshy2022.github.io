@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T16:24:11.857Z",
+  "generatedAt": "2026-08-28T05:07:44.942Z",
   "postCount": 26,
   "manualCount": 11,
   "articleCount": 15,
@@ -175,12 +175,12 @@
         "福州"
       ],
       "tags": [
+        "美食",
         "福州",
         "福建师范大学",
         "福师大西门小吃街",
         "长乐",
-        "看海",
-        "美食"
+        "看海"
       ]
     },
     {
@@ -234,7 +234,7 @@
       ]
     },
     {
-      "id": "today-post-7",
+      "id": "today-post-8",
       "source": "post",
       "type": "post",
       "scene": "huangshan",
@@ -282,7 +282,7 @@
       ]
     },
     {
-      "id": "today-post-8",
+      "id": "today-post-9",
       "source": "post",
       "type": "post",
       "scene": "yangzhou",
@@ -357,7 +357,7 @@
       ]
     },
     {
-      "id": "today-post-5",
+      "id": "today-post-7",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -379,6 +379,29 @@
         "小情书",
         "情人节",
         "恋爱日常"
+      ]
+    },
+    {
+      "id": "today-post-5",
+      "source": "post",
+      "type": "post",
+      "scene": "daily",
+      "badge": "日常片段",
+      "title": "寒假的吃吃吃和玩玩玩",
+      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
+      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
+      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
+      "isoDate": "2026-02-11",
+      "year": 2026,
+      "month": 2,
+      "day": 11,
+      "timestamp": 1770776595000,
+      "categories": [
+        "恋爱日记",
+        "美食"
+      ],
+      "tags": [
+        "美食"
       ]
     },
     {
@@ -405,7 +428,7 @@
       ]
     },
     {
-      "id": "today-post-13",
+      "id": "today-post-14",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -428,30 +451,7 @@
       ]
     },
     {
-      "id": "today-post-15",
-      "source": "post",
-      "type": "post",
-      "scene": "daily",
-      "badge": "日常片段",
-      "title": "寒假的吃吃吃和玩玩玩",
-      "url": "/2026/02/11/%E5%AF%92%E5%81%87%E7%9A%84%E5%90%83%E5%90%83%E5%90%83/",
-      "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/2026hj/2026hj_2.png?x-oss-process=image/format,webp",
-      "summary": "记录寒假里一起吃过的美食和玩过的地方，把热闹又治愈的相聚时光都装进这一篇里。",
-      "isoDate": "2026-02-11",
-      "year": 2026,
-      "month": 2,
-      "day": 11,
-      "timestamp": 1770776595000,
-      "categories": [
-        "恋爱日记",
-        "美食"
-      ],
-      "tags": [
-        "美食"
-      ]
-    },
-    {
-      "id": "today-post-9",
+      "id": "today-post-13",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -524,7 +524,7 @@
       ]
     },
     {
-      "id": "today-post-14",
+      "id": "today-post-15",
       "source": "post",
       "type": "post",
       "scene": "suzhou",
