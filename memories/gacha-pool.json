@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T01:45:18.639Z",
+  "generatedAt": "2026-08-30T02:19:16.623Z",
   "itemCount": 26,
   "manualCount": 11,
   "articleCount": 15,
@@ -64,7 +64,7 @@
       "timestamp": 1786579200000
     },
     {
-      "id": "gacha-post-3",
+      "id": "gacha-post-2",
       "source": "post",
       "type": "travel",
       "scene": "ningguo_huangshan",
@@ -123,7 +123,7 @@
       "timestamp": 1784073600000
     },
     {
-      "id": "gacha-post-13",
+      "id": "gacha-post-12",
       "source": "post",
       "type": "travel",
       "scene": "fuzhou",
@@ -162,7 +162,7 @@
       "timestamp": 1781654400000
     },
     {
-      "id": "gacha-post-2",
+      "id": "gacha-post-3",
       "source": "post",
       "type": "travel",
       "scene": "shaoxing",
@@ -182,7 +182,7 @@
       "timestamp": 1777953600000
     },
     {
-      "id": "gacha-post-8",
+      "id": "gacha-post-10",
       "source": "post",
       "type": "travel",
       "scene": "huangshan",
@@ -218,7 +218,7 @@
       "timestamp": 1775174400000
     },
     {
-      "id": "gacha-post-9",
+      "id": "gacha-post-8",
       "source": "post",
       "type": "travel",
       "scene": "yangzhou",
@@ -307,7 +307,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-12",
+      "id": "gacha-post-11",
       "source": "post",
       "type": "gift",
       "scene": "gifts",
@@ -323,7 +323,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-14",
+      "id": "gacha-post-13",
       "source": "post",
       "type": "daily",
       "scene": "daily",
@@ -339,7 +339,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-10",
+      "id": "gacha-post-9",
       "source": "post",
       "type": "travel",
       "scene": "daily",
@@ -375,7 +375,7 @@
       "timestamp": 1770377536000
     },
     {
-      "id": "gacha-post-11",
+      "id": "gacha-post-15",
       "source": "post",
       "type": "letter",
       "scene": "daily",
@@ -392,7 +392,7 @@
       "timestamp": 1770365420000
     },
     {
-      "id": "gacha-post-15",
+      "id": "gacha-post-14",
       "source": "post",
       "type": "travel",
       "scene": "suzhou",

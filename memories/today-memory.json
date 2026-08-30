@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T01:45:18.673Z",
+  "generatedAt": "2026-08-30T02:19:16.640Z",
   "postCount": 26,
   "manualCount": 11,
   "articleCount": 15,
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "id": "today-post-3",
+      "id": "today-post-2",
       "source": "post",
       "type": "post",
       "scene": "ningguo_huangshan",
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "id": "today-post-13",
+      "id": "today-post-12",
       "source": "post",
       "type": "post",
       "scene": "fuzhou",
@@ -206,7 +206,7 @@
       ]
     },
     {
-      "id": "today-post-2",
+      "id": "today-post-3",
       "source": "post",
       "type": "post",
       "scene": "shaoxing",
@@ -234,7 +234,7 @@
       ]
     },
     {
-      "id": "today-post-8",
+      "id": "today-post-10",
       "source": "post",
       "type": "post",
       "scene": "huangshan",
@@ -282,7 +282,7 @@
       ]
     },
     {
-      "id": "today-post-9",
+      "id": "today-post-8",
       "source": "post",
       "type": "post",
       "scene": "yangzhou",
@@ -405,7 +405,7 @@
       ]
     },
     {
-      "id": "today-post-12",
+      "id": "today-post-11",
       "source": "post",
       "type": "post",
       "scene": "gifts",
@@ -428,7 +428,7 @@
       ]
     },
     {
-      "id": "today-post-14",
+      "id": "today-post-13",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -451,7 +451,7 @@
       ]
     },
     {
-      "id": "today-post-10",
+      "id": "today-post-9",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -500,7 +500,7 @@
       ]
     },
     {
-      "id": "today-post-11",
+      "id": "today-post-15",
       "source": "post",
       "type": "post",
       "scene": "daily",
@@ -524,7 +524,7 @@
       ]
     },
     {
-      "id": "today-post-15",
+      "id": "today-post-14",
       "source": "post",
       "type": "post",
       "scene": "suzhou",
