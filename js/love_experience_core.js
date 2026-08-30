@@ -482,20 +482,12 @@
         keywords: ["img/fuzhou/", "/fuzhou/", "fuzhou", "福州", "长乐", "福师大"],
       },
       {
-        key: "gifts",
-        label: "礼物",
-        badge: "心意存档",
-        desc: "互相准备过的礼物和拆开惊喜的瞬间，单独放在这里。",
+        key: "gifts_birthday",
+        label: "礼物&生日&纪念日",
+        badge: "心意纪念",
+        desc: "互相准备过的礼物、生日蛋糕和纪念日惊喜，都放在这一组里。",
         accent: "#d9879b",
-        keywords: ["礼物", "gift", "hh_s_yy", "yy_s_hh"],
-      },
-      {
-        key: "birthday",
-        label: "生日",
-        badge: "特别日子",
-        desc: "蛋糕、烛光和笑脸一起出现的时候，连空气都在庆祝。",
-        accent: "#d9b57a",
-        keywords: ["dg", "生日", "birthday"],
+        keywords: ["礼物", "gift", "hh_s_yy", "yy_s_hh", "dg", "生日", "birthday", "纪念", "蛋糕", "cake"],
       },
       {
         key: "daily",
@@ -530,8 +522,8 @@
       { match: ["/宁国黄山/", "/nghs/", "ningguo", "宁国", "爬黄山", "心愿牌"], key: "ningguo_huangshan" },
       { match: ["/黄山/", "/hs/", "huangshan"], key: "huangshan" },
       { match: ["/福州/", "/fuzhou/", "fuzhou", "长乐", "福师大"], key: "fuzhou" },
-      { match: ["/礼物/", "gift"], key: "gifts" },
-      { match: ["/其他/", "birthday", "dg"], key: "birthday" },
+      { match: ["/礼物/", "gift"], key: "gifts_birthday" },
+      { match: ["/其他/dg", "birthday", "生日", "纪念", "蛋糕"], key: "gifts_birthday" },
     ];
 
     const fallback = fallbackByPath.find((item) =>

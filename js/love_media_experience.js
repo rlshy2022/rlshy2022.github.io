@@ -139,7 +139,12 @@
       });
       group.heading.remove();
 
-      const photoCount = body.querySelectorAll("img").length;
+      const chapterPhotos = window.LOVE_GALLERY_STATS
+        ? window.LOVE_GALLERY_STATS.collect(body)
+        : Array.from(body.querySelectorAll("img"))
+            .map((img) => ({ src: img.getAttribute("data-lazy-src") || img.getAttribute("src"), alt: img.getAttribute("alt") || "" }))
+            .filter((photo) => photo.src);
+      const photoCount = chapterPhotos.length;
       totalPhotos += photoCount;
 
       const header = document.createElement("div");
@@ -176,12 +181,10 @@
         </a>`
       );
 
-      body.querySelectorAll("img").forEach((img, photoIndex) => {
-        const src = img.getAttribute("data-lazy-src") || img.getAttribute("src");
-        if (!src) return;
+      chapterPhotos.forEach((photo, photoIndex) => {
         spotlightEntries.push({
-          src,
-          alt: img.getAttribute("alt") || `${title} 的照片`,
+          src: photo.src,
+          alt: photo.alt || `${title} 的照片`,
           title,
           note: meta.desc,
           chip: `第 ${photoIndex + 1} 张`,

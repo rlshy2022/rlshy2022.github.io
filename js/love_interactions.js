@@ -542,7 +542,7 @@
     setTimeout(() => toast.remove(), 2600);
   };
 
-  // ---------- 1. 全站下一次纪念日角标 ----------
+  // . 全站下一次纪念日角标
   const initAnniversaryBadge = () => {
     if (!featureEnabled("anniversaryBadge")) {
       document.getElementById("love-anniv-badge")?.remove();
@@ -607,7 +607,7 @@
     badge.addEventListener("click", toggle);
   };
 
-  // ---------- 2. 首页封面纪念册 ----------
+  // . 首页封面纪念册
   const initHomeStoryHero = () => {
     if (!isHomePage()) return;
 
@@ -1222,7 +1222,7 @@
     });
   };
 
-  // ---------- 3. 首页随机回忆卡 ----------
+  // . 首页随机回忆卡
   const initHomeMemoryShowcase = () => {
     if (!isHomePage()) return;
 
@@ -1314,7 +1314,7 @@
     });
   };
 
-  // ---------- 4. 相册页：解锁后的纪念册体验 ----------
+  // . 相册页：解锁后的纪念册体验
   const initGalleryExperience = () => {
     if (!isGalleryPage()) return;
 
@@ -1428,7 +1428,12 @@
       });
       group.heading.remove();
 
-      const photoCount = body.querySelectorAll("img").length;
+      const chapterPhotos = window.LOVE_GALLERY_STATS
+        ? window.LOVE_GALLERY_STATS.collect(body)
+        : Array.from(body.querySelectorAll("img"))
+            .map((img) => ({ src: img.getAttribute("data-lazy-src") || img.getAttribute("src"), alt: img.getAttribute("alt") || "" }))
+            .filter((photo) => photo.src);
+      const photoCount = chapterPhotos.length;
       totalPhotos += photoCount;
 
       const header = document.createElement("div");
@@ -1465,12 +1470,10 @@
         </a>`
       );
 
-      body.querySelectorAll("img").forEach((img, photoIndex) => {
-        const src = img.getAttribute("data-lazy-src") || img.getAttribute("src");
-        if (!src) return;
+      chapterPhotos.forEach((photo, photoIndex) => {
         spotlightEntries.push({
-          src,
-          alt: img.getAttribute("alt") || `${title} 的照片`,
+          src: photo.src,
+          alt: photo.alt || `${title} 的照片`,
           title,
           note: meta.desc,
           chip: `第 ${photoIndex + 1} 张`,
@@ -1661,7 +1664,7 @@
     }
   };
 
-  // ---------- 5. 照片墙：分组网格 / 筛选 / 沉浸式查看 ----------
+  // . 照片墙：分组网格 / 筛选 / 沉浸式查看
   const initPhotoWallExperience = () => {
     if (!isPhotoWallPage()) return;
     if (window.LOVE_PHOTO_WALL_EXPERIENCE) {
@@ -2021,7 +2024,7 @@
     applyFilter(initialScene ? initialScene.key : "all");
   };
 
-  // ---------- 6. 文章尾部心情打卡组件 ----------
+  // . 文章尾部心情打卡组件
   const initEmotionReactions = () => {
     const containers = document.querySelectorAll(".emotion-reactions");
     if (!containers.length) return;
@@ -2069,7 +2072,7 @@
     });
   };
 
-  // ---------- 7. 首页 / About 的「每日一签」 ----------
+  // . 首页 / About 的「每日一签」
   const DAILY_QUOTES = [
     "今天也要记得，世界再吵，你永远是我心里那份安静。",
     "如果生活有等级，那和你在一起就是满级。",
@@ -2131,7 +2134,7 @@
     });
   };
 
-  // ---------- 8. About 页心情打卡小统计 ----------
+  // . About 页心情打卡小统计
   const isAboutPage = () => {
     const path = window.location.pathname || "/";
     return path === "/about/" || path === "/about/index.html";
@@ -2247,7 +2250,7 @@
     el.textContent = `目前我们已经一起完成了 ${loveList.done} / ${loveList.total} 件小事，小宇宙解锁进度 ${percent}%。`;
   };
 
-  // ---------- 9. 视频页交互：正在播放提示 + 结束小弹幕 ----------
+  // . 视频页交互：正在播放提示 + 结束小弹幕
   const initVideoInteractions = () => {
     const videos = document.querySelectorAll(".video-card video");
     if (!videos.length) return;
@@ -2293,7 +2296,7 @@
     });
   };
 
-  // ---------- 10. 恋爱清单进度同步（供其他页面统计用） ----------
+  // . 恋爱清单进度同步（供其他页面统计用）
   const collectLoveListProgress = () => {
     const scope = document.querySelector(".page[data-type='love-list']") || document.querySelector(".page-love-list");
     if (!scope) return;
@@ -2319,7 +2322,7 @@
     } catch (e) {}
   };
 
-  // ---------- 11. 留言板：Twikoo 懒加载占位 + 快捷留言 / 回复高亮 / 纪念日提示 ----------
+  // . 留言板：Twikoo 懒加载占位 + 快捷留言 / 回复高亮 / 纪念日提示
   const initTwikooLazyPlaceholder = () => {
     const path = window.location.pathname || "";
     const isComments =
@@ -2497,7 +2500,7 @@
     tw.__loveShortcutObserver = observer;
   };
 
-  // ---------- 12. 文章页阅读进度条 ----------
+  // . 文章页阅读进度条
   const initReadingProgress = () => {
     const article = document.getElementById("article-container");
     if (!article) return;

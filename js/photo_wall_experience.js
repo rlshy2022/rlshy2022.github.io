@@ -110,20 +110,12 @@
       keywords: ["img/fuzhou/", "/fuzhou/", "fuzhou", "福州", "长乐", "福师大"],
     },
     {
-      key: "gifts",
-      label: "礼物",
-      badge: "心意存档",
-      desc: "互相准备礼物和拆开惊喜的瞬间。",
+      key: "gifts_birthday",
+      label: "礼物&生日&纪念日",
+      badge: "心意纪念",
+      desc: "互相准备过的礼物、生日蛋糕和纪念日惊喜，都放在这一组里。",
       accent: "#c77f92",
-      keywords: ["礼物", "gift", "hh_s_yy", "yy_s_hh"],
-    },
-    {
-      key: "birthday",
-      label: "生日",
-      badge: "特别日子",
-      desc: "蛋糕、烛光和笑脸一起出现的照片。",
-      accent: "#b69649",
-      keywords: ["dg", "生日", "birthday"],
+      keywords: ["礼物", "gift", "hh_s_yy", "yy_s_hh", "dg", "生日", "birthday", "纪念", "蛋糕", "cake"],
     },
     {
       key: "daily",
@@ -416,10 +408,11 @@
     let currentFeatureEntry = entries[0];
     let displayLimit = getBatchConfig().initial;
 
-    const requestedScene = normalizeText(
+    const SCENE_PARAM_ALIASES = { gifts: "gifts_birthday", birthday: "gifts_birthday" };
+    const requestedSceneRaw =
       getQueryParams().get("scene") ||
-        decodeSafe((window.location.hash || "").replace(/^#scene-/, ""))
-    );
+      decodeSafe((window.location.hash || "").replace(/^#scene-/, ""));
+    const requestedScene = normalizeText(SCENE_PARAM_ALIASES[requestedSceneRaw] || requestedSceneRaw);
 
     const matchedEntries = () =>
       entries.filter((entry) => currentFilter === "all" || entry.scene.key === currentFilter);

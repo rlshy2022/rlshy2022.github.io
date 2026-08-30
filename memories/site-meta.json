@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-28T05:07:44.940Z",
+  "generatedAt": "2026-08-30T01:45:18.672Z",
   "scenes": [
     {
       "key": "jingdezhen",
@@ -223,7 +223,7 @@
       "quote": "你收到的是礼物，我收到的是你开心时亮起来的眼睛。",
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E7%A4%BC%E7%89%A9/hh_s_yy_1.jpg?x-oss-process=image/format,webp",
       "galleryUrl": "/gallery/?chapter=gifts",
-      "photoWallUrl": "/photo-wall/?scene=gifts",
+      "photoWallUrl": "/photo-wall/?scene=gifts_birthday",
       "timelineUrl": "/love-timeline/?scene=gifts",
       "passport": false,
       "passportTitle": "礼物",
@@ -246,7 +246,7 @@
       "quote": "生日这一天，最重要的是你在。",
       "cover": "https://rsylh.oss-cn-hangzhou.aliyuncs.com/img/%E5%85%B6%E4%BB%96/dg1.jpg?x-oss-process=image/format,webp",
       "galleryUrl": "/gallery/?chapter=birthday",
-      "photoWallUrl": "/photo-wall/?scene=birthday",
+      "photoWallUrl": "/photo-wall/?scene=gifts_birthday",
       "timelineUrl": "/love-timeline/?scene=birthday",
       "passport": false,
       "passportTitle": "生日",
@@ -368,7 +368,7 @@
         },
         {
           "label": "看照片墙",
-          "url": "/photo-wall/?scene=birthday"
+          "url": "/photo-wall/?scene=gifts_birthday"
         }
       ]
     },

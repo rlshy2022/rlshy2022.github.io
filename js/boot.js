@@ -106,6 +106,10 @@
       loadStyle("/css/gallery_experience.css?v=1.0");
     }
 
+    if (isGalleryPage()) {
+      loadScript("/js/gallery_photo_stats.js?v=1.0").catch(() => {});
+    }
+
     if (
       document.querySelector(".gallery-items img, .fj-gallery-item img, #article-container img") ||
       document.getElementById("hexo-blog-encrypt")
