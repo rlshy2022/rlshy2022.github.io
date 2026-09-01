@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T02:19:16.623Z",
+  "generatedAt": "2026-09-01T02:48:33.793Z",
   "itemCount": 26,
   "manualCount": 11,
   "articleCount": 15,
@@ -64,7 +64,7 @@
       "timestamp": 1786579200000
     },
     {
-      "id": "gacha-post-2",
+      "id": "gacha-post-1",
       "source": "post",
       "type": "travel",
       "scene": "ningguo_huangshan",
@@ -123,7 +123,7 @@
       "timestamp": 1784073600000
     },
     {
-      "id": "gacha-post-12",
+      "id": "gacha-post-13",
       "source": "post",
       "type": "travel",
       "scene": "fuzhou",
@@ -254,7 +254,7 @@
       "timestamp": 1772150400000
     },
     {
-      "id": "gacha-post-1",
+      "id": "gacha-post-2",
       "source": "post",
       "type": "letter",
       "scene": "daily",
@@ -273,7 +273,7 @@
       "timestamp": 1771171200000
     },
     {
-      "id": "gacha-post-6",
+      "id": "gacha-post-7",
       "source": "post",
       "type": "festival",
       "scene": "daily",
@@ -307,7 +307,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-11",
+      "id": "gacha-post-12",
       "source": "post",
       "type": "gift",
       "scene": "gifts",
@@ -323,7 +323,7 @@
       "timestamp": 1770776595000
     },
     {
-      "id": "gacha-post-13",
+      "id": "gacha-post-15",
       "source": "post",
       "type": "daily",
       "scene": "daily",
@@ -357,7 +357,7 @@
       "timestamp": 1770454800000
     },
     {
-      "id": "gacha-post-7",
+      "id": "gacha-post-6",
       "source": "post",
       "type": "travel",
       "scene": "jingdezhen",
@@ -375,7 +375,7 @@
       "timestamp": 1770377536000
     },
     {
-      "id": "gacha-post-15",
+      "id": "gacha-post-11",
       "source": "post",
       "type": "letter",
       "scene": "daily",

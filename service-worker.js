@@ -3,9 +3,9 @@
  * 让首页、文章页和静态资源都能被整站接管，而不是只作用于 /js/。
  */
 
-const STATIC_CACHE = "love-blog-static-v2.9";
-const PAGE_CACHE = "love-blog-pages-v2.9";
-const IMAGE_CACHE = "love-blog-images-v2.9";
+const STATIC_CACHE = "love-blog-static-v3.0";
+const PAGE_CACHE = "love-blog-pages-v3.0";
+const IMAGE_CACHE = "love-blog-images-v3.0";
 const CACHE_WHITELIST = [STATIC_CACHE, PAGE_CACHE, IMAGE_CACHE];
 const MAX_PAGE_ENTRIES = 40;
 const MAX_IMAGE_ENTRIES = 120;
@@ -27,9 +27,11 @@ const STATIC_ASSETS = [
   "/css/love_reactions.css",
   "/css/love_map_page.css",
   "/css/photo_wall.css",
+  "/css/polish.css",
   "/js/boot.js",
   "/js/love_config.js",
   "/js/photo_wall_experience.js",
+  "/js/gallery_photo_stats.js",
   "/js/love_timer.js",
   "/js/memory_runtime.js",
   "/js/love_ui_utils.js",

@@ -1789,3 +1789,12 @@ body.love-photo-wall-modal-open {
         max-width: none;
     }
 }
+
+/* ---- 窄屏防御：分批渲染瞬态节点不产生横向溢出 ---- */
+.love-photo-wall-board {
+    overflow-x: clip;
+}
+
+.love-photo-wall-item {
+    max-width: 100%;
+}

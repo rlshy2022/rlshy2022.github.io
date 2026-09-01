@@ -1,0 +1,186 @@
+/**
+ * polish.css — 全站精致化打磨层
+ * 原则：只做颜色、阴影、过渡、悬停与滚动条，不改布局尺寸，
+ * 与 custom.css / 主题样式叠加生效，暗色模式自动兼容。
+ */
+
+/* ============ 1. 精致滚动条 ============ */
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #e8b6c0 transparent;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #eab7c1, #d798ab);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d798ab, #c67f96);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5d6b85, #45516a);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #6d7d9c, #57648a);
+}
+
+/* ============ 2. 首页文章卡片：悬浮轻浮起 ============ */
+#recent-post-item,
+.recent-post-item {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+#recent-post-item:hover,
+.recent-post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(214, 143, 162, 0.22);
+}
+
+[data-theme="dark"] #recent-post-item:hover,
+[data-theme="dark"] .recent-post-item:hover {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* ============ 3. 导航菜单：粉色下划线滑入 ============ */
+#nav .menus_item a {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+#nav .menus_item a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #e8a7b5, #9fc3e0);
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+
+#nav .menus_item a:hover::after {
+  width: 70%;
+}
+
+/* ============ 4. 文章内链接：呼吸式下划线 ============ */
+#article-container p a,
+#article-container li a {
+  text-decoration-color: rgba(226, 154, 169, 0.35);
+  text-underline-offset: 3px;
+  transition:
+    color 0.25s ease,
+    text-decoration-color 0.25s ease;
+}
+
+#article-container p a:hover,
+#article-container li a:hover {
+  text-decoration-color: #d88496;
+}
+
+/* ============ 5. 输入框聚焦柔光环 ============ */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(226, 154, 169, 0.28);
+  transition: box-shadow 0.2s ease;
+}
+
+[data-theme="dark"] input:focus-visible,
+[data-theme="dark"] textarea:focus-visible {
+  box-shadow: 0 0 0 3px rgba(126, 182, 255, 0.28);
+}
+
+/* ============ 6. 按钮统一按压手感 ============ */
+button,
+#aside-content .card-info-btn,
+.article-reactions button {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ============ 7. 图片过渡与阴影柔化 ============ */
+img {
+  transition:
+    filter 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* ============ 8. 页脚链接悬停发亮 ============ */
+#footer a,
+#footer-wrap a {
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+#footer a:hover,
+#footer-wrap a:hover {
+  color: #ffd7df;
+  text-shadow: 0 0 12px rgba(255, 158, 172, 0.65);
+}
+
+/* ============ 9. 侧边栏卡片轻浮起 ============ */
+#aside-content .card-widget {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+#aside-content .card-widget:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(214, 143, 162, 0.18);
+}
+
+[data-theme="dark"] #aside-content .card-widget:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+/* ============ 10. 暗色切换平滑过渡 ============ */
+html,
+body,
+.card-widget,
+#recent-post-item,
+.recent-post-item {
+  transition-property: background-color, color, border-color, transform, box-shadow;
+  transition-duration: 0.3s;
+}
+
+/* ============ 11. 尊重减少动画偏好 ============ */
+@media (prefers-reduced-motion: reduce) {
+  #recent-post-item,
+  .recent-post-item,
+  #aside-content .card-widget,
+  #nav .menus_item a::after {
+    transition: none;
+  }
+
+  #recent-post-item:hover,
+  .recent-post-item:hover,
+  #aside-content .card-widget:hover {
+    transform: none;
+  }
+}
